@@ -78,9 +78,17 @@ and any promise of cure or quick fix.
 
 ## Founder (author) — Jasna Dimitrovska
 
-- Psychologist (psychology education, master's thesis, research experience); **Gestalt counsellor** (interest in awareness,
-  emotion, bodily experience and contact — applied with clear professional boundaries); **vocal artist** with nearly
-  20 years on stage, currently with **Orchestra DIVA** (Bitola).
+- **Licensed psychologist** (лиценциран психолог); **MA in Psychology in Social Protection** (International Slavic
+  University, Bitola, 2026; master's thesis); BA in General Psychology (same university, 2024). Experience: psychological
+  support, work with children and young people, psychological testing and assessment (training accredited by the
+  Chamber of Psychologists). Psychologist at **„Анима“ – Centre for personal development, education and psychotherapy**,
+  Bitola (free psychological support, 2024–).
+- **Gestalt therapist under supervision** (гешталт терапевт под супервизија), in Gestalt training since 2021 (Anima) —
+  interest in awareness, emotion, bodily experience and contact, with clear professional boundaries.
+- **Music performer** by training (State Secondary Music School, Bitola, 2005); **vocal artist** with nearly 20 years on
+  stage, currently with **Orchestra DIVA** (Bitola). Music mentor: YMCA GLOW (2026); peer educator & music mentor,
+  „Врсничка школа за ментално здравје на деца и млади“ (2024–).
+- Private contact details (phone, personal email) are never published; public contact is zdravo@jasnota.mk.
 - Co-author: *Self-esteem as a mediator between perfectionism and impostor syndrome among gifted students* (2024,
   International Slavic University) — cite, don't state findings until she supplies them.
 - Based in Bitola, Macedonia (always "Macedonia", never "North Macedonia").
