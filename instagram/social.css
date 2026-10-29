@@ -1,0 +1,139 @@
+/* Јаснота — the social hub additions: content flow, Facebook page and mockups, posting kit, calendar items.
+   Loaded after instagram.css + site.css. The Facebook mockups use Facebook's own light UI on purpose: they show
+   exactly what a reader will see in the feed, framed by the hub's black page. */
+
+/* ---------- warnings and states ---------- */
+.warn-line { display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--cinnabar); color: var(--bone); border-radius: 6px; padding: 10px 14px; font: 300 13px/1.5 var(--font-text); margin: 0 0 14px; }
+.warn-line::before { content: ""; flex: none; width: 7px; height: 7px; margin-top: 6px; border-radius: 50%; background: var(--cinnabar); }
+.ok-line { display: inline-flex; gap: 8px; align-items: center; font: 300 11.5px/1.4 var(--font-mono); color: var(--ash); }
+.ok-line::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--bone); }
+.muted-note { font: 300 11.5px/1.6 var(--font-mono); color: var(--ash); margin: 6px 0 0; }
+
+/* ---------- 12/13 weeks: a week still in preparation ---------- */
+.card.pending .pending-body { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: var(--s-4); align-items: start; }
+.pending-frame { aspect-ratio: 4 / 5; border: 1px dashed var(--graphite); border-radius: 4px; display: grid; place-items: center; align-content: center; gap: 14px; color: var(--ash); }
+.pending-frame .mark { width: 34px; color: var(--graphite); }
+.week-h small.mono-s { font-size: 12px; vertical-align: middle; margin-left: 8px; }
+@media (max-width: 640px) { .card.pending .pending-body { grid-template-columns: minmax(0, 1fr); } .pending-frame { max-width: 220px; } }
+
+/* ---------- calendar: web and Facebook items ---------- */
+.cal .it.web .th, .cal .it.fb .th { height: 34px; display: grid; place-items: center; border-radius: 4px; font: 400 11px/1 var(--font-mono); }
+.cal .it.web .th { border: 1px solid var(--bone); color: var(--bone); }
+.cal .it.fb .th { background: var(--bone); color: var(--ink); font: 600 17px/1 Helvetica, Arial, sans-serif; }
+.cal .it.warn .tt small { color: var(--cinnabar); }
+
+/* ---------- the flow strip (web → IG → FB) ---------- */
+.flow3 { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--graphite); }
+.flow3 li { padding: var(--s-3) var(--s-3) var(--s-3) 0; border-right: 1px solid var(--graphite); }
+.flow3 li + li { padding-left: var(--s-3); }
+.flow3 li:last-child { border-right: 0; }
+.flow3 .k { font: 300 11px/1 var(--font-mono); color: var(--ash); display: block; margin-bottom: 12px; }
+.flow3 h3 { font: 300 clamp(26px, 2.6vw, 38px)/1 var(--font-display); margin: 0 0 10px; }
+.flow3 h3 em { font-weight: 300; }
+.flow3 p { margin: 0; color: var(--ash); font-size: 14.5px; max-width: 34ch; }
+.flow3 p b { color: var(--bone); font-weight: 400; }
+@media (max-width: 760px) { .flow3 { grid-template-columns: minmax(0, 1fr); } .flow3 li, .flow3 li + li { border-right: 0; border-bottom: 1px solid var(--graphite); padding: var(--s-3) 0; } }
+
+/* ---------- Facebook page setup ---------- */
+.fb-setup { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 88px); align-items: start; }
+@media (max-width: 960px) { .fb-setup { grid-template-columns: minmax(0, 1fr); } }
+.fbpage { background: #fff; color: #050505; border-radius: 10px; overflow: hidden; font: 400 15px/1.34 system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; max-width: 680px; }
+.fbpage .fbg-cov { position: relative; aspect-ratio: 1640 / 624; background: #0a0a0b url("facebook/cover.png") center / cover no-repeat; }
+.fbpage .fbg-cov.fbg-safe::after { content: ""; position: absolute; inset: 0 16.2%; border-inline: 1px dashed rgba(236, 232, 225, .55); }
+.fbpage .fbg-cov.fbg-safe::before { content: "мобилен исечок"; position: absolute; right: calc(16.2% + 6px); top: 6px; font: 300 10px/1 var(--font-mono); color: rgba(236, 232, 225, .7); }
+.fbpage .fbg-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 14px; padding: 0 16px 14px; align-items: end; }
+.fbpage .fbg-pp { width: 96px; height: 96px; border-radius: 50%; border: 4px solid #fff; margin-top: -40px; background: #0a0a0b url("facebook/profile.png") center / cover; position: relative; z-index: 1; }
+.fbpage .fbg-nm { font-weight: 700; font-size: 22px; line-height: 1.15; overflow-wrap: anywhere; }
+.fbpage .fbg-sub { color: #65676b; font-size: 13.5px; }
+.fbpage .fbg-acts { grid-column: 1 / -1; display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.fbpage .fbg-acts span { background: #e4e6eb; border-radius: 6px; padding: 8px 12px; font-weight: 600; font-size: 14px; }
+.fbpage .fbg-acts span.fbg-pri { background: #0866ff; color: #fff; }
+.fbpage .fbg-intro { border-top: 1px solid #e4e6eb; padding: 12px 16px 16px; }
+.fbpage .fbg-intro h4 { margin: 0 0 6px; font-weight: 700; font-size: 17px; line-height: 1.2; font-family: inherit; color: #050505; letter-spacing: 0; }
+.fbpage .fbg-intro p { margin: 0 0 8px; }
+.fbpage .fbg-intro .fbg-row { color: #65676b; font-size: 14px; }
+.fbpage .fbg-intro .fbg-row a { color: #050505; font-weight: 600; text-decoration: none; }
+.fb-assets { display: grid; grid-template-columns: minmax(0, 2.6fr) minmax(0, 1fr); gap: 16px; margin-top: var(--s-3); }
+.fb-assets figure { margin: 0; }
+.fb-assets img { width: 100%; height: auto; display: block; border: 1px solid var(--graphite); }
+.fb-assets figure:last-child img { border-radius: 50%; }
+.fb-assets figcaption { font: 300 11px/1.6 var(--font-mono); color: var(--ash); margin-top: 8px; }
+.fb-assets figcaption a { color: var(--bone); }
+.copyrow { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+.charcount { font: 300 11px/1 var(--font-mono); color: var(--ash); }
+.charcount.over { color: var(--cinnabar); }
+
+/* ---------- Facebook feed post mockup (light UI, phone width) ---------- */
+.fb-week { display: grid; grid-template-columns: minmax(0, 500px) minmax(0, 1fr); gap: clamp(28px, 4vw, 72px); align-items: start; padding-block: var(--s-5); border-top: 1px solid var(--graphite); scroll-margin-top: 24px; }
+@media (max-width: 900px) { .fb-week { grid-template-columns: minmax(0, 1fr); } }
+.fb-week .side h3 { font: 300 clamp(28px, 3vw, 44px)/1.02 var(--font-display); margin: 0 0 10px; letter-spacing: -.01em; }
+.fb-week .side .num { font: 300 12px/1.5 var(--font-mono); color: var(--ash); }
+.seg { display: inline-flex; border: 1px solid var(--graphite); border-radius: 999px; padding: 3px; margin: 14px 0 6px; }
+.seg button { background: none; border: 0; color: var(--ash); font: 300 12px/1 var(--font-mono); padding: 8px 12px; border-radius: 999px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--bone); color: var(--ink); }
+.fbp { background: #fff; color: #050505; border-radius: 8px; overflow: hidden; font: 400 15px/1.3333 system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; box-shadow: 0 1px 2px rgba(0, 0, 0, .2); }
+.fbp .fb-ph { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 12px 16px 0; }
+.fbp .fb-av { width: 40px; height: 40px; border-radius: 50%; background: #0a0a0b url("facebook/profile.png") center / cover; }
+.fbp .fb-who { font-weight: 600; font-size: 15px; line-height: 1.2; }
+.fbp .fb-when { color: #65676b; font-size: 13px; display: flex; align-items: center; gap: 4px; }
+.fbp .fb-when svg { width: 12px; height: 12px; }
+.fbp .fb-dots { color: #65676b; width: 20px; }
+.fbp .fb-txt { padding: 10px 16px 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.fbp .fb-txt.fb-clamp { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; padding-bottom: 0; margin-bottom: 4px; }
+.fbp .fb-more { padding: 0 16px 12px; }
+.fbp .fb-more button { background: none; border: 0; padding: 0; font-weight: 600; font-size: 15px; line-height: 1.33; font-family: inherit; color: #050505; cursor: pointer; }
+.fbp .fb-txt a, .fbp .fb-lnk { color: #0064d1; text-decoration: none; overflow-wrap: anywhere; }
+.fbp .fb-txt.fb-placeholder { color: #8a8d91; font-style: italic; }
+.fbp .fb-card { display: block; margin: 0; text-decoration: none; color: inherit; border-top: 1px solid #e4e6eb; }
+.fbp .fb-card img { display: block; width: 100%; height: auto; aspect-ratio: 1.91 / 1; object-fit: cover; background: #0a0a0b; }
+.fbp .fb-card .fb-meta { background: #f0f2f5; padding: 10px 16px 12px; }
+.fbp .fb-card .fb-dom { color: #65676b; font-size: 12.5px; text-transform: uppercase; letter-spacing: .01em; }
+.fbp .fb-card .fb-ttl { font-weight: 600; font-size: 16px; line-height: 1.25; margin-top: 3px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.fbp .fb-card.fb-dim img { filter: grayscale(1) brightness(.55); }
+.fbp .fb-photos { display: grid; gap: 2px; background: #fff; }
+.fbp .fb-photos.fb-n2 { grid-template-columns: 1fr 1fr; }
+.fbp .fb-photos.fb-n3 { grid-template-columns: 1fr 1fr; }
+.fbp .fb-photos.fb-n3 > :first-child { grid-column: 1 / -1; }
+.fbp .fb-photos img { width: 100%; height: auto; display: block; aspect-ratio: 4 / 3; object-fit: cover; }
+.fbp .fb-photos .fb-slotph { aspect-ratio: 4 / 3; background: repeating-linear-gradient(135deg, #f0f2f5 0 12px, #e4e6eb 12px 24px); display: grid; place-items: center; padding: 20px; text-align: center; color: #65676b; font-size: 13px; }
+.fbp .fb-photos.fb-n1 img { aspect-ratio: auto; }
+.fbp .fb-stats { display: flex; justify-content: space-between; color: #65676b; font-size: 14px; padding: 10px 16px; }
+.fbp .fb-bar { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #ced0d4; margin: 0 16px; padding: 4px 0; }
+.fbp .fb-bar span { white-space: nowrap; display: flex; justify-content: center; align-items: center; gap: 6px; color: #65676b; font-weight: 600; font-size: 14px; padding: 6px 0; }
+.fbp .fb-bar svg { width: 18px; height: 18px; }
+.fb-hint { font: 300 11.5px/1.6 var(--font-mono); color: var(--ash); margin: 10px 0 0; }
+
+/* ---------- posting kit ---------- */
+.kit-head { display: flex; flex-wrap: wrap; gap: 10px 28px; align-items: baseline; margin-bottom: var(--s-4); }
+.kit { border-top: 1px solid var(--graphite); padding-block: var(--s-5); scroll-margin-top: 24px; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(28px, 4vw, 80px); }
+@media (max-width: 960px) { .kit { grid-template-columns: minmax(0, 1fr); } }
+.kit .k-n { font: 300 clamp(64px, 8vw, 120px)/.85 var(--font-display); letter-spacing: -.03em; margin: 0; }
+.kit .k-n em { font-weight: 300; }
+.kit h3 { font: 300 clamp(26px, 2.6vw, 38px)/1.04 var(--font-display); margin: 16px 0 10px; letter-spacing: -.01em; }
+.kit .k-meta { font: 300 12px/1.6 var(--font-mono); color: var(--ash); margin: 0; }
+.kit .k-og { margin-top: var(--s-3); }
+.kit .k-og img { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 630; object-fit: cover; border: 1px solid var(--graphite); background: var(--night); }
+.kit .k-og .copyrow { margin-top: 10px; }
+.ksteps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+.ksteps > li { counter-increment: s; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 4px 14px; padding: 18px 0; border-bottom: 1px solid var(--graphite); }
+.ksteps > li:first-child { padding-top: 0; }
+.ksteps > li::before { content: "0" counter(s); font: 300 11px/2 var(--font-mono); color: var(--ash); }
+.ksteps .chk { display: flex; gap: 10px; align-items: baseline; cursor: pointer; }
+.ksteps .chk input { accent-color: #ece8e1; width: 16px; height: 16px; transform: translateY(2px); }
+.ksteps .chk b { font: 300 22px/1.15 var(--font-display); color: var(--bone); }
+.ksteps .chk small { font: 300 11.5px/1 var(--font-mono); color: var(--ash); margin-left: 4px; }
+.ksteps > li.done .chk b { color: var(--ash); text-decoration: line-through; text-decoration-color: var(--graphite); }
+.ksteps .body { grid-column: 2; min-width: 0; }
+.url { font: 300 13px/1.5 var(--font-mono); color: var(--bone); overflow-wrap: anywhere; background: var(--night); border: 1px solid var(--graphite); border-radius: 6px; padding: 9px 12px; margin: 8px 0 0; }
+.url small { color: var(--ash); }
+.capbox { white-space: pre-wrap; overflow-wrap: anywhere; font: 300 13.5px/1.55 var(--font-text); color: var(--ash); background: var(--night); border: 1px solid var(--graphite); border-radius: 6px; padding: 12px 14px; margin: 8px 0 0; max-height: 220px; overflow: auto; }
+.capbox.empty { color: #6d6b66; font-style: italic; }
+.links-row { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; font: 300 12px/1.5 var(--font-mono); }
+.links-row a { color: var(--bone); }
+.btn[disabled] { opacity: .4; cursor: not-allowed; }
+.kit.placeholder .k-n { color: var(--ash); }
+
+/* ---------- metrics: Facebook log ---------- */
+.kpis.fbk { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 760px) { .kpis.fbk { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 420px) { .fbp .fb-bar span { font-size: 12.5px; gap: 4px; } .fbp .fb-bar svg { width: 16px; height: 16px; } }

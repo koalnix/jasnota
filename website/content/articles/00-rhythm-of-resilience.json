@@ -1,0 +1,354 @@
+{
+  "slug": "rhythm-of-resilience",
+  "pillar": 1,
+  "format": "text",
+  "lang": "mk",
+  "date": "2026-11-02",
+  "title": "Ритамот на резилиентноста: како музиката ги обликува нашите емоции",
+  "dek": "Што психолозите подразбираат под резилиентност, по кои патишта музиката допира до емоциите и што покажуваат истражувањата за слушањето и заедничкото музицирање во тешки периоди – со јасни граници на она што го знаеме.",
+  "reading_min": 7,
+  "body": [
+    {
+      "blocks": [
+        {
+          "p": "Кога ни е тешко, многумина посегнуваме по музика: песна што нè смирува, инструментот, пеење со други. Дали тоа е само навика, или музиката навистина ни помага да се справиме? И што воопшто значи да се биде „резилиентен“?"
+        },
+        {
+          "p": "Насловот го позајмуваме од работилницата „Ритамот на резилиентноста“, што авторката на Јаснота ја водеше во Охрид. Ова не е извештај од работилницата, туку преглед на тоа што велат истражувањата – и каде застануваат."
+        }
+      ]
+    },
+    {
+      "h2": "Резилиентноста: процес, а не особина",
+      "blocks": [
+        {
+          "p": "Во секојдневниот говор резилиентноста (resilience) звучи како цврстина што некој „ја има“, а некој „ја нема“. Кога истражувачи од различни дисциплини се обиделе заедно да ја дефинираат, повеќето ја опишале како здраво, прилагодливо функционирање што се одржува или се враќа со текот на времето по тешко искуство – обликувано од генетиката и развојот, но и од семејството, заедницата, економските услови и културата (Southwick et al., 2014)."
+        },
+        {
+          "p": "Два наоди ја менуваат вообичаената претстава. Првиот: резилиентноста е честа и најчесто произлегува од „обичните“ човечки системи за прилагодување, како блиските односи, учењето и саморегулацијата, а не од исклучителна дарба (Masten, 2001). Вториот: по загуба или потенцијално трауматски настан, многу луѓе имаат само мали и минливи тешкотии и продолжуваат да доживуваат и позитивни емоции – тек што се разликува од закрепнувањето по подолг период на тешкотии (Bonanno, 2004)."
+        },
+        {
+          "p": "Еден важен дел од резилиентноста е <strong>регулирањето на емоциите</strong> (emotion regulation): начините на кои влијаеме врз тоа кои емоции ги имаме, кога и како ги доживуваме и изразуваме (Gross, 1998). Тука влегува и музиката."
+        },
+        {
+          "quote": "Резилиентноста не е отсуство на болка, туку начинот на кој со текот на времето повторно наоѓаме рамнотежа."
+        },
+        {
+          "evidence": {
+            "level": "умерени докази",
+            "text": "Дека резилиентноста е честа и подобро се разбира како процес отколку како трајна особина е широко прифатено во прегледите. Дефинициите и мерењата сепак се разликуваат меѓу студиите (Southwick et al., 2014)."
+          }
+        }
+      ]
+    },
+    {
+      "h2": "Како музиката стигнува до емоциите",
+      "blocks": [
+        {
+          "p": "Музиката не делува на еден единствен начин. Според рамката BRECVEMA, емоцијата може да се роди од ненадеен звук, од спомен, од „заразата“ со изразот на изведувачот, од исчекувањето, од естетското доживување – и од самиот ритам (Juslin, 2013). За оваа тема најважни се <strong>возбудата</strong> (arousal) и <strong>ритмичкото вовлекување</strong> (rhythmic entrainment)."
+        },
+        {
+          "p": "Возбудата е телесната и психолошката „јачина“ на состојбата, од поспаност до напнатост, и музиката може да ја подигне или спушти. Кај студенти следени во обична и во испитна недела, алфа-амилазата во плунката (показател за активноста на симпатичкиот нервен систем) растела по енергична, а опаѓала по релаксирачка музика (Linnemann et al., 2015)."
+        },
+        {
+          "p": "Ритмичкото вовлекување е склоноста движењата и телесните ритми да се усогласат со ритамот: тапкаме, климаме, чекориме во такт (Repp & Su, 2013). Еден преглед предлага дека тоа се случува во перцепцијата, во автономната физиологија, во движењето и меѓу луѓето, и дека секое ниво може да придонесе за чувството (Trost et al., 2017)."
+        },
+        {
+          "evidence": {
+            "level": "умерени докази",
+            "text": "Дека музиката ја менува возбудата и предизвикува емоции преку повеќе механизми е добро поткрепено. Колку придонесува вовлекувањето во конкретно слушање сè уште се истражува (Juslin, 2013; Trost et al., 2017)."
+          }
+        }
+      ]
+    },
+    {
+      "h2": "Музиката како начин за регулирање на емоциите",
+      "blocks": [
+        {
+          "p": "Регулирањето на расположението е една од најчестите причини зошто слушаме музика. Од разговори со адолесценти, финските истражувачи Суви Саарикалио и Јакко Еркила опишале седум стратегии (Saarikallio & Erkkilä, 2007):"
+        },
+        {
+          "list": [
+            "<strong>забава</strong>: одржување добро расположение;",
+            "<strong>обновување</strong>: одмор и нова енергија;",
+            "<strong>силно доживување</strong>: засилување на емоциите;",
+            "<strong>одвраќање</strong>: тргнување на мислите од непријатното;",
+            "<strong>празнење</strong> (discharge): изразување лутина или тага преку музика;",
+            "<strong>ментална работа</strong>: средување на чувствата;",
+            "<strong>утеха</strong>: чувство дека некој нè разбира."
+          ]
+        },
+        {
+          "p": "Кај возрасни од 21 до 70 години основните стратегии остануваат слични низ целиот живот (Saarikallio, 2011), иако полето е младо и користи неуедначени поими (Baltazar & Saarikallio, 2016)."
+        },
+        {
+          "p": "Дали ова и делува? Во студијата од секојдневниот живот, слушањето музика било поврзано со помалку доживеан стрес, најмногу кога студентите слушале за да се опуштат; тогаш и кортизолот бил понизок (Linnemann et al., 2015). Мета-анализите на рандомизирани студии покажуваат мал до умерен ефект врз стресот (de Witte et al., 2020) и врз регулирањето на емоциите (d = 0,45, осум студии; Peters et al., 2024)."
+        },
+        {
+          "evidence": {
+            "level": "умерени докази",
+            "text": "Луѓето доследно известуваат дека ја користат музиката за регулирање на расположението, а рандомизираните студии покажуваат мал до умерен ефект врз стресот. Поделбата на стратегии потекнува од мали квалитативни студии, а интервенциите многу се разликуваат."
+          }
+        }
+      ]
+    },
+    {
+      "h2": "Кога истата песна не помага",
+      "blocks": [
+        {
+          "p": "Музиката не е автоматски „здрава“. Кај 123 учесници, оние што почесто користеле музика за празнење имале повеќе анксиозност и повисок невротицизам (склоност кон негативни емоции), особено мажите (Carlson et al., 2015). Студијата е корелациска: не знаеме што е причина, а што последица."
+        },
+        {
+          "p": "Тажната музика ја избираме кога сме тажни поради поврзаност, спомени, убавина или пораката на песната, и често ја доживуваме како утеха или „пријател“ (Van den Tol & Edwards, 2013). Но кај студенти склони кон руминација – вртење во круг на исти болни мисли – самоизбраната тажна музика го зголемила депресивното расположение (Garrido & Schubert, 2015)."
+        },
+        {
+          "p": "Затоа истражувачите разликуваат „здраво“ од „нездраво“ користење на музиката. Кај млади, нездравите обрасци, на пример заглавување во лоши спомени или криење во музиката од другите, биле поврзани со депресија, руминација и стрес (Saarikallio et al., 2015). Поважно е како ја користиме музиката отколку самата музика (McFerran & Saarikallio, 2014)."
+        },
+        {
+          "p": "Ова се совпаѓа со пошироката идеја од истражувањата за справувањето: ниту една стратегија не е секогаш добра или секогаш лоша. Корисно е да се имаат повеќе начини и да се забележи дали избраниот начин делува (Bonanno & Burton, 2013)."
+        },
+        {
+          "evidence": {
+            "level": "рани/ограничени докази",
+            "text": "Врските меѓу одредени начини на слушање и полошо расположение доаѓаат главно од корелациски студии и од еден краткорочен експеримент; флексибилноста е теориска рамка (Carlson et al., 2015; Garrido & Schubert, 2015; Bonanno & Burton, 2013)."
+          }
+        }
+      ]
+    },
+    {
+      "h2": "Заедно во ритам",
+      "blocks": [
+        {
+          "p": "Кога луѓето се движат, пеат или свират во ист ритам, се случува <strong>интерперсонална синхронизација</strong> (interpersonal synchrony). Во еден експеримент, колку посинхроно учесниците тапкале со експериментаторот, толку повеќе потоа го доживувале како близок (Hove & Risen, 2009). Мета-анализа на 60 експерименти покажа умерен ефект на синхронизацијата врз просоцијалните ставови и однесувања, со резерва: ефектот зависел и од влијанието на експериментаторите и од тоа дали синхронијата била намерна (Rennung & Göritz, 2016)."
+        },
+        {
+          "p": "Во новоформирани групи, пеачите се зближиле побрзо од групите за ракотворби или креативно пишување, иако по третиот месец сите биле подеднакво поврзани (Pearce et al., 2015), а четиригодишни деца што заедно музицирале потоа почесто си помагале (Kirschner & Tomasello, 2010). Зошто е тоа така е отворено; се спомнуваат чувството на „спојување“ со другите и ендорфините (Tarr et al., 2014)."
+        },
+        {
+          "evidence": {
+            "level": "умерени докази",
+            "text": "Синхронизацијата краткорочно ја зголемува блискоста и просоцијалноста во лабораториски услови (Rennung & Göritz, 2016). Механизмите и долгорочното значење се помалку јасни."
+          }
+        },
+        {
+          "p": "А менталното здравје? Систематски преглед на 13 трудови (667 учесници) за групно пеење кај возрасни со ментални тешкотии покажал подобрувања, но авторите заклучуваат дека доказите не се убедливи поради умерен до висок ризик од пристрасност (Williams et al., 2018)."
+        },
+        {
+          "p": "Една од ретките студии што мерела „социјална резилиентност“ е британска студија за групно тапанење: кај возрасни корисници на служби за ментално здравје, по десет недели се намалиле депресијата и анксиозноста, а пораснала социјалната резилиентност, за разлика од контролната група со немузички активности (Fancourt et al., 2016). Но студијата ја завршиле само 45 луѓе, групите не биле формирани по случаен избор, а имунолошките маркери биле мерени само кај оние што тапанеле. Од неа не може да се заклучи дека тапанењето „го зајакнува имунитетот“."
+        },
+        {
+          "evidence": {
+            "level": "рани/ограничени докази",
+            "text": "Групното пеење и тапанење се ветувачки социјални активности, но студиите се мали, често без случајна распределба и со ризик од пристрасност (Williams et al., 2018; Fancourt et al., 2016)."
+          }
+        }
+      ]
+    },
+    {
+      "h2": "Што би можело да значи ова во пракса",
+      "blocks": [
+        {
+          "p": "Истражувањата не даваат рецепт, а ниедно не тестирало дали музиката долгорочно „гради“ резилиентност. Сепак, сугерираат неколку прашања за размислување:"
+        },
+        {
+          "list": [
+            "<strong>За што ми е музиката сега?</strong> Да се смирам, да се разбудам, да ја изразам тагата? Причината за слушањето се покажала важна (Linnemann et al., 2015).",
+            "<strong>Како сум по слушањето?</strong> Полесно, или повеќе се вртам во круг (Garrido & Schubert, 2015)?",
+            "<strong>Имам ли повеќе начини?</strong> Теоријата ја нагласува флексибилноста, не една омилена стратегија (Bonanno & Burton, 2013).",
+            "<strong>Со кого музицирам?</strong> Заедничкото пеење и свирење е можност за поврзаност, не терапија (Pearce et al., 2015)."
+          ]
+        },
+        {
+          "p": "Музиката е еден ресурс меѓу многу. Резилиентноста се потпира и на односите, заедницата и условите во кои живееме (Masten, 2001; Southwick et al., 2014)."
+        },
+        {
+          "evidence": {
+            "level": "отворено прашање",
+            "text": "Овие прашања се толкување на наодите, а не проверена програма."
+          }
+        }
+      ]
+    },
+    {
+      "h2": "Кога музиката не е доволна",
+      "blocks": [
+        {
+          "p": "Музиката може да биде поддршка, но не е замена за стручна помош. Ако тагата, анксиозноста или тешкотијата трае со недели, ве спречува да правите нешто што ви е важно, ви го нарушува сонот и секојдневието или посегнувате по алкохол или други супстанции за да се справите, разговарајте со психолог, психотерапевт или лекар."
+        }
+      ]
+    }
+  ],
+  "known": [
+    "Резилиентноста е честа и подобро се разбира како процес отколку како особина што некој „ја има“ или „ја нема“.",
+    "Музиката предизвикува емоции преку повеќе механизми, меѓу кои се возбудата и ритмичкото вовлекување.",
+    "Луѓето користат музика за регулирање на расположението; во просек, музиката има мал до умерен ефект врз стресот.",
+    "Движењето во синхронизација со други краткорочно ја зголемува блискоста и подготвеноста за помош."
+  ],
+  "unknown": [
+    "Дали музиката причински ја гради резилиентноста на долг рок: такви студии речиси нема.",
+    "Кога истиот начин на слушање помага, а кога ја одржува тешката состојба, и кај кого.",
+    "Колку траат ефектите од заедничкото пеење и тапанење и дали биолошките промени имаат практично значење.",
+    "Како изгледа сето ова кај нас: истражувањата за музиката и резилиентноста во Македонија се ретки."
+  ],
+  "note": "Ова не е дијагноза ниту терапија, ниту индивидуален совет; текстот е информативен. Ако тагата, анксиозноста или тешкотијата трае со недели, ве спречува да правите нешто што ви е важно, ви го нарушува сонот и секојдневието или посегнувате по алкохол или други супстанции за да се справите, разговарајте со психолог, психотерапевт или лекар.",
+  "references": [
+    "southwick2014",
+    "masten2001",
+    "bonanno2004",
+    "gross1998",
+    "juslin2013",
+    "linnemann2015",
+    "repp2013",
+    "trost2017",
+    "saarikallio2007",
+    "saarikallio2011",
+    "baltazar2016",
+    "dewitte2020",
+    "peters2024",
+    "carlson2015",
+    "vandentol2013",
+    "garrido2015",
+    "saarikallio2015",
+    "mcferran2014",
+    "bonanno2013",
+    "hove2009",
+    "rennung2016",
+    "pearce2015",
+    "kirschner2010",
+    "tarr2014",
+    "williams2018",
+    "fancourt2016"
+  ],
+  "tags": [
+    "резилиентност",
+    "музика и емоции",
+    "регулирање на емоциите",
+    "синхронизација",
+    "столб 1"
+  ],
+  "en": {
+    "title": "The rhythm of resilience: how music shapes our emotions",
+    "dek": "What psychologists mean by resilience, the routes by which music reaches our emotions, and what research shows about listening and making music together in hard times – with clear limits on what we know.",
+    "body": [
+      {
+        "blocks": [
+          {
+            "p": "When things are hard, many of us reach for music. Does it actually help us cope, and what does it mean to be “resilient”? The title is borrowed from the workshop of the same name that Jasnota’s author led in Ohrid; this is not a workshop report but an overview of what research says – and where it stops."
+          }
+        ]
+      },
+      {
+        "h2": "Resilience: a process, not a trait",
+        "blocks": [
+          {
+            "p": "In everyday speech resilience sounds like toughness some people have and others lack. When researchers from several disciplines tried to define it together, most described healthy, adaptive functioning maintained or regained over time after adversity, shaped by genetics and development as well as family, community, economics and culture (Southwick et al., 2014). Resilience is common and usually arises from ordinary adaptive systems such as relationships, learning and self-regulation (Masten, 2001). After loss or potential trauma, many people show only minor, transient disruptions – a trajectory distinct from recovery (Bonanno, 2004)."
+          },
+          {
+            "p": "Resilience is not the absence of pain. One important part of it is emotion regulation: how we influence which emotions we have, when, and how we experience and express them (Gross, 1998). That is where music comes in."
+          },
+          {
+            "evidence": {
+              "level": "moderate evidence",
+              "text": "That resilience is common and better understood as a process than a trait is widely accepted; definitions and measures still vary (Southwick et al., 2014)."
+            }
+          }
+        ]
+      },
+      {
+        "h2": "How music reaches our emotions",
+        "blocks": [
+          {
+            "p": "Music works through several mechanisms, from sudden sounds and memories to expectation, aesthetic judgement and rhythm (Juslin, 2013). Two matter most here. Arousal: in students followed through a regular and an exam week, salivary alpha-amylase rose after energising and fell after relaxing music (Linnemann et al., 2015). Rhythmic entrainment: our movements and bodily rhythms tend to align with a beat (Repp & Su, 2013), possibly at perceptual, physiological, motor and social levels (Trost et al., 2017)."
+          },
+          {
+            "evidence": {
+              "level": "moderate evidence",
+              "text": "That music changes arousal and induces emotion through several mechanisms is well supported; how much entrainment contributes in a given listening is still being studied (Juslin, 2013; Trost et al., 2017)."
+            }
+          }
+        ]
+      },
+      {
+        "h2": "Music as emotion regulation",
+        "blocks": [
+          {
+            "p": "Interviews with adolescents identified seven strategies – entertainment, revival, strong sensation, diversion, discharge, mental work and solace (Saarikallio & Erkkilä, 2007) – which stay broadly similar across adulthood (Saarikallio, 2011), though the field’s terms are inconsistent (Baltazar & Saarikallio, 2016). In daily life, listening was associated with less perceived stress, most when people listened to relax (Linnemann et al., 2015). Meta-analyses of randomised trials show small-to-moderate effects on stress (de Witte et al., 2020) and on emotion regulation (d = 0.45; Peters et al., 2024)."
+          },
+          {
+            "evidence": {
+              "level": "moderate evidence",
+              "text": "People consistently report using music to regulate mood, and trials show small-to-moderate effects on stress; the strategy categories come from small qualitative studies."
+            }
+          }
+        ]
+      },
+      {
+        "h2": "When the same song doesn’t help",
+        "blocks": [
+          {
+            "p": "Using music to vent negative emotions (discharge) was associated with more anxiety and neuroticism, especially in men – a correlational finding (Carlson et al., 2015). People choose sad music for connection, memories, beauty and comfort (Van den Tol & Edwards, 2013), yet in students prone to rumination it increased depressed mood (Garrido & Schubert, 2015). Researchers distinguish healthy from unhealthy music use (Saarikallio et al., 2015) and stress that how we use music matters more than the music itself (McFerran & Saarikallio, 2014). No coping strategy is always good or bad; flexibility may matter more (Bonanno & Burton, 2013)."
+          },
+          {
+            "evidence": {
+              "level": "early/limited evidence",
+              "text": "Links between certain listening styles and worse mood come mainly from correlational studies and one short-term experiment; regulatory flexibility is a theoretical framework (Carlson et al., 2015; Garrido & Schubert, 2015; Bonanno & Burton, 2013)."
+            }
+          }
+        ]
+      },
+      {
+        "h2": "Together in rhythm",
+        "blocks": [
+          {
+            "p": "Tapping in synchrony with an experimenter increased affiliation (Hove & Risen, 2009); a meta-analysis of 60 experiments found a medium effect of synchrony on prosociality, moderated by experimenter effects and intentionality (Rennung & Göritz, 2016). New singing groups bonded faster than craft or writing groups (Pearce et al., 2015), and four-year-olds who made music together helped each other more (Kirschner & Tomasello, 2010). The mechanisms remain hypotheses (Tarr et al., 2014)."
+          },
+          {
+            "p": "For adults with mental health conditions, group singing studies report improvements but carry moderate-to-high risk of bias (Williams et al., 2018). Ten weeks of group drumming reduced depression and anxiety and increased social resilience compared with a non-music control group (Fancourt et al., 2016) – but only 45 people completed the study, groups were not randomised, and immune markers were measured only in the drummers. It does not show that drumming “boosts immunity”."
+          },
+          {
+            "evidence": {
+              "level": "early/limited evidence",
+              "text": "Group singing and drumming are promising social activities, but studies are small, often non-randomised and at risk of bias (Williams et al., 2018; Fancourt et al., 2016)."
+            }
+          }
+        ]
+      },
+      {
+        "h2": "What this might mean in practice",
+        "blocks": [
+          {
+            "p": "Research offers no recipe, and no study has tested whether music builds resilience in the long term. It does suggest some questions worth asking: what is the music for right now; how do I feel after listening; do I have more than one way; who do I make music with? Music is one resource among many; resilience also rests on relationships, community and living conditions (Masten, 2001; Southwick et al., 2014)."
+          },
+          {
+            "evidence": {
+              "level": "open question",
+              "text": "These questions interpret the findings; they are not a tested programme."
+            }
+          }
+        ]
+      },
+      {
+        "h2": "When music is not enough",
+        "blocks": [
+          {
+            "p": "If sadness, anxiety or difficulty lasts for weeks, stops you doing things that matter to you, disrupts your sleep and daily life, or you reach for alcohol or other substances to cope, talk to a psychologist, psychotherapist or doctor."
+          }
+        ]
+      }
+    ],
+    "known": [
+      "Resilience is common and better understood as a process than as a trait someone has or lacks.",
+      "Music induces emotions through several mechanisms, including arousal and rhythmic entrainment.",
+      "People use music to regulate mood; on average music has a small-to-moderate effect on stress.",
+      "Moving in synchrony with others increases closeness and helpfulness in the short term."
+    ],
+    "unknown": [
+      "Whether music causally builds resilience in the long term: such studies barely exist.",
+      "When the same way of listening helps and when it maintains distress, and for whom.",
+      "How long the effects of singing or drumming together last, and whether biological changes matter in practice.",
+      "What this looks like in Macedonia: local research on music and resilience is scarce."
+    ],
+    "note": "This is not a diagnosis, therapy or individual advice; the text is for information. If sadness, anxiety or difficulty lasts for weeks, stops you doing things that matter to you, disrupts your sleep and daily life, or you reach for alcohol or other substances to cope, talk to a psychologist, a psychotherapist or a doctor."
+  },
+  "word_count": 1340
+}

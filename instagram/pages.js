@@ -8,6 +8,7 @@
   J.PREP = [
     { date: '2026-10-29', title: 'Create @jasnota', note: 'New account from Jasna’s phone (Add account), own e-mail, 2FA. Fallbacks @jasnota.mk, @jasnota_mk.' },
     { date: '2026-10-30', title: 'Professional account, profile', note: 'Business · Education. Name, bio, link, mark as picture, saved replies, comment filters.' },
+    { date: '2026-10-30', title: 'Facebook Page', note: 'A Page for Jasnota from Jasna’s profile (not a second profile): name, Education, intro, cover, profile picture. See facebook/.' },
     { date: '2026-10-31', title: 'Highlights before launch', note: 'Post the 6 method / about frames as stories, save them into Како работиме and За Јаснота, set the covers.' },
     { date: '2026-11-01', title: 'Schedule week 1', note: 'Carousel for Mon 19:30, teaser for 12:00. Re-read the sources slide one last time.' }
   ];
@@ -47,9 +48,9 @@
       '<dt>објава</dt><dd>' + J.fmtDate(p.date, 'mk', true) + ', ' + p.time + '<br><small>Stories: Mon 12:00 teaser, Mon 19:35 repost, Wed 12:00 source, Fri 12:00 interaction.</small></dd>' +
       '<dt>столб</dt><dd>' + J.PILLARS[p.pillar].roman + ' · ' + J.PILLARS[p.pillar].mk + '<br><small>Tone: ' + J.TONES[J.toneOf(p)].en.toLowerCase() + '.</small></dd>' +
       '<dt>формат</dt><dd>' + J.FMT[p.fmt].mk + ' · ' + N + ' слајда' + (p.web ? '<br><small>Web twin: the full text goes up on the site the same day; caption says “линкот во био”.</small>' : '<br><small>Instagram only for now; no web text yet, so the caption has no link line.</small>') + '</dd>' +
-      '<dt>прашање</dt><dd lang="mk">' + esc(p.rq) + '</dd>' +
-      '<dt>why now</dt><dd>' + esc(p.why) + '</dd>' +
-      '<dt>ethics</dt><dd>' + esc(p.ethics) + '</dd>' +
+      (p.rq ? '<dt>прашање</dt><dd lang="mk">' + esc(p.rq) + '</dd>' : '') +
+      (p.why ? '<dt>why now</dt><dd>' + esc(p.why) + '</dd>' : '') +
+      (p.ethics ? '<dt>ethics</dt><dd>' + esc(p.ethics) + '</dd>' : '') +
       '<dt>хаштагови</dt><dd>' + p.tags.length + ' · ' + p.tags.map(function (t) { return '#' + t; }).join(' ') + '</dd>' +
       '<dt>извори</dt><dd>' + refList(ids) + '</dd>' +
       '<dt>alt текст</dt><dd>' + alts + '</dd>' +
@@ -72,11 +73,25 @@
       }).join('') + '</div>';
   }
 
+  /* a week of the calendar without a designed carousel yet (the launch topic until its slides land) */
+  function pendingCard(f) {
+    var P = J.PILLARS[f.pillar] || J.PILLARS[1];
+    return '<article class="card pending" id="' + f.key + '"><div class="card-h"><h3 lang="mk">' + esc(f.title) + '</h3><span class="num">' + J.fmtDate(f.date, 'mk') + ' · ' + J.POST_TIME + '</span>' +
+      '<div class="chips">' + chip('во подготовка', true) + chip('столб ' + P.roman) + (f.slug ? chip('+ текст на веб') : '') + '</div></div>' +
+      '<div class="pending-body"><div class="pending-frame" aria-hidden="true"><span class="mark"></span><span class="mono-s">карусел · во подготовка</span></div>' +
+      '<div class="prose"><p><b lang="mk">' + esc(J.strip(f.title).split(':')[0]) + ' — во подготовка.</b> ' +
+      (f.placeholder
+        ? 'The launch topic, rooted in Jasna’s workshop of the same name. When the calendar entry with its <code>social.ig.slides</code> lands (and <code>node instagram/tools/sync-social.mjs</code> runs), the carousel appears here, drawn by the same templates, and the twelve weeks below move one week later.'
+        : 'The calendar has this week but no carousel yet. Add <code>social.ig.slides</code> to the calendar item and rerun the sync; the slides are drawn by the same templates.') +
+      '</p><p><a href="../kit/#' + f.key + '">Пакет за објава →</a></p></div></div></article>';
+  }
   function buildWeeks(mount) {
     var html = '';
-    J.POSTS.forEach(function (p) {
-      html += '<section class="week-block" id="week-' + p.n + '"><div class="week-h"><h2 class="display">Недела <em>' + J.pad(p.n) + '</em></h2><span class="mono-s">' + J.longDate(p.date) + ' · ' + J.PILLARS[p.pillar].mk + '</span></div>' +
-        weekCard(p) + '</section>';
+    J.FLOW.forEach(function (f) {
+      var p = f.post, n = f.placeholder ? '00' : J.pad(f.week);
+      var id = f.placeholder ? 'week-launch' : 'week-' + f.week;
+      html += '<section class="week-block" id="' + id + '"><div class="week-h"><h2 class="display">' + (f.placeholder ? 'Недела <em>01</em> <small class="mono-s">нова</small>' : 'Недела <em>' + n + '</em>') + '</h2><span class="mono-s">' + J.longDate(f.date) + ' · ' + (J.PILLARS[f.pillar] || J.PILLARS[1]).mk + '</span></div>' +
+        (p ? weekCard(p) : pendingCard(f)) + '</section>';
     });
     mount.innerHTML = html;
   }
@@ -94,15 +109,27 @@
       for (var i = 0; i < n; i++) {
         var d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i), iso = J.iso(d);
         var inMonth = d.getMonth() === ym[1];
-        var showItems = inMonth || (mi === 0 && iso >= '2026-10-29');
+        var showItems = inMonth || (mi === 0 && d < first && iso >= '2026-10-29');   /* prep days before November, once */
         var items = '';
         if (showItems) {
           J.PREP.filter(function (x) { return x.date === iso; }).forEach(function (x) {
             items += '<a class="it prep" data-fmt="ops" data-pillar="acc" href="../profile/#create"><span class="th">prep</span><span class="tt">' + esc(x.title) + '<small>' + esc(x.note) + '</small></span></a>';
           });
+          J.FLOW.forEach(function (f) {   /* the article goes up first, in the morning */
+            if (f.date === iso) {
+              items += '<a class="it web' + (f.onSite ? '' : ' warn') + '" data-fmt="web" data-pillar="' + f.pillar + '" href="../kit/#' + f.key + '"><span class="th">веб</span><span class="tt" lang="mk">Текст на веб' +
+                '<small>' + J.WEB_TIME + ' · ' + (f.onSite ? 'готов на веб' : f.slug ? 'уште не е на веб' : 'текстот уште не е напишан') + '</small></span></a>';
+            }
+          });
           J.POSTS.filter(function (p) { return p.date === iso; }).forEach(function (p) {
             items += '<a class="it" data-fmt="' + p.fmt + '" data-pillar="' + p.pillar + '" href="../month/#' + p.id + '"><span class="th">' + J.slide(J.cover(p), '34', 'hide-tags') + '</span><span class="tt" lang="mk">' + esc(p.title) +
               '<small>' + p.time + ' · ' + J.FMT[p.fmt].mk + ' · столб ' + J.PILLARS[p.pillar].roman + '</small></span></a>';
+          });
+          J.FLOW.forEach(function (f) {
+            if (J.fbDate(f) === iso) {
+              items += '<a class="it fb' + (f.onSite ? '' : ' warn') + '" data-fmt="fb" data-pillar="' + f.pillar + '" href="../facebook/#fb-' + f.key + '"><span class="th">f</span><span class="tt" lang="mk">Facebook' +
+                '<small>' + J.FB_TIME + ' · ' + (f.fb && f.fb.text_mk ? 'текст + фото + линк' : 'текстот наскоро') + '</small></span></a>';
+            }
           });
           J.POSTS.forEach(function (p) {
             p.stories.forEach(function (s) {
@@ -110,7 +137,7 @@
               items += '<a class="it story" data-fmt="story" data-pillar="' + p.pillar + '" href="../month/#' + p.id + '"><span class="th">' + s.time.slice(0, 2) + '</span><span class="tt">Сторија<small>' + s.time + ' · ' + esc(s.label) + '</small></span></a>';
             });
           });
-          if (d.getDay() === J.REVIEW_DOW && iso >= '2026-11-05' && iso <= '2027-01-21') {
+          if (d.getDay() === J.REVIEW_DOW && iso >= J.addDays(J.POSTS[0].date, 3) && iso <= J.addDays(J.POSTS[J.POSTS.length - 1].date, 3)) {
             items += '<a class="it prep rev" data-fmt="ops" data-pillar="acc" href="../metrics/#ritual"><span class="th">20′</span><span class="tt">Неделен преглед<small>10:00 · log + one decision</small></span></a>';
           }
         }
@@ -122,15 +149,15 @@
     });
     mount.innerHTML = html;
 
-    var state = { pillar: { 1: true, 2: true, 3: true, acc: true }, fmt: { text: true, study: true, concept: true, myth: true, story: true, ops: true } };
+    var state = { pillar: { 1: true, 2: true, 3: true, acc: true }, fmt: { text: true, study: true, concept: true, myth: true, story: true, ops: true, web: true, fb: true } };
     function apply() {
       mount.querySelectorAll('.it').forEach(function (a) {
         a.hidden = !(state.pillar[a.getAttribute('data-pillar')] && state.fmt[a.getAttribute('data-fmt')]);
       });
       mount.querySelectorAll('.cell').forEach(function (c) { c.classList.toggle('none', !c.querySelector('.it:not([hidden])')); });
       var shown = mount.querySelectorAll('.it:not([hidden])').length;
-      var posts = mount.querySelectorAll('.it:not([hidden]):not(.story):not(.prep)').length;
-      var c = document.getElementById('calCount'); if (c) c.textContent = posts + ' објави · ' + shown + ' ставки';
+      var posts = mount.querySelectorAll('.it:not([hidden]):not(.story):not(.prep):not(.web):not(.fb)').length;
+      var c = document.getElementById('calCount'); if (c) c.textContent = posts + ' карусели · ' + shown + ' ставки';
     }
     document.querySelectorAll('[data-filter]').forEach(function (b) {
       b.addEventListener('click', function () {
@@ -193,8 +220,9 @@
       var on = J.POSTS.filter(function (p) { return saved[p.id + ':ontime']; }).length;
       var full = J.POSTS.filter(function (p) { return J.CHECKS.every(function (c, i) { return saved[p.id + ':c' + i]; }); }).length;
       var sum = function (f) { return J.POSTS.reduce(function (a, p) { return a + (parseInt(saved[p.id + ':' + f], 10) || 0); }, 0); };
-      el.innerHTML = '<div><b>' + on + ' / 12</b><span>weeks published on time' + (due ? ' (' + due + ' due so far)' : '') + '</span></div>' +
-        '<div><b>' + full + ' / 12</b><span>posts with the full source checklist</span></div>' +
+      var N = J.POSTS.length;
+      el.innerHTML = '<div><b>' + on + ' / ' + N + '</b><span>weeks published on time' + (due ? ' (' + due + ' due so far)' : '') + '</span></div>' +
+        '<div><b>' + full + ' / ' + N + '</b><span>posts with the full source checklist</span></div>' +
         '<div><b>' + sum('talk') + '</b><span>meaningful comments and questions</span></div>' +
         '<div><b>' + sum('contacts') + '</b><span>professional contacts made</span></div>';
     }

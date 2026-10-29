@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Posting Kit, Week by Week</title>
+<meta name="description" content="One card per week for Jasnota: the website URL, the Instagram caption and link-in-bio target, the Facebook text with its UTM link, the link-preview image and a three-step checklist: web, Instagram, Facebook.">
+<link rel="icon" href="../../brand/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../brand/tokens.css">
+<link rel="stylesheet" href="../instagram.css?v=19">
+<link rel="stylesheet" href="../site.css?v=19">
+<link rel="stylesheet" href="../social.css?v=19">
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead site">
+  <a class="wordmark" href="../"><span class="mark" aria-hidden="true"></span>jasnota</a>
+  <nav class="sitenav" aria-label="Social plan">
+    <a href="../">Систем</a><a href="../profile/">Профил</a><a href="../month/" data-nweeks>12 недели</a><a href="../calendar/">Календар</a><a href="./" aria-current="page">Пакет за објава</a><a href="../facebook/">Facebook</a><a href="../app/">Прототип</a><a href="../link/">Линк во био</a><a href="../metrics/">Показатели</a>
+  </nav>
+</header>
+
+<section class="page-open">
+  <h1 class="display" lang="mk">Пакет за <em>објава.</em></h1>
+  <p class="lead"><strong>Everything for one week on one card, in the order it goes out:</strong> 1) the article on the website, 2) Instagram, 3) Facebook. Copy buttons put the exact text on the clipboard, links included. Ticks stay in this browser only.</p>
+</section>
+
+<section class="section" style="padding-top:var(--s-5)">
+  <div class="kit-head">
+    <span class="mono-s" id="kitCount" aria-live="polite"></span>
+    <span class="footnote" data-synced></span>
+  </div>
+  <div id="kitMount"></div>
+  <p class="footnote" style="margin-top:var(--s-4)">Data: <span class="mono-s">research/content-bank/calendar.json</span> → <span class="mono-s">node instagram/tools/sync-social.mjs</span> → <span class="mono-s">instagram/social.js</span>. Article pages and their link-preview images: <span class="mono-s">node website/tools/import-content.mjs</span> and <span class="mono-s">node website/tools/build.mjs</span>, then the sync again.</p>
+</section>
+
+<footer class="end">
+  <p class="display" lang="mk">Веб, <em>па</em> мрежите.</p>
+  <span class="mono">jasnota · пакет за објава</span>
+</footer>
+</div>
+<script src="../render.js?v=19"></script>
+<script src="../refs.js?v=19"></script>
+<script src="../data.js?v=19"></script>
+<script src="../social.js?v=19"></script>
+<script src="../flow.js?v=19"></script>
+<script src="../social-pages.js?v=19"></script>
+</body>
+</html>

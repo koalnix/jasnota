@@ -6,7 +6,8 @@
    `r` is the relative prefix to the site root ('' | '../' | '../../'); `page` marks the current nav item.
    Macedonian is the default: every label is Macedonian in the HTML, English comes from js/i18n.js. */
 
-export const SITE_URL = (process.env.SITE_URL || 'https://jasnota.mk/').replace(/\/?$/, '/');
+import { SITE_URL, PUBLIC_URL } from './urls.mjs';
+export { SITE_URL, PUBLIC_URL };
 
 export const MARK = '<svg class="mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/><path d="M50 6 V52"/><path d="M50 64 V94"/></svg>';
 
@@ -65,7 +66,11 @@ export const ORG = {
 export const jsonld = (obj) => `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, '\\u003c')}</script>`;
 
 /* path: the page's path from the site root ('' for home, 'about/' …) */
-export function head(r, { gsap = false, path = '', index = true } = {}) {
+/* og = { url (relative to the site root), alt, w, h } from tools/og.mjs. og:url and og:image use PUBLIC_URL (the host
+   that resolves today, see tools/urls.mjs); the canonical link uses SITE_URL and never carries a query string. */
+export function head(r, { gsap = false, path = '', index = true, og = null } = {}) {
+  const img = og ? PUBLIC_URL + og.url : PUBLIC_URL + 'assets/brand/lockup-stacked.svg';
+  const alt = og ? og.alt.replace(/"/g, '&quot;') : 'Јаснота';
   return `
   <meta name="author" content="Јасна Димитровска">
   <meta name="theme-color" content="#0a0a0b">
@@ -74,8 +79,15 @@ export function head(r, { gsap = false, path = '', index = true } = {}) {
   <meta property="og:site_name" content="Јаснота">
   <meta property="og:locale" content="mk_MK">
   <meta property="og:locale:alternate" content="en_GB">
-  <meta property="og:url" content="${SITE_URL}${path}">
-  <meta property="og:image" content="${SITE_URL}assets/brand/lockup-stacked.svg">
+  <meta property="og:url" content="${PUBLIC_URL}${path}">
+  <meta property="og:image" content="${img}">
+${og ? `  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="${og.w}">
+  <meta property="og:image:height" content="${og.h}">
+` : ''}  <meta property="og:image:alt" content="${alt}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="${img}">
+  <meta name="twitter:image:alt" content="${alt}">
   <style>html{background:#0a0a0b;color:#ece8e1}</style>
   <link rel="icon" href="${r}assets/brand/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -226,7 +226,9 @@
     },
     known: function (s, p, i) {
       function blk(t, arr, cls) { return '<div class="kn ' + cls + '"><h4 class="q">' + t + '</h4>' + li(arr) + '</div>'; }
-      return '<div class="pc tp">' + blk('Што знаеме', s.known, 'yes') + blk('Што сè уште не знаеме', s.unknown, 'no') +
+      /* a long honest slide (lists + a myth line + the referral) gets the dense setting of the same template */
+      var len = J.strip([].concat(s.known, s.unknown).map(function (x) { return typeof x === 'string' ? x : x.t; }).join(' ') + (s.not || '') + (s.help || '')).length;
+      return '<div class="pc tp' + (len > 380 ? ' dense' : '') + '">' + blk('Што знаеме', s.known, 'yes') + blk('Што сè уште не знаеме', s.unknown, 'no') +
         (s.not ? '<p class="body not">' + s.not + '</p>' : '') +
         (s.help ? '<div class="push"><p class="help">' + s.help + '</p></div>' : '') + ft(p, 'јаснота', i) + '</div>';
     },
@@ -296,10 +298,12 @@
   J.compose = function (p) {
     var src = [];
     p.src.forEach(function (s) {
-      if (s.t === 'sources' && s.ids.length > 6) {       /* split long lists, keep the slide readable */
-        var half = Math.ceil(s.ids.length / 2);
-        src.push(Object.assign({}, s, { ids: s.ids.slice(0, half), eth: '', more: '' }));
-        src.push(Object.assign({}, s, { ids: s.ids.slice(half), cont: true }));
+      if (s.t === 'sources' && s.ids.length > 6) {       /* split long lists into slides of at most six, evenly */
+        var parts = Math.ceil(s.ids.length / 6), per = Math.ceil(s.ids.length / parts);
+        for (var q = 0; q < parts; q++) {
+          var last = q === parts - 1;
+          src.push(Object.assign({}, s, { ids: s.ids.slice(q * per, (q + 1) * per), cont: q > 0, eth: last ? s.eth : '', more: last ? s.more : '' }));
+        }
       } else src.push(s);
     });
     p.slides = src.map(function () { return {}; });   /* length is known before rendering (covers print it) */
@@ -491,12 +495,14 @@
 
   J.copy = function (text, btn) {
     function done() { if (btn) { var t = btn.textContent; btn.textContent = 'Копирано'; setTimeout(function () { btn.textContent = t; }, 1600); } }
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () {});
-    else {
-      var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
-      try { document.execCommand('copy'); done(); } catch (e) {}
+    function legacy() {   /* no Clipboard API, or it was refused (insecure origin, no focus) */
+      var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { if (document.execCommand('copy')) done(); } catch (e) {}
       ta.remove();
     }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, legacy);
+    else legacy();
   };
 
   document.addEventListener('DOMContentLoaded', function () {

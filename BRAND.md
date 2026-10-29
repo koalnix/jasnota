@@ -107,6 +107,24 @@ and any promise of cure or quick fix.
   Jasnota offers **no sessions**.
 - Personal Instagram @jasna.dzasna stays personal; Jasnota uses its own account.
 
+## Content flow — one topic, three channels (decided by Jasna, 29 Oct 2026)
+
+Everything published on Instagram and Facebook also lives on the website. **The website is the home of each topic**;
+the social posts are shorter doors into it.
+
+| Channel | What goes there | Ends with |
+|---|---|---|
+| **Website** (`/articles/<slug>/`) | The complete explanation of the topic: full text, evidence labels, „Што знаеме / Што сè уште не знаеме“, numbered scientific references (APA 7, DOI) | links to related concepts, myths, sources |
+| **Instagram** | A shorter version or a carousel with the key messages (last slide: sources) | "Целиот текст со изворите: линкот во био" → the article |
+| **Facebook** | A short informative text (≈120–250 words), with photos (e.g. from the related workshop, consent on file) | the direct link to the full article on the website |
+
+- Same week, same topic: publish the web article first, then IG and FB link to it.
+- Links from social carry UTM tags (`?utm_source=instagram|facebook&utm_medium=social&utm_campaign=<slug>`) so we can see
+  which channel brings readers.
+- Every article has its own link-preview image (1200×630) so it looks right when shared on Facebook.
+- The first topic is **„Ритамот на резилиентноста: како музиката ги обликува нашите емоции“** (rooted in Jasna's workshop
+  of the same name).
+
 ## Success measures (not just followers)
 
 Continuity (weekly), source quality, clarity of identity, relevant interactions (saves, shares, questions from musicians

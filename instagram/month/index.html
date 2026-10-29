@@ -3,26 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Twelve Weeks on Instagram</title>
-<meta name="description" content="@jasnota, 2 November 2026 – 18 January 2027: twelve carousels, every slide, the caption to copy, alt text in Macedonian, sources with DOI, and the week's optional stories.">
+<title>Weekly Carousels on Instagram</title>
+<meta name="description" content="@jasnota, 2 November 2026 – 25 January 2027: thirteen carousels, every slide, the caption to copy, alt text in Macedonian, sources with DOI, and the week's optional stories.">
 <link rel="icon" href="../../brand/logo/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../brand/tokens.css">
-<link rel="stylesheet" href="../instagram.css?v=12">
-<link rel="stylesheet" href="../site.css?v=12">
+<link rel="stylesheet" href="../instagram.css?v=19">
+<link rel="stylesheet" href="../site.css?v=19">
+<link rel="stylesheet" href="../social.css?v=19">
 </head>
 <body>
 <div class="wrap">
 
 <header class="masthead site">
   <a class="wordmark" href="../"><span class="mark" aria-hidden="true"></span>jasnota</a>
-  <nav class="sitenav" aria-label="Instagram plan">
-    <a href="../">Систем</a><a href="../profile/">Профил</a><a href="./" aria-current="page">12 недели</a><a href="../calendar/">Календар</a><a href="../app/">Прототип</a><a href="../link/">Линк во био</a><a href="../metrics/">Показатели</a>
+  <nav class="sitenav" aria-label="Social plan">
+    <a href="../">Систем</a><a href="../profile/">Профил</a><a href="./" aria-current="page" data-nweeks>12 недели</a><a href="../calendar/">Календар</a><a href="../kit/">Пакет за објава</a><a href="../facebook/">Facebook</a><a href="../app/">Прототип</a><a href="../link/">Линк во био</a><a href="../metrics/">Показатели</a>
   </nav>
 </header>
 
 <section class="page-open">
-  <h1 class="display" lang="mk">12 недели, <em>слајд по слајд.</em></h1>
-  <p class="lead"><strong>2 November 2026 – 18 January 2027.</strong> One carousel every Monday at 19:30, from the editorial calendar. Every slide is drawn at its real proportions (tap one to see it large); captions and alt text are written to be copied straight into Instagram.</p>
+  <h1 class="display" lang="mk"><span data-nweeks>12 недели</span>, <em>слајд по слајд.</em></h1>
+  <p class="lead"><strong lang="mk" data-flow-range>2 ноември – 18 јануари 2027</strong>. One carousel every Monday at 19:30, from the editorial calendar. Every slide is drawn at its real proportions (tap one to see it large); captions and alt text are written to be copied straight into Instagram.</p>
 </section>
 
 <section class="section" style="padding-top:var(--s-6)">
@@ -58,7 +59,7 @@
 
 <footer class="end">
   <p class="display" lang="mk">Јасно, <em>со извори.</em></p>
-  <span class="mono">jasnota · instagram · 12 недели · 11/2026 – 01/2027</span>
+  <span class="mono">jasnota · instagram · <span data-nweeks>12 недели</span> · 11/2026 – 01/2027</span>
 </footer>
 </div>
 
@@ -68,10 +69,12 @@
   <p class="ztext" lang="mk"></p>
 </dialog>
 
-<script src="../render.js?v=12"></script>
-<script src="../refs.js?v=12"></script>
-<script src="../data.js?v=12"></script>
-<script src="../pages.js?v=12"></script>
+<script src="../render.js?v=19"></script>
+<script src="../refs.js?v=19"></script>
+<script src="../data.js?v=19"></script>
+<script src="../social.js?v=19"></script>
+<script src="../flow.js?v=19"></script>
+<script src="../pages.js?v=19"></script>
 <script>
 (function () {
   var J = window.J, P = J.POSTS;

@@ -1931,5 +1931,327 @@
     "key_finding_en": "Pilot crossover with 33 volunteers: heart rate about 4.8 bpm lower with 432 Hz (p = .05); other parameters not significantly different; authors call for larger RCTs.",
     "evidence_note": "Многу мал пилот, гранична значајност, без независна репликација; не поддржува здравствени тврдења.",
     "verified_via": "pubmed"
+  },
+  {
+    "id": "southwick2014",
+    "apa": "Southwick, S. M., Bonanno, G. A., Masten, A. S., Panter-Brick, C., & Yehuda, R. (2014). Resilience definitions, theory, and challenges: Interdisciplinary perspectives. European Journal of Psychotraumatology, 5(1), Article 25338. https://doi.org/10.3402/ejpt.v5.25338",
+    "doi": "10.3402/ejpt.v5.25338",
+    "url": "https://doi.org/10.3402/ejpt.v5.25338",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "resilience",
+      "definitions"
+    ],
+    "key_finding_mk": "Интердисциплинарен панел на истражувачи: дефинициите на резилиентноста се разликуваат, но повеќето опфаќаат здраво, прилагодливо функционирање со текот на времето по тешко искуство. Резилиентноста е сложен поим што зависи од генетски, развојни, социјални, економски и културни фактори.",
+    "key_finding_en": "Interdisciplinary expert panel: definitions of resilience differ, but most include healthy, adaptive functioning over time after adversity. Resilience is a complex construct shaped by genetic, developmental, social, economic and cultural factors.",
+    "evidence_note": "Експертски преглед (не систематски); корисен за дефиниции, не за големини на ефекти.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "masten2001",
+    "apa": "Masten, A. S. (2001). Ordinary magic: Resilience processes in development. American Psychologist, 56(3), 227–238. https://doi.org/10.1037/0003-066X.56.3.227",
+    "doi": "10.1037/0003-066X.56.3.227",
+    "url": "https://doi.org/10.1037/0003-066X.56.3.227",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "resilience",
+      "development"
+    ],
+    "key_finding_mk": "Преглед на истражувањата со деца што растат во неповолни услови: резилиентноста е честа и најчесто произлегува од „обичните“ човечки системи за прилагодување, а не од исклучителни особини.",
+    "key_finding_en": "Review of research on children growing up with adversity: resilience is common and usually arises from ordinary human adaptive systems rather than extraordinary qualities.",
+    "evidence_note": "Влијателен наративен преглед; наодите се главно од развојни студии во западни земји.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "bonanno2004",
+    "apa": "Bonanno, G. A. (2004). Loss, trauma, and human resilience: Have we underestimated the human capacity to thrive after extremely aversive events? American Psychologist, 59(1), 20–28. https://doi.org/10.1037/0003-066X.59.1.20",
+    "doi": "10.1037/0003-066X.59.1.20",
+    "url": "https://doi.org/10.1037/0003-066X.59.1.20",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "resilience",
+      "coping",
+      "grief"
+    ],
+    "key_finding_mk": "По загуба или потенцијално трауматски настан многу луѓе имаат само мали и минливи нарушувања во функционирањето; резилиентноста е посебен тек, различен од закрепнувањето, и е почеста отколку што се мислело.",
+    "key_finding_en": "After loss or potentially traumatic events many people show only minor, transient disruptions; resilience is a distinct trajectory from recovery and more common than previously believed.",
+    "evidence_note": "Преглед со теза што предизвика дебата (коментари во American Psychologist, 2005); да се пренесува како „многу луѓе“, не „повеќето“ без контекст.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "bonanno2013",
+    "apa": "Bonanno, G. A., & Burton, C. L. (2013). Regulatory flexibility: An individual differences perspective on coping and emotion regulation. Perspectives on Psychological Science, 8(6), 591–612. https://doi.org/10.1177/1745691613504116",
+    "doi": "10.1177/1745691613504116",
+    "url": "https://doi.org/10.1177/1745691613504116",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "emotion regulation",
+      "coping",
+      "flexibility"
+    ],
+    "key_finding_mk": "Ниту една стратегија за справување не е секогаш корисна или секогаш штетна („заблуда за униформна ефикасност“). Авторите предлагаат регулаторна флексибилност: чувствителност за контекстот, разновиден репертоар на стратегии и реагирање на повратната информација.",
+    "key_finding_en": "No coping strategy is uniformly beneficial or harmful (the \"fallacy of uniform efficacy\"). The authors propose regulatory flexibility: sensitivity to context, a diverse repertoire of strategies, and responsiveness to feedback.",
+    "evidence_note": "Теориска рамка; самите автори ја опишуваат како сè уште недоволно дефинирана.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "saarikallio2007",
+    "apa": "Saarikallio, S., & Erkkilä, J. (2007). The role of music in adolescents’ mood regulation. Psychology of Music, 35(1), 88–109. https://doi.org/10.1177/0305735607068889",
+    "doi": "10.1177/0305735607068889",
+    "url": "https://doi.org/10.1177/0305735607068889",
+    "type": "qualitative",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "emotion regulation",
+      "adolescents",
+      "listening"
+    ],
+    "key_finding_mk": "Квалитативна студија (групни интервјуа со осум адолесценти, grounded theory): регулирањето на расположението со музика е процес на исполнување лични цели; опишани се седум стратегии – забава, обновување, силно доживување, одвраќање, празнење, ментална работа и утеха.",
+    "key_finding_en": "Qualitative study (group interviews with eight adolescents, grounded theory): mood regulation through music is a process of meeting personal goals; seven strategies were described – entertainment, revival, strong sensation, diversion, discharge, mental work and solace.",
+    "evidence_note": "Многу мал финска примерок; вредноста е во рамката, што подоцна е преточена во прашалник.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "saarikallio2011",
+    "apa": "Saarikallio, S. (2011). Music as emotional self-regulation throughout adulthood. Psychology of Music, 39(3), 307–327. https://doi.org/10.1177/0305735610374894",
+    "doi": "10.1177/0305735610374894",
+    "url": "https://doi.org/10.1177/0305735610374894",
+    "type": "qualitative",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "emotion regulation",
+      "adulthood",
+      "listening"
+    ],
+    "key_finding_mk": "Групни интервјуа со 21 возрасен (21–70 години): основните цели и стратегии на емоционалната саморегулација со музика остануваат слични низ возрасниот живот, со промени поврзани со возраста, животните настани и пензионирањето.",
+    "key_finding_en": "Group interviews with 21 adults (aged 21–70): the basic goals and strategies of emotional self-regulation through music stay similar across adulthood, with changes linked to age, life events and retirement.",
+    "evidence_note": "Квалитативна студија, мал примерок; не мери ефекти.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "linnemann2015",
+    "apa": "Linnemann, A., Ditzen, B., Strahler, J., Doerr, J. M., & Nater, U. M. (2015). Music listening as a means of stress reduction in daily life. Psychoneuroendocrinology, 60, 82–90. https://doi.org/10.1016/j.psyneuen.2015.06.008",
+    "doi": "10.1016/j.psyneuen.2015.06.008",
+    "url": "https://doi.org/10.1016/j.psyneuen.2015.06.008",
+    "type": "cohort",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "stress",
+      "listening",
+      "arousal",
+      "daily life"
+    ],
+    "key_finding_mk": "Амбулантно следење на 55 студенти во обична и во испитна недела: слушањето музика беше поврзано со помал доживеан стрес, најмногу кога причината беше опуштање (тогаш и понизок кортизол, подпримерок од 25). Алфа-амилазата растеше по енергична, а опаѓаше по релаксирачка музика.",
+    "key_finding_en": "Ambulatory assessment of 55 students in a regular and an exam week: music listening was associated with lower perceived stress, most when listening for relaxation (then also lower cortisol, subsample of 25). Alpha-amylase rose with energising and fell with relaxing music.",
+    "evidence_note": "Набљудувачки дизајн во секојдневниот живот (не рандомизиран); мал студентски примерок; висока еколошка валидност.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "carlson2015",
+    "apa": "Carlson, E., Saarikallio, S., Toiviainen, P., Bogert, B., Kliuchko, M., & Brattico, E. (2015). Maladaptive and adaptive emotion regulation through music: A behavioral and neuroimaging study of males and females. Frontiers in Human Neuroscience, 9, Article 466. https://doi.org/10.3389/fnhum.2015.00466",
+    "doi": "10.3389/fnhum.2015.00466",
+    "url": "https://doi.org/10.3389/fnhum.2015.00466",
+    "type": "cross-sectional",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "emotion regulation",
+      "discharge",
+      "anxiety"
+    ],
+    "key_finding_mk": "Кај 123 учесници, „празнењето“ (користење музика за изразување негативни емоции) беше поврзано со повеќе анксиозност и невротицизам, особено кај мажите; fMRI-подпримерок (56) покажа разлики во активноста на медијалниот префронтален кортекс.",
+    "key_finding_en": "In 123 participants, \"discharge\" (using music to express negative emotions) was associated with higher anxiety and neuroticism, especially in males; an fMRI subsample (56) showed differences in medial prefrontal activity.",
+    "evidence_note": "Корелациски дизајн: не може да се каже дали стратегијата придонесува за анксиозноста или обратно.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "saarikallio2015",
+    "apa": "Saarikallio, S., Gold, C., & McFerran, K. (2015). Development and validation of the Healthy-Unhealthy Music Scale. Child and Adolescent Mental Health, 20(4), 210–217. https://doi.org/10.1111/camh.12109",
+    "doi": "10.1111/camh.12109",
+    "url": "https://doi.org/10.1111/camh.12109",
+    "type": "cross-sectional",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "emotion regulation",
+      "adolescents",
+      "depression",
+      "rumination"
+    ],
+    "key_finding_mk": "Скала од 13 ставки (HUMS) со поделба на „здраво“ и „нездраво“ користење музика кај млади, развиена во три анкети (54, 187, 211): нездравото користење е поврзано со депресија, руминација и стрес, а здравото со добросостојба.",
+    "key_finding_en": "A 13-item scale (HUMS) separating \"healthy\" and \"unhealthy\" music use in young people, developed across three surveys (54, 187, 211): unhealthy use correlates with depression, rumination and stress, healthy use with wellbeing.",
+    "evidence_note": "Инструмент за скрининг, корелациски податоци; не е дијагностички тест.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "vandentol2013",
+    "apa": "Van den Tol, A. J. M., & Edwards, J. (2013). Exploring a rationale for choosing to listen to sad music when feeling sad. Psychology of Music, 41(4), 440–465. https://doi.org/10.1177/0305735611430433",
+    "doi": "10.1177/0305735611430433",
+    "url": "https://doi.org/10.1177/0305735611430433",
+    "type": "qualitative",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "sad music",
+      "emotion regulation",
+      "coping"
+    ],
+    "key_finding_mk": "Наративни одговори од 65 возрасни од пет земји: тажна музика се избира заради поврзаност, спомени, естетска вредност и пораката на песната; функциите вклучуваат повторно доживување на афектот, размислување, социјални функции, спомени, „пријател“, одвраќање и подобрување на расположението.",
+    "key_finding_en": "Narrative reports from 65 adults in five countries: sad music is chosen for connection, memory triggers, aesthetic value and the song’s message; functions included re-experiencing affect, cognitive, social, memory, \"friend\", distraction and mood enhancement.",
+    "evidence_note": "Квалитативна онлајн анкета, самоизвестување; не мери ефекти.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "trost2017",
+    "apa": "Trost, W. J., Labbé, C., & Grandjean, D. (2017). Rhythmic entrainment as a musical affect induction mechanism. Neuropsychologia, 96, 96–110. https://doi.org/10.1016/j.neuropsychologia.2017.01.004",
+    "doi": "10.1016/j.neuropsychologia.2017.01.004",
+    "url": "https://doi.org/10.1016/j.neuropsychologia.2017.01.004",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "entrainment",
+      "rhythm",
+      "emotions"
+    ],
+    "key_finding_mk": "Преглед: ритмичкото вовлекување како механизам за предизвикување афект на четири нивоа – перцептивно, автономно-физиолошко, моторно и социјално – од кои секое може да придонесе за субјективното чувство.",
+    "key_finding_en": "Review: rhythmic entrainment as an affect-induction mechanism at four levels – perceptual, autonomic physiological, motor and social – each of which may contribute to the subjective feeling.",
+    "evidence_note": "Теориски и емпириски преглед; директните докази за секое ниво се нерамномерни.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "hove2009",
+    "apa": "Hove, M. J., & Risen, J. L. (2009). It’s all in the timing: Interpersonal synchrony increases affiliation. Social Cognition, 27(6), 949–960. https://doi.org/10.1521/soco.2009.27.6.949",
+    "doi": "10.1521/soco.2009.27.6.949",
+    "url": "https://doi.org/10.1521/soco.2009.27.6.949",
+    "type": "experiment",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "synchrony",
+      "social bonding"
+    ],
+    "key_finding_mk": "Три експерименти со тапкање по визуелен метроном: колку посинхроно учесникот тапкал со експериментаторот, толку повеќе го оценувал како близок/симпатичен; ефектот е специфичен за синхронијата меѓу луѓе.",
+    "key_finding_en": "Three finger-tapping experiments with a visual metronome: the more synchronously participants tapped with the experimenter, the higher their affiliation ratings; the effect was specific to interpersonal synchrony.",
+    "evidence_note": "Лабораториски експерименти, мали примероци, краткорочна мерка.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "rennung2016",
+    "apa": "Rennung, M., & Göritz, A. S. (2016). Prosocial consequences of interpersonal synchrony: A meta-analysis. Zeitschrift für Psychologie, 224(3), 168–189. https://doi.org/10.1027/2151-2604/a000252",
+    "doi": "10.1027/2151-2604/a000252",
+    "url": "https://doi.org/10.1027/2151-2604/a000252",
+    "type": "meta-analysis",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "synchrony",
+      "social bonding",
+      "prosociality"
+    ],
+    "key_finding_mk": "Мета-анализа на 60 објавени и необјавени експерименти: интерперсоналната синхронизација има умерен ефект врз просоцијалните ставови и однесувања; ефектот го модерираат ефектите на експериментаторот и намерноста.",
+    "key_finding_en": "Meta-analysis of 60 published and unpublished experiments: interpersonal synchrony has a medium effect on prosocial attitudes and behaviours, moderated by experimenter effects and intentionality.",
+    "evidence_note": "Лабораториски експерименти; модерацијата од ефектите на експериментаторот бара претпазливост.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "williams2018",
+    "apa": "Williams, E., Dingle, G. A., & Clift, S. (2018). A systematic review of mental health and wellbeing outcomes of group singing for adults with a mental health condition. European Journal of Public Health, 28(6), 1035–1042. https://doi.org/10.1093/eurpub/cky115",
+    "doi": "10.1093/eurpub/cky115",
+    "url": "https://doi.org/10.1093/eurpub/cky115",
+    "type": "systematic review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "singing",
+      "mental health",
+      "wellbeing"
+    ],
+    "key_finding_mk": "Систематски преглед на 13 трудови (667 учесници): во седум лонгитудинални студии менталното здравје и добросостојбата се подобриле со умерени до големи ефекти; шест квалитативни студии зборуваат за уживање, припадност и самодоверба. Ризикот од пристрасност е умерен до висок, па заклучоците се неконзистентни.",
+    "key_finding_en": "Systematic review of 13 papers (667 participants): seven longitudinal studies showed improved mental health and wellbeing with moderate to large effects; six qualitative studies describe enjoyment, belonging and confidence. Risk of bias was moderate to high, so findings remain inconclusive.",
+    "evidence_note": "Ветувачко, но методолошки слабо: мали студии без контролни групи.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "fancourt2016",
+    "apa": "Fancourt, D., Perkins, R., Ascenso, S., Carvalho, L. A., Steptoe, A., & Williamon, A. (2016). Effects of group drumming interventions on anxiety, depression, social resilience and inflammatory immune response among mental health service users. PLOS ONE, 11(3), Article e0151136. https://doi.org/10.1371/journal.pone.0151136",
+    "doi": "10.1371/journal.pone.0151136",
+    "url": "https://doi.org/10.1371/journal.pone.0151136",
+    "type": "experiment",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "drumming",
+      "resilience",
+      "mental health",
+      "immune"
+    ],
+    "key_finding_mk": "Десет недели групно тапанење кај возрасни корисници на служби за ментално здравје (45 завршиле: 30 тапанење, 15 контроли со немузички групни активности): намалување на депресијата и анксиозноста, пораст на социјалната резилиентност и добросостојбата, задржани по 3 месеци; во групата со тапанење – поместување кон антиинфламаторен имунолошки профил.",
+    "key_finding_en": "Ten weeks of group drumming in adult mental health service users (45 completed: 30 drumming, 15 controls in non-musical social activities): reduced depression and anxiety, increased social resilience and wellbeing, maintained at 3 months; in the drumming group a shift towards an anti-inflammatory immune profile.",
+    "evidence_note": "Истражувачка студија без случајна распределба (групи според место на живеење); биолошките мерки само во групата со тапанење, без контролна споредба. Не поддржува тврдења дека тапанењето „го зајакнува имунитетот“.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "mcferran2014",
+    "apa": "McFerran, K. S., & Saarikallio, S. (2014). Depending on music to feel better: Being conscious of responsibility when appropriating the power of music. The Arts in Psychotherapy, 41(1), 89–97. https://doi.org/10.1016/j.aip.2013.11.007",
+    "doi": "10.1016/j.aip.2013.11.007",
+    "url": "https://doi.org/10.1016/j.aip.2013.11.007",
+    "type": "qualitative",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "emotion regulation",
+      "adolescents",
+      "mental health"
+    ],
+    "key_finding_mk": "Интервјуа со 40 млади Австралијци (13–20 години): верувањето во моќта на музиката да помогне е силно, дури и кога искуството на младите со ментални тешкотии говори поинаку; авторите нагласуваат одговорност за начинот на користење наместо гледање на музиката како извор на моќ.",
+    "key_finding_en": "Interviews with 40 young Australians (13–20): beliefs in music’s power to help are strong even when the experience of young people with mental health problems contradicts them; the authors stress responsibility for how music is used rather than seeing music itself as the source of power.",
+    "evidence_note": "Квалитативна студија; корисна за толкување, не за ефекти.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "peters2024",
+    "apa": "Peters, V., Bissonnette, J., Nadeau, D., Gauthier-Légaré, A., & Noël, M.-A. (2024). The impact of musicking on emotion regulation: A systematic review and meta-analysis. Psychology of Music, 52(5), 548–568. https://doi.org/10.1177/03057356231212362",
+    "doi": "10.1177/03057356231212362",
+    "url": "https://doi.org/10.1177/03057356231212362",
+    "type": "meta-analysis",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "emotion regulation",
+      "music interventions"
+    ],
+    "key_finding_mk": "Мета-анализа на осум рандомизирани студии (441 учесник) со слушање, свирење и создавање музика: вкупен ефект врз регулирањето на емоциите d = 0,45.",
+    "key_finding_en": "Meta-analysis of eight randomised controlled trials (441 participants) involving listening, playing and creating music: overall effect on emotion regulation d = 0.45.",
+    "evidence_note": "Мал број студии и разновидни интервенции; ефектот е мал до умерен. Објавено онлајн 2023, во број 2024.",
+    "verified_via": "crossref"
   }
 ]

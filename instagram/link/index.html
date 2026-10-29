@@ -70,25 +70,29 @@
   <p class="proto" data-i="proto">Прототип на страницата jasnota.mk/ig. Линковите водат до веб-страницата во website/; на доменот ќе бидат jasnota.mk/… · <a href="../">назад кон планот за Instagram</a></p>
 </main>
 
-<script src="../render.js?v=12"></script>
-<script src="../refs.js?v=12"></script>
-<script src="../data.js?v=12"></script>
+<script src="../render.js?v=19"></script>
+<script src="../refs.js?v=19"></script>
+<script src="../data.js?v=19"></script>
+<script src="../social.js?v=19"></script>
+<script src="../flow.js?v=19"></script>
 <script>
 (function () {
   var J = window.J;
-  var utm = '?utm_source=instagram&utm_medium=bio&utm_campaign=12-nedeli';
-  function href(path) { var u = J.root + path; return u.indexOf('#') > -1 ? u.replace('#', utm + '#') : u + utm; }
+  /* every link from the bio carries utm_source=instagram&utm_medium=social; the article's campaign is its slug */
+  function href(path, campaign) { return J.utm(J.root + path, 'instagram', campaign || 'bio'); }
 
-  /* the latest carousel with a web twin, as of today (before launch: week 1) */
+  /* the latest article that is on the website, as of today (before launch: the first one). From the content flow
+     (flow.js + social.js), so the launch article takes this place as soon as it is built and synced. */
   var today = J.iso(new Date());
-  var withWeb = J.POSTS.filter(function (p) { return p.web; });
-  var live = withWeb.filter(function (p) { return p.date <= today; });
-  var latest = live.length ? live[live.length - 1] : withWeb[0];
-  var slug = J.ARTICLES[latest.id];
-  var latestPath = slug ? 'website/articles/' + slug + '/' : J.SITE.texts.path;
+  var arts = J.FLOW.filter(function (f) { return f.slug && f.onSite; });
+  var live = arts.filter(function (f) { return f.date <= today; });
+  var latest = live.length ? live[live.length - 1] : arts[0];
+  var latestPath = latest ? 'website/articles/' + latest.slug + '/' : J.SITE.texts.path;
+  var fmtOf = function (f) { return J.FMT[f.fmt] || J.FMT.text; };
+  if (!latest) latest = { title: 'Текстови', title_en: 'Texts', date: today, fmt: 'text', slug: '' };
 
   var L = [
-    { k: 'latest', path: latestPath, mk: { t: latest.title.split(':')[0], s: (latest.date > today ? 'од ' + J.longDate(latest.date) : 'најново') + ' · ' + J.FMT[latest.fmt].mk }, en: { t: latest.title_en.split(':')[0], s: 'latest · ' + J.FMT[latest.fmt].en } },
+    { k: 'latest', path: latestPath, campaign: latest.slug, mk: { t: J.strip(latest.title).split(':')[0], s: (latest.date > today ? 'од ' + J.longDate(latest.date) : 'најново') + ' · ' + fmtOf(latest).mk }, en: { t: J.strip(latest.title_en || latest.title).split(':')[0], s: 'latest · ' + fmtOf(latest).en } },
     { k: 'texts', mk: { t: '<em>Текстови</em>', s: 'сите текстови, со извори и ознаки за доказите' }, en: { t: '<em>Texts</em>', s: 'every piece, with sources and evidence labels' } },
     { k: 'glossary', mk: { t: '<em>Поимник</em>', s: 'поимите од психологијата на музиката' }, en: { t: '<em>Glossary</em>', s: 'concepts from the psychology of music' } },
     { k: 'map', mk: { t: '<em>Мапа</em>', s: 'кој работи на ова во Македонија' }, en: { t: '<em>Map</em>', s: 'who works on this in Macedonia' } },
@@ -107,7 +111,7 @@
 
   function render(l) {
     document.getElementById('links').innerHTML = L.map(function (x, i) {
-      var url = x.url || href(x.path || J.SITE[x.k].path), c = x[l];
+      var url = x.url || href(x.path || J.SITE[x.k].path, x.campaign), c = x[l];
       return '<li' + (i === 0 ? ' class="first"' : '') + '><a href="' + url + '"><span class="t"' + (x.k === 'latest' && l === 'mk' ? ' lang="mk"' : '') + '>' + c.t + '</span><span class="s">' + c.s + '</span><span class="ar" aria-hidden="true">→</span></a></li>';
     }).join('');
   }

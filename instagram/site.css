@@ -491,6 +491,10 @@ dialog.zoom .ztext { margin: 0; padding: 16px 20px 22px; font-size: 13.5px; colo
 .tv .kn .li li { font-size: 3.4cqi; line-height: 1.34; padding: 1.5cqi 0; }
 .tv .pc .body.not { margin: 4cqi 0 0; font: 300 italic 4.6cqi/1.25 var(--font-display); color: var(--fg); }
 .tv .help { margin: 3cqi 0 0; font: 300 3cqi/1.42 var(--font-text); color: var(--fg2); border-left: 1px solid var(--fg2); padding-left: 3cqi; }
+.tv .pc.dense .kn h4.q { font-size: 5.2cqi; }
+.tv .pc.dense .kn .li li { font-size: 3.05cqi; padding: 1.15cqi 0; }
+.tv .pc.dense .body.not { margin-top: 2.6cqi; font-size: 4cqi; }
+.tv .pc.dense .help { margin-top: 2.2cqi; font-size: 2.7cqi; }
 .tv .src .refs { list-style: none; margin: 4cqi 0 0; padding: 0; display: grid; gap: calc(var(--rs) * .7); counter-reset: rf; }
 .tv .src .refs li { counter-increment: rf; display: grid; grid-template-columns: 4.4cqi minmax(0, 1fr); font: 300 var(--rs)/1.3 var(--font-text); color: #2a2826; border-top: 1px solid var(--rule); padding-top: calc(var(--rs) * .6); }
 .tv .src .refs li::before { content: counter(rf); font: 300 2.5cqi/1.7 var(--font-mono); color: var(--fg2); }

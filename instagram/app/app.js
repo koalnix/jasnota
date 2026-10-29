@@ -8,7 +8,7 @@
   var scr = $('#scr'), vProfile = $('#vProfile');
   var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var opener = [];   // focus return stack
-  var NOW = J.POSTS[J.POSTS.length - 1];   // the profile on the day of week 12
+  var NOW = J.POSTS[J.POSTS.length - 1];   // the profile on the day of the last week (13)
 
   function newest() { return J.POSTS.slice().sort(function (a, b) { return b.n - a.n; }); }
   function avatar(cls) { return '<span class="avatar ' + (cls || '') + '">' + J.avatarInner() + '</span>'; }
@@ -181,7 +181,7 @@
     b.addEventListener('click', function (e) { if (sv.held) { e.preventDefault(); return; } z[1](); });
   });
 
-  /* this week’s stories: Monday’s two, so far (it is Monday evening of week 12) */
+  /* this week’s stories: Monday’s two, so far (it is Monday evening of the last week) */
   function weekStories(from) {
     var items = NOW.stories.filter(function (s) { return s.date === NOW.date; }).map(function (s) { return { f: s.f, time: s.time }; });
     openStories(items, avatar() + '<b>jasnota</b><small class="tm">' + items[0].time + '</small>', from, 'week');

@@ -7,16 +7,17 @@
 <meta name="description" content="How @jasnota measures progress, from the founder's strategy: continuity, source quality, clarity of identity, relevant interactions and professional contacts. A weekly review ritual and a per-post log.">
 <link rel="icon" href="../../brand/logo/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../brand/tokens.css">
-<link rel="stylesheet" href="../instagram.css?v=12">
-<link rel="stylesheet" href="../site.css?v=12">
+<link rel="stylesheet" href="../instagram.css?v=19">
+<link rel="stylesheet" href="../site.css?v=19">
+<link rel="stylesheet" href="../social.css?v=19">
 </head>
 <body>
 <div class="wrap">
 
 <header class="masthead site">
   <a class="wordmark" href="../"><span class="mark" aria-hidden="true"></span>jasnota</a>
-  <nav class="sitenav" aria-label="Instagram plan">
-    <a href="../">Систем</a><a href="../profile/">Профил</a><a href="../month/">12 недели</a><a href="../calendar/">Календар</a><a href="../app/">Прототип</a><a href="../link/">Линк во био</a><a href="./" aria-current="page">Показатели</a>
+  <nav class="sitenav" aria-label="Social plan">
+    <a href="../">Систем</a><a href="../profile/">Профил</a><a href="../month/" data-nweeks>12 недели</a><a href="../calendar/">Календар</a><a href="../kit/">Пакет за објава</a><a href="../facebook/">Facebook</a><a href="../app/">Прототип</a><a href="../link/">Линк во био</a><a href="./" aria-current="page">Показатели</a>
   </nav>
 </header>
 
@@ -70,14 +71,37 @@
   <p class="footnote" style="margin-top:var(--s-3)">Professional contacts: log institutions and published work only (as in research/mapping/), and a person’s name only with their agreement. Never record readers’ private messages here.</p>
 </section>
 
+<section class="section" id="facebook">
+  <div class="sec-head"><h2 class="display">Facebook: <em>до текстот</em></h2></div>
+  <p class="sec-sub">Facebook’s job is to bring readers to the article, so its numbers are about the link, not about likes. Read them on Thursday next to Instagram’s, from Meta Business Suite → Insights → Content (or the post’s “See insights”).</p>
+  <div class="kpis fbk">
+    <div><h3 lang="mk">Кликови на линкот</h3><p><b>How many people opened the article from the post?</b></p><p>Read: “Link clicks” on the post. Also count clicks per 100 reached (CTR) to compare weeks fairly. Good: the CTR holds or grows across the series.</p></div>
+    <div><h3 lang="mk">Досег</h3><p><b>How many accounts saw it?</b></p><p>Read: “Reach” (people, not impressions). Context only, never a target. A week with photos and a week with the link card can be compared here.</p></div>
+    <div><h3 lang="mk">Споделувања</h3><p><b>Did someone pass it on?</b></p><p>Read: “Shares”. On Facebook a share usually carries the article’s link card to a new audience, so it is the most valuable number after clicks.</p></div>
+  </div>
+  <p class="footnote" style="margin-top:var(--s-3)">Every link carries <span class="mono-s">utm_source=facebook|instagram&amp;utm_medium=social&amp;utm_campaign=&lt;slug&gt;</span>. The website has no analytics yet, so the tags are invisible until a cookie-free counter is added; until then the channel numbers come from Meta’s Insights, and the tags are ready for later.</p>
+  <h2 class="sub-h" style="margin-top:var(--s-5)">Дневник за <em>Facebook</em></h2>
+  <div class="log-summary" id="fbSummary"></div>
+  <p style="margin:0 0 var(--s-3)"><button class="btn" type="button" id="fbCsv">Copy as CSV</button></p>
+  <div class="tablewrap">
+    <table class="table stack">
+      <thead><tr><th>Објава</th><th>Објавено</th><th>Досег</th><th>Кликови на линкот</th><th>Споделувања</th><th>CTR</th><th>Белешка</th></tr></thead>
+      <tbody id="fbLogMount"></tbody>
+    </table>
+  </div>
+</section>
+
 <footer class="end">
   <p class="display" lang="mk">Континуитет, <em>не бучава.</em></p>
   <span class="mono">jasnota · instagram показатели · 11/2026</span>
 </footer>
 </div>
-<script src="../render.js?v=12"></script>
-<script src="../refs.js?v=12"></script>
-<script src="../data.js?v=12"></script>
-<script src="../pages.js?v=12"></script>
+<script src="../render.js?v=19"></script>
+<script src="../refs.js?v=19"></script>
+<script src="../data.js?v=19"></script>
+<script src="../social.js?v=19"></script>
+<script src="../flow.js?v=19"></script>
+<script src="../pages.js?v=19"></script>
+<script src="../social-pages.js?v=19"></script>
 </body>
 </html>

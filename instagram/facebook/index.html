@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jasnota on Facebook</title>
+<meta name="description" content="The Jasnota Facebook page: setup (name, category, intro, cover and profile picture) and a mockup of every week's post, with the article's link preview exactly as it will appear in the feed.">
+<link rel="icon" href="../../brand/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../brand/tokens.css">
+<link rel="stylesheet" href="../instagram.css?v=19">
+<link rel="stylesheet" href="../site.css?v=19">
+<link rel="stylesheet" href="../social.css?v=19">
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead site">
+  <a class="wordmark" href="../"><span class="mark" aria-hidden="true"></span>jasnota</a>
+  <nav class="sitenav" aria-label="Social plan">
+    <a href="../">Систем</a><a href="../profile/">Профил</a><a href="../month/" data-nweeks>12 недели</a><a href="../calendar/">Календар</a><a href="../kit/">Пакет за објава</a><a href="./" aria-current="page">Facebook</a><a href="../app/">Прототип</a><a href="../link/">Линк во био</a><a href="../metrics/">Показатели</a>
+  </nav>
+</header>
+
+<section class="page-open">
+  <h1 class="display" lang="mk">Facebook, <em>со линк.</em></h1>
+  <p class="lead"><strong>The website is the home of every topic; Facebook is a door to it.</strong> A short informative text (≈120–250 words), a photo when there is a good one with consent on file, and the direct link to the full article with its sources. Never before the article is live.</p>
+</section>
+
+<section class="section" style="padding-top:var(--s-5)">
+  <ol class="flow3" aria-label="One topic, three channels">
+    <li><span class="k">01 · пон <span data-web-time>09:00</span></span><h3 lang="mk">Веб</h3><p><b>The full article</b>: text, evidence labels, „Што знаеме / Што сè уште не знаеме“, numbered references with DOI, and its own 1200 × 630 link-preview image.</p></li>
+    <li><span class="k">02 · пон 19:30</span><h3 lang="mk">Instagram</h3><p><b>The carousel</b>, last slide Извори. The caption ends with „Целиот текст со изворите: линкот во био“; the bio link opens this week’s article.</p></li>
+    <li><span class="k">03 · вто 19:00</span><h3 lang="mk">Facebook</h3><p><b>Short text + photos + the direct link</b>, the next evening: a second reminder of the same topic for a different audience, and the article has had a day to be checked.</p></li>
+  </ol>
+  <p class="footnote" style="margin-top:var(--s-3)">Recommended order: web → Instagram the same evening → Facebook the next evening. If Monday is too full, Facebook can go the same evening right after Instagram; it must never go before the web text. Links carry <span class="mono-s">?utm_source=facebook&amp;utm_medium=social&amp;utm_campaign=&lt;slug&gt;</span>.</p>
+</section>
+
+<!-- =====================================================
+     01 THE PAGE
+     ===================================================== -->
+<section class="section" id="page">
+  <div class="sec-head"><h2 class="display">Страницата на <em>Facebook</em></h2><span class="num">01 / 02</span></div>
+  <p class="sec-sub">A <b>Facebook Page for Jasnota, separate from Jasna’s personal profile</b>, just like the Instagram account. She creates it from her profile (Pages → Create new Page) and manages it as admin; her personal profile stays private and never appears as the author of a post.</p>
+
+  <div class="fb-setup">
+    <div>
+      <div class="fbpage" aria-label="Пример: страницата на Facebook">
+        <div class="fbg-cov fbg-safe" id="cov" role="img" aria-label="Насловна слика: Психологијата зад музиката, знакот Ψ на црно"></div>
+        <div class="fbg-head">
+          <span class="fbg-pp" role="img" aria-label="Профилна слика: знакот на Јаснота"></span>
+          <div><div class="fbg-nm" lang="mk">Јаснота</div><div class="fbg-sub" lang="mk">Страница · Образование</div></div>
+          <div class="fbg-acts"><span class="fbg-pri" lang="mk">Дознај повеќе</span><span lang="mk">Порака</span><span lang="mk">Следи</span></div>
+        </div>
+        <div class="fbg-intro">
+          <h4 lang="mk">Вовед</h4>
+          <p lang="mk" id="fbIntro">Психологијата зад музиката: научно засновани текстови, со извори. Нов текст секој понеделник.</p>
+          <p class="fbg-row" lang="mk">Страница · Образование</p>
+          <p class="fbg-row"><a href="../../website/" target="_blank" rel="noopener" data-public-host>koalnix.github.io/jasnota/website</a></p>
+          <p class="fbg-row">zdravo@jasnota.mk</p>
+        </div>
+      </div>
+      <p class="copyrow"><button class="btn" type="button" id="safeBtn" aria-pressed="true">Безбедна зона на мобилен</button><span class="footnote">dashed lines: what a phone shows of the cover</span></p>
+    </div>
+
+    <dl class="kv summary-kv">
+      <dt>тип</dt><dd>Facebook <b>Page</b> (страница), not a second personal profile. Jasna is admin from her own profile; add a second admin later only if someone helps.</dd>
+      <dt>име</dt><dd lang="mk"><b>Јаснота</b><br><small>Recommended: the same short name as the wordmark; the descriptor lives in the intro and the cover. Alternative: „Јаснота – психологијата зад музиката“ (longer, more searchable). Founder decides; Facebook limits how often a name can change.</small></dd>
+      <dt>корисничко</dt><dd>@jasnota <small>(fallbacks: jasnota.mk, jasnotamk). Same as Instagram, so people find both.</small></dd>
+      <dt>категорија</dt><dd lang="mk">Образование <small lang="en">(Education). Not “Psychologist” or any health category: Jasnota explains, it does not offer sessions.</small></dd>
+      <dt>вовед</dt><dd><span lang="mk">the text in the mockup</span> · <span class="charcount" data-len-of="fbIntro" data-max="101"></span><div class="copyrow"><button class="btn" type="button" data-copy-el="fbIntro">Копирај вовед</button></div></dd>
+      <dt>веб</dt><dd>The website (today the live host, later jasnota.mk). Action button: <b lang="mk">Дознај повеќе</b> → the website.</dd>
+      <dt>контакт</dt><dd>zdravo@jasnota.mk. No phone, no address, no booking, no reviews (turn reviews off).</dd>
+      <dt>профилна</dt><dd>The mark (камертон / Ψ) on ink, the same as Instagram. <a href="profile.png" download="jasnota-facebook-profile.png">profile.png</a> 1080 × 1080.</dd>
+      <dt>насловна</dt><dd><a href="cover.png" download="jasnota-facebook-cover.png">cover.png</a> 1640 × 624. Everything sits inside the centre 1100 px, which phones keep.</dd>
+      <dt>инстаграм</dt><dd>Connect @jasnota in Meta Business Suite to schedule both from one place. <b>Leave automatic sharing from Instagram to Facebook off</b>: Facebook gets its own text and the link.</dd>
+      <dt>пораки</dt><dd>Same saved replies as Instagram (<a href="../profile/#replies">/помош, /извор, /грешка, /соработка</a>).</dd>
+    </dl>
+  </div>
+
+  <div class="fb-assets">
+    <figure><img src="cover.png" width="1640" height="624" alt="Насловна слика за Facebook: „Психологијата зад музиката“ на црна позадина, тенка линија со точка светлина и знакот Ψ."><figcaption>cover.png · 1640 × 624 · <a href="cover.png" download="jasnota-facebook-cover.png">преземи</a> · re-render: node instagram/tools/fb-assets.mjs</figcaption></figure>
+    <figure><img src="profile.png" width="1080" height="1080" alt="Профилна слика: знакот на Јаснота, камертон во форма на Ψ, светол на црно."><figcaption>profile.png · 1080² · <a href="profile.png" download="jasnota-facebook-profile.png">преземи</a></figcaption></figure>
+  </div>
+</section>
+
+<!-- =====================================================
+     02 THE WEEKLY POSTS
+     ===================================================== -->
+<section class="section" id="posts">
+  <div class="sec-head"><h2 class="display">Објава секоја <em>недела</em></h2><span class="num">02 / 02</span></div>
+  <p class="sec-sub">Every week as it will appear in the feed: the text from the calendar (<span class="mono-s">social.fb.text_mk</span>), the photo, and the link with UTM. <b>Facebook shows a link card only on posts without photos</b>: with photos, the link stays a blue link in the text. Each week shows both; the photo version is the default where a photo is suggested.</p>
+  <ol class="rules" style="margin-bottom:var(--s-4)">
+    <li><span><b>Web first.</b> Facebook reads the link preview the first time a link is shared and keeps it for weeks. Shared too early, it keeps an error.</span></li>
+    <li><span><b>Check the card</b> in the Sharing Debugger (link on each week) and press “Scrape again” after the article goes live or changes.</span></li>
+    <li><span><b>Photos only with consent on file</b>; no faces of minors; label AI images as such or don’t use them on Facebook.</span></li>
+    <li><span><b>The link stays exactly as copied</b> from the posting kit, with its UTM tags.</span></li>
+  </ol>
+  <p class="footnote" data-synced></p>
+  <div id="fbMount"></div>
+</section>
+
+<footer class="end">
+  <p class="display" lang="mk">Една тема, <em>три врати.</em></p>
+  <span class="mono">jasnota · facebook · 11/2026 – 01/2027</span>
+</footer>
+</div>
+<script src="../render.js?v=19"></script>
+<script src="../refs.js?v=19"></script>
+<script src="../data.js?v=19"></script>
+<script src="../social.js?v=19"></script>
+<script src="../flow.js?v=19"></script>
+<script src="../social-pages.js?v=19"></script>
+<script>
+(function () {
+  var b = document.getElementById('safeBtn'), c = document.getElementById('cov');
+  b.addEventListener('click', function () { var on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', on); c.classList.toggle('fbg-safe', on); });
+  document.querySelectorAll('[data-public-host]').forEach(function (a) { a.textContent = window.J.PUBLIC_URL.replace(/^https?:\/\//, '').replace(/\/$/, ''); });
+})();
+</script>
+</body>
+</html>

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /* Jasnota — site build (Node ≥ 18, no dependencies).
 
-     node website/tools/build.mjs            (SITE_URL=https://… to change the canonical origin)
+     node website/tools/build.mjs            (SITE_URL=https://… canonical origin · PUBLIC_URL=https://… host for og:url/og:image,
+                                              see tools/urls.mjs)
 
    Reads only website/content/ (research/ is never published; refresh content with tools/import-content.mjs).
    1. Syncs brand assets: /brand/logo/*.svg + /brand/tokens.css → assets/brand/
@@ -15,6 +16,8 @@
    4. Fills generated blocks in the hand-written pages (index.html, about/, method/, contact/, 404.html)
    5. Injects the shared shell (tools/shell.mjs) into every page
    6. Writes redirect stubs for retired URLs (journal/, listen/), sitemap.xml and robots.txt
+   Before 3: renders the 1200×630 link-preview images (tools/og.mjs, headless Chrome, cached by content hash)
+   and every page head gets og:image / twitter:card for its own image.
    Contract and schemas: website/SITE.md. */
 
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync, copyFileSync, rmSync, statSync } from 'node:fs';
@@ -22,8 +25,9 @@ import { execFileSync } from 'node:child_process';
 import { join, dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as shell from './shell.mjs';
+import * as og from './og.mjs';
 
-const { PILLARS, SITE_URL, jsonld } = shell;
+const { PILLARS, SITE_URL, PUBLIC_URL, jsonld } = shell;
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SITE = resolve(HERE, '..');
 const CONTENT = join(SITE, 'content');
@@ -316,7 +320,7 @@ function phead({ h, hEn, lede, ledeEn, no, cls = '' }) {
 }
 
 /* ------------------------------------------------------------------ page wrapper */
-function pageHTML({ path, page, title, titleEn, desc, descEn, css = [], main, gsap = false, letter = true, scripts = [], ld = [], bodyClass = '', extra = '' }) {
+function pageHTML({ path, page, title, titleEn, desc, descEn, css = [], main, gsap = false, letter = true, scripts = [], ld = [], bodyClass = '', extra = '', published = '' }) {
   const depth = path.split('/').filter(Boolean).length;
   const r = '../'.repeat(depth);
   return `<!doctype html>
@@ -328,7 +332,8 @@ function pageHTML({ path, page, title, titleEn, desc, descEn, css = [], main, gs
   <meta name="description" content="${esc(desc)}" data-en-content="${esc(descEn)}">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(desc)}">
-  <meta property="og:type" content="${page === 'article' ? 'article' : 'website'}">
+  <meta property="og:type" content="${page === 'article' ? 'article' : 'website'}">${published ? `
+  <meta property="article:published_time" content="${published}">` : ''}
   <!-- shell:head --><!-- /shell:head -->
 ${css.map((c) => `  <link rel="stylesheet" href="${r}css/${c}.css">`).join('\n')}
 ${ld.map((x) => '  ' + jsonld(x)).join('\n')}
@@ -354,7 +359,7 @@ function finish(file, html) {
   const is404 = file.endsWith('404.html');
   const home = page === 'home';
   for (const [name, content] of [
-    ['shell:head', shell.head(r, { gsap: home, path: is404 ? '404.html' : path, index: !is404 })],
+    ['shell:head', shell.head(r, { gsap: home, path: is404 ? '404.html' : path, index: !is404, og: OG.get(is404 ? '' : path) || OG.get('') })],
     ['shell:top', shell.top(r, page)],
     ['shell:foot', shell.foot(r, { gsap: home, letter: !(home || page === 'contact') })],
   ]) {
@@ -506,7 +511,7 @@ ${refsHTML}
     path: `articles/${a.slug}/`, page: 'article', bodyClass: 'page-article',
     title: `${strip(a.title)} — Јаснота`, titleEn: `${strip(a.title_en || a.title)} — Jasnota`,
     desc: strip(a.dek), descEn: strip(a.en ? a.en.dek : a.dek),
-    css: ['article'], main, ld: [ld], extra,
+    css: ['article'], main, ld: [ld], extra, published: a.date,
   });
 }
 
@@ -518,8 +523,8 @@ function articlesIndex(D) {
   const items = all.map((x) => (x.kind === 'a' ? { pillar: x.a.pillar, format: x.a.format } : { pillar: x.c.pillar, format: calFormat(x.c.format) }));
   const fopts = [['', 'Сите', 'All'], ...Object.entries(FORMATS).map(([k, f]) => [k, f.mk, f.en])];
   const main = `${phead({ h: 'Текстови', hEn: 'Articles',
-    lede: 'Една објава неделно, во пет формати. Секој текст има извори, ознаки за доказите и листа со тоа што сè уште не знаеме. Првите дванаесет недели се веќе испланирани.',
-    ledeEn: 'One piece a week, in five formats. Every piece has sources, evidence labels and a list of what we don\'t know yet. The first twelve weeks are already planned.' })}
+    lede: 'Една објава неделно, во пет формати. Секој текст има извори, ознаки за доказите и листа со тоа што сè уште не знаеме. Првите тринаесет недели се веќе испланирани.',
+    ledeEn: 'One piece a week, in five formats. Every piece has sources, evidence labels and a list of what we don\'t know yet. The first thirteen weeks are already planned.' })}
     <section class="lib" data-lib aria-labelledby="lib-h">
       <h2 class="sr-only" id="lib-h"${en('All pieces')}>Сите текстови</h2>
       <div class="lib__tools">${filterGroup('pillar', 'Филтер по столб', 'Filter by pillar', PILLAR_OPTS, countBy(items, (x) => String(x.pillar)))}${filterGroup('format', 'Филтер по формат', 'Filter by format', fopts, countBy(items, (x) => x.format))}${libStatus()}
@@ -947,6 +952,7 @@ console.log('jasnota build');
 syncBrand();
 const photo = syncPhotos();
 const D = load();
+const OG = await og.generate();   // link-preview PNGs (cached by content hash), Map(path → image)
 
 // remove generated folders that no longer have a source (articles) and retired content (journal entries, listen)
 const ADIR = join(SITE, 'articles');
@@ -996,5 +1002,12 @@ const today = new Date().toISOString().slice(0, 10);
 const urls = written.sort((a, b) => a.path.localeCompare(b.path)).map((w) => `  <url><loc>${SITE_URL}${w.path}</loc><lastmod>${w.date && w.date < today ? w.date : today}</lastmod></url>`);
 writeFileSync(join(SITE, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`);
 writeFileSync(join(SITE, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /content/\nDisallow: /tools/\n\nSitemap: ${SITE_URL}sitemap.xml\n`);
-log(`sitemap.xml (${urls.length} URLs) · robots.txt · SITE_URL ${SITE_URL}`);
+log(`sitemap.xml (${urls.length} URLs) · robots.txt · SITE_URL ${SITE_URL} · PUBLIC_URL ${PUBLIC_URL}`);
 console.log('done.');
+
+// the social hub reads a synced copy of the calendar's social data (instagram/social.js): refresh it, so the posting
+// kit and the Facebook mockups know which articles and preview images now exist. SKIP_SOCIAL=1 to skip.
+const SYNC = resolve(SITE, '..', 'instagram', 'tools', 'sync-social.mjs');
+if (!process.env.SKIP_SOCIAL && existsSync(SYNC)) {
+  try { execFileSync(process.execPath, [SYNC], { stdio: 'inherit', env: process.env }); } catch (e) { log('social sync failed:', e.message); }
+}

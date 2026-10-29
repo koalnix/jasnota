@@ -4,25 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Calendar, Nov to Jan</title>
-<meta name="description" content="@jasnota, November 2026 to January 2027: the twelve Monday carousels, the optional stories, preparation and the weekly review, filterable by pillar and format.">
+<meta name="description" content="Jasnota, November 2026 to January 2027: the weekly article, the Monday carousels, the Facebook posts, the optional stories, preparation and the weekly review, filterable by pillar and format.">
 <link rel="icon" href="../../brand/logo/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../brand/tokens.css">
-<link rel="stylesheet" href="../instagram.css?v=12">
-<link rel="stylesheet" href="../site.css?v=12">
+<link rel="stylesheet" href="../instagram.css?v=19">
+<link rel="stylesheet" href="../site.css?v=19">
+<link rel="stylesheet" href="../social.css?v=19">
 </head>
 <body>
 <div class="wrap">
 
 <header class="masthead site">
   <a class="wordmark" href="../"><span class="mark" aria-hidden="true"></span>jasnota</a>
-  <nav class="sitenav" aria-label="Instagram plan">
-    <a href="../">Систем</a><a href="../profile/">Профил</a><a href="../month/">12 недели</a><a href="./" aria-current="page">Календар</a><a href="../app/">Прототип</a><a href="../link/">Линк во био</a><a href="../metrics/">Показатели</a>
+  <nav class="sitenav" aria-label="Social plan">
+    <a href="../">Систем</a><a href="../profile/">Профил</a><a href="../month/" data-nweeks>12 недели</a><a href="./" aria-current="page">Календар</a><a href="../kit/">Пакет за објава</a><a href="../facebook/">Facebook</a><a href="../app/">Прототип</a><a href="../link/">Линк во био</a><a href="../metrics/">Показатели</a>
   </nav>
 </header>
 
 <section class="page-open" style="padding-bottom:var(--s-5)">
   <h1 class="display" lang="mk">Ноември – <em>јануари.</em></h1>
-  <p class="lead"><strong>Four days of preparation, then twelve Mondays.</strong> Posts show their cover; stories show their time; Thursdays hold the 20-minute review. Filter by pillar or format: the first tap isolates one, further taps add others. Every item opens its full card.</p>
+  <p class="lead"><strong>Four days of preparation, then a topic every Monday, in three channels.</strong> The article goes on the website in the morning (<b>веб</b>), the carousel at 19:30, the Facebook post the next evening (<b>f</b>, Tuesday 19:00). Posts show their cover; stories show their time; Thursdays hold the 20-minute review. Filter by pillar or format: the first tap isolates one, further taps add others. Every item opens its full card.</p>
 </section>
 
 <div class="cal-tools" role="group" aria-label="Filters">
@@ -38,6 +39,8 @@
     <button class="fchip" type="button" data-filter="fmt" data-key="study" aria-pressed="false">студија</button>
     <button class="fchip" type="button" data-filter="fmt" data-key="concept" aria-pressed="false">поим</button>
     <button class="fchip" type="button" data-filter="fmt" data-key="myth" aria-pressed="false">мит</button>
+    <button class="fchip" type="button" data-filter="fmt" data-key="web" aria-pressed="false">веб</button>
+    <button class="fchip" type="button" data-filter="fmt" data-key="fb" aria-pressed="false">Facebook</button>
     <button class="fchip" type="button" data-filter="fmt" data-key="story" aria-pressed="false">стории</button>
     <button class="fchip" type="button" data-filter="fmt" data-key="ops" aria-pressed="false">подготовка и преглед</button>
     <button class="fchip" type="button" data-filter="fmt" data-key="*" aria-pressed="true">сите</button>
@@ -48,7 +51,7 @@
 <div id="calMount" aria-label="November 2026 to January 2027"></div>
 
 <div class="cal-legend footnote">
-  <span>Mon 19:30: carousel (teaser 12:00, repost 19:35)</span><span>Wed 12:00: source of the week</span><span>Thu 10:00: review</span><span>Fri 12:00: one interaction</span><span>Weekend: writing, rest</span>
+  <span>Mon 09:00: article on the website</span><span>Mon 19:30: carousel (teaser 12:00, repost 19:35)</span><span>Tue 19:00: Facebook (text, photo, link)</span><span>Wed 12:00: source of the week</span><span>Thu 10:00: review</span><span>Fri 12:00: one interaction</span><span>Weekend: writing, rest</span>
 </div>
 
 <footer class="end">
@@ -56,9 +59,11 @@
   <span class="mono">jasnota · instagram calendar · 11/2026 – 01/2027</span>
 </footer>
 </div>
-<script src="../render.js?v=12"></script>
-<script src="../refs.js?v=12"></script>
-<script src="../data.js?v=12"></script>
-<script src="../pages.js?v=12"></script>
+<script src="../render.js?v=19"></script>
+<script src="../refs.js?v=19"></script>
+<script src="../data.js?v=19"></script>
+<script src="../social.js?v=19"></script>
+<script src="../flow.js?v=19"></script>
+<script src="../pages.js?v=19"></script>
 </body>
 </html>

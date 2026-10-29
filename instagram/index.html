@@ -7,8 +7,9 @@
 <title>Jasnota on Instagram</title>
 <meta name="description" content="The @jasnota Instagram system: an evidence-led, text-first account for the platform. Grid and pillar tones, the carousel template per format, evidence labels, the weekly rhythm, light stories and decisions for the founder.">
 <link rel="stylesheet" href="../brand/tokens.css">
-<link rel="stylesheet" href="instagram.css?v=12">
-<link rel="stylesheet" href="site.css?v=12">
+<link rel="stylesheet" href="instagram.css?v=19">
+<link rel="stylesheet" href="site.css?v=19">
+<link rel="stylesheet" href="social.css?v=19">
 </head>
 <body>
 
@@ -16,25 +17,27 @@
 
 <header class="masthead site">
   <a class="wordmark" href="#top"><span class="mark" aria-hidden="true"></span>jasnota</a>
-  <nav class="sitenav" aria-label="Instagram plan">
-    <a href="./" aria-current="page">Систем</a><a href="profile/">Профил</a><a href="month/">12 недели</a><a href="calendar/">Календар</a><a href="app/">Прототип</a><a href="link/">Линк во био</a><a href="metrics/">Показатели</a>
+  <nav class="sitenav" aria-label="Social plan">
+    <a href="./" aria-current="page">Систем</a><a href="profile/">Профил</a><a href="month/" data-nweeks>12 недели</a><a href="calendar/">Календар</a><a href="kit/">Пакет за објава</a><a href="facebook/">Facebook</a><a href="app/">Прототип</a><a href="link/">Линк во био</a><a href="metrics/">Показатели</a>
   </nav>
 </header>
 
 <section class="opening" id="top">
   <h1 class="display" lang="mk">Психологијата<br>зад <em>музиката</em>.</h1>
   <p class="lead"><strong>The system behind @jasnota</strong>, Jasnota’s own account. One carefully sourced carousel every Monday at 19:30, in Macedonian. Every claim carries an evidence label and a source; the last slide is always <span lang="mk">Извори</span>. No face, no video, nothing to perform: the author is present through her questions and her judgement.</p>
-  <div class="meter" aria-label="One post a week, 12 weeks">
+  <div class="meter" aria-label="One post a week, 13 weeks">
     <span class="beats" aria-hidden="true"><i class="acc"></i><i></i><b></b><i class="acc"></i><i></i><b></b><i class="acc"></i><i></i><i></i></span>
-    <span class="mono">1 / недела · 12 недели · 2 ное 2026 – 18 јан 2027</span>
+    <span class="mono">1 / недела · <span data-nweeks>12 недели</span> · <span data-flow-range>2 ноември – 18 јануари 2027</span></span>
   </div>
 </section>
 
 <section class="section" style="padding-block:var(--s-5)">
   <ol class="rules" style="max-width:none">
     <li><span><b><a href="profile/">Профил</a></b> — a new account for the platform (Jasna’s personal one stays personal), name, bio, category, seven highlight covers, saved replies for therapy requests.</span></li>
-    <li><span><b><a href="month/">12 недели</a></b> — every carousel slide by slide, captions to copy, alt text, sources with DOI, the week’s stories.</span></li>
+    <li><span><b><a href="month/" data-nweeks>12 недели</a></b> — every carousel slide by slide, captions to copy, alt text, sources with DOI, the week’s stories.</span></li>
     <li><span><b><a href="calendar/">Календар</a></b> — November 2026 to January 2027, filterable by pillar and format.</span></li>
+    <li><span><b><a href="kit/">Пакет за објава</a></b> — one card per week, in publishing order: the article on the website, the Instagram caption and bio link, the Facebook text with its UTM link, the link-preview image, a three-step checklist.</span></li>
+    <li><span><b><a href="facebook/">Facebook</a></b> — the Jasnota page (separate from Jasna’s profile): name, category, intro, cover and profile picture; every week’s post as it will look in the feed, with the article’s link card.</span></li>
     <li><span><b><a href="app/">Прототип</a></b> — the profile after week 12 in a phone: open a post, swipe the carousel, tap through stories and highlights.</span></li>
     <li><span><b><a href="link/">Линк во био</a></b> — the page behind jasnota.mk/ig. <b><a href="metrics/">Показатели</a></b> — continuity, source quality, relevant interactions, professional contacts; the weekly review and a per-post log.</span></li>
   </ol>
@@ -48,7 +51,7 @@
     <h2 class="display">Профил и <em>мрежа</em></h2>
     <span class="num">01 / 06</span>
   </div>
-  <p class="sec-sub">The profile on Monday 18 January 2027, after twelve weeks. <b>Tap any post</b> to read the whole carousel and its caption. The working version is the <a href="app/">prototype</a>.</p>
+  <p class="sec-sub">The profile on Monday 25 January 2027, after thirteen weeks. <b>Tap any post</b> to read the whole carousel and its caption. The working version is the <a href="app/">prototype</a>.</p>
 
   <div class="profile-layout">
     <div class="phone">
@@ -265,10 +268,12 @@
   <p class="ztext" lang="mk"></p>
 </dialog>
 
-<script src="render.js?v=12"></script>
-<script src="refs.js?v=12"></script>
-<script src="data.js?v=12"></script>
-<script src="pages.js?v=12"></script>
-<script src="instagram.js?v=12"></script>
+<script src="render.js?v=19"></script>
+<script src="refs.js?v=19"></script>
+<script src="data.js?v=19"></script>
+<script src="social.js?v=19"></script>
+<script src="flow.js?v=19"></script>
+<script src="pages.js?v=19"></script>
+<script src="instagram.js?v=19"></script>
 </body>
 </html>

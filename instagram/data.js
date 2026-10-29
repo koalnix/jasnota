@@ -1,4 +1,6 @@
-/* Јаснота — @jasnota on Instagram, the first 12 weeks (2 Nov 2026 – 18 Jan 2027).
+/* Јаснота — @jasnota on Instagram: the twelve designed carousels w01–w12, weeks 2–13 (9 Nov 2026 – 25 Jan 2027).
+   Week 1 (w00, „Ритамот на резилиентноста“, 2 Nov) is drawn from research/content-bank/calendar.json → social.js
+   (tools/sync-social.mjs) by flow.js, with the same templates. The calendar's dates win if they differ.
    Source of truth for the plan, calendar, prototype and the hub. Requires render.js + refs.js.
 
    Strategy: STRATEGY.md (wins over everything) · BRAND.md v2 · research/content-bank/calendar.json.
@@ -28,7 +30,7 @@
   J.LINK = 'jasnota.mk/ig';
   J.POST_TIME = '19:30';
   /* illustrative only: the profile in the prototype needs numbers. Not targets (see metrics/). */
-  J.STATS = { posts: 12, followers: '318', following: 41 };
+  J.STATS = { posts: 13, followers: '318', following: 41 };
 
   /* website pages the link page points to. Relative to the project root (as built in website/ on 29 Oct);
      on the future domain these become jasnota.mk/… */
@@ -62,13 +64,13 @@
   var MORE = 'Целиот текст со сите извори: jasnota.mk · линк во био';
 
   /* =================================================================
-     THE 12 POSTS (calendar.json, weeks 1–12). Mondays at 19:30.
+     THE 12 DESIGNED POSTS (calendar.json, weeks 2–13; week 1 = w00 from the calendar). Mondays at 19:30.
      ================================================================= */
   J.POSTS = [
 
   /* ---------------- 1 ---------------- */
   {
-    id: 'w01', n: 1, date: '2026-11-02', pillar: 2, fmt: 'text', web: true,
+    id: 'w01', n: 1, date: '2026-11-09', pillar: 2, fmt: 'text', web: true,
     title: 'Трема: што навистина знаеме за музичката анксиозност при изведба',
     title_en: 'Stage fright: what we actually know about music performance anxiety',
     rq: 'Што е музичката анксиозност при изведба, колку е честа, што ја одржува и кои пристапи имаат поддршка во истражувањата?',
@@ -119,7 +121,7 @@
 
   /* ---------------- 2 ---------------- */
   {
-    id: 'w02', n: 2, date: '2026-11-09', pillar: 3, fmt: 'study', web: true,
+    id: 'w02', n: 2, date: '2026-11-16', pillar: 3, fmt: 'study', web: true,
     title: '„Возбуден/а сум“: една позната студија за тремата, под лупа',
     title_en: '“I am excited”: a well-known stage-fright study under the microscope',
     rq: 'Дали преименувањето на анксиозноста во возбуда навистина ја подобрува изведбата – и што покажа репликацијата?',
@@ -168,7 +170,7 @@
 
   /* ---------------- 3 ---------------- */
   {
-    id: 'w03', n: 3, date: '2026-11-16', pillar: 1, fmt: 'text', web: true,
+    id: 'w03', n: 3, date: '2026-11-23', pillar: 1, fmt: 'text', web: true,
     title: 'Зошто музиката нè допира: механизми, морници и парадоксот на тажната песна',
     title_en: 'Why music moves us: mechanisms, chills and the sad-song paradox',
     rq: 'Преку кои психолошки механизми музиката предизвикува емоции и зошто уживаме во тажна музика?',
@@ -211,7 +213,7 @@
 
   /* ---------------- 4 ---------------- */
   {
-    id: 'w04', n: 4, date: '2026-11-23', pillar: 3, fmt: 'myth', web: true,
+    id: 'w04', n: 4, date: '2026-11-30', pillar: 3, fmt: 'myth', web: true,
     title: 'Мит наспроти наука: дали Моцарт нè прави попаметни?',
     title_en: 'Myth vs science: does Mozart make us smarter?',
     rq: 'Дали слушањето Моцарт ја зголемува интелигенцијата и што покажаа репликациите и мета-анализите?',
@@ -251,7 +253,7 @@
 
   /* ---------------- 5 ---------------- */
   {
-    id: 'w05', n: 5, date: '2026-11-30', pillar: 2, fmt: 'text', web: true,
+    id: 'w05', n: 5, date: '2026-12-07', pillar: 2, fmt: 'text', web: true,
     title: 'Перфекционизмот кај музичарите: кога високите стандарди помагаат, а кога пречат',
     title_en: 'Perfectionism in musicians: when high standards help and when they hurt',
     rq: 'Кои аспекти на перфекционизмот се поврзани со мотивација и постигнување, а кои со вознемиреност и анксиозност при изведба?',
@@ -298,7 +300,7 @@
 
   /* ---------------- 6 ---------------- */
   {
-    id: 'w06', n: 6, date: '2026-12-07', pillar: 1, fmt: 'text', web: true,
+    id: 'w06', n: 6, date: '2026-12-14', pillar: 1, fmt: 'text', web: true,
     title: 'Што слушавте на седумнаесет? Музика, меморија и идентитет',
     title_en: 'What were you listening to at seventeen? Music, memory and identity',
     rq: 'Зошто музиката од доцната адолесценција и раната зрелост останува најсилно врзана за спомените и идентитетот?',
@@ -342,7 +344,7 @@
 
   /* ---------------- 7 ---------------- */
   {
-    id: 'w07', n: 7, date: '2026-12-14', pillar: 3, fmt: 'study', web: false,
+    id: 'w07', n: 7, date: '2026-12-21', pillar: 3, fmt: 'study', web: false,
     title: 'Допамин и морници: студијата на Салимпур и соработниците (2011)',
     title_en: 'Dopamine and chills: Salimpoor et al. (2011)',
     rq: 'Дали силното задоволство од музика е поврзано со ослободување допамин и каде во мозокот се случува тоа – во исчекувањето или во врвот?',
@@ -390,7 +392,7 @@
 
   /* ---------------- 8 ---------------- */
   {
-    id: 'w08', n: 8, date: '2026-12-21', pillar: 2, fmt: 'concept', web: false,
+    id: 'w08', n: 8, date: '2026-12-28', pillar: 2, fmt: 'concept', web: false,
     title: 'Поим: феноменот на измамник',
     title_en: 'Concept: the impostor phenomenon',
     rq: 'Што е феноменот на измамник, колку е чест и што знаеме (и не знаеме) за него кај луѓе со високи постигнувања?',
@@ -429,7 +431,7 @@
 
   /* ---------------- 9 ---------------- */
   {
-    id: 'w09', n: 9, date: '2026-12-28', pillar: 3, fmt: 'myth', web: false,
+    id: 'w09', n: 9, date: '2027-01-04', pillar: 3, fmt: 'myth', web: false,
     title: 'Мит наспроти наука: музиката во позадина помага при учење',
     title_en: 'Myth vs science: background music helps you study',
     rq: 'Дали музиката во позадина го подобрува или влошува читањето и учењето?',
@@ -471,7 +473,7 @@
 
   /* ---------------- 10 ---------------- */
   {
-    id: 'w10', n: 10, date: '2027-01-04', pillar: 2, fmt: 'text', web: true,
+    id: 'w10', n: 10, date: '2027-01-11', pillar: 2, fmt: 'text', web: true,
     title: 'Психолошка подготовка за настап: што има поддршка во истражувањата',
     title_en: 'Psychological preparation for performance: what the research supports',
     rq: 'Кои психолошки стратегии за подготовка на настап имаат емпириска поддршка и колку е таа силна?',
@@ -519,7 +521,7 @@
 
   /* ---------------- 11 ---------------- */
   {
-    id: 'w11', n: 11, date: '2027-01-11', pillar: 1, fmt: 'text', web: true,
+    id: 'w11', n: 11, date: '2027-01-18', pillar: 1, fmt: 'text', web: true,
     title: 'Пеењето заедно: што знаеме за музиката и поврзаноста',
     title_en: 'Singing together: what we know about music and social bonding',
     rq: 'Дали заедничкото пеење и музицирање ги зближува луѓето и преку кои механизми?',
@@ -562,7 +564,7 @@
 
   /* ---------------- 12 ---------------- */
   {
-    id: 'w12', n: 12, date: '2027-01-18', pillar: 3, fmt: 'concept', web: false,
+    id: 'w12', n: 12, date: '2027-01-25', pillar: 3, fmt: 'concept', web: false,
     title: 'Поим: музикотерапија и „музичка медицина“ – што е што',
     title_en: 'Concept: music therapy vs music medicine',
     rq: 'По што се разликуваат музикотерапијата и слушањето музика во здравствен контекст и што покажуваат Cochrane-прегледите?',
