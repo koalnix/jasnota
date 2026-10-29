@@ -1,0 +1,69 @@
+{
+  "no": "07",
+  "slug": "zajdi-zajdi-jasno-sonce",
+  "kind": "song",
+  "length": { "en": "04:12", "mk": "04:12" },
+  "audio": { "src": null, "duration": "04:12" },
+  "en": {
+    "title": "Zajdi, zajdi, jasno sonce",
+    "titleHtml": "Zajdi, zajdi,<br><em>jasno</em> sonce",
+    "excerpt": "The old song, sung with nothing but voice and silence. And why a song about a ‘clear sun’ sounds like home to me.",
+    "lede": "An old Macedonian song, sung with nothing but a voice and the silence around it. The recording is on its way. This is what it will hold, and why.",
+    "body": [
+      { "n": "I.", "blocks": [
+        { "p": "Four minutes and twelve seconds. One voice. No instruments, no harmony, nothing added to make it sound bigger than it is." },
+        { "p": "Between the phrases, I leave the silence long, on purpose. In a song like this, the pauses carry as much as the notes. They are where the listener breathes, and where the last note keeps sounding after it has stopped." }
+      ] },
+      { "n": "II.", "blocks": [
+        { "p": "<em>Zajdi, zajdi, jasno sonce</em> is one of the best-loved songs in Macedonia — a slow song from the old tradition, the kind people recognise from its first phrase. The title is spoken to the sun: <em>set, set, clear sun</em>. Someone is asking the sun to go down." },
+        { "p": "I won’t print the words here. They are better heard than read, and I would rather you met them in a voice." },
+        { "p": "Like many old songs of its kind, it moves slowly and decorates its long notes with small turns of the voice — ornaments that are hard to write down and easy to recognise. It sounds the way an old song should: patient, a little worn, completely sure of itself." }
+      ] },
+      { "n": "III.", "blocks": [
+        { "p": "I don’t remember learning it. It seems to have always been there, the way some songs are when you grow up in a place: at family tables, on the radio, hummed in another room." },
+        { "p": "When I started Jasnota, I knew the first song would be an old one. Not as folklore, and not as a postcard. I wanted to begin with something that was here long before me, and will be here long after." }
+      ] },
+      { "n": "IV.", "blocks": [
+        { "p": "<em>Jasno</em> means clear, bright — of a sky, of a sun, of a sound. It shares its root with my name, Jasna, and with <em>jasnota</em>, clarity. I didn’t choose the song for that. But once I noticed it, I couldn’t stop noticing: a song that calls a clear sun by name, sung by someone whose name means clear." },
+        { "quote": "Clarity doesn’t always mean daylight.<br>Sometimes it is the last light, the one you see best." },
+        { "p": "The sun in the song is asked to set, and it is still called clear. I like that very much. It is how the song sounds to me, too: like home at the end of the day." }
+      ] },
+      { "n": "V.", "blocks": [
+        { "p": "The recording will appear on this page. Until then, if you know the song, sing it to yourself once, slowly. And leave the pauses long." }
+      ] }
+    ],
+    "sign": "Jasna",
+    "foot": "Traditional Macedonian song. Voice: Jasna. The recording is coming soon."
+  },
+  "mk": {
+    "title": "Зајди, зајди, јасно сонце",
+    "titleHtml": "Зајди, зајди,<br><em>јасно</em> сонце",
+    "excerpt": "Старата песна, отпеана само со глас и тишина. И зошто песна за едно „јасно сонце“ ми звучи како дом.",
+    "lede": "Стара македонска песна, отпеана само со глас и со тишината околу него. Снимката е на пат. Ова е она што ќе го носи, и зошто.",
+    "body": [
+      { "n": "I.", "blocks": [
+        { "p": "Четири минути и дванаесет секунди. Еден глас. Без инструменти, без хармонија, без ништо додадено за да звучи поголемо отколку што е." },
+        { "p": "Меѓу фразите, тишината ја оставам долга, намерно. Во ваква песна паузите носат исто колку и тоновите. Во нив слушателот дише, а последниот тон продолжува да звучи и откако ќе престане." }
+      ] },
+      { "n": "II.", "blocks": [
+        { "p": "<em>Зајди, зајди, јасно сонце</em> е една од најсаканите песни во Македонија — бавна песна од старата традиција, од оние што луѓето ги препознаваат уште од првата фраза. Насловот е обраќање кон сонцето: некој го моли јасното сонце да зајде." },
+        { "p": "Нема да ги испишам стиховите тука. Подобро се слушаат отколку што се читаат, а повеќе би сакала да ги сретнеш во глас." },
+        { "p": "Како и многу стари песни од овој вид, се движи бавно и ги украсува долгите тонови со мали извивки на гласот — украси што тешко се запишуваат, а лесно се препознаваат. Звучи онака како што треба да звучи стара песна: трпелива, малку изабена, сосема сигурна во себе." }
+      ] },
+      { "n": "III.", "blocks": [
+        { "p": "Не се сеќавам кога ја научив. Како секогаш да била тука, онака како што се некои песни кога растеш на едно место: на семејни маси, на радио, потпевнувани во друга соба." },
+        { "p": "Кога ја почнав Јаснота, знаев дека првата песна ќе биде стара. Не како фолклор, и не како разгледница. Сакав да почнам со нешто што било тука долго пред мене и ќе биде тука долго по мене." }
+      ] },
+      { "n": "IV.", "blocks": [
+        { "p": "<em>Јасно</em> значи бистро, светло — за небо, за сонце, за звук. Има ист корен како и моето име, Јасна, и како зборот <em>јаснота</em>. Не ја избрав песната поради тоа. Но штом го забележав, не можев да престанам да го забележувам: песна што го повикува јасното сонце по име, отпеана од некоја чие име значи „јасна“." },
+        { "quote": "Јасноста не значи секогаш дневна светлина.<br>Понекогаш тоа е последната светлина, онаа што најдобро ја гледаш." },
+        { "p": "Сонцето во песната го молат да зајде, а сепак го викаат јасно. Тоа многу го сакам. Така песната ми звучи и мене: како дом на крајот од денот." }
+      ] },
+      { "n": "V.", "blocks": [
+        { "p": "Снимката ќе се појави на оваа страница. Дотогаш, ако ја знаеш песната, отпеај си ја еднаш, полека. И остави ги паузите долги." }
+      ] }
+    ],
+    "sign": "Јасна",
+    "foot": "Македонска народна песна. Глас: Јасна. Снимката наскоро."
+  }
+}

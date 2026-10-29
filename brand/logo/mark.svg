@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt">
+  <title>Јаснота</title>
+  <!-- Primary mark: Камертон / Ψ (direction 01).
+       A tuning fork, the instrument of attunement, drawn so it reads as psi.
+       The inner stroke stops before the bowl: the pause, listening without touching.
+       Construction: bowl radius 22, tines 44 apart, stroke 5, everything centred on x = 50. -->
+  <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/>
+  <path d="M50 6 V52"/>
+  <path d="M50 64 V94"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt">
+  <title>Јаснота — Пауза</title>
+  <!-- The fermata: the sign for a held silence, of no fixed length. Almost all of it is empty space. -->
+  <path d="M12 70 A38 38 0 0 1 88 70"/>
+  <circle cx="50" cy="63" r="7" fill="currentColor" stroke="none"/>
+</svg>

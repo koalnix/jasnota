@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jasnota Profile Prototype</title>
+<meta name="description" content="A clickable phone prototype of the Jasnota profile after month one: grid, posts with carousels and captions in English and Macedonian, reels, stories and highlights.">
+<link rel="icon" href="../../brand/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../brand/tokens.css">
+<link rel="stylesheet" href="../instagram.css?v=10">
+<link rel="stylesheet" href="../site.css?v=10">
+<link rel="stylesheet" href="app.css?v=10">
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead site">
+  <a class="wordmark" href="../"><span class="mark" aria-hidden="true"></span>jasnota</a>
+  <nav class="sitenav" aria-label="Instagram plan">
+    <a href="../">System</a><a href="../profile/">Profile</a><a href="../month/">Month one</a><a href="../calendar/">Calendar</a><a href="./" aria-current="page">Prototype</a><a href="../link/">Link in bio</a><a href="../metrics/">Review</a>
+  </nav>
+</header>
+
+<div class="app">
+  <div class="device">
+    <div class="scr" id="scr">
+      <div class="status" aria-hidden="true">
+        <span>21:10</span>
+        <svg viewBox="0 0 60 12"><rect x="0" y="7" width="3" height="5" rx="1" fill="#fff"/><rect x="5" y="5" width="3" height="7" rx="1" fill="#fff"/><rect x="10" y="3" width="3" height="9" rx="1" fill="#fff"/><rect x="15" y="1" width="3" height="11" rx="1" fill="#fff"/><rect x="34" y="1" width="22" height="10" rx="3" fill="none" stroke="#fff" stroke-opacity=".5"/><rect x="36" y="3" width="15" height="6" rx="1.5" fill="#fff"/><rect x="57" y="4.5" width="2" height="3" rx="1" fill="#fff" fill-opacity=".5"/></svg>
+      </div>
+
+      <!-- profile -->
+      <div class="view" id="vProfile" aria-label="Profile, jasnota">
+        <div class="ig-top" data-dim>
+          <span style="width:32px"></span>
+          <span class="h">jasnota</span>
+          <span class="r"><button type="button" aria-label="Notifications (not part of the prototype)" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg></button><button type="button" aria-label="More (not part of the prototype)" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-dots"/></svg></button></span>
+        </div>
+        <div class="ig-head">
+          <button class="avbtn" id="avBtn" type="button" aria-label="Open today’s stories" data-eye="1"><span class="avatar" id="avInner"></span></button>
+          <div class="stats" data-dim>
+            <div><b>15</b><span>posts</span></div>
+            <div><b>1,562</b><span>followers</span></div>
+            <div><b>212</b><span>following</span></div>
+          </div>
+        </div>
+        <div class="ig-bio">
+          <div data-eye="2">
+            <p class="n">Jasna Dimitrovska · Jasnota</p>
+            <p>Psychologist · Gestalt counsellor</p>
+          </div>
+          <div data-dim>
+            <p>Vocal artist, <span class="men">@chamber_orchestra_diva</span></p>
+            <p>To hear yourself. <span lang="mk">Да се слушнеш себеси.</span></p>
+            <p>Bitola · EN / МК</p>
+            <p class="link"><svg class="ico" aria-hidden="true"><use href="#i-link"/></svg>jasnota.mk</p>
+          </div>
+        </div>
+        <div class="ig-btns" aria-hidden="true" data-dim><span class="f">Follow</span><span>Message</span><span><svg aria-hidden="true"><use href="#i-person"/></svg></span></div>
+        <div class="highlights" id="hlRow" aria-label="Story highlights" data-eye="3"></div>
+        <div class="ig-tabs" role="tablist" aria-label="Profile content" data-dim>
+          <button type="button" role="tab" id="tabGrid" aria-selected="true" aria-controls="pGrid" aria-label="Posts"><svg class="ico" aria-hidden="true"><use href="#i-grid"/></svg></button>
+          <button type="button" role="tab" id="tabReels" aria-selected="false" aria-controls="pReels" aria-label="Reels" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-reel"/></svg></button>
+          <button type="button" role="tab" id="tabTag" aria-selected="false" aria-controls="pTag" aria-label="Tagged" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-tag"/></svg></button>
+        </div>
+        <div role="tabpanel" id="pGrid" aria-labelledby="tabGrid"><div class="grid3" id="grid"></div></div>
+        <div role="tabpanel" id="pReels" aria-labelledby="tabReels" hidden><div class="grid3" id="reelsGrid"></div></div>
+        <div role="tabpanel" id="pTag" aria-labelledby="tabTag" hidden><div class="tagged-empty" id="tagged"></div></div>
+      </div>
+
+      <!-- post -->
+      <div class="layer slide" id="vPost" role="dialog" aria-modal="true" aria-label="Post" hidden>
+        <div class="pv-top"><button class="icon-btn" type="button" data-close aria-label="Back to profile"><svg class="ico" aria-hidden="true"><use href="#i-back"/></svg></button><div class="t"><small>jasnota</small><b>Posts</b></div><span></span></div>
+        <div class="pv-scroll" id="pvBody"></div>
+      </div>
+
+      <!-- reel -->
+      <div class="layer fade" id="vReel" role="dialog" aria-modal="true" aria-label="Reel" hidden>
+        <div class="vstage" id="reelStage"></div>
+        <button class="reel-tap" type="button" id="reelTap" aria-label="Pause or play"></button>
+        <div class="reel-ui" id="reelUI"></div>
+      </div>
+
+      <!-- story -->
+      <div class="layer fade story-layer" id="vStory" role="dialog" aria-modal="true" aria-label="Stories" hidden>
+        <div class="vstage" id="storyStage"></div>
+        <div class="tapzones"><button type="button" id="stPrev" aria-label="Previous frame"></button><button type="button" id="stNext" aria-label="Next frame"></button></div>
+        <div class="story-ui"><div class="bars" id="bars"></div><div class="story-head" id="storyHead"></div></div>
+        <span class="paused-tag" id="pausedTag">paused</span>
+      </div>
+
+      <div class="eye-end" id="eyeEnd" hidden>
+        <p class="footnote">After three seconds, a new visitor leaves with:</p>
+        <p class="q">A psychologist who <em>sings.</em> Black, quiet, typographic. Something to <em>listen</em> to.</p>
+        <p class="footnote">Not wellness, not a clinic, not a band. That is the job of the first row and the first bio line.</p>
+        <div class="row"><button class="btn" type="button" id="eyeAgain">Again</button><button class="btn" type="button" id="eyeExit">Back to the profile</button></div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="side">
+    <h1 class="display">Profile <em>prototype</em></h1>
+    <p class="lead"><strong>The profile on Monday 30 November, after month one.</strong> Newest post top-left; the three paper downbeats walk the diagonal. Tap a post, a reel, a highlight or the picture. Every frame is the real plan; the interface is a generic stand-in, not the platform’s own.</p>
+
+    <div class="ctrl"><span>pinned posts</span><div class="btns seg" role="group" aria-label="Pinned posts"><button type="button" data-pins="off" aria-pressed="true">Off: posting order</button><button type="button" data-pins="on" aria-pressed="false">On: who · try · keep</button></div></div>
+    <div class="ctrl"><span>captions</span><div class="btns seg" role="group" aria-label="Caption language"><button type="button" data-lang="both" aria-pressed="true">EN + МК</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="mk" aria-pressed="false">МК</button></div></div>
+    <div class="ctrl"><span>a stranger’s view</span><div class="btns"><button class="btn" type="button" id="eyeBtn">First 3 seconds</button></div></div>
+    <div class="ctrl"><span>stories</span><div class="btns"><button class="btn" type="button" id="todayBtn">Today’s stories</button><button class="btn" type="button" id="hlBtn">Highlight: Jasna</button></div></div>
+
+    <ol class="eye-notes" id="eyeNotes">
+      <li><span><b>A face, or the mark, and a name she is searched by.</b> The ring says there is something new today.</span></li>
+      <li><span><b>“Psychologist · Gestalt counsellor”.</b> The first bio line answers “who is this?” before the eye reaches the grid.</span></li>
+      <li><span><b>Six quiet circles.</b> The brand’s own signs on black: a series, songs, a stage, a journal, a rest.</span></li>
+      <li><span><b>The top row.</b> One paper tile, a photograph, type on black. Calm and typographic: nothing that looks like wellness or a clinic.</span></li>
+    </ol>
+    <p class="footnote kbd">Keyboard: Tab to any post, Enter opens · ← → move through slides and stories · Space pauses · Esc goes back.</p>
+  </aside>
+</div>
+
+</div>
+<script src="../render.js?v=10"></script>
+<script src="../data.js?v=10"></script>
+<script src="app.js?v=10"></script>
+</body>
+</html>

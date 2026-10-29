@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="mk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Јаснота — визуелен идентитет</title>
+<meta name="description" content="Визуелен идентитет за Јаснота: знак, збор, боја, писмо, ритам и глас.">
+<link rel="icon" href="../brand/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../brand/tokens.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink);color:var(--bone);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:var(--ink);color:var(--bone);font-family:var(--font-text);font-weight:300;font-size:17px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:50;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .93 0 0 0 0 .91 0 0 0 0 .88 0 0 0 1.1 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+@media (prefers-reduced-motion:no-preference){body::after{animation:grain 1.6s steps(6) infinite}}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+::selection{background:var(--bone);color:var(--ink)}
+a{color:inherit;text-decoration-color:var(--graphite);text-underline-offset:.25em;text-decoration-thickness:1px}
+a:hover{text-decoration-color:var(--bone)}
+svg{display:block}
+[lang="en"]{font-feature-settings:normal}
+
+.wrap{max-width:1440px;margin:0 auto;padding:0 clamp(16px,5vw,80px)}
+.g7{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:clamp(12px,2.2vw,32px)}
+
+.num,.mono{font-family:var(--font-mono);font-weight:300;font-size:12px;letter-spacing:.02em;color:var(--ash);line-height:1.5}
+.en{color:var(--ash)}
+p+p{margin-top:var(--s-2)}
+.lead{font-size:clamp(19px,1.6vw,22px);line-height:1.5;max-width:34em}
+.small{font-size:15px;line-height:1.55}
+
+section.wrap{padding-top:clamp(120px,16vw,var(--s-8))}
+.head{align-items:start;margin-bottom:var(--s-6)}
+.head .num{grid-column:1/2;padding-top:1.4em}
+.head h2{grid-column:2/8}
+h2{font-family:var(--font-display);font-weight:300;font-size:clamp(46px,7.6vw,124px);line-height:.94;letter-spacing:-.018em}
+h2 em,h3 em{font-style:italic}
+h3{font-family:var(--font-display);font-weight:300;font-size:clamp(34px,3.6vw,54px);line-height:1;letter-spacing:-.01em}
+.display{font-family:var(--font-display);font-weight:300;letter-spacing:-.015em;line-height:.95}
+.rule{border:0;border-top:1px solid var(--graphite)}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;padding-top:var(--s-4);padding-bottom:var(--s-4)}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--s-3)}
+.hero-top .lockup{width:150px;color:var(--bone)}
+.hero-body{align-items:end;padding-top:var(--s-5)}
+.hero-mark{grid-column:5/8;grid-row:1;align-self:start;justify-self:end;width:min(34vw,520px);aspect-ratio:1;margin-top:calc(-1*var(--s-3))}
+.hero-mark svg{width:100%;height:100%}
+.hero h1{grid-column:1/6;grid-row:1;font-family:var(--font-display);font-weight:300;font-size:clamp(76px,15vw,250px);line-height:.86;letter-spacing:-.03em;margin-top:clamp(160px,22vw,340px);position:relative;z-index:2}
+.hero h1 em{font-style:italic;display:block;padding-left:.62em}
+.hero-intro{grid-column:1/4;margin-top:var(--s-5)}
+.hero-foot{display:flex;justify-content:space-between;gap:var(--s-3);margin-top:var(--s-6);padding-top:var(--s-2);border-top:1px solid var(--graphite)}
+.dot{display:inline-block;width:.42em;height:.42em;border-radius:50%;background:var(--cinnabar);vertical-align:.12em;margin-left:.08em}
+
+@media (prefers-reduced-motion:no-preference){
+  .hero-mark path{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.6s var(--ease-out) forwards}
+  .hero-mark path:nth-child(1){animation-delay:.2s}
+  .hero-mark path:nth-child(2){animation-delay:1.3s;animation-duration:1.2s}
+  .hero-mark path:nth-child(3){animation-delay:.8s;animation-duration:1s}
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* ---------- name ---------- */
+.reading{align-items:baseline;padding:var(--s-3) 0;border-top:1px solid var(--graphite)}
+.reading .word{grid-column:2/6;font-family:var(--font-display);font-weight:300;font-size:clamp(46px,8vw,132px);line-height:1;letter-spacing:-.02em;color:var(--ash)}
+.reading .word b{font-weight:300;color:var(--bone)}
+.reading .gloss{grid-column:6/8}
+.reading.final{border-top-color:var(--ash)}
+.reading.final .word{color:var(--bone)}
+.name-text{margin-top:var(--s-6)}
+.name-text>div:first-child{grid-column:2/5}
+.name-text>div:last-child{grid-column:5/8}
+
+/* ---------- directions ---------- */
+.dir{padding:var(--s-6) 0;border-top:1px solid var(--graphite);align-items:start}
+.dir .num{grid-column:1/2;padding-top:.6em}
+.stage{grid-column:2/5;aspect-ratio:1;background:var(--night);display:grid;place-items:center;color:var(--bone)}
+.stage svg{width:72%;height:72%}
+.dir-text{grid-column:5/8;padding-top:.2em}
+.dir.flip .stage{grid-column:5/8;grid-row:1}
+.dir.flip .dir-text{grid-column:2/5;grid-row:1}
+.dir h3{margin-bottom:var(--s-1)}
+.dir .idea{margin-bottom:var(--s-4)}
+.sizes{display:flex;align-items:stretch;gap:0;margin-top:var(--s-5);flex-wrap:wrap}
+.sizes .on-ink,.sizes .on-bone{display:flex;align-items:flex-end;gap:var(--s-3);padding:var(--s-3)}
+.sizes .on-ink{border:1px solid var(--graphite);color:var(--bone)}
+.sizes .on-bone{background:var(--bone);color:var(--ink)}
+.s24{width:24px;height:24px}.s48{width:48px;height:48px}.s96{width:96px;height:96px}.s16{width:16px;height:16px}
+.sizes figure{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.sizes figcaption{font-family:var(--font-mono);font-size:10px;color:var(--ash)}
+.sizes .on-bone figcaption{color:#6d6b66}
+
+/* ---------- primary ---------- */
+.primary-grid{align-items:start}
+.construct{grid-column:1/5;color:var(--bone)}
+.construct svg{width:100%;height:auto}
+.reasons{grid-column:5/8;list-style:none;counter-reset:r}
+.reasons li{padding:var(--s-3) 0;border-top:1px solid var(--graphite);display:grid;grid-template-columns:40px 1fr;gap:0 var(--s-2)}
+.reasons li::before{counter-increment:r;content:"0" counter(r);font-family:var(--font-mono);font-size:12px;color:var(--ash);padding-top:.35em}
+.reasons li>*{grid-column:2}
+.vocab{margin-top:var(--s-7)}
+.vocab-intro{grid-column:2/5}
+.vocab-list{grid-column:2/8;margin-top:var(--s-5);list-style:none}
+.vocab-list li{display:grid;grid-template-columns:56px 3fr 4fr;gap:var(--s-3);align-items:center;padding:var(--s-2) 0;border-top:1px solid var(--graphite)}
+.vocab-list svg{width:40px;height:40px;color:var(--bone)}
+.vocab-list .vname{font-family:var(--font-display);font-size:28px;line-height:1.1}
+
+/* ---------- wordmark ---------- */
+.wm-big{color:var(--bone)}
+.wm-big svg{width:100%;height:auto}
+.wm-latin{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:clamp(12px,2.2vw,32px);margin-top:var(--s-6);align-items:end}
+.wm-latin .w{grid-column:4/8}
+.wm-latin .w svg{width:100%;height:auto}
+.wm-latin .c{grid-column:1/3}
+.wm-notes{margin-top:var(--s-7);align-items:start}
+.wm-detail{grid-column:1/4;background:var(--night);aspect-ratio:1;position:relative;overflow:hidden}
+.wm-detail svg{position:absolute;height:84%;width:auto;left:14%;top:8%;color:var(--bone)}
+.wm-detail.accent svg circle{fill:var(--cinnabar)}
+.wm-detail .mono{position:absolute;right:var(--s-2);bottom:var(--s-2)}
+.notes{grid-column:5/8;list-style:none}
+.notes li{padding:var(--s-3) 0;border-top:1px solid var(--graphite)}
+.lockups{margin-top:var(--s-7);row-gap:clamp(12px,2.2vw,32px)}
+.lk{display:grid;place-items:center;padding:clamp(28px,6vw,96px) clamp(20px,4vw,64px);min-height:clamp(220px,28vw,420px);position:relative}
+.lk svg{height:auto}
+.lk.ink{background:var(--night);color:var(--bone)}
+.lk.bone{background:var(--bone);color:var(--ink)}
+.lk .mono{position:absolute;left:var(--s-2);bottom:var(--s-2)}
+.lk.bone .mono{color:#6d6b66}
+.lk-h{grid-column:1/5}.lk-h svg{width:min(100%,520px)}
+.lk-s{grid-column:5/8}.lk-s svg{width:min(70%,240px)}
+.accent-line svg circle{fill:var(--cinnabar)}
+
+/* ---------- clear space ---------- */
+.cs{align-items:end}
+.cs-mark{grid-column:1/3}
+.cs-lock{grid-column:3/8}
+.cs figure svg{width:100%;height:auto}
+.cs figcaption{margin-top:var(--s-2)}
+.minsize{margin-top:var(--s-6);align-items:start}
+.minsize-text{grid-column:2/5}
+.minsize table{grid-column:5/8;width:100%;border-collapse:collapse;font-size:15px}
+.minsize td,.minsize th{text-align:left;font-weight:300;padding:12px 0;border-top:1px solid var(--graphite);vertical-align:baseline}
+.minsize th{font-family:var(--font-mono);font-size:11px;color:var(--ash)}
+.minsize td+td,.minsize th+th{text-align:right;font-family:var(--font-mono);font-size:13px}
+.minrow{display:flex;align-items:flex-end;gap:var(--s-4);margin-top:var(--s-4);color:var(--bone)}
+
+/* ---------- palette ---------- */
+.strip{display:flex;height:clamp(120px,18vw,260px);margin-bottom:var(--s-6)}
+.strip span{display:block;height:100%}
+.swatches{list-style:none}
+.swatches li{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:clamp(12px,2.2vw,32px);align-items:center;padding:var(--s-2) 0;border-top:1px solid var(--graphite)}
+.chip{width:56px;height:56px;border-radius:50%;border:1px solid var(--graphite)}
+.swatches .nm{grid-column:2/4;font-family:var(--font-display);font-size:30px;line-height:1}
+.swatches .hx{grid-column:4/5}
+.swatches .pc{grid-column:5/6}
+.swatches .rl{grid-column:6/8;font-size:15px}
+
+/* ---------- type ---------- */
+.spec{padding:var(--s-5) 0;border-top:1px solid var(--graphite);align-items:start}
+.spec .mono{grid-column:1/3}
+.spec .sample{grid-column:3/8}
+.spec-big{font-family:var(--font-display);font-weight:300;font-size:clamp(52px,9vw,150px);line-height:.95;letter-spacing:-.02em}
+.spec-big em{font-style:italic}
+.spec-glyphs{font-family:var(--font-display);font-weight:300;font-size:clamp(48px,8vw,128px);line-height:1;letter-spacing:.04em;word-spacing:.12em}
+.spec-glyphs span{display:block;color:var(--ash);font-size:.7em;margin-top:.15em}
+.spec-italic{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:clamp(36px,5vw,72px);line-height:1.05}
+.spec-text{font-family:var(--font-text);font-weight:300;font-size:clamp(18px,1.5vw,21px);line-height:1.6;max-width:36em}
+.spec-mono{font-family:var(--font-mono);font-weight:300;font-size:clamp(14px,1.3vw,17px);letter-spacing:.02em;display:flex;flex-wrap:wrap;gap:var(--s-2) var(--s-5)}
+
+/* ---------- rhythm ---------- */
+.scale{list-style:none;margin-bottom:var(--s-6)}
+.scale li{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:clamp(12px,2.2vw,32px);align-items:center;padding:10px 0;border-top:1px solid var(--graphite)}
+.scale .mono:first-child{grid-column:1/2}
+.scale .mono:nth-child(2){grid-column:2/3}
+.scale i{grid-column:3/8;display:block;height:8px;background:var(--bone)}
+.meter{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:clamp(6px,1.2vw,16px);margin-top:var(--s-5)}
+.meter span{height:clamp(56px,7vw,112px);background:var(--night);border-top:1px solid var(--ash)}
+.meter span.down{border-top:2px solid var(--bone)}
+.meter-groups{display:grid;grid-template-columns:2fr 2fr 3fr;column-gap:clamp(6px,1.2vw,16px);margin-top:var(--s-2)}
+.meter-groups div{border-top:1px solid var(--bone);padding-top:8px}
+.rhythm-notes{margin-top:var(--s-6);align-items:start}
+.rhythm-notes>div:first-child{grid-column:2/5}
+.rhythm-notes>div:last-child{grid-column:5/8}
+.beat{display:flex;gap:6px;margin-top:var(--s-2);align-items:center}
+.beat i{display:block;height:2px;background:var(--bone)}
+
+/* ---------- voice ---------- */
+.voice{align-items:start}
+.voice .col{grid-column:span 3}
+.voice .col:first-child{grid-column:2/5}
+.voice .col:last-child{grid-column:5/8}
+.voice h3{margin-bottom:var(--s-3);font-style:italic}
+.voice ul{list-style:none}
+.voice li{padding:var(--s-3) 0;border-top:1px solid var(--graphite)}
+.voice .q{font-family:var(--font-display);font-weight:300;font-size:clamp(26px,2.4vw,34px);line-height:1.15}
+.voice .no .q{color:var(--ash);text-decoration:line-through;text-decoration-color:var(--cinnabar);text-decoration-thickness:1px}
+.voice .en{font-size:15px;margin-top:6px}
+.voice .why{font-size:15px;margin-top:6px;color:var(--ash)}
+
+/* ---------- misuse ---------- */
+.misuse{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s-5) clamp(12px,2.2vw,32px);list-style:none}
+.misuse .tile{aspect-ratio:1;display:grid;place-items:center;border:1px solid var(--graphite);color:var(--bone);overflow:hidden;position:relative}
+.misuse .tile svg{width:52%;height:52%}
+.misuse p{margin-top:var(--s-2);font-size:15px;line-height:1.45}
+.misuse .en{display:block}
+.m-stretch svg{transform:scaleX(1.55)}
+.m-rotate svg{transform:rotate(24deg)}
+.m-grad svg path{stroke:url(#bad-grad)}
+.m-glow svg{filter:drop-shadow(0 0 6px #fff) drop-shadow(0 6px 10px rgba(255,255,255,.5))}
+.m-red{color:var(--cinnabar)!important}
+.m-caps{font-family:var(--font-text);font-weight:500;font-size:clamp(22px,2.6vw,36px);letter-spacing:.06em}
+.m-busy{background:repeating-linear-gradient(115deg,#3a3936 0 7px,#8c8a85 7px 9px,#1d1d1f 9px 15px)}
+
+/* ---------- footer ---------- */
+footer.wrap{margin-top:clamp(120px,16vw,var(--s-8));padding-top:var(--s-5);padding-bottom:var(--s-5)}
+footer .files{border-top:1px solid var(--graphite);padding-top:var(--s-3)}
+.files{align-items:start}
+.files .c1{grid-column:1/3}
+.files ul{grid-column:3/8;list-style:none;columns:2;column-gap:clamp(12px,2.2vw,32px)}
+.files li{font-family:var(--font-mono);font-size:12px;padding:6px 0;break-inside:avoid}
+.closing{margin-top:var(--s-7);align-items:end}
+.closing .display{grid-column:1/6;font-size:clamp(40px,6vw,96px)}
+.closing .mono{grid-column:6/8;text-align:right}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .misuse{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:860px){
+  body{font-size:16px}
+  .g7,.wm-latin,.swatches li,.scale li{grid-template-columns:minmax(0,1fr)}
+  .g7>*,.wm-latin>*{grid-column:1/-1!important;grid-row:auto!important}
+  .head{grid-template-columns:minmax(0,1fr) auto;margin-bottom:var(--s-5)}
+  .head h2{grid-column:1/2!important;grid-row:1!important}
+  .head .num{grid-column:2/3!important;grid-row:1!important;padding-top:.6em;padding-left:var(--s-2)}
+  .hero-body{padding-top:var(--s-4)}
+  .hero-mark{justify-self:end;width:min(62vw,340px);margin-top:0}
+  .hero h1{margin-top:calc(-1*var(--s-6))}
+  .hero-top .lockup{width:120px;flex:none}
+  .hero-top .mono{text-align:right;max-width:12em}
+  .hero-foot p{white-space:nowrap}
+  .hero-foot p:nth-child(2){display:none}
+  .reading{padding:var(--s-2) 0}
+  .reading .gloss{margin-top:6px}
+  .name-text>div+div{margin-top:var(--s-3)}
+  .dir{padding:var(--s-5) 0}
+  .dir{position:relative}
+  .dir .num{position:absolute;top:calc(var(--s-5) + 14px);left:14px;z-index:1;padding:0}
+  .sizes>div{flex:1 1 auto}
+  .dir .dir-text{margin-top:var(--s-4)}
+  .sizes .on-ink,.sizes .on-bone{padding:var(--s-2);gap:var(--s-2)}
+  .reasons{margin-top:var(--s-5)}
+  .vocab-list li{grid-template-columns:48px minmax(0,1fr)}
+  .vocab-list li>p{grid-column:2}
+  .wm-latin .c{margin-top:var(--s-3);order:2}
+  .lk{padding-bottom:56px;min-height:0}
+  .notes{margin-top:var(--s-4)}
+  .lockups>*+*{margin-top:12px}
+  .cs-lock{margin-top:var(--s-5)}
+  .cs-mark{max-width:240px}
+  .minsize table{margin-top:var(--s-4)}
+  .swatches li{grid-template-columns:56px minmax(0,1fr) auto;row-gap:4px}
+  .swatches .chip{grid-row:1/3}
+  .swatches .nm{grid-column:2/3!important}
+  .swatches .hx{grid-column:3/4!important;grid-row:1;text-align:right}
+  .swatches .pc{grid-column:3/4!important;grid-row:2;text-align:right}
+  .swatches .rl{grid-column:2/3!important;grid-row:2}
+  .scale li{grid-template-columns:64px 48px minmax(0,1fr)}
+  .scale .mono:first-child{grid-column:1}.scale .mono:nth-child(2){grid-column:2}.scale i{grid-column:3}
+  .spec .mono{order:2;margin-top:var(--s-3)}
+  .spec-glyphs{font-size:clamp(34px,9.6vw,60px);letter-spacing:.02em;word-spacing:0}
+  .rhythm-notes>div+div{margin-top:var(--s-4)}
+  .voice .col+.col{margin-top:var(--s-6)}
+  .files ul{columns:1;margin-top:var(--s-3)}
+  .closing .mono{text-align:left;margin-top:var(--s-3)}
+}
+@media (max-width:480px){
+  .misuse{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s-4) 12px}
+  .misuse p{font-size:14px}
+  .sizes{gap:0}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="bad-grad" gradientUnits="userSpaceOnUse" x1="20" y1="0" x2="80" y2="100">
+      <stop offset="0" stop-color="#7b5cff"/><stop offset="1" stop-color="#2fd2ff"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<header class="wrap hero">
+  <div class="hero-top">
+    <div class="lockup"><svg role="img" aria-label="Јаснота" viewBox="0 -598 3813.5 880.2" fill="currentColor"> <g transform="translate(-255 -658) scale(10.0017)"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"><path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/><path d="M50 6 V52"/><path d="M50 64 V94"/></g></g> <g transform="translate(798 0)"><path d="M161 -388Q161 -381 160 -349.5Q159 -318 159 -271V48Q159 114 147 158.5Q135 203 106.5 232Q78 261 28 282Q26 283 23.5 277.5Q21 272 23 271Q73 250 92.5 203Q112 156 112 71V-270Q112 -306 105 -322.5Q98 -339 80 -339Q71 -339 59.5 -335.5Q48 -332 32 -324Q28 -323 25.5 -328.5Q23 -334 27 -336L151 -394Q153 -395 154 -395Q157 -395 159 -393Q161 -391 161 -388Z M584 6Q580 8 576 8Q564 8 554 -13Q544 -34 544 -74V-255Q544 -304 534.5 -330Q525 -356 509.5 -365.5Q494 -375 476 -375Q449 -375 432 -361Q415 -347 406.5 -327.5Q398 -308 395 -291Q394 -281 388.5 -269.5Q383 -258 363 -258Q350 -258 341.5 -265Q333 -272 333 -285Q333 -302 350 -321Q367 -340 393.5 -357Q420 -374 450 -384.5Q480 -395 506 -395Q543 -395 566.5 -368.5Q590 -342 590 -285V-108Q590 -72 598.5 -55.5Q607 -39 628 -39Q647 -39 683 -54Q688 -56 690 -50.5Q692 -45 687 -43ZM391 7Q359 7 343.5 -10.5Q328 -28 328 -50Q328 -76 349 -92.5Q370 -109 418 -126L554 -175L556 -165L428 -116Q406 -108 397 -97Q388 -86 388 -69Q388 -48 400.5 -36.5Q413 -25 432 -25Q443 -25 452.5 -27.5Q462 -30 470 -34L563 -81L565 -70L478 -23Q447 -7 428.5 0Q410 7 391 7Z M942 12Q874 12 831.5 -17.5Q789 -47 769 -92.5Q749 -138 749 -185Q749 -235 768 -274Q787 -313 818.5 -340Q850 -367 888 -381Q926 -395 963 -395Q991 -395 1017 -387.5Q1043 -380 1060 -367Q1077 -354 1077 -338Q1077 -326 1069.5 -317.5Q1062 -309 1048 -309Q1034 -309 1024 -318Q1014 -327 1008 -337Q996 -354 979.5 -364.5Q963 -375 931 -375Q870 -375 838 -330.5Q806 -286 806 -214Q806 -163 824 -118.5Q842 -74 879.5 -46.5Q917 -19 977 -19Q1003 -19 1030.5 -26.5Q1058 -34 1080 -54Q1083 -56 1086.5 -52Q1090 -48 1087 -46Q1053 -15 1018 -1.5Q983 12 942 12Z M1265 -184V-202H1534V-184ZM1243 -81V-305Q1243 -349 1231.5 -361.5Q1220 -374 1178 -374Q1175 -374 1175 -380Q1175 -386 1178 -386Q1196 -386 1219.5 -385Q1243 -384 1268 -384Q1291 -384 1314.5 -385Q1338 -386 1356 -386Q1358 -386 1358 -380Q1358 -374 1356 -374Q1313 -374 1301.5 -360Q1290 -346 1290 -303V-81Q1290 -38 1301.5 -25Q1313 -12 1356 -12Q1358 -12 1358 -6Q1358 0 1356 0Q1337 0 1314 -1Q1291 -2 1268 -2Q1243 -2 1219.5 -1Q1196 0 1177 0Q1174 0 1174 -6Q1174 -12 1177 -12Q1220 -12 1231.5 -25Q1243 -38 1243 -81ZM1512 -81V-305Q1512 -349 1500.5 -361.5Q1489 -374 1447 -374Q1444 -374 1444 -380Q1444 -386 1447 -386Q1465 -386 1488.5 -385Q1512 -384 1537 -384Q1560 -384 1583.5 -385Q1607 -386 1625 -386Q1627 -386 1627 -380Q1627 -374 1625 -374Q1582 -374 1570.5 -360Q1559 -346 1559 -303V-81Q1559 -38 1570.5 -25Q1582 -12 1625 -12Q1627 -12 1627 -6Q1627 0 1625 0Q1606 0 1583 -1Q1560 -2 1537 -2Q1512 -2 1488 -1Q1464 0 1446 0Q1443 0 1443 -6Q1443 -12 1446 -12Q1488 -12 1500 -25Q1512 -38 1512 -81Z M1904 13Q1845 13 1801.5 -16Q1758 -45 1734.5 -93.5Q1711 -142 1711 -198Q1711 -250 1730 -288Q1749 -326 1780.5 -350.5Q1812 -375 1849 -387Q1886 -399 1922 -399Q1982 -399 2025 -369Q2068 -339 2091 -292Q2114 -245 2114 -193Q2114 -129 2085 -83Q2056 -37 2008.5 -12Q1961 13 1904 13ZM1932 -5Q1988 -5 2022 -42.5Q2056 -80 2056 -167Q2056 -228 2035 -276Q2014 -324 1976.5 -352Q1939 -380 1889 -380Q1832 -380 1800 -340.5Q1768 -301 1768 -227Q1768 -168 1788.5 -117Q1809 -66 1846 -35.5Q1883 -5 1932 -5Z M2281 0Q2279 0 2279 -6Q2279 -12 2281 -12Q2324 -12 2336 -25Q2348 -38 2348 -81V-303Q2348 -345 2338 -359Q2328 -373 2293 -373Q2254 -373 2230.5 -349.5Q2207 -326 2207 -255Q2207 -253 2201 -253Q2195 -253 2195 -255Q2195 -269 2195 -297.5Q2195 -326 2194.5 -356Q2194 -386 2194 -405Q2194 -410 2200 -410Q2206 -410 2206 -405Q2206 -391 2253.5 -388Q2301 -385 2371 -385Q2418 -385 2455.5 -386Q2493 -387 2515 -391.5Q2537 -396 2537 -405Q2537 -410 2543 -410Q2549 -410 2549 -405Q2549 -386 2549 -356Q2549 -326 2548.5 -297.5Q2548 -269 2548 -255Q2548 -253 2542 -253Q2536 -253 2536 -255Q2536 -326 2511 -349.5Q2486 -373 2447 -373Q2413 -373 2404 -359Q2395 -345 2395 -303V-81Q2395 -38 2406.5 -25Q2418 -12 2460 -12Q2463 -12 2463 -6Q2463 0 2460 0Q2442 0 2419 -1Q2396 -2 2372 -2Q2348 -2 2324.5 -1Q2301 0 2281 0Z M2909 6Q2905 8 2901 8Q2889 8 2879 -13Q2869 -34 2869 -74V-255Q2869 -304 2859.5 -330Q2850 -356 2834.5 -365.5Q2819 -375 2801 -375Q2774 -375 2757 -361Q2740 -347 2731.5 -327.5Q2723 -308 2720 -291Q2719 -281 2713.5 -269.5Q2708 -258 2688 -258Q2675 -258 2666.5 -265Q2658 -272 2658 -285Q2658 -302 2675 -321Q2692 -340 2718.5 -357Q2745 -374 2775 -384.5Q2805 -395 2831 -395Q2868 -395 2891.5 -368.5Q2915 -342 2915 -285V-108Q2915 -72 2923.5 -55.5Q2932 -39 2953 -39Q2972 -39 3008 -54Q3013 -56 3015 -50.5Q3017 -45 3012 -43ZM2716 7Q2684 7 2668.5 -10.5Q2653 -28 2653 -50Q2653 -76 2674 -92.5Q2695 -109 2743 -126L2879 -175L2881 -165L2753 -116Q2731 -108 2722 -97Q2713 -86 2713 -69Q2713 -48 2725.5 -36.5Q2738 -25 2757 -25Q2768 -25 2777.5 -27.5Q2787 -30 2795 -34L2888 -81L2890 -70L2803 -23Q2772 -7 2753.5 0Q2735 7 2716 7Z"/><circle cx="126" cy="-554" r="44"/></g> </svg></div>
+    <p class="mono">визуелен идентитет · в1 · 10.2026</p>
+  </div>
+  <div class="g7 hero-body">
+    <div class="hero-mark" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt">
+        <path pathLength="1" d="M28 14 V44 A22 22 0 0 0 72 44 V14"/>
+        <path pathLength="1" d="M50 6 V52"/>
+        <path pathLength="1" d="M50 64 V94"/>
+      </svg>
+    </div>
+    <h1>Јасна <em>нота.</em></h1>
+    <div class="hero-intro">
+      <p class="lead">Визуелен идентитет за Јаснота: психологија, музика и човечко искуство, кажани тивко.</p>
+      <p class="en small" lang="en">Visual identity for Jasnota. Psychology, music and human experience, said quietly.</p>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <p class="mono">♩ = 60</p>
+    <p class="mono">знак · збор · боја · писмо · ритам · глас</p>
+    <p class="mono">7/8</p>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= NAME ================= -->
+<section class="wrap" id="ime">
+  <div class="g7 head"><p class="num">01</p><h2>Едно име, <em>три</em> читања.</h2></div>
+
+  <div class="g7 reading"><p class="word"><b>јасна</b> <b>нота</b></p><p class="gloss small">чиста нота<br><span class="en" lang="en">a clear note</span></p></div>
+  <div class="g7 reading"><p class="word"><b>јас</b>на <b>нота</b></p><p class="gloss small">јас и нота: личноста и звукот<br><span class="en" lang="en">I and a note: the self and the sound</span></p></div>
+  <div class="g7 reading"><p class="word"><b>јасно</b>ст</p><p class="gloss small">јасност<br><span class="en" lang="en">clarity</span></p></div>
+  <div class="g7 reading final"><p class="word">јаснота</p><p class="gloss small">името<br><span class="en" lang="en">the name</span></p></div>
+
+  <div class="g7 name-text">
+    <div>
+      <p>Јасна е името на авторката. На македонски, <em>јасна</em> значи и чиста, светла, разбирлива. Нота е звук запишан на хартија. Кога двата збора ќе се спојат, во средината остануваат <em>јас</em> и <em>нота</em>: личноста и звукот, токму двете работи за кои зборува брендот.</p>
+    </div>
+    <div>
+      <p class="en" lang="en">Jasna is the founder's name. In Macedonian, <em>jasna</em> also means clear, bright, lucid. A <em>nota</em> is a sound written down. Join the two words and what remains inside is <em>jas</em>, “I”, and <em>nota</em>: the self and the sound, which is exactly what the brand talks about.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIRECTIONS ================= -->
+<section class="wrap" id="nasoki">
+  <div class="g7 head"><p class="num">02</p><h2>Шест насоки.</h2></div>
+  <div class="g7" style="margin-bottom:var(--s-6)">
+    <div style="grid-column:2/5"><p>Секоја почнува од идеја во основата на брендот, не од украс. Сите се цртани на иста мрежа 100 × 100, со иста дебелина на линијата, и сите мора да преживеат 24 пиксели.</p></div>
+    <div style="grid-column:5/8"><p class="en" lang="en">Each starts from an idea in the brand foundation, not from ornament. All are drawn on the same 100 × 100 grid with the same stroke, and all must survive 24 pixels.</p></div>
+  </div>
+
+  <article class="g7 dir">
+    <p class="num">01</p>
+    <div class="stage"><svg role="img" aria-label="Камертон / Ψ" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/> <path d="M50 6 V52"/> <path d="M50 64 V94"/> </svg></div>
+    <div class="dir-text">
+      <h3>Камертон / <em>Ψ</em></h3>
+      <p class="mono idea">идеја 1 · камертон, усогласување</p>
+      <p>Камертонот е инструмент за усогласување, а неговата силуета е речиси Ψ, знакот на психологијата. Внатрешната линија застанува пред лакот: слушање без допир.</p>
+      <p class="en small" lang="en">A tuning fork is the instrument of attunement, and its silhouette is almost Ψ, the sign of psychology. The inner line stops before the bowl: listening without touching.</p>
+      <div class="sizes">
+        <div class="on-ink"><figure><svg class="s48" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/> <path d="M50 6 V52"/> <path d="M50 64 V94"/> </svg><figcaption>48</figcaption></figure><figure><svg class="s24" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/> <path d="M50 6 V52"/> <path d="M50 64 V94"/> </svg><figcaption>24</figcaption></figure></div>
+        <div class="on-bone"><figure><svg class="s96" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/> <path d="M50 6 V52"/> <path d="M50 64 V94"/> </svg><figcaption>96</figcaption></figure><figure><svg class="s48" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/> <path d="M50 6 V52"/> <path d="M50 64 V94"/> </svg><figcaption>48</figcaption></figure><figure><svg class="s24" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/> <path d="M50 6 V52"/> <path d="M50 64 V94"/> </svg><figcaption>24</figcaption></figure></div>
+      </div>
+    </div>
+  </article>
+  <article class="g7 dir flip">
+    <p class="num">02</p>
+    <div class="stage"><svg role="img" aria-label="Седум осмини" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M53.76 14.2 A36 36 0 0 1 85.6 55.37"/> <path d="M83.7 62.65 A36 36 0 0 1 35.85 83.1"/> <path d="M29.28 79.44 A36 36 0 0 1 46.24 14.2"/> </svg></div>
+    <div class="dir-text">
+      <h3>Седум <em>осмини</em></h3>
+      <p class="mono idea">идеја 2 · асиметричен ритам 7/8</p>
+      <p>Еден круг на орото, измерен 2 + 2 + 3. Првиот прекин стои на дванаесет часот, на силниот удар. Нерамномерното не е грешка, туку ритам.</p>
+      <p class="en small" lang="en">One turn of the oro, measured 2 + 2 + 3. The first break sits at twelve o’clock, on the downbeat. Uneven is not a mistake; it is a rhythm.</p>
+      <div class="sizes">
+        <div class="on-ink"><figure><svg class="s48" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M53.76 14.2 A36 36 0 0 1 85.6 55.37"/> <path d="M83.7 62.65 A36 36 0 0 1 35.85 83.1"/> <path d="M29.28 79.44 A36 36 0 0 1 46.24 14.2"/> </svg><figcaption>48</figcaption></figure><figure><svg class="s24" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M53.76 14.2 A36 36 0 0 1 85.6 55.37"/> <path d="M83.7 62.65 A36 36 0 0 1 35.85 83.1"/> <path d="M29.28 79.44 A36 36 0 0 1 46.24 14.2"/> </svg><figcaption>24</figcaption></figure></div>
+        <div class="on-bone"><figure><svg class="s96" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M53.76 14.2 A36 36 0 0 1 85.6 55.37"/> <path d="M83.7 62.65 A36 36 0 0 1 35.85 83.1"/> <path d="M29.28 79.44 A36 36 0 0 1 46.24 14.2"/> </svg><figcaption>96</figcaption></figure><figure><svg class="s48" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M53.76 14.2 A36 36 0 0 1 85.6 55.37"/> <path d="M83.7 62.65 A36 36 0 0 1 35.85 83.1"/> <path d="M29.28 79.44 A36 36 0 0 1 46.24 14.2"/> </svg><figcaption>48</figcaption></figure><figure><svg class="s24" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M53.76 14.2 A36 36 0 0 1 85.6 55.37"/> <path d="M83.7 62.65 A36 36 0 0 1 35.85 83.1"/> <path d="M29.28 79.44 A36 36 0 0 1 46.24 14.2"/> </svg><figcaption>24</figcaption></figure></div>
+      </div>
+    </div>
+  </article>
+  <article class="g7 dir">
+    <p class="num">03</p>
+    <div class="stage"><svg role="img" aria-label="Јасна нота" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <circle cx="56" cy="17" r="8" fill="currentColor" stroke="none"/> <path d="M56 34 V68 A17 17 0 0 1 39 85"/> </svg></div>
+    <div class="dir-text">
+      <h3>Јасна <em>нота</em></h3>
+      <p class="mono idea">идеја 4 · јасност, една точка светлина</p>
+      <p>Нота свртена наопаку станува ј: една точка светлина и една линија што слегува од неа. Најтивкиот знак во системот.</p>
+      <p class="en small" lang="en">A note turned upside down becomes a ј: one point of light and a single line falling from it. The quietest sign in the system.</p>
+      <div class="sizes">
+        <div class="on-ink"><figure><svg class="s48" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <circle cx="56" cy="17" r="8" fill="currentColor" stroke="none"/> <path d="M56 34 V68 A17 17 0 0 1 39 85"/> </svg><figcaption>48</figcaption></figure><figure><svg class="s24" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <circle cx="56" cy="17" r="8" fill="currentColor" stroke="none"/> <path d="M56 34 V68 A17 17 0 0 1 39 85"/> </svg><figcaption>24</figcaption></figure></div>
+        <div class="on-bone"><figure><svg class="s96" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <circle cx="56" cy="17" r="8" fill="currentColor" stroke="none"/> <path d="M56 34 V68 A17 17 0 0 1 39 85"/> </svg><figcaption>96</figcaption></figure><figure><svg class="s48" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <circle cx="56" cy="17" r="8" fill="currentColor" stroke="none"/> <path d="M56 34 V68 A17 17 0 0 1 39 85"/> </svg><figcaption>48</figcaption></figure><figure><svg class="s24" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <circle cx="56" cy="17" r="8" fill="currentColor" stroke="none"/> <path d="M56 34 V68 A17 17 0 0 1 39 85"/> </svg><figcaption>24</figcaption></figure></div>
+      </div>
+    </div>
+  </article>
+  <article class="g7 dir flip">
+    <p class="num">04</p>
+    <div class="stage"><svg role="img" aria-label="Резонанса" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="miter"> <path d="M36 11 Q58 50 36 89 Q14 50 36 11Z"/> <path d="M68 14 Q80 50 68 86 Q56 50 68 14Z"/> </svg></div>
+    <div class="dir-text">
+      <h3><em>Резонанса</em></h3>
+      <p class="mono idea">идеја 1 · усогласување, емпатија</p>
+      <p>Две жици. Едната е допрена, другата сама почнува да одговара. Тоа е физиката на емпатијата: треперењето поминува без допир.</p>
+      <p class="en small" lang="en">Two strings. One is plucked; the other begins to answer on its own. The physics of empathy: vibration crosses over without contact.</p>
+      <div class="sizes">
+        <div class="on-ink"><figure><svg class="s48" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="miter"> <path d="M36 11 Q58 50 36 89 Q14 50 36 11Z"/> <path d="M68 14 Q80 50 68 86 Q56 50 68 14Z"/> </svg><figcaption>48</figcaption></figure><figure><svg class="s24" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="miter"> <path d="M36 11 Q58 50 36 89 Q14 50 36 11Z"/> <path d="M68 14 Q80 50 68 86 Q56 50 68 14Z"/> </svg><figcaption>24</figcaption></figure></div>
+        <div class="on-bone"><figure><svg class="s96" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="miter"> <path d="M36 11 Q58 50 36 89 Q14 50 36 11Z"/> <path d="M68 14 Q80 50 68 86 Q56 50 68 14Z"/> </svg><figcaption>96</figcaption></figure><figure><svg class="s48" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="miter"> <path d="M36 11 Q58 50 36 89 Q14 50 36 11Z"/> <path d="M68 14 Q80 50 68 86 Q56 50 68 14Z"/> </svg><figcaption>48</figcaption></figure><figure><svg class="s24" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="miter"> <path d="M36 11 Q58 50 36 89 Q14 50 36 11Z"/> <path d="M68 14 Q80 50 68 86 Q56 50 68 14Z"/> </svg><figcaption>24</figcaption></figure></div>
+      </div>
+    </div>
+  </article>
+  <article class="g7 dir">
+    <p class="num">05</p>
+    <div class="stage"><svg role="img" aria-label="Пауза" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 70 A38 38 0 0 1 88 70"/> <circle cx="50" cy="63" r="7" fill="currentColor" stroke="none"/> </svg></div>
+    <div class="dir-text">
+      <h3><em>Пауза</em></h3>
+      <p class="mono idea">идеја 3 · тишина, негативен простор</p>
+      <p>Ферматата е знак за тишина што трае колку што треба. Знакот е речиси целиот празен простор: пауза што држи место за другиот.</p>
+      <p class="en small" lang="en">The fermata marks a silence that lasts as long as it needs to. The sign is almost entirely empty space: a pause that holds room for someone else.</p>
+      <div class="sizes">
+        <div class="on-ink"><figure><svg class="s48" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 70 A38 38 0 0 1 88 70"/> <circle cx="50" cy="63" r="7" fill="currentColor" stroke="none"/> </svg><figcaption>48</figcaption></figure><figure><svg class="s24" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 70 A38 38 0 0 1 88 70"/> <circle cx="50" cy="63" r="7" fill="currentColor" stroke="none"/> </svg><figcaption>24</figcaption></figure></div>
+        <div class="on-bone"><figure><svg class="s96" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 70 A38 38 0 0 1 88 70"/> <circle cx="50" cy="63" r="7" fill="currentColor" stroke="none"/> </svg><figcaption>96</figcaption></figure><figure><svg class="s48" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 70 A38 38 0 0 1 88 70"/> <circle cx="50" cy="63" r="7" fill="currentColor" stroke="none"/> </svg><figcaption>48</figcaption></figure><figure><svg class="s24" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 70 A38 38 0 0 1 88 70"/> <circle cx="50" cy="63" r="7" fill="currentColor" stroke="none"/> </svg><figcaption>24</figcaption></figure></div>
+      </div>
+    </div>
+  </article>
+  <article class="g7 dir flip">
+    <p class="num">06</p>
+    <div class="stage"><svg role="img" aria-label="Охрид" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 50 H88"/> <circle cx="42" cy="32.5" r="15"/> <circle cx="58" cy="67.5" r="15"/> </svg></div>
+    <div class="dir-text">
+      <h3><em>Охрид</em></h3>
+      <p class="mono idea">идеја 5 · Охридска школа, езеро ноќе</p>
+      <p>Круг и линија, како што е градена глаголицата на Охридската школа. Цела нота лежи на линијата на езерото, а одразот никогаш не е точно под неа.</p>
+      <p class="en small" lang="en">Circle and line, the way the Glagolitic of the Ohrid school is built. A whole note rests on the line of the lake; its reflection never sits exactly beneath it.</p>
+      <div class="sizes">
+        <div class="on-ink"><figure><svg class="s48" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 50 H88"/> <circle cx="42" cy="32.5" r="15"/> <circle cx="58" cy="67.5" r="15"/> </svg><figcaption>48</figcaption></figure><figure><svg class="s24" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 50 H88"/> <circle cx="42" cy="32.5" r="15"/> <circle cx="58" cy="67.5" r="15"/> </svg><figcaption>24</figcaption></figure></div>
+        <div class="on-bone"><figure><svg class="s96" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 50 H88"/> <circle cx="42" cy="32.5" r="15"/> <circle cx="58" cy="67.5" r="15"/> </svg><figcaption>96</figcaption></figure><figure><svg class="s48" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 50 H88"/> <circle cx="42" cy="32.5" r="15"/> <circle cx="58" cy="67.5" r="15"/> </svg><figcaption>48</figcaption></figure><figure><svg class="s24" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 50 H88"/> <circle cx="42" cy="32.5" r="15"/> <circle cx="58" cy="67.5" r="15"/> </svg><figcaption>24</figcaption></figure></div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================= PRIMARY ================= -->
+<section class="wrap" id="znak">
+  <div class="g7 head"><p class="num">03</p><h2>Знакот е <em>камертон.</em></h2></div>
+  <div class="g7 primary-grid">
+    <figure class="construct">
+      <svg viewBox="-14 -10 128 124" role="img" aria-label="Конструкција на знакот">
+        <g fill="none" stroke="var(--graphite)" stroke-width="1" vector-effect="non-scaling-stroke">
+          <rect x="-14" y="-10" width="128" height="124" fill="var(--night)" stroke="none"/>
+          <path d="M50 -10 V114" vector-effect="non-scaling-stroke"/>
+          <path d="M-14 44 H114" vector-effect="non-scaling-stroke"/>
+          <circle cx="50" cy="44" r="22" stroke-dasharray="2 2" vector-effect="non-scaling-stroke"/>
+          <path d="M28 -10 V114 M72 -10 V114" vector-effect="non-scaling-stroke" stroke-dasharray="1 3"/>
+          <path d="M-14 6 H114 M-14 94 H114" vector-effect="non-scaling-stroke" stroke-dasharray="1 3"/>
+        </g>
+        <g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt">
+          <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/><path d="M50 6 V52"/><path d="M50 64 V94"/>
+        </g>
+        <g fill="none" stroke="var(--cinnabar)" stroke-width="1" vector-effect="non-scaling-stroke">
+          <path d="M84 52 H88 M86 52 V63.5 M84 63.5 H88" vector-effect="non-scaling-stroke"/>
+        </g>
+        <g fill="none" stroke="var(--ash)" stroke-width="1">
+          <path d="M28 104 V108 M28 106 H72 M72 104 V108" vector-effect="non-scaling-stroke"/>
+          <path d="M50 44 L65.56 28.44" vector-effect="non-scaling-stroke"/>
+        </g>
+        <g font-family="JetBrains Mono, monospace" font-size="3.2" fill="var(--ash)">
+          <text x="90" y="59">пауза 11.5</text>
+          <text x="46" y="112.4">44</text>
+          <text x="61" y="35">r 22</text>
+          <text x="-11" y="5">6</text>
+          <text x="-11" y="98">94</text>
+          <text x="-11" y="43">44</text>
+          <text x="30" y="-4.5">штрих 5 · сѐ на x = 50</text>
+        </g>
+      </svg>
+    </figure>
+    <ol class="reasons">
+      <li><p>Психологија и музика во една форма, без објаснување: Ψ и камертон се читаат истовремено.</p><p class="en small" lang="en">Psychology and music in one form, without explanation. Ψ and tuning fork read at the same time.</p></li>
+      <li><p>Ја содржи паузата. Прекинот во средината е тивкиот момент пред одговорот.</p><p class="en small" lang="en">It contains the pause. The break in the middle is the quiet moment before an answer.</p></li>
+      <li><p>Вертикален е, како ј. Стои до зборот без да се натпреварува со него.</p><p class="en small" lang="en">It is vertical, like the ј. It stands beside the word without competing with it.</p></li>
+      <li><p>Преживува на 16 пиксели, во профилна слика и втиснат во хартија. Ниту една друга насока не е толку своја.</p><p class="en small" lang="en">It survives at 16 pixels, in an avatar and blind-embossed in paper. No other direction is as ownable.</p></li>
+    </ol>
+  </div>
+
+  <div class="g7 vocab">
+    <div class="vocab-intro"><p class="lead">Другите пет не се фрлаат. Стануваат речник на брендот.</p><p class="en small" lang="en">The other five are not discarded. They become the brand’s vocabulary.</p></div>
+    <ul class="vocab-list">
+      <li><svg aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M53.76 14.2 A36 36 0 0 1 85.6 55.37"/> <path d="M83.7 62.65 A36 36 0 0 1 35.85 83.1"/> <path d="M29.28 79.44 A36 36 0 0 1 46.24 14.2"/> </svg><span class="vname">7/8</span><p class="small">индикатор за напредок, аудио плеер, корици на серија <span class="en" lang="en">· progress, audio player, series covers</span></p></li>
+      <li><svg aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <circle cx="56" cy="17" r="8" fill="currentColor" stroke="none"/> <path d="M56 34 V68 A17 17 0 0 1 39 85"/> </svg><span class="vname">Јасна нота</span><p class="small">точка на крајот од текст, знак за набројување <span class="en" lang="en">· end-of-text dot, list marker</span></p></li>
+      <li><svg aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="miter"> <path d="M36 11 Q58 50 36 89 Q14 50 36 11Z"/> <path d="M68 14 Q80 50 68 86 Q56 50 68 14Z"/> </svg><span class="vname">Резонанса</span><p class="small">епизоди за разговор и слушање <span class="en" lang="en">· conversation and listening episodes</span></p></li>
+      <li><svg aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 70 A38 38 0 0 1 88 70"/> <circle cx="50" cy="63" r="7" fill="currentColor" stroke="none"/> </svg><span class="vname">Пауза</span><p class="small">крај на објава, тишина меѓу слајдови <span class="en" lang="en">· end of a post, silence between slides</span></p></li>
+      <li><svg aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M12 50 H88"/> <circle cx="42" cy="32.5" r="15"/> <circle cx="58" cy="67.5" r="15"/> </svg><span class="vname">Охрид</span><p class="small">серија за корени, јазик, место <span class="en" lang="en">· series on roots, language, place</span></p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= WORDMARK ================= -->
+<section class="wrap" id="zbor">
+  <div class="g7 head"><p class="num">04</p><h2>Зборот.</h2></div>
+  <div class="wm-big"><svg role="img" aria-label="јаснота" viewBox="22.1 -598 2993.5 880.2" fill="currentColor"> <path d="M161 -388Q161 -381 160 -349.5Q159 -318 159 -271V48Q159 114 147 158.5Q135 203 106.5 232Q78 261 28 282Q26 283 23.5 277.5Q21 272 23 271Q73 250 92.5 203Q112 156 112 71V-270Q112 -306 105 -322.5Q98 -339 80 -339Q71 -339 59.5 -335.5Q48 -332 32 -324Q28 -323 25.5 -328.5Q23 -334 27 -336L151 -394Q153 -395 154 -395Q157 -395 159 -393Q161 -391 161 -388Z M584 6Q580 8 576 8Q564 8 554 -13Q544 -34 544 -74V-255Q544 -304 534.5 -330Q525 -356 509.5 -365.5Q494 -375 476 -375Q449 -375 432 -361Q415 -347 406.5 -327.5Q398 -308 395 -291Q394 -281 388.5 -269.5Q383 -258 363 -258Q350 -258 341.5 -265Q333 -272 333 -285Q333 -302 350 -321Q367 -340 393.5 -357Q420 -374 450 -384.5Q480 -395 506 -395Q543 -395 566.5 -368.5Q590 -342 590 -285V-108Q590 -72 598.5 -55.5Q607 -39 628 -39Q647 -39 683 -54Q688 -56 690 -50.5Q692 -45 687 -43ZM391 7Q359 7 343.5 -10.5Q328 -28 328 -50Q328 -76 349 -92.5Q370 -109 418 -126L554 -175L556 -165L428 -116Q406 -108 397 -97Q388 -86 388 -69Q388 -48 400.5 -36.5Q413 -25 432 -25Q443 -25 452.5 -27.5Q462 -30 470 -34L563 -81L565 -70L478 -23Q447 -7 428.5 0Q410 7 391 7Z M942 12Q874 12 831.5 -17.5Q789 -47 769 -92.5Q749 -138 749 -185Q749 -235 768 -274Q787 -313 818.5 -340Q850 -367 888 -381Q926 -395 963 -395Q991 -395 1017 -387.5Q1043 -380 1060 -367Q1077 -354 1077 -338Q1077 -326 1069.5 -317.5Q1062 -309 1048 -309Q1034 -309 1024 -318Q1014 -327 1008 -337Q996 -354 979.5 -364.5Q963 -375 931 -375Q870 -375 838 -330.5Q806 -286 806 -214Q806 -163 824 -118.5Q842 -74 879.5 -46.5Q917 -19 977 -19Q1003 -19 1030.5 -26.5Q1058 -34 1080 -54Q1083 -56 1086.5 -52Q1090 -48 1087 -46Q1053 -15 1018 -1.5Q983 12 942 12Z M1265 -184V-202H1534V-184ZM1243 -81V-305Q1243 -349 1231.5 -361.5Q1220 -374 1178 -374Q1175 -374 1175 -380Q1175 -386 1178 -386Q1196 -386 1219.5 -385Q1243 -384 1268 -384Q1291 -384 1314.5 -385Q1338 -386 1356 -386Q1358 -386 1358 -380Q1358 -374 1356 -374Q1313 -374 1301.5 -360Q1290 -346 1290 -303V-81Q1290 -38 1301.5 -25Q1313 -12 1356 -12Q1358 -12 1358 -6Q1358 0 1356 0Q1337 0 1314 -1Q1291 -2 1268 -2Q1243 -2 1219.5 -1Q1196 0 1177 0Q1174 0 1174 -6Q1174 -12 1177 -12Q1220 -12 1231.5 -25Q1243 -38 1243 -81ZM1512 -81V-305Q1512 -349 1500.5 -361.5Q1489 -374 1447 -374Q1444 -374 1444 -380Q1444 -386 1447 -386Q1465 -386 1488.5 -385Q1512 -384 1537 -384Q1560 -384 1583.5 -385Q1607 -386 1625 -386Q1627 -386 1627 -380Q1627 -374 1625 -374Q1582 -374 1570.5 -360Q1559 -346 1559 -303V-81Q1559 -38 1570.5 -25Q1582 -12 1625 -12Q1627 -12 1627 -6Q1627 0 1625 0Q1606 0 1583 -1Q1560 -2 1537 -2Q1512 -2 1488 -1Q1464 0 1446 0Q1443 0 1443 -6Q1443 -12 1446 -12Q1488 -12 1500 -25Q1512 -38 1512 -81Z M1904 13Q1845 13 1801.5 -16Q1758 -45 1734.5 -93.5Q1711 -142 1711 -198Q1711 -250 1730 -288Q1749 -326 1780.5 -350.5Q1812 -375 1849 -387Q1886 -399 1922 -399Q1982 -399 2025 -369Q2068 -339 2091 -292Q2114 -245 2114 -193Q2114 -129 2085 -83Q2056 -37 2008.5 -12Q1961 13 1904 13ZM1932 -5Q1988 -5 2022 -42.5Q2056 -80 2056 -167Q2056 -228 2035 -276Q2014 -324 1976.5 -352Q1939 -380 1889 -380Q1832 -380 1800 -340.5Q1768 -301 1768 -227Q1768 -168 1788.5 -117Q1809 -66 1846 -35.5Q1883 -5 1932 -5Z M2281 0Q2279 0 2279 -6Q2279 -12 2281 -12Q2324 -12 2336 -25Q2348 -38 2348 -81V-303Q2348 -345 2338 -359Q2328 -373 2293 -373Q2254 -373 2230.5 -349.5Q2207 -326 2207 -255Q2207 -253 2201 -253Q2195 -253 2195 -255Q2195 -269 2195 -297.5Q2195 -326 2194.5 -356Q2194 -386 2194 -405Q2194 -410 2200 -410Q2206 -410 2206 -405Q2206 -391 2253.5 -388Q2301 -385 2371 -385Q2418 -385 2455.5 -386Q2493 -387 2515 -391.5Q2537 -396 2537 -405Q2537 -410 2543 -410Q2549 -410 2549 -405Q2549 -386 2549 -356Q2549 -326 2548.5 -297.5Q2548 -269 2548 -255Q2548 -253 2542 -253Q2536 -253 2536 -255Q2536 -326 2511 -349.5Q2486 -373 2447 -373Q2413 -373 2404 -359Q2395 -345 2395 -303V-81Q2395 -38 2406.5 -25Q2418 -12 2460 -12Q2463 -12 2463 -6Q2463 0 2460 0Q2442 0 2419 -1Q2396 -2 2372 -2Q2348 -2 2324.5 -1Q2301 0 2281 0Z M2909 6Q2905 8 2901 8Q2889 8 2879 -13Q2869 -34 2869 -74V-255Q2869 -304 2859.5 -330Q2850 -356 2834.5 -365.5Q2819 -375 2801 -375Q2774 -375 2757 -361Q2740 -347 2731.5 -327.5Q2723 -308 2720 -291Q2719 -281 2713.5 -269.5Q2708 -258 2688 -258Q2675 -258 2666.5 -265Q2658 -272 2658 -285Q2658 -302 2675 -321Q2692 -340 2718.5 -357Q2745 -374 2775 -384.5Q2805 -395 2831 -395Q2868 -395 2891.5 -368.5Q2915 -342 2915 -285V-108Q2915 -72 2923.5 -55.5Q2932 -39 2953 -39Q2972 -39 3008 -54Q3013 -56 3015 -50.5Q3017 -45 3012 -43ZM2716 7Q2684 7 2668.5 -10.5Q2653 -28 2653 -50Q2653 -76 2674 -92.5Q2695 -109 2743 -126L2879 -175L2881 -165L2753 -116Q2731 -108 2722 -97Q2713 -86 2713 -69Q2713 -48 2725.5 -36.5Q2738 -25 2757 -25Q2768 -25 2777.5 -27.5Q2787 -30 2795 -34L2888 -81L2890 -70L2803 -23Q2772 -7 2753.5 0Q2735 7 2716 7Z"/> <circle cx="126" cy="-554" r="44"/> </svg></div>
+  <div class="wm-latin">
+    <p class="c mono">кирилица, примарно<br>латиница, за меѓународно</p>
+    <div class="w"><svg role="img" aria-label="jasnota" viewBox="22.1 -598 2862.5 880.2" fill="currentColor"> <path d="M161 -388Q161 -381 160 -349.5Q159 -318 159 -271V48Q159 114 147 158.5Q135 203 106.5 232Q78 261 28 282Q26 283 23.5 277.5Q21 272 23 271Q73 250 92.5 203Q112 156 112 71V-270Q112 -306 105 -322.5Q98 -339 80 -339Q71 -339 59.5 -335.5Q48 -332 32 -324Q28 -323 25.5 -328.5Q23 -334 27 -336L151 -394Q153 -395 154 -395Q157 -395 159 -393Q161 -391 161 -388Z M584 6Q580 8 576 8Q564 8 554 -13Q544 -34 544 -74V-255Q544 -304 534.5 -330Q525 -356 509.5 -365.5Q494 -375 476 -375Q449 -375 432 -361Q415 -347 406.5 -327.5Q398 -308 395 -291Q394 -281 388.5 -269.5Q383 -258 363 -258Q350 -258 341.5 -265Q333 -272 333 -285Q333 -302 350 -321Q367 -340 393.5 -357Q420 -374 450 -384.5Q480 -395 506 -395Q543 -395 566.5 -368.5Q590 -342 590 -285V-108Q590 -72 598.5 -55.5Q607 -39 628 -39Q647 -39 683 -54Q688 -56 690 -50.5Q692 -45 687 -43ZM391 7Q359 7 343.5 -10.5Q328 -28 328 -50Q328 -76 349 -92.5Q370 -109 418 -126L554 -175L556 -165L428 -116Q406 -108 397 -97Q388 -86 388 -69Q388 -48 400.5 -36.5Q413 -25 432 -25Q443 -25 452.5 -27.5Q462 -30 470 -34L563 -81L565 -70L478 -23Q447 -7 428.5 0Q410 7 391 7Z M808 -322Q808 -295 821.5 -276.5Q835 -258 856.5 -245.5Q878 -233 901 -221Q927 -209 950 -194.5Q973 -180 988 -160Q1003 -140 1003 -108Q1003 -76 987 -49Q971 -22 939.5 -5.5Q908 11 863 11Q839 11 816 4.5Q793 -2 769 -20Q767 -22 765 -25Q763 -28 763 -32L761 -104Q761 -107 766.5 -107.5Q772 -108 773 -105Q786 -71 803.5 -49.5Q821 -28 843 -18Q865 -8 892 -8Q927 -8 945.5 -24.5Q964 -41 962 -74Q961 -103 947 -121Q933 -139 912 -151Q891 -163 868 -174Q843 -186 820.5 -199.5Q798 -213 783.5 -234Q769 -255 769 -288Q769 -326 789 -350.5Q809 -375 839.5 -387Q870 -399 903 -399Q921 -399 939 -395.5Q957 -392 974 -384Q983 -380 983 -373Q983 -358 982 -341Q981 -324 981 -304Q981 -302 975 -302Q969 -302 969 -304Q969 -327 952.5 -344Q936 -361 912.5 -370Q889 -379 866 -379Q839 -379 823.5 -365Q808 -351 808 -322Z M1387 0Q1384 0 1384 -6Q1384 -12 1387 -12Q1428 -12 1440 -25Q1452 -38 1452 -81V-248Q1452 -309 1429 -337Q1406 -365 1357 -365Q1319 -365 1279.5 -340Q1240 -315 1211 -271L1207 -283Q1254 -345 1297 -372Q1340 -399 1384 -399Q1439 -399 1469 -369.5Q1499 -340 1499 -278V-81Q1499 -38 1510.5 -25Q1522 -12 1564 -12Q1567 -12 1567 -6Q1567 0 1564 0Q1547 0 1524 -1Q1501 -2 1476 -2Q1451 -2 1427.5 -1Q1404 0 1387 0ZM1118 0Q1115 0 1115 -6Q1115 -12 1118 -12Q1159 -12 1171 -25Q1183 -38 1183 -81V-281Q1183 -315 1175 -330.5Q1167 -346 1147 -346Q1137 -346 1123 -342Q1109 -338 1091 -331Q1087 -330 1084.5 -335Q1082 -340 1086 -342L1197 -394Q1199 -395 1202 -395Q1209 -395 1219.5 -374.5Q1230 -354 1230 -315V-81Q1230 -38 1241.5 -25Q1253 -12 1295 -12Q1298 -12 1298 -6Q1298 0 1295 0Q1278 0 1255 -1Q1232 -2 1207 -2Q1182 -2 1158.5 -1Q1135 0 1118 0Z M1835 13Q1776 13 1732.5 -16Q1689 -45 1665.5 -93.5Q1642 -142 1642 -198Q1642 -250 1661 -288Q1680 -326 1711.5 -350.5Q1743 -375 1780 -387Q1817 -399 1853 -399Q1913 -399 1956 -369Q1999 -339 2022 -292Q2045 -245 2045 -193Q2045 -129 2016 -83Q1987 -37 1939.5 -12Q1892 13 1835 13ZM1863 -5Q1919 -5 1953 -42.5Q1987 -80 1987 -167Q1987 -228 1966 -276Q1945 -324 1907.5 -352Q1870 -380 1820 -380Q1763 -380 1731 -340.5Q1699 -301 1699 -227Q1699 -168 1719.5 -117Q1740 -66 1777 -35.5Q1814 -5 1863 -5Z M2287 12Q2263 12 2241.5 4.5Q2220 -3 2207 -20.5Q2194 -38 2194 -68V-306Q2194 -331 2191 -342.5Q2188 -354 2177 -357.5Q2166 -361 2142 -361Q2139 -361 2139 -367Q2139 -373 2142 -373Q2180 -373 2203.5 -394Q2227 -415 2227 -447Q2227 -450 2234.5 -450Q2242 -450 2242 -447V-102Q2242 -60 2262.5 -39.5Q2283 -19 2323 -19Q2350 -19 2370.5 -27.5Q2391 -36 2404 -46Q2408 -48 2411 -43.5Q2414 -39 2410 -36Q2373 -10 2345 1Q2317 12 2287 12ZM2380 -338Q2341 -348 2305.5 -350.5Q2270 -353 2230 -353V-374Q2269 -374 2305.5 -377Q2342 -380 2383 -384Q2386 -384 2388 -377.5Q2390 -371 2390 -361Q2390 -354 2387 -345.5Q2384 -337 2380 -338Z M2778 6Q2774 8 2770 8Q2758 8 2748 -13Q2738 -34 2738 -74V-255Q2738 -304 2728.5 -330Q2719 -356 2703.5 -365.5Q2688 -375 2670 -375Q2643 -375 2626 -361Q2609 -347 2600.5 -327.5Q2592 -308 2589 -291Q2588 -281 2582.5 -269.5Q2577 -258 2557 -258Q2544 -258 2535.5 -265Q2527 -272 2527 -285Q2527 -302 2544 -321Q2561 -340 2587.5 -357Q2614 -374 2644 -384.5Q2674 -395 2700 -395Q2737 -395 2760.5 -368.5Q2784 -342 2784 -285V-108Q2784 -72 2792.5 -55.5Q2801 -39 2822 -39Q2841 -39 2877 -54Q2882 -56 2884 -50.5Q2886 -45 2881 -43ZM2585 7Q2553 7 2537.5 -10.5Q2522 -28 2522 -50Q2522 -76 2543 -92.5Q2564 -109 2612 -126L2748 -175L2750 -165L2622 -116Q2600 -108 2591 -97Q2582 -86 2582 -69Q2582 -48 2594.5 -36.5Q2607 -25 2626 -25Q2637 -25 2646.5 -27.5Q2656 -30 2664 -34L2757 -81L2759 -70L2672 -23Q2641 -7 2622.5 0Q2604 7 2585 7Z"/> <circle cx="126" cy="-554" r="44"/> </svg></div>
+  </div>
+
+  <div class="g7 wm-notes">
+    <div class="wm-detail accent" aria-hidden="true"><svg viewBox="22.1 -598 2993.5 880.2" fill="currentColor"> <path d="M161 -388Q161 -381 160 -349.5Q159 -318 159 -271V48Q159 114 147 158.5Q135 203 106.5 232Q78 261 28 282Q26 283 23.5 277.5Q21 272 23 271Q73 250 92.5 203Q112 156 112 71V-270Q112 -306 105 -322.5Q98 -339 80 -339Q71 -339 59.5 -335.5Q48 -332 32 -324Q28 -323 25.5 -328.5Q23 -334 27 -336L151 -394Q153 -395 154 -395Q157 -395 159 -393Q161 -391 161 -388Z M584 6Q580 8 576 8Q564 8 554 -13Q544 -34 544 -74V-255Q544 -304 534.5 -330Q525 -356 509.5 -365.5Q494 -375 476 -375Q449 -375 432 -361Q415 -347 406.5 -327.5Q398 -308 395 -291Q394 -281 388.5 -269.5Q383 -258 363 -258Q350 -258 341.5 -265Q333 -272 333 -285Q333 -302 350 -321Q367 -340 393.5 -357Q420 -374 450 -384.5Q480 -395 506 -395Q543 -395 566.5 -368.5Q590 -342 590 -285V-108Q590 -72 598.5 -55.5Q607 -39 628 -39Q647 -39 683 -54Q688 -56 690 -50.5Q692 -45 687 -43ZM391 7Q359 7 343.5 -10.5Q328 -28 328 -50Q328 -76 349 -92.5Q370 -109 418 -126L554 -175L556 -165L428 -116Q406 -108 397 -97Q388 -86 388 -69Q388 -48 400.5 -36.5Q413 -25 432 -25Q443 -25 452.5 -27.5Q462 -30 470 -34L563 -81L565 -70L478 -23Q447 -7 428.5 0Q410 7 391 7Z M942 12Q874 12 831.5 -17.5Q789 -47 769 -92.5Q749 -138 749 -185Q749 -235 768 -274Q787 -313 818.5 -340Q850 -367 888 -381Q926 -395 963 -395Q991 -395 1017 -387.5Q1043 -380 1060 -367Q1077 -354 1077 -338Q1077 -326 1069.5 -317.5Q1062 -309 1048 -309Q1034 -309 1024 -318Q1014 -327 1008 -337Q996 -354 979.5 -364.5Q963 -375 931 -375Q870 -375 838 -330.5Q806 -286 806 -214Q806 -163 824 -118.5Q842 -74 879.5 -46.5Q917 -19 977 -19Q1003 -19 1030.5 -26.5Q1058 -34 1080 -54Q1083 -56 1086.5 -52Q1090 -48 1087 -46Q1053 -15 1018 -1.5Q983 12 942 12Z M1265 -184V-202H1534V-184ZM1243 -81V-305Q1243 -349 1231.5 -361.5Q1220 -374 1178 -374Q1175 -374 1175 -380Q1175 -386 1178 -386Q1196 -386 1219.5 -385Q1243 -384 1268 -384Q1291 -384 1314.5 -385Q1338 -386 1356 -386Q1358 -386 1358 -380Q1358 -374 1356 -374Q1313 -374 1301.5 -360Q1290 -346 1290 -303V-81Q1290 -38 1301.5 -25Q1313 -12 1356 -12Q1358 -12 1358 -6Q1358 0 1356 0Q1337 0 1314 -1Q1291 -2 1268 -2Q1243 -2 1219.5 -1Q1196 0 1177 0Q1174 0 1174 -6Q1174 -12 1177 -12Q1220 -12 1231.5 -25Q1243 -38 1243 -81ZM1512 -81V-305Q1512 -349 1500.5 -361.5Q1489 -374 1447 -374Q1444 -374 1444 -380Q1444 -386 1447 -386Q1465 -386 1488.5 -385Q1512 -384 1537 -384Q1560 -384 1583.5 -385Q1607 -386 1625 -386Q1627 -386 1627 -380Q1627 -374 1625 -374Q1582 -374 1570.5 -360Q1559 -346 1559 -303V-81Q1559 -38 1570.5 -25Q1582 -12 1625 -12Q1627 -12 1627 -6Q1627 0 1625 0Q1606 0 1583 -1Q1560 -2 1537 -2Q1512 -2 1488 -1Q1464 0 1446 0Q1443 0 1443 -6Q1443 -12 1446 -12Q1488 -12 1500 -25Q1512 -38 1512 -81Z M1904 13Q1845 13 1801.5 -16Q1758 -45 1734.5 -93.5Q1711 -142 1711 -198Q1711 -250 1730 -288Q1749 -326 1780.5 -350.5Q1812 -375 1849 -387Q1886 -399 1922 -399Q1982 -399 2025 -369Q2068 -339 2091 -292Q2114 -245 2114 -193Q2114 -129 2085 -83Q2056 -37 2008.5 -12Q1961 13 1904 13ZM1932 -5Q1988 -5 2022 -42.5Q2056 -80 2056 -167Q2056 -228 2035 -276Q2014 -324 1976.5 -352Q1939 -380 1889 -380Q1832 -380 1800 -340.5Q1768 -301 1768 -227Q1768 -168 1788.5 -117Q1809 -66 1846 -35.5Q1883 -5 1932 -5Z M2281 0Q2279 0 2279 -6Q2279 -12 2281 -12Q2324 -12 2336 -25Q2348 -38 2348 -81V-303Q2348 -345 2338 -359Q2328 -373 2293 -373Q2254 -373 2230.5 -349.5Q2207 -326 2207 -255Q2207 -253 2201 -253Q2195 -253 2195 -255Q2195 -269 2195 -297.5Q2195 -326 2194.5 -356Q2194 -386 2194 -405Q2194 -410 2200 -410Q2206 -410 2206 -405Q2206 -391 2253.5 -388Q2301 -385 2371 -385Q2418 -385 2455.5 -386Q2493 -387 2515 -391.5Q2537 -396 2537 -405Q2537 -410 2543 -410Q2549 -410 2549 -405Q2549 -386 2549 -356Q2549 -326 2548.5 -297.5Q2548 -269 2548 -255Q2548 -253 2542 -253Q2536 -253 2536 -255Q2536 -326 2511 -349.5Q2486 -373 2447 -373Q2413 -373 2404 -359Q2395 -345 2395 -303V-81Q2395 -38 2406.5 -25Q2418 -12 2460 -12Q2463 -12 2463 -6Q2463 0 2460 0Q2442 0 2419 -1Q2396 -2 2372 -2Q2348 -2 2324.5 -1Q2301 0 2281 0Z M2909 6Q2905 8 2901 8Q2889 8 2879 -13Q2869 -34 2869 -74V-255Q2869 -304 2859.5 -330Q2850 -356 2834.5 -365.5Q2819 -375 2801 -375Q2774 -375 2757 -361Q2740 -347 2731.5 -327.5Q2723 -308 2720 -291Q2719 -281 2713.5 -269.5Q2708 -258 2688 -258Q2675 -258 2666.5 -265Q2658 -272 2658 -285Q2658 -302 2675 -321Q2692 -340 2718.5 -357Q2745 -374 2775 -384.5Q2805 -395 2831 -395Q2868 -395 2891.5 -368.5Q2915 -342 2915 -285V-108Q2915 -72 2923.5 -55.5Q2932 -39 2953 -39Q2972 -39 3008 -54Q3013 -56 3015 -50.5Q3017 -45 3012 -43ZM2716 7Q2684 7 2668.5 -10.5Q2653 -28 2653 -50Q2653 -76 2674 -92.5Q2695 -109 2743 -126L2879 -175L2881 -165L2753 -116Q2731 -108 2722 -97Q2713 -86 2713 -69Q2713 -48 2725.5 -36.5Q2738 -25 2757 -25Q2768 -25 2777.5 -27.5Q2787 -30 2795 -34L2888 -81L2890 -70L2803 -23Q2772 -7 2753.5 0Q2735 7 2716 7Z"/> <circle cx="126" cy="-554" r="44"/> </svg><p class="mono">ј · цинобер</p></div>
+    <ul class="notes">
+      <li><p>Cormorant Light, претворен во криви. Секогаш мали букви.</p><p class="en small" lang="en">Cormorant Light, converted to outlines. Always lowercase.</p></li>
+      <li><p>Растојание +22/1000, паровите се изедначени рачно.</p><p class="en small" lang="en">Tracking +22/1000, pairs balanced by hand.</p></li>
+      <li><p>Точката на ј е вистински круг: точката светлина од насоката 03. Тоа е единствениот дел што смее да биде цинобер.</p><p class="en small" lang="en">The dot of the ј is a true circle, the point of light from direction 03. It is the only part allowed to turn cinnabar.</p></li>
+      <li><p>Висината на знакот во хоризонталната верзија е точно од врвот на точката до дното на ј.</p><p class="en small" lang="en">In the horizontal lockup the mark spans exactly from the top of the dot to the foot of the ј.</p></li>
+    </ul>
+  </div>
+
+  <div class="g7 lockups">
+    <div class="lk ink lk-h"><svg role="img" aria-label="Јаснота, хоризонтално" viewBox="0 -598 3813.5 880.2" fill="currentColor"> <g transform="translate(-255 -658) scale(10.0017)"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"><path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/><path d="M50 6 V52"/><path d="M50 64 V94"/></g></g> <g transform="translate(798 0)"><path d="M161 -388Q161 -381 160 -349.5Q159 -318 159 -271V48Q159 114 147 158.5Q135 203 106.5 232Q78 261 28 282Q26 283 23.5 277.5Q21 272 23 271Q73 250 92.5 203Q112 156 112 71V-270Q112 -306 105 -322.5Q98 -339 80 -339Q71 -339 59.5 -335.5Q48 -332 32 -324Q28 -323 25.5 -328.5Q23 -334 27 -336L151 -394Q153 -395 154 -395Q157 -395 159 -393Q161 -391 161 -388Z M584 6Q580 8 576 8Q564 8 554 -13Q544 -34 544 -74V-255Q544 -304 534.5 -330Q525 -356 509.5 -365.5Q494 -375 476 -375Q449 -375 432 -361Q415 -347 406.5 -327.5Q398 -308 395 -291Q394 -281 388.5 -269.5Q383 -258 363 -258Q350 -258 341.5 -265Q333 -272 333 -285Q333 -302 350 -321Q367 -340 393.5 -357Q420 -374 450 -384.5Q480 -395 506 -395Q543 -395 566.5 -368.5Q590 -342 590 -285V-108Q590 -72 598.5 -55.5Q607 -39 628 -39Q647 -39 683 -54Q688 -56 690 -50.5Q692 -45 687 -43ZM391 7Q359 7 343.5 -10.5Q328 -28 328 -50Q328 -76 349 -92.5Q370 -109 418 -126L554 -175L556 -165L428 -116Q406 -108 397 -97Q388 -86 388 -69Q388 -48 400.5 -36.5Q413 -25 432 -25Q443 -25 452.5 -27.5Q462 -30 470 -34L563 -81L565 -70L478 -23Q447 -7 428.5 0Q410 7 391 7Z M942 12Q874 12 831.5 -17.5Q789 -47 769 -92.5Q749 -138 749 -185Q749 -235 768 -274Q787 -313 818.5 -340Q850 -367 888 -381Q926 -395 963 -395Q991 -395 1017 -387.5Q1043 -380 1060 -367Q1077 -354 1077 -338Q1077 -326 1069.5 -317.5Q1062 -309 1048 -309Q1034 -309 1024 -318Q1014 -327 1008 -337Q996 -354 979.5 -364.5Q963 -375 931 -375Q870 -375 838 -330.5Q806 -286 806 -214Q806 -163 824 -118.5Q842 -74 879.5 -46.5Q917 -19 977 -19Q1003 -19 1030.5 -26.5Q1058 -34 1080 -54Q1083 -56 1086.5 -52Q1090 -48 1087 -46Q1053 -15 1018 -1.5Q983 12 942 12Z M1265 -184V-202H1534V-184ZM1243 -81V-305Q1243 -349 1231.5 -361.5Q1220 -374 1178 -374Q1175 -374 1175 -380Q1175 -386 1178 -386Q1196 -386 1219.5 -385Q1243 -384 1268 -384Q1291 -384 1314.5 -385Q1338 -386 1356 -386Q1358 -386 1358 -380Q1358 -374 1356 -374Q1313 -374 1301.5 -360Q1290 -346 1290 -303V-81Q1290 -38 1301.5 -25Q1313 -12 1356 -12Q1358 -12 1358 -6Q1358 0 1356 0Q1337 0 1314 -1Q1291 -2 1268 -2Q1243 -2 1219.5 -1Q1196 0 1177 0Q1174 0 1174 -6Q1174 -12 1177 -12Q1220 -12 1231.5 -25Q1243 -38 1243 -81ZM1512 -81V-305Q1512 -349 1500.5 -361.5Q1489 -374 1447 -374Q1444 -374 1444 -380Q1444 -386 1447 -386Q1465 -386 1488.5 -385Q1512 -384 1537 -384Q1560 -384 1583.5 -385Q1607 -386 1625 -386Q1627 -386 1627 -380Q1627 -374 1625 -374Q1582 -374 1570.5 -360Q1559 -346 1559 -303V-81Q1559 -38 1570.5 -25Q1582 -12 1625 -12Q1627 -12 1627 -6Q1627 0 1625 0Q1606 0 1583 -1Q1560 -2 1537 -2Q1512 -2 1488 -1Q1464 0 1446 0Q1443 0 1443 -6Q1443 -12 1446 -12Q1488 -12 1500 -25Q1512 -38 1512 -81Z M1904 13Q1845 13 1801.5 -16Q1758 -45 1734.5 -93.5Q1711 -142 1711 -198Q1711 -250 1730 -288Q1749 -326 1780.5 -350.5Q1812 -375 1849 -387Q1886 -399 1922 -399Q1982 -399 2025 -369Q2068 -339 2091 -292Q2114 -245 2114 -193Q2114 -129 2085 -83Q2056 -37 2008.5 -12Q1961 13 1904 13ZM1932 -5Q1988 -5 2022 -42.5Q2056 -80 2056 -167Q2056 -228 2035 -276Q2014 -324 1976.5 -352Q1939 -380 1889 -380Q1832 -380 1800 -340.5Q1768 -301 1768 -227Q1768 -168 1788.5 -117Q1809 -66 1846 -35.5Q1883 -5 1932 -5Z M2281 0Q2279 0 2279 -6Q2279 -12 2281 -12Q2324 -12 2336 -25Q2348 -38 2348 -81V-303Q2348 -345 2338 -359Q2328 -373 2293 -373Q2254 -373 2230.5 -349.5Q2207 -326 2207 -255Q2207 -253 2201 -253Q2195 -253 2195 -255Q2195 -269 2195 -297.5Q2195 -326 2194.5 -356Q2194 -386 2194 -405Q2194 -410 2200 -410Q2206 -410 2206 -405Q2206 -391 2253.5 -388Q2301 -385 2371 -385Q2418 -385 2455.5 -386Q2493 -387 2515 -391.5Q2537 -396 2537 -405Q2537 -410 2543 -410Q2549 -410 2549 -405Q2549 -386 2549 -356Q2549 -326 2548.5 -297.5Q2548 -269 2548 -255Q2548 -253 2542 -253Q2536 -253 2536 -255Q2536 -326 2511 -349.5Q2486 -373 2447 -373Q2413 -373 2404 -359Q2395 -345 2395 -303V-81Q2395 -38 2406.5 -25Q2418 -12 2460 -12Q2463 -12 2463 -6Q2463 0 2460 0Q2442 0 2419 -1Q2396 -2 2372 -2Q2348 -2 2324.5 -1Q2301 0 2281 0Z M2909 6Q2905 8 2901 8Q2889 8 2879 -13Q2869 -34 2869 -74V-255Q2869 -304 2859.5 -330Q2850 -356 2834.5 -365.5Q2819 -375 2801 -375Q2774 -375 2757 -361Q2740 -347 2731.5 -327.5Q2723 -308 2720 -291Q2719 -281 2713.5 -269.5Q2708 -258 2688 -258Q2675 -258 2666.5 -265Q2658 -272 2658 -285Q2658 -302 2675 -321Q2692 -340 2718.5 -357Q2745 -374 2775 -384.5Q2805 -395 2831 -395Q2868 -395 2891.5 -368.5Q2915 -342 2915 -285V-108Q2915 -72 2923.5 -55.5Q2932 -39 2953 -39Q2972 -39 3008 -54Q3013 -56 3015 -50.5Q3017 -45 3012 -43ZM2716 7Q2684 7 2668.5 -10.5Q2653 -28 2653 -50Q2653 -76 2674 -92.5Q2695 -109 2743 -126L2879 -175L2881 -165L2753 -116Q2731 -108 2722 -97Q2713 -86 2713 -69Q2713 -48 2725.5 -36.5Q2738 -25 2757 -25Q2768 -25 2777.5 -27.5Q2787 -30 2795 -34L2888 -81L2890 -70L2803 -23Q2772 -7 2753.5 0Q2735 7 2716 7Z"/><circle cx="126" cy="-554" r="44"/></g> </svg><p class="mono">хоризонтално</p></div>
+    <div class="lk bone lk-s"><svg role="img" aria-label="Јаснота, вертикално" viewBox="22.1 -2374.3 2993.5 2656.4" fill="currentColor"> <g transform="translate(668.7 -2476.3) scale(17.0030)"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"><path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/><path d="M50 6 V52"/><path d="M50 64 V94"/></g></g> <path d="M161 -388Q161 -381 160 -349.5Q159 -318 159 -271V48Q159 114 147 158.5Q135 203 106.5 232Q78 261 28 282Q26 283 23.5 277.5Q21 272 23 271Q73 250 92.5 203Q112 156 112 71V-270Q112 -306 105 -322.5Q98 -339 80 -339Q71 -339 59.5 -335.5Q48 -332 32 -324Q28 -323 25.5 -328.5Q23 -334 27 -336L151 -394Q153 -395 154 -395Q157 -395 159 -393Q161 -391 161 -388Z M584 6Q580 8 576 8Q564 8 554 -13Q544 -34 544 -74V-255Q544 -304 534.5 -330Q525 -356 509.5 -365.5Q494 -375 476 -375Q449 -375 432 -361Q415 -347 406.5 -327.5Q398 -308 395 -291Q394 -281 388.5 -269.5Q383 -258 363 -258Q350 -258 341.5 -265Q333 -272 333 -285Q333 -302 350 -321Q367 -340 393.5 -357Q420 -374 450 -384.5Q480 -395 506 -395Q543 -395 566.5 -368.5Q590 -342 590 -285V-108Q590 -72 598.5 -55.5Q607 -39 628 -39Q647 -39 683 -54Q688 -56 690 -50.5Q692 -45 687 -43ZM391 7Q359 7 343.5 -10.5Q328 -28 328 -50Q328 -76 349 -92.5Q370 -109 418 -126L554 -175L556 -165L428 -116Q406 -108 397 -97Q388 -86 388 -69Q388 -48 400.5 -36.5Q413 -25 432 -25Q443 -25 452.5 -27.5Q462 -30 470 -34L563 -81L565 -70L478 -23Q447 -7 428.5 0Q410 7 391 7Z M942 12Q874 12 831.5 -17.5Q789 -47 769 -92.5Q749 -138 749 -185Q749 -235 768 -274Q787 -313 818.5 -340Q850 -367 888 -381Q926 -395 963 -395Q991 -395 1017 -387.5Q1043 -380 1060 -367Q1077 -354 1077 -338Q1077 -326 1069.5 -317.5Q1062 -309 1048 -309Q1034 -309 1024 -318Q1014 -327 1008 -337Q996 -354 979.5 -364.5Q963 -375 931 -375Q870 -375 838 -330.5Q806 -286 806 -214Q806 -163 824 -118.5Q842 -74 879.5 -46.5Q917 -19 977 -19Q1003 -19 1030.5 -26.5Q1058 -34 1080 -54Q1083 -56 1086.5 -52Q1090 -48 1087 -46Q1053 -15 1018 -1.5Q983 12 942 12Z M1265 -184V-202H1534V-184ZM1243 -81V-305Q1243 -349 1231.5 -361.5Q1220 -374 1178 -374Q1175 -374 1175 -380Q1175 -386 1178 -386Q1196 -386 1219.5 -385Q1243 -384 1268 -384Q1291 -384 1314.5 -385Q1338 -386 1356 -386Q1358 -386 1358 -380Q1358 -374 1356 -374Q1313 -374 1301.5 -360Q1290 -346 1290 -303V-81Q1290 -38 1301.5 -25Q1313 -12 1356 -12Q1358 -12 1358 -6Q1358 0 1356 0Q1337 0 1314 -1Q1291 -2 1268 -2Q1243 -2 1219.5 -1Q1196 0 1177 0Q1174 0 1174 -6Q1174 -12 1177 -12Q1220 -12 1231.5 -25Q1243 -38 1243 -81ZM1512 -81V-305Q1512 -349 1500.5 -361.5Q1489 -374 1447 -374Q1444 -374 1444 -380Q1444 -386 1447 -386Q1465 -386 1488.5 -385Q1512 -384 1537 -384Q1560 -384 1583.5 -385Q1607 -386 1625 -386Q1627 -386 1627 -380Q1627 -374 1625 -374Q1582 -374 1570.5 -360Q1559 -346 1559 -303V-81Q1559 -38 1570.5 -25Q1582 -12 1625 -12Q1627 -12 1627 -6Q1627 0 1625 0Q1606 0 1583 -1Q1560 -2 1537 -2Q1512 -2 1488 -1Q1464 0 1446 0Q1443 0 1443 -6Q1443 -12 1446 -12Q1488 -12 1500 -25Q1512 -38 1512 -81Z M1904 13Q1845 13 1801.5 -16Q1758 -45 1734.5 -93.5Q1711 -142 1711 -198Q1711 -250 1730 -288Q1749 -326 1780.5 -350.5Q1812 -375 1849 -387Q1886 -399 1922 -399Q1982 -399 2025 -369Q2068 -339 2091 -292Q2114 -245 2114 -193Q2114 -129 2085 -83Q2056 -37 2008.5 -12Q1961 13 1904 13ZM1932 -5Q1988 -5 2022 -42.5Q2056 -80 2056 -167Q2056 -228 2035 -276Q2014 -324 1976.5 -352Q1939 -380 1889 -380Q1832 -380 1800 -340.5Q1768 -301 1768 -227Q1768 -168 1788.5 -117Q1809 -66 1846 -35.5Q1883 -5 1932 -5Z M2281 0Q2279 0 2279 -6Q2279 -12 2281 -12Q2324 -12 2336 -25Q2348 -38 2348 -81V-303Q2348 -345 2338 -359Q2328 -373 2293 -373Q2254 -373 2230.5 -349.5Q2207 -326 2207 -255Q2207 -253 2201 -253Q2195 -253 2195 -255Q2195 -269 2195 -297.5Q2195 -326 2194.5 -356Q2194 -386 2194 -405Q2194 -410 2200 -410Q2206 -410 2206 -405Q2206 -391 2253.5 -388Q2301 -385 2371 -385Q2418 -385 2455.5 -386Q2493 -387 2515 -391.5Q2537 -396 2537 -405Q2537 -410 2543 -410Q2549 -410 2549 -405Q2549 -386 2549 -356Q2549 -326 2548.5 -297.5Q2548 -269 2548 -255Q2548 -253 2542 -253Q2536 -253 2536 -255Q2536 -326 2511 -349.5Q2486 -373 2447 -373Q2413 -373 2404 -359Q2395 -345 2395 -303V-81Q2395 -38 2406.5 -25Q2418 -12 2460 -12Q2463 -12 2463 -6Q2463 0 2460 0Q2442 0 2419 -1Q2396 -2 2372 -2Q2348 -2 2324.5 -1Q2301 0 2281 0Z M2909 6Q2905 8 2901 8Q2889 8 2879 -13Q2869 -34 2869 -74V-255Q2869 -304 2859.5 -330Q2850 -356 2834.5 -365.5Q2819 -375 2801 -375Q2774 -375 2757 -361Q2740 -347 2731.5 -327.5Q2723 -308 2720 -291Q2719 -281 2713.5 -269.5Q2708 -258 2688 -258Q2675 -258 2666.5 -265Q2658 -272 2658 -285Q2658 -302 2675 -321Q2692 -340 2718.5 -357Q2745 -374 2775 -384.5Q2805 -395 2831 -395Q2868 -395 2891.5 -368.5Q2915 -342 2915 -285V-108Q2915 -72 2923.5 -55.5Q2932 -39 2953 -39Q2972 -39 3008 -54Q3013 -56 3015 -50.5Q3017 -45 3012 -43ZM2716 7Q2684 7 2668.5 -10.5Q2653 -28 2653 -50Q2653 -76 2674 -92.5Q2695 -109 2743 -126L2879 -175L2881 -165L2753 -116Q2731 -108 2722 -97Q2713 -86 2713 -69Q2713 -48 2725.5 -36.5Q2738 -25 2757 -25Q2768 -25 2777.5 -27.5Q2787 -30 2795 -34L2888 -81L2890 -70L2803 -23Q2772 -7 2753.5 0Q2735 7 2716 7Z"/> <circle cx="126" cy="-554" r="44"/> </svg><p class="mono">вертикално</p></div>
+    <div class="lk bone lk-h"><svg role="img" aria-label="Jasnota, horizontal" viewBox="0 -598 3682.5 880.2" fill="currentColor"> <g transform="translate(-255 -658) scale(10.0017)"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"><path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/><path d="M50 6 V52"/><path d="M50 64 V94"/></g></g> <g transform="translate(798 0)"><path d="M161 -388Q161 -381 160 -349.5Q159 -318 159 -271V48Q159 114 147 158.5Q135 203 106.5 232Q78 261 28 282Q26 283 23.5 277.5Q21 272 23 271Q73 250 92.5 203Q112 156 112 71V-270Q112 -306 105 -322.5Q98 -339 80 -339Q71 -339 59.5 -335.5Q48 -332 32 -324Q28 -323 25.5 -328.5Q23 -334 27 -336L151 -394Q153 -395 154 -395Q157 -395 159 -393Q161 -391 161 -388Z M584 6Q580 8 576 8Q564 8 554 -13Q544 -34 544 -74V-255Q544 -304 534.5 -330Q525 -356 509.5 -365.5Q494 -375 476 -375Q449 -375 432 -361Q415 -347 406.5 -327.5Q398 -308 395 -291Q394 -281 388.5 -269.5Q383 -258 363 -258Q350 -258 341.5 -265Q333 -272 333 -285Q333 -302 350 -321Q367 -340 393.5 -357Q420 -374 450 -384.5Q480 -395 506 -395Q543 -395 566.5 -368.5Q590 -342 590 -285V-108Q590 -72 598.5 -55.5Q607 -39 628 -39Q647 -39 683 -54Q688 -56 690 -50.5Q692 -45 687 -43ZM391 7Q359 7 343.5 -10.5Q328 -28 328 -50Q328 -76 349 -92.5Q370 -109 418 -126L554 -175L556 -165L428 -116Q406 -108 397 -97Q388 -86 388 -69Q388 -48 400.5 -36.5Q413 -25 432 -25Q443 -25 452.5 -27.5Q462 -30 470 -34L563 -81L565 -70L478 -23Q447 -7 428.5 0Q410 7 391 7Z M808 -322Q808 -295 821.5 -276.5Q835 -258 856.5 -245.5Q878 -233 901 -221Q927 -209 950 -194.5Q973 -180 988 -160Q1003 -140 1003 -108Q1003 -76 987 -49Q971 -22 939.5 -5.5Q908 11 863 11Q839 11 816 4.5Q793 -2 769 -20Q767 -22 765 -25Q763 -28 763 -32L761 -104Q761 -107 766.5 -107.5Q772 -108 773 -105Q786 -71 803.5 -49.5Q821 -28 843 -18Q865 -8 892 -8Q927 -8 945.5 -24.5Q964 -41 962 -74Q961 -103 947 -121Q933 -139 912 -151Q891 -163 868 -174Q843 -186 820.5 -199.5Q798 -213 783.5 -234Q769 -255 769 -288Q769 -326 789 -350.5Q809 -375 839.5 -387Q870 -399 903 -399Q921 -399 939 -395.5Q957 -392 974 -384Q983 -380 983 -373Q983 -358 982 -341Q981 -324 981 -304Q981 -302 975 -302Q969 -302 969 -304Q969 -327 952.5 -344Q936 -361 912.5 -370Q889 -379 866 -379Q839 -379 823.5 -365Q808 -351 808 -322Z M1387 0Q1384 0 1384 -6Q1384 -12 1387 -12Q1428 -12 1440 -25Q1452 -38 1452 -81V-248Q1452 -309 1429 -337Q1406 -365 1357 -365Q1319 -365 1279.5 -340Q1240 -315 1211 -271L1207 -283Q1254 -345 1297 -372Q1340 -399 1384 -399Q1439 -399 1469 -369.5Q1499 -340 1499 -278V-81Q1499 -38 1510.5 -25Q1522 -12 1564 -12Q1567 -12 1567 -6Q1567 0 1564 0Q1547 0 1524 -1Q1501 -2 1476 -2Q1451 -2 1427.5 -1Q1404 0 1387 0ZM1118 0Q1115 0 1115 -6Q1115 -12 1118 -12Q1159 -12 1171 -25Q1183 -38 1183 -81V-281Q1183 -315 1175 -330.5Q1167 -346 1147 -346Q1137 -346 1123 -342Q1109 -338 1091 -331Q1087 -330 1084.5 -335Q1082 -340 1086 -342L1197 -394Q1199 -395 1202 -395Q1209 -395 1219.5 -374.5Q1230 -354 1230 -315V-81Q1230 -38 1241.5 -25Q1253 -12 1295 -12Q1298 -12 1298 -6Q1298 0 1295 0Q1278 0 1255 -1Q1232 -2 1207 -2Q1182 -2 1158.5 -1Q1135 0 1118 0Z M1835 13Q1776 13 1732.5 -16Q1689 -45 1665.5 -93.5Q1642 -142 1642 -198Q1642 -250 1661 -288Q1680 -326 1711.5 -350.5Q1743 -375 1780 -387Q1817 -399 1853 -399Q1913 -399 1956 -369Q1999 -339 2022 -292Q2045 -245 2045 -193Q2045 -129 2016 -83Q1987 -37 1939.5 -12Q1892 13 1835 13ZM1863 -5Q1919 -5 1953 -42.5Q1987 -80 1987 -167Q1987 -228 1966 -276Q1945 -324 1907.5 -352Q1870 -380 1820 -380Q1763 -380 1731 -340.5Q1699 -301 1699 -227Q1699 -168 1719.5 -117Q1740 -66 1777 -35.5Q1814 -5 1863 -5Z M2287 12Q2263 12 2241.5 4.5Q2220 -3 2207 -20.5Q2194 -38 2194 -68V-306Q2194 -331 2191 -342.5Q2188 -354 2177 -357.5Q2166 -361 2142 -361Q2139 -361 2139 -367Q2139 -373 2142 -373Q2180 -373 2203.5 -394Q2227 -415 2227 -447Q2227 -450 2234.5 -450Q2242 -450 2242 -447V-102Q2242 -60 2262.5 -39.5Q2283 -19 2323 -19Q2350 -19 2370.5 -27.5Q2391 -36 2404 -46Q2408 -48 2411 -43.5Q2414 -39 2410 -36Q2373 -10 2345 1Q2317 12 2287 12ZM2380 -338Q2341 -348 2305.5 -350.5Q2270 -353 2230 -353V-374Q2269 -374 2305.5 -377Q2342 -380 2383 -384Q2386 -384 2388 -377.5Q2390 -371 2390 -361Q2390 -354 2387 -345.5Q2384 -337 2380 -338Z M2778 6Q2774 8 2770 8Q2758 8 2748 -13Q2738 -34 2738 -74V-255Q2738 -304 2728.5 -330Q2719 -356 2703.5 -365.5Q2688 -375 2670 -375Q2643 -375 2626 -361Q2609 -347 2600.5 -327.5Q2592 -308 2589 -291Q2588 -281 2582.5 -269.5Q2577 -258 2557 -258Q2544 -258 2535.5 -265Q2527 -272 2527 -285Q2527 -302 2544 -321Q2561 -340 2587.5 -357Q2614 -374 2644 -384.5Q2674 -395 2700 -395Q2737 -395 2760.5 -368.5Q2784 -342 2784 -285V-108Q2784 -72 2792.5 -55.5Q2801 -39 2822 -39Q2841 -39 2877 -54Q2882 -56 2884 -50.5Q2886 -45 2881 -43ZM2585 7Q2553 7 2537.5 -10.5Q2522 -28 2522 -50Q2522 -76 2543 -92.5Q2564 -109 2612 -126L2748 -175L2750 -165L2622 -116Q2600 -108 2591 -97Q2582 -86 2582 -69Q2582 -48 2594.5 -36.5Q2607 -25 2626 -25Q2637 -25 2646.5 -27.5Q2656 -30 2664 -34L2757 -81L2759 -70L2672 -23Q2641 -7 2622.5 0Q2604 7 2585 7Z"/><circle cx="126" cy="-554" r="44"/></g> </svg><p class="mono">latin · horizontal</p></div>
+    <div class="lk ink lk-s accent-line"><svg role="img" aria-label="Jasnota, stacked" viewBox="22.1 -2374.3 2862.5 2656.4" fill="currentColor"> <g transform="translate(603.2 -2476.3) scale(17.0030)"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"><path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/><path d="M50 6 V52"/><path d="M50 64 V94"/></g></g> <path d="M161 -388Q161 -381 160 -349.5Q159 -318 159 -271V48Q159 114 147 158.5Q135 203 106.5 232Q78 261 28 282Q26 283 23.5 277.5Q21 272 23 271Q73 250 92.5 203Q112 156 112 71V-270Q112 -306 105 -322.5Q98 -339 80 -339Q71 -339 59.5 -335.5Q48 -332 32 -324Q28 -323 25.5 -328.5Q23 -334 27 -336L151 -394Q153 -395 154 -395Q157 -395 159 -393Q161 -391 161 -388Z M584 6Q580 8 576 8Q564 8 554 -13Q544 -34 544 -74V-255Q544 -304 534.5 -330Q525 -356 509.5 -365.5Q494 -375 476 -375Q449 -375 432 -361Q415 -347 406.5 -327.5Q398 -308 395 -291Q394 -281 388.5 -269.5Q383 -258 363 -258Q350 -258 341.5 -265Q333 -272 333 -285Q333 -302 350 -321Q367 -340 393.5 -357Q420 -374 450 -384.5Q480 -395 506 -395Q543 -395 566.5 -368.5Q590 -342 590 -285V-108Q590 -72 598.5 -55.5Q607 -39 628 -39Q647 -39 683 -54Q688 -56 690 -50.5Q692 -45 687 -43ZM391 7Q359 7 343.5 -10.5Q328 -28 328 -50Q328 -76 349 -92.5Q370 -109 418 -126L554 -175L556 -165L428 -116Q406 -108 397 -97Q388 -86 388 -69Q388 -48 400.5 -36.5Q413 -25 432 -25Q443 -25 452.5 -27.5Q462 -30 470 -34L563 -81L565 -70L478 -23Q447 -7 428.5 0Q410 7 391 7Z M808 -322Q808 -295 821.5 -276.5Q835 -258 856.5 -245.5Q878 -233 901 -221Q927 -209 950 -194.5Q973 -180 988 -160Q1003 -140 1003 -108Q1003 -76 987 -49Q971 -22 939.5 -5.5Q908 11 863 11Q839 11 816 4.5Q793 -2 769 -20Q767 -22 765 -25Q763 -28 763 -32L761 -104Q761 -107 766.5 -107.5Q772 -108 773 -105Q786 -71 803.5 -49.5Q821 -28 843 -18Q865 -8 892 -8Q927 -8 945.5 -24.5Q964 -41 962 -74Q961 -103 947 -121Q933 -139 912 -151Q891 -163 868 -174Q843 -186 820.5 -199.5Q798 -213 783.5 -234Q769 -255 769 -288Q769 -326 789 -350.5Q809 -375 839.5 -387Q870 -399 903 -399Q921 -399 939 -395.5Q957 -392 974 -384Q983 -380 983 -373Q983 -358 982 -341Q981 -324 981 -304Q981 -302 975 -302Q969 -302 969 -304Q969 -327 952.5 -344Q936 -361 912.5 -370Q889 -379 866 -379Q839 -379 823.5 -365Q808 -351 808 -322Z M1387 0Q1384 0 1384 -6Q1384 -12 1387 -12Q1428 -12 1440 -25Q1452 -38 1452 -81V-248Q1452 -309 1429 -337Q1406 -365 1357 -365Q1319 -365 1279.5 -340Q1240 -315 1211 -271L1207 -283Q1254 -345 1297 -372Q1340 -399 1384 -399Q1439 -399 1469 -369.5Q1499 -340 1499 -278V-81Q1499 -38 1510.5 -25Q1522 -12 1564 -12Q1567 -12 1567 -6Q1567 0 1564 0Q1547 0 1524 -1Q1501 -2 1476 -2Q1451 -2 1427.5 -1Q1404 0 1387 0ZM1118 0Q1115 0 1115 -6Q1115 -12 1118 -12Q1159 -12 1171 -25Q1183 -38 1183 -81V-281Q1183 -315 1175 -330.5Q1167 -346 1147 -346Q1137 -346 1123 -342Q1109 -338 1091 -331Q1087 -330 1084.5 -335Q1082 -340 1086 -342L1197 -394Q1199 -395 1202 -395Q1209 -395 1219.5 -374.5Q1230 -354 1230 -315V-81Q1230 -38 1241.5 -25Q1253 -12 1295 -12Q1298 -12 1298 -6Q1298 0 1295 0Q1278 0 1255 -1Q1232 -2 1207 -2Q1182 -2 1158.5 -1Q1135 0 1118 0Z M1835 13Q1776 13 1732.5 -16Q1689 -45 1665.5 -93.5Q1642 -142 1642 -198Q1642 -250 1661 -288Q1680 -326 1711.5 -350.5Q1743 -375 1780 -387Q1817 -399 1853 -399Q1913 -399 1956 -369Q1999 -339 2022 -292Q2045 -245 2045 -193Q2045 -129 2016 -83Q1987 -37 1939.5 -12Q1892 13 1835 13ZM1863 -5Q1919 -5 1953 -42.5Q1987 -80 1987 -167Q1987 -228 1966 -276Q1945 -324 1907.5 -352Q1870 -380 1820 -380Q1763 -380 1731 -340.5Q1699 -301 1699 -227Q1699 -168 1719.5 -117Q1740 -66 1777 -35.5Q1814 -5 1863 -5Z M2287 12Q2263 12 2241.5 4.5Q2220 -3 2207 -20.5Q2194 -38 2194 -68V-306Q2194 -331 2191 -342.5Q2188 -354 2177 -357.5Q2166 -361 2142 -361Q2139 -361 2139 -367Q2139 -373 2142 -373Q2180 -373 2203.5 -394Q2227 -415 2227 -447Q2227 -450 2234.5 -450Q2242 -450 2242 -447V-102Q2242 -60 2262.5 -39.5Q2283 -19 2323 -19Q2350 -19 2370.5 -27.5Q2391 -36 2404 -46Q2408 -48 2411 -43.5Q2414 -39 2410 -36Q2373 -10 2345 1Q2317 12 2287 12ZM2380 -338Q2341 -348 2305.5 -350.5Q2270 -353 2230 -353V-374Q2269 -374 2305.5 -377Q2342 -380 2383 -384Q2386 -384 2388 -377.5Q2390 -371 2390 -361Q2390 -354 2387 -345.5Q2384 -337 2380 -338Z M2778 6Q2774 8 2770 8Q2758 8 2748 -13Q2738 -34 2738 -74V-255Q2738 -304 2728.5 -330Q2719 -356 2703.5 -365.5Q2688 -375 2670 -375Q2643 -375 2626 -361Q2609 -347 2600.5 -327.5Q2592 -308 2589 -291Q2588 -281 2582.5 -269.5Q2577 -258 2557 -258Q2544 -258 2535.5 -265Q2527 -272 2527 -285Q2527 -302 2544 -321Q2561 -340 2587.5 -357Q2614 -374 2644 -384.5Q2674 -395 2700 -395Q2737 -395 2760.5 -368.5Q2784 -342 2784 -285V-108Q2784 -72 2792.5 -55.5Q2801 -39 2822 -39Q2841 -39 2877 -54Q2882 -56 2884 -50.5Q2886 -45 2881 -43ZM2585 7Q2553 7 2537.5 -10.5Q2522 -28 2522 -50Q2522 -76 2543 -92.5Q2564 -109 2612 -126L2748 -175L2750 -165L2622 -116Q2600 -108 2591 -97Q2582 -86 2582 -69Q2582 -48 2594.5 -36.5Q2607 -25 2626 -25Q2637 -25 2646.5 -27.5Q2656 -30 2664 -34L2757 -81L2759 -70L2672 -23Q2641 -7 2622.5 0Q2604 7 2585 7Z"/> <circle cx="126" cy="-554" r="44"/> </svg><p class="mono">латиница · со цинобер</p></div>
+  </div>
+</section>
+
+<!-- ================= CLEAR SPACE ================= -->
+<section class="wrap" id="prostor">
+  <div class="g7 head"><p class="num">05</p><h2>Простор <em>околу</em> знакот.</h2></div>
+  <div class="g7 cs">
+    <figure class="cs-mark">
+      <svg viewBox="-6 -24 112 148" role="img" aria-label="Заштитен простор околу знакот">
+        <rect x="3.5" y="-16" width="93" height="132" fill="none" stroke="var(--ash)" stroke-dasharray="3 3" stroke-width="1" vector-effect="non-scaling-stroke"/>
+        <rect x="25.5" y="6" width="49" height="88" fill="none" stroke="var(--graphite)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+        <rect x="3.5" y="-16" width="22" height="22" fill="var(--night)"/>
+        <text x="11" y="-2" font-family="JetBrains Mono, monospace" font-size="6" fill="var(--ash)">r</text>
+        <svg x="0" y="0" width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="var(--bone)" stroke-width="5"><path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/><path d="M50 6 V52"/><path d="M50 64 V94"/></svg>
+      </svg>
+      <figcaption class="small">Околу знакот: најмалку <em>r</em>, полупречникот на лакот.<br><span class="en" lang="en">Around the mark: at least r, the radius of the bowl.</span></figcaption>
+    </figure>
+    <figure class="cs-lock">
+      <svg viewBox="-456.0 -1054.0 4725.5 1792.2" role="img" aria-label="Заштитен простор околу хоризонталната комбинација">
+        <rect x="-386.0" y="-984.0" width="4585.5" height="1652.2" fill="none" stroke="var(--ash)" stroke-width="1" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"/>
+        <rect x="0.0" y="-598.0" width="3813.5" height="880.2" fill="none" stroke="var(--graphite)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+        <rect x="-386.0" y="-984.0" width="386" height="386" fill="var(--night)"/>
+        <rect x="3813.5" y="282.20000000000005" width="386" height="386" fill="var(--night)"/>
+        <text x="-256.0" y="-734.0" font-family="JetBrains Mono, monospace" font-size="150" fill="var(--ash)">x</text>
+        <text x="3943.5" y="532.2" font-family="JetBrains Mono, monospace" font-size="150" fill="var(--ash)">x</text>
+        <svg x="0.0" y="-598.0" width="3813.5" height="880.2" style="color:var(--bone)" viewBox="0 -598 3813.5 880.2" fill="currentColor"> <g transform="translate(-255 -658) scale(10.0017)"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"><path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/><path d="M50 6 V52"/><path d="M50 64 V94"/></g></g> <g transform="translate(798 0)"><path d="M161 -388Q161 -381 160 -349.5Q159 -318 159 -271V48Q159 114 147 158.5Q135 203 106.5 232Q78 261 28 282Q26 283 23.5 277.5Q21 272 23 271Q73 250 92.5 203Q112 156 112 71V-270Q112 -306 105 -322.5Q98 -339 80 -339Q71 -339 59.5 -335.5Q48 -332 32 -324Q28 -323 25.5 -328.5Q23 -334 27 -336L151 -394Q153 -395 154 -395Q157 -395 159 -393Q161 -391 161 -388Z M584 6Q580 8 576 8Q564 8 554 -13Q544 -34 544 -74V-255Q544 -304 534.5 -330Q525 -356 509.5 -365.5Q494 -375 476 -375Q449 -375 432 -361Q415 -347 406.5 -327.5Q398 -308 395 -291Q394 -281 388.5 -269.5Q383 -258 363 -258Q350 -258 341.5 -265Q333 -272 333 -285Q333 -302 350 -321Q367 -340 393.5 -357Q420 -374 450 -384.5Q480 -395 506 -395Q543 -395 566.5 -368.5Q590 -342 590 -285V-108Q590 -72 598.5 -55.5Q607 -39 628 -39Q647 -39 683 -54Q688 -56 690 -50.5Q692 -45 687 -43ZM391 7Q359 7 343.5 -10.5Q328 -28 328 -50Q328 -76 349 -92.5Q370 -109 418 -126L554 -175L556 -165L428 -116Q406 -108 397 -97Q388 -86 388 -69Q388 -48 400.5 -36.5Q413 -25 432 -25Q443 -25 452.5 -27.5Q462 -30 470 -34L563 -81L565 -70L478 -23Q447 -7 428.5 0Q410 7 391 7Z M942 12Q874 12 831.5 -17.5Q789 -47 769 -92.5Q749 -138 749 -185Q749 -235 768 -274Q787 -313 818.5 -340Q850 -367 888 -381Q926 -395 963 -395Q991 -395 1017 -387.5Q1043 -380 1060 -367Q1077 -354 1077 -338Q1077 -326 1069.5 -317.5Q1062 -309 1048 -309Q1034 -309 1024 -318Q1014 -327 1008 -337Q996 -354 979.5 -364.5Q963 -375 931 -375Q870 -375 838 -330.5Q806 -286 806 -214Q806 -163 824 -118.5Q842 -74 879.5 -46.5Q917 -19 977 -19Q1003 -19 1030.5 -26.5Q1058 -34 1080 -54Q1083 -56 1086.5 -52Q1090 -48 1087 -46Q1053 -15 1018 -1.5Q983 12 942 12Z M1265 -184V-202H1534V-184ZM1243 -81V-305Q1243 -349 1231.5 -361.5Q1220 -374 1178 -374Q1175 -374 1175 -380Q1175 -386 1178 -386Q1196 -386 1219.5 -385Q1243 -384 1268 -384Q1291 -384 1314.5 -385Q1338 -386 1356 -386Q1358 -386 1358 -380Q1358 -374 1356 -374Q1313 -374 1301.5 -360Q1290 -346 1290 -303V-81Q1290 -38 1301.5 -25Q1313 -12 1356 -12Q1358 -12 1358 -6Q1358 0 1356 0Q1337 0 1314 -1Q1291 -2 1268 -2Q1243 -2 1219.5 -1Q1196 0 1177 0Q1174 0 1174 -6Q1174 -12 1177 -12Q1220 -12 1231.5 -25Q1243 -38 1243 -81ZM1512 -81V-305Q1512 -349 1500.5 -361.5Q1489 -374 1447 -374Q1444 -374 1444 -380Q1444 -386 1447 -386Q1465 -386 1488.5 -385Q1512 -384 1537 -384Q1560 -384 1583.5 -385Q1607 -386 1625 -386Q1627 -386 1627 -380Q1627 -374 1625 -374Q1582 -374 1570.5 -360Q1559 -346 1559 -303V-81Q1559 -38 1570.5 -25Q1582 -12 1625 -12Q1627 -12 1627 -6Q1627 0 1625 0Q1606 0 1583 -1Q1560 -2 1537 -2Q1512 -2 1488 -1Q1464 0 1446 0Q1443 0 1443 -6Q1443 -12 1446 -12Q1488 -12 1500 -25Q1512 -38 1512 -81Z M1904 13Q1845 13 1801.5 -16Q1758 -45 1734.5 -93.5Q1711 -142 1711 -198Q1711 -250 1730 -288Q1749 -326 1780.5 -350.5Q1812 -375 1849 -387Q1886 -399 1922 -399Q1982 -399 2025 -369Q2068 -339 2091 -292Q2114 -245 2114 -193Q2114 -129 2085 -83Q2056 -37 2008.5 -12Q1961 13 1904 13ZM1932 -5Q1988 -5 2022 -42.5Q2056 -80 2056 -167Q2056 -228 2035 -276Q2014 -324 1976.5 -352Q1939 -380 1889 -380Q1832 -380 1800 -340.5Q1768 -301 1768 -227Q1768 -168 1788.5 -117Q1809 -66 1846 -35.5Q1883 -5 1932 -5Z M2281 0Q2279 0 2279 -6Q2279 -12 2281 -12Q2324 -12 2336 -25Q2348 -38 2348 -81V-303Q2348 -345 2338 -359Q2328 -373 2293 -373Q2254 -373 2230.5 -349.5Q2207 -326 2207 -255Q2207 -253 2201 -253Q2195 -253 2195 -255Q2195 -269 2195 -297.5Q2195 -326 2194.5 -356Q2194 -386 2194 -405Q2194 -410 2200 -410Q2206 -410 2206 -405Q2206 -391 2253.5 -388Q2301 -385 2371 -385Q2418 -385 2455.5 -386Q2493 -387 2515 -391.5Q2537 -396 2537 -405Q2537 -410 2543 -410Q2549 -410 2549 -405Q2549 -386 2549 -356Q2549 -326 2548.5 -297.5Q2548 -269 2548 -255Q2548 -253 2542 -253Q2536 -253 2536 -255Q2536 -326 2511 -349.5Q2486 -373 2447 -373Q2413 -373 2404 -359Q2395 -345 2395 -303V-81Q2395 -38 2406.5 -25Q2418 -12 2460 -12Q2463 -12 2463 -6Q2463 0 2460 0Q2442 0 2419 -1Q2396 -2 2372 -2Q2348 -2 2324.5 -1Q2301 0 2281 0Z M2909 6Q2905 8 2901 8Q2889 8 2879 -13Q2869 -34 2869 -74V-255Q2869 -304 2859.5 -330Q2850 -356 2834.5 -365.5Q2819 -375 2801 -375Q2774 -375 2757 -361Q2740 -347 2731.5 -327.5Q2723 -308 2720 -291Q2719 -281 2713.5 -269.5Q2708 -258 2688 -258Q2675 -258 2666.5 -265Q2658 -272 2658 -285Q2658 -302 2675 -321Q2692 -340 2718.5 -357Q2745 -374 2775 -384.5Q2805 -395 2831 -395Q2868 -395 2891.5 -368.5Q2915 -342 2915 -285V-108Q2915 -72 2923.5 -55.5Q2932 -39 2953 -39Q2972 -39 3008 -54Q3013 -56 3015 -50.5Q3017 -45 3012 -43ZM2716 7Q2684 7 2668.5 -10.5Q2653 -28 2653 -50Q2653 -76 2674 -92.5Q2695 -109 2743 -126L2879 -175L2881 -165L2753 -116Q2731 -108 2722 -97Q2713 -86 2713 -69Q2713 -48 2725.5 -36.5Q2738 -25 2757 -25Q2768 -25 2777.5 -27.5Q2787 -30 2795 -34L2888 -81L2890 -70L2803 -23Q2772 -7 2753.5 0Q2735 7 2716 7Z"/><circle cx="126" cy="-554" r="44"/></g> </svg>
+      </svg>
+      <figcaption class="small">Околу комбинацијата: најмалку <em>x</em>, висината на малите букви.<br><span class="en" lang="en">Around the lockup: at least x, the x-height of the wordmark.</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="g7 minsize">
+    <div class="minsize-text">
+      <p>Под 32 пиксели се користи посебната мала верзија: подебела линија, поширока пауза, на сопствен црн квадрат.</p>
+      <p class="en small" lang="en">Below 32 pixels use the small cut: heavier stroke, wider pause, on its own ink square.</p>
+      <div class="minrow">
+        <figure><img src="../brand/logo/favicon.svg" width="16" height="16" alt="favicon 16 px"></figure>
+        <figure><img src="../brand/logo/favicon.svg" width="24" height="24" alt="favicon 24 px"></figure>
+        <figure><img src="../brand/logo/favicon.svg" width="32" height="32" alt="favicon 32 px"></figure>
+        <figure><svg class="s48" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/> <path d="M50 6 V52"/> <path d="M50 64 V94"/> </svg></figure>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>најмала големина</th><th>екран</th><th>печат</th></tr></thead>
+      <tbody>
+        <tr><td>Знак</td><td>24 px</td><td>8 mm</td></tr>
+        <tr><td>Знак, мала верзија</td><td>16 px</td><td>—</td></tr>
+        <tr><td>Хоризонтално</td><td>120 px</td><td>30 mm</td></tr>
+        <tr><td>Вертикално</td><td>80 px</td><td>20 mm</td></tr>
+        <tr><td>Збор, сам</td><td>80 px</td><td>18 mm</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================= PALETTE ================= -->
+<section class="wrap" id="boja">
+  <div class="g7 head"><p class="num">06</p><h2>Црно, <em>пред сѐ.</em></h2></div>
+  <div class="g7" style="margin-bottom:var(--s-6)">
+    <div style="grid-column:2/5"><p class="lead">Брендот е црн. Сѐ друго е светлина на црно. Лентата подолу е вистинската пропорција.</p></div>
+    <div style="grid-column:5/8"><p class="en" lang="en">The brand is black. Everything else is light on black. The strip below shows the real proportions.</p></div>
+  </div>
+  <div class="strip" role="img" aria-label="Пропорција на бои">
+    <span style="flex:68;background:var(--ink);border:1px solid var(--graphite);border-right:0"></span>
+    <span style="flex:14;background:var(--night)"></span>
+    <span style="flex:5;background:var(--graphite)"></span>
+    <span style="flex:5;background:var(--ash)"></span>
+    <span style="flex:6;background:var(--bone)"></span>
+    <span style="flex:1;background:var(--paper)"></span>
+    <span style="flex:1;background:var(--cinnabar)"></span>
+  </div>
+  <ul class="swatches">
+    <li><span class="chip" style="background:var(--ink)"></span><span class="nm">ink</span><span class="hx mono">#0A0A0B</span><span class="pc mono">68 %</span><span class="rl">Основна позадина. <span class="en" lang="en">Primary background.</span></span></li>
+    <li><span class="chip" style="background:var(--night)"></span><span class="nm">night</span><span class="hx mono">#131315</span><span class="pc mono">14 %</span><span class="rl">Подигнати површини. <span class="en" lang="en">Raised surfaces.</span></span></li>
+    <li><span class="chip" style="background:var(--graphite)"></span><span class="nm">graphite</span><span class="hx mono">#2A2A2D</span><span class="pc mono">5 %</span><span class="rl">Тенки линии, разделници. <span class="en" lang="en">Hairlines, dividers.</span></span></li>
+    <li><span class="chip" style="background:var(--ash)"></span><span class="nm">ash</span><span class="hx mono">#8C8A85</span><span class="pc mono">5 %</span><span class="rl">Секундарен текст. <span class="en" lang="en">Secondary text.</span></span></li>
+    <li><span class="chip" style="background:var(--bone)"></span><span class="nm">bone</span><span class="hx mono">#ECE8E1</span><span class="pc mono">6 %</span><span class="rl">Текст на црно, светла позадина. <span class="en" lang="en">Text on black; light background.</span></span></li>
+    <li><span class="chip" style="background:var(--paper)"></span><span class="nm">paper</span><span class="hx mono">#F6F4EF</span><span class="pc mono">1 %</span><span class="rl">Ретко: печат, светли приказни. <span class="en" lang="en">Rare: print, light stories.</span></span></li>
+    <li><span class="chip" style="background:var(--cinnabar)"></span><span class="nm">cinnabar</span><span class="hx mono">#B4452C</span><span class="pc mono">&lt; 2 %</span><span class="rl">Пигмент од фреска. Една точка, еден збор, една линија. <span class="en" lang="en">Fresco pigment. One dot, one word, one line.</span></span></li>
+  </ul>
+</section>
+
+<!-- ================= TYPE ================= -->
+<section class="wrap" id="pismo">
+  <div class="g7 head"><p class="num">07</p><h2>Писмо.</h2></div>
+
+  <div class="g7 spec">
+    <p class="mono">Cormorant Light 300<br>наслови, водство 0.95<br>курзив за еден збор</p>
+    <p class="sample spec-big">Да се слушнеш <em>себеси.</em></p>
+  </div>
+  <div class="g7 spec">
+    <p class="mono">македонски знаци<br>Ѓ Ќ Ѕ Џ Љ Њ Ј</p>
+    <p class="sample spec-glyphs">Ѓ Ќ Ѕ Џ Љ Њ Ј<span>ѓ ќ ѕ џ љ њ ј</span></p>
+  </div>
+  <div class="g7 spec">
+    <p class="mono">Cormorant Italic, lang="mk"<br>македонски форми<br>на б г д п т</p>
+    <p class="sample spec-italic">гледај, допри, пиши, биди тивко</p>
+  </div>
+  <div class="g7 spec">
+    <p class="mono">Onest 300 / 400<br>текст и интерфејс</p>
+    <div class="sample">
+      <p class="spec-text">Ѕидовите што ги градиме околу себе се тивки, но не се неми. Ќе ги чуеш ако застанеш. Љубопитноста е почеток на секоја грижа, а њежноста не е слабост. Секој ден носи ѓердан од ситни паузи, и во џебот на вечерта секогаш останува по една јасна нота.</p>
+      <p class="en small" lang="en" style="margin-top:var(--s-2);max-width:40em">The walls we build around ourselves are quiet, but not mute. You will hear them if you stop. Curiosity is where all care begins, and tenderness is not weakness. Every day brings a necklace of small pauses, and one clear note is always left in the pocket of the evening.</p>
+    </div>
+  </div>
+  <div class="g7 spec">
+    <p class="mono">JetBrains Mono 300<br>нотација, само ситно</p>
+    <p class="sample spec-mono"><span>♩ = 60</span><span>7/8</span><span>2 + 2 + 3</span><span>01 — 07</span><span>23:40</span></p>
+  </div>
+</section>
+
+<!-- ================= RHYTHM ================= -->
+<section class="wrap" id="ritam">
+  <div class="g7 head"><p class="num">08</p><h2>Кратко, кратко, <em>долго.</em></h2></div>
+  <div class="g7" style="margin-bottom:var(--s-6)">
+    <div style="grid-column:2/5"><p class="lead">Македонското 7/8 се брои 2 + 2 + 3. Истата мерка ги дава растојанијата, мрежата и времето на движењето.</p></div>
+    <div style="grid-column:5/8"><p class="en" lang="en">Macedonian 7/8 is counted 2 + 2 + 3. The same measure sets the spacing, the grid and the timing of motion.</p></div>
+  </div>
+
+  <ul class="scale" aria-label="Скала на растојанија">
+    <li><span class="mono">--s-1</span><span class="mono">8</span><i style="width:8px"></i></li>
+    <li><span class="mono">--s-2</span><span class="mono">16</span><i style="width:16px"></i></li>
+    <li><span class="mono">--s-3</span><span class="mono">24</span><i style="width:24px"></i></li>
+    <li><span class="mono">--s-4</span><span class="mono">40</span><i style="width:40px"></i></li>
+    <li><span class="mono">--s-5</span><span class="mono">56</span><i style="width:56px"></i></li>
+    <li><span class="mono">--s-6</span><span class="mono">80</span><i style="width:80px"></i></li>
+    <li><span class="mono">--s-7</span><span class="mono">128</span><i style="width:128px"></i></li>
+    <li><span class="mono">--s-8</span><span class="mono">200</span><i style="width:min(200px,100%)"></i></li>
+  </ul>
+
+  <div class="meter" aria-hidden="true"><span class="down"></span><span></span><span class="down"></span><span></span><span class="down"></span><span></span><span></span></div>
+  <div class="meter-groups"><div class="mono">2</div><div class="mono">2</div><div class="mono">3</div></div>
+
+  <div class="g7 rhythm-notes">
+    <div>
+      <p>Мрежата има седум колони, групирани 2 · 2 · 3. Оваа страница е составена на неа: бројот лево, насловот на шест колони, текстот на три.</p>
+      <p class="en small" lang="en">The grid has seven columns grouped 2 · 2 · 3. This page is built on it: the number on the left, the headline across six, the text across three.</p>
+    </div>
+    <div>
+      <p>Движењето ја следи истата мерка: 0.8 s, 0.8 s, 1.2 s, секогаш со ease-out. Никогаш не отскокнува.</p>
+      <p class="en small" lang="en">Motion follows the same measure: 0.8 s, 0.8 s, 1.2 s, always ease-out. It never bounces.</p>
+      <div class="beat" aria-hidden="true"><i style="width:64px"></i><i style="width:64px"></i><i style="width:96px"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VOICE ================= -->
+<section class="wrap" id="glas">
+  <div class="g7 head"><p class="num">09</p><h2>Како <em>зборуваме.</em></h2></div>
+  <div class="g7" style="margin-bottom:var(--s-6)">
+    <div style="grid-column:2/5"><p class="lead">Мирно, прецизно, топло. Кратки реченици, една идеја по објава. Зборуваме со тебе, не на тебе.</p></div>
+    <div style="grid-column:5/8"><p class="en" lang="en">Calm, precise, warm. Short sentences, one idea per post. We speak with you, not at you.</p></div>
+  </div>
+  <div class="g7 voice">
+    <div class="col yes">
+      <h3>Да</h3>
+      <ul>
+        <li><p class="q">Тагата има свое темпо. Не мора да ја забрзаш.</p><p class="en" lang="en">Sadness has its own tempo. You don’t have to speed it up.</p></li>
+        <li><p class="q">Некои денови се во 7/8. Тоа не е грешка.</p><p class="en" lang="en">Some days are in 7/8. That isn’t a mistake.</p></li>
+        <li><p class="q">Слушни ја паузата пред одговорот.</p><p class="en" lang="en">Hear the pause before the answer.</p></li>
+      </ul>
+    </div>
+    <div class="col no">
+      <h3>Не</h3>
+      <ul>
+        <li><p class="q">Отклучи го својот целосен потенцијал!</p><p class="why">Празно ветување, извичник. <span lang="en">Empty promise, exclamation mark.</span></p></li>
+        <li><p class="q">Твоето патување кон подобар живот почнува денес.</p><p class="why">„Патување“ е клише. <span lang="en">“Journey” is a cliché.</span></p></li>
+        <li><p class="q">5 трикови за моментална среќа</p><p class="why">Среќата не е трик, а брзината не е наша. <span lang="en">Happiness isn’t a hack, and speed isn’t ours.</span></p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MISUSE ================= -->
+<section class="wrap" id="ne">
+  <div class="g7 head"><p class="num">10</p><h2>Што <em>не</em> правиме.</h2></div>
+  <ul class="misuse">
+    <li><div class="tile m-stretch"><svg aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/> <path d="M50 6 V52"/> <path d="M50 64 V94"/> </svg></div><p>Не растегнувај. <span class="en" lang="en">Don’t stretch.</span></p></li>
+    <li><div class="tile m-rotate"><svg aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/> <path d="M50 6 V52"/> <path d="M50 64 V94"/> </svg></div><p>Не ротирај. <span class="en" lang="en">Don’t rotate.</span></p></li>
+    <li><div class="tile"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true"><path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/><path d="M50 6 V94"/></svg></div><p>Не ја затворај паузата. <span class="en" lang="en">Don’t close the pause.</span></p></li>
+    <li><div class="tile m-grad"><svg aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/> <path d="M50 6 V52"/> <path d="M50 64 V94"/> </svg></div><p>Без градиенти. <span class="en" lang="en">No gradients.</span></p></li>
+    <li><div class="tile m-glow"><svg aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/> <path d="M50 6 V52"/> <path d="M50 64 V94"/> </svg></div><p>Без сенки и сјај. <span class="en" lang="en">No shadows, no glow.</span></p></li>
+    <li><div class="tile m-red"><svg aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/> <path d="M50 6 V52"/> <path d="M50 64 V94"/> </svg></div><p>Цинобер не е за целиот знак. <span class="en" lang="en">Cinnabar is never the whole mark.</span></p></li>
+    <li><div class="tile"><span class="m-caps">ЈАСНОТА</span></div><p>Не менувај писмо, без големи букви. <span class="en" lang="en">No other typeface, no capitals.</span></p></li>
+    <li><div class="tile m-busy"><svg aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"> <path d="M28 14 V44 A22 22 0 0 0 72 44 V14"/> <path d="M50 6 V52"/> <path d="M50 64 V94"/> </svg></div><p>Не на немирна позадина. <span class="en" lang="en">Not on a busy background.</span></p></li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <div class="g7 files">
+    <p class="c1">Датотеки<br><span class="en small" lang="en">Files</span></p>
+    <ul>
+      <li><a href="../brand/logo/mark.svg">mark.svg</a> — примарен знак</li>
+      <li><a href="../brand/logo/favicon.svg">favicon.svg</a> — мала верзија</li>
+      <li><a href="../brand/logo/lockup-horizontal.svg">lockup-horizontal.svg</a></li>
+      <li><a href="../brand/logo/lockup-stacked.svg">lockup-stacked.svg</a></li>
+      <li><a href="../brand/logo/lockup-horizontal-latin.svg">lockup-horizontal-latin.svg</a></li>
+      <li><a href="../brand/logo/lockup-stacked-latin.svg">lockup-stacked-latin.svg</a></li>
+      <li><a href="../brand/logo/wordmark-cyrillic.svg">wordmark-cyrillic.svg</a></li>
+      <li><a href="../brand/logo/wordmark-latin.svg">wordmark-latin.svg</a></li>
+      <li><a href="../brand/logo/01-kamerton.svg">01-kamerton.svg</a></li>
+      <li><a href="../brand/logo/02-sedum-osmini.svg">02-sedum-osmini.svg</a></li>
+      <li><a href="../brand/logo/03-jasna-nota.svg">03-jasna-nota.svg</a></li>
+      <li><a href="../brand/logo/04-rezonansa.svg">04-rezonansa.svg</a></li>
+      <li><a href="../brand/logo/05-pauza.svg">05-pauza.svg</a></li>
+      <li><a href="../brand/logo/06-ohrid.svg">06-ohrid.svg</a></li>
+    </ul>
+  </div>
+  <div class="g7 closing">
+    <p class="display">Да се слушнеш себеси<span class="dot" aria-hidden="true"></span></p>
+    <p class="mono">Јаснота · визуелен идентитет<br>в1 · октомври 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>

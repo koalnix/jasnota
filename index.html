@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="mk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Јаснота — Brand Studio</title>
+<link rel="icon" href="brand/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="brand/tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--ink); color: var(--bone); }
+  body {
+    min-height: 100svh;
+    font: 300 16px/1.6 var(--font-text);
+    padding: var(--s-5) clamp(16px, 6vw, var(--s-7));
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: var(--s-6);
+  }
+  body::after {
+    content: ""; position: fixed; inset: -50%; pointer-events: none; opacity: .07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  header { display: flex; justify-content: space-between; align-items: center; }
+  .mark { width: 28px; height: 28px; background: var(--bone);
+    -webkit-mask: url(brand/logo/mark.svg) center/contain no-repeat; mask: url(brand/logo/mark.svg) center/contain no-repeat; }
+  .meta { font: 300 12px/1 var(--font-mono); color: var(--ash); letter-spacing: .02em; }
+  h1 {
+    font: 300 clamp(64px, 14vw, 220px)/.88 var(--font-display);
+    letter-spacing: -.03em;
+    align-self: end;
+  }
+  h1 em { font-style: italic; color: var(--ash); }
+  h1 .dot { color: var(--cinnabar); }
+  .lede { max-width: 34ch; margin-top: var(--s-4); color: var(--ash); font-size: 17px; }
+  nav { border-top: 1px solid var(--graphite); }
+  nav a {
+    display: grid; grid-template-columns: 4ch 1fr auto; align-items: baseline; gap: var(--s-3);
+    padding: var(--s-3) 0; border-bottom: 1px solid var(--graphite);
+    color: var(--bone); text-decoration: none;
+  }
+  nav a span:first-child { font: 300 12px var(--font-mono); color: var(--ash); }
+  nav a strong { font: 300 clamp(28px, 4.4vw, 56px)/1 var(--font-display); transition: transform var(--dur-med) var(--ease-out), font-style 0s; }
+  nav a small { font-size: 14px; color: var(--ash); text-align: right; }
+  nav a:hover strong, nav a:focus-visible strong { transform: translateX(var(--s-2)); font-style: italic; }
+  @media (max-width: 600px) { nav a { grid-template-columns: 3ch 1fr; } nav a small { grid-column: 2; text-align: left; } }
+  @media (prefers-reduced-motion: reduce) { nav a strong { transition: none; } }
+</style>
+</head>
+<body>
+  <header>
+    <div class="mark" role="img" aria-label="Јаснота"></div>
+    <p class="meta">7/8 · ♩ = 60 · 2026</p>
+  </header>
+
+  <section>
+    <h1>јасна<br><em>нота</em><span class="dot">.</span></h1>
+    <p class="lede">Психологија, музика и човечко искуство — во еден јасен тон. Ова е студиото на брендот.</p>
+  </section>
+
+  <nav aria-label="Делови">
+    <a href="identity/"><span>01</span><strong>Идентитет</strong><small>Лого, правци, бои, типографија</small></a>
+    <a href="instagram/"><span>02</span><strong>Instagram</strong><small>Moodboard, мрежа, формати</small></a>
+    <a href="website/"><span>03</span><strong>Веб-страница</strong><small>Кинематски прототип</small></a>
+    <a href="BRAND.md"><span>04</span><strong>Основа</strong><small>BRAND.md — правилата</small></a>
+  </nav>
+</body>
+</html>

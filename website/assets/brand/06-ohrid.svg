@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt">
+  <title>Јаснота — Охрид</title>
+  <!-- Circle and line, as the Glagolitic of the Ohrid school is built. A whole note resting on the lake line; its reflection never sits exactly beneath it. -->
+  <path d="M12 50 H88"/>
+  <circle cx="42" cy="32.5" r="15"/>
+  <circle cx="58" cy="67.5" r="15"/>
+</svg>

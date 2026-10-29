@@ -1,0 +1,34 @@
+/* Јаснота — shared design tokens. See /BRAND.md */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Onest:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap");
+
+:root {
+  /* colour — black first */
+  --ink: #0a0a0b;
+  --night: #131315;
+  --graphite: #2a2a2d;
+  --ash: #8c8a85;
+  --bone: #ece8e1;
+  --paper: #f6f4ef;
+  --cinnabar: #b4452c;
+
+  /* type */
+  --font-display: "Cormorant", "Times New Roman", serif;
+  --font-text: "Onest", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* 7/8 rhythm: spacing grows in 2·2·3 steps (base 8px) */
+  --s-1: 8px;
+  --s-2: 16px;
+  --s-3: 24px;
+  --s-4: 40px;
+  --s-5: 56px;
+  --s-6: 80px;
+  --s-7: 128px;
+  --s-8: 200px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-film: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-slow: 1.2s;
+  --dur-med: 0.8s;
+}

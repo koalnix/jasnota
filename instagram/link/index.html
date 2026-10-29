@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jasnota Links</title>
+<meta name="description" content="Jasnota: psychology you can hear. The latest journal entry, recordings, and everything else, from Jasna Dimitrovska.">
+<link rel="icon" href="../../brand/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../brand/tokens.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--ink); color: var(--bone); font: 300 16px/1.55 var(--font-text); -webkit-font-smoothing: antialiased; min-height: 100svh; }
+  body::after { content: ""; position: fixed; inset: 0; pointer-events: none; background: url("../grain.svg"); opacity: .045; }
+  a { color: inherit; }
+  :focus-visible { outline: 1px solid var(--bone); outline-offset: 3px; }
+  .mark { display: inline-block; aspect-ratio: 1; background: currentColor; -webkit-mask: url("../../brand/logo/mark.svg") center / contain no-repeat; mask: url("../../brand/logo/mark.svg") center / contain no-repeat; }
+  main { width: min(460px, 100% - 32px); margin: 0 auto; padding: 40px 0 48px; }
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .top .mark { width: 28px; }
+  .lang { display: inline-flex; border: 1px solid var(--graphite); border-radius: 999px; padding: 3px; }
+  .lang button { background: none; border: 0; color: var(--ash); font: 400 12px/1 var(--font-mono); padding: 7px 11px; border-radius: 999px; cursor: pointer; }
+  .lang button[aria-pressed="true"] { background: var(--bone); color: var(--ink); }
+  .av { width: 88px; height: 88px; border-radius: 50%; border: 1px solid #2f2f33; margin: 44px 0 22px; position: relative; overflow: hidden; display: grid; place-items: center; background: var(--ink); }
+  .av .mark { width: 40px; }
+  .av .ph { position: absolute; inset: 0; background-size: cover; background-position: center; display: none; }
+  .av .ph.has-photo { display: block; }
+  h1 { font: 300 clamp(48px, 15vw, 68px)/.92 var(--font-display); letter-spacing: -.02em; margin: 0; }
+  h1 em { font-weight: 300; }
+  .who { margin: 14px 0 0; color: var(--ash); font-size: 14.5px; }
+  .who b { color: var(--bone); font-weight: 400; }
+  .meter { display: flex; gap: 6px; align-items: center; margin-top: 26px; }
+  .meter i { width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--ash); display: block; }
+  .meter i.a { background: var(--bone); border-color: var(--bone); }
+  .meter b { width: 8px; }
+  ul { list-style: none; margin: 34px 0 0; padding: 0; border-top: 1px solid var(--graphite); }
+  li a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 16px; align-items: center; padding: 18px 2px; border-bottom: 1px solid var(--graphite); text-decoration: none; transition: padding .6s var(--ease-out), background .6s var(--ease-out); }
+  li a:hover { padding-left: 10px; background: var(--night); }
+  li .t { font: 300 25px/1.1 var(--font-display); letter-spacing: -.005em; }
+  li .t em { font-weight: 300; }
+  li .s { grid-column: 1; font: 300 11.5px/1.5 var(--font-mono); color: var(--ash); letter-spacing: .02em; }
+  li .ar { grid-row: 1 / span 2; grid-column: 2; color: var(--ash); font: 300 18px/1 var(--font-text); }
+  li.first a { padding-block: 22px 24px; }
+  li.first .t { font-size: 32px; }
+  li.first .s::before { content: ""; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--cinnabar); margin-right: 8px; vertical-align: 2px; }
+  .foot { margin-top: 34px; font-size: 13px; color: var(--ash); }
+  .foot p { margin: 0 0 8px; }
+  .proto { margin-top: 30px; font: 300 11px/1.5 var(--font-mono); color: #5d5b57; }
+  .proto a { color: inherit; }
+  [data-mk] { }
+  @media (prefers-reduced-motion: reduce) { li a { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <span class="mark" aria-hidden="true"></span>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set="en" aria-pressed="true">EN</button>
+      <button type="button" data-set="mk" aria-pressed="false">МК</button>
+    </div>
+  </div>
+
+  <div class="av"><span class="mark" aria-hidden="true"></span><div class="ph" data-slot="profile" aria-hidden="true"></div></div>
+  <h1 data-i="title">To hear <em>yourself.</em></h1>
+  <p class="who" data-i="who"><b>Jasna Dimitrovska</b>: psychologist, Gestalt counsellor, vocal artist with Orchestra DIVA. Bitola.</p>
+  <div class="meter" aria-hidden="true"><i class="a"></i><i></i><b></b><i class="a"></i><i></i><b></b><i class="a"></i><i></i><i></i></div>
+
+  <ul>
+    <li class="first"><a data-href="website/journal/zajdi-zajdi-jasno-sonce/"><span class="t" data-i="l1">Zajdi, zajdi, <em>jasno</em> sonce</span><span class="s" data-i="l1s">latest · song · 04:12</span><span class="ar" aria-hidden="true">→</span></a></li>
+    <li><a data-href="website/journal/breathing-in-7-8/"><span class="t" data-i="l2">Breathing in <em>7/8</em></span><span class="s" data-i="l2s">recording · 07:08 · just my voice</span><span class="ar" aria-hidden="true">→</span></a></li>
+    <li><a data-href="website/journal/"><span class="t" data-i="l3">The <em>journal</em></span><span class="s" data-i="l3s">essays, conversations, recordings</span><span class="ar" aria-hidden="true">→</span></a></li>
+    <li><a data-href="website/listen/"><span class="t" data-i="l4"><em>Listen</em></span><span class="s" data-i="l4s">songs, recordings, song of the week</span><span class="ar" aria-hidden="true">→</span></a></li>
+    <li><a data-href="website/about/"><span class="t" data-i="l5">About <em>Jasna</em></span><span class="s" data-i="l5s">psychology × music × human experience</span><span class="ar" aria-hidden="true">→</span></a></li>
+    <li><a href="https://www.instagram.com/chamber_orchestra_diva/" rel="noopener"><span class="t" data-i="l6">Orchestra <em>DIVA</em></span><span class="s" data-i="l6s">@chamber_orchestra_diva · concerts in Bitola</span><span class="ar" aria-hidden="true">↗</span></a></li>
+    <li><a data-href="website/contact/"><span class="t" data-i="l7">Talks &amp; <em>collaborations</em></span><span class="s" data-i="l7s">zdravo@jasnota.mk</span><span class="ar" aria-hidden="true">→</span></a></li>
+  </ul>
+
+  <div class="foot">
+    <p data-i="note">Jasnota explains; it isn’t therapy, and doesn’t offer sessions. If you are struggling, please talk to a psychologist or psychotherapist near you.</p>
+    <p>jasnota.mk · @jasnota</p>
+  </div>
+  <p class="proto">Link-in-bio prototype, served at jasnota.mk/ig · <a href="../">back to the Instagram plan</a></p>
+</main>
+
+<script>
+(function () {
+  var root = new URL('../../', location.href).href;
+  var utm = '?utm_source=instagram&utm_medium=bio&utm_campaign=month-one';
+  document.querySelectorAll('[data-href]').forEach(function (a) { a.href = root + a.getAttribute('data-href') + utm; });
+
+  var MK = {
+    title: 'Да се слушнеш <em>себеси.</em>',
+    who: '<b>Јасна Димитровска</b>: психолог, гешталт советник, вокална уметница со Оркестарот DIVA. Битола.',
+    l1: 'Зајди, зајди, <em>јасно</em> сонце', l1s: 'најново · песна · 04:12',
+    l2: 'Дишење во <em>7/8</em>', l2s: 'снимка · 07:08 · само мојот глас',
+    l3: '<em>Дневникот</em>', l3s: 'есеи, разговори, снимки',
+    l4: '<em>Слушај</em>', l4s: 'песни, снимки, песна на неделата',
+    l5: 'За <em>Јасна</em>', l5s: 'психологија × музика × човечко искуство',
+    l6: 'Оркестар <em>DIVA</em>', l6s: '@chamber_orchestra_diva · концерти во Битола',
+    l7: 'Предавања и <em>соработки</em>', l7s: 'zdravo@jasnota.mk',
+    note: 'Јаснота објаснува; не е терапија и не нуди сесии. Ако ти е тешко, разговарај со психолог или психотерапевт во твојата околина.'
+  };
+  var EN = {};
+  document.querySelectorAll('[data-i]').forEach(function (el) { EN[el.getAttribute('data-i')] = el.innerHTML; });
+
+  function set(l) {
+    var dict = l === 'mk' ? MK : EN;
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-i]').forEach(function (el) { var k = el.getAttribute('data-i'); if (dict[k]) el.innerHTML = dict[k]; });
+    document.querySelectorAll('[data-set]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set') === l ? 'true' : 'false'); });
+    try { localStorage.setItem('jasnota-lang', l); } catch (e) {}
+  }
+  var start = 'en';
+  try {
+    var s = localStorage.getItem('jasnota-lang');
+    if (s === 'en' || s === 'mk') start = s;
+    else if ((navigator.language || '').toLowerCase().indexOf('mk') === 0) start = 'mk';
+  } catch (e) {}
+  set(start);
+  document.querySelectorAll('[data-set]').forEach(function (b) { b.addEventListener('click', function () { set(b.getAttribute('data-set')); }); });
+
+  /* profile.jpg if supplied; a failed probe changes nothing */
+  var ph = document.querySelector('.av .ph');
+  ['jpg'].reduce(function (p, ext) {
+    return p.catch(function () {
+      return new Promise(function (ok, no) {
+        var u = root + 'photos/profile.' + ext, i = new Image();
+        i.onload = function () { ok(u); }; i.onerror = no; i.src = u;
+      });
+    });
+  }, Promise.reject()).then(function (u) { ph.style.backgroundImage = 'url("' + u + '")'; ph.classList.add('has-photo'); }, function () {});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt">
+  <title>Јаснота — Јасна нота</title>
+  <!-- A note turned upside down becomes a ј: one point of light, one line descending from it. -->
+  <circle cx="56" cy="17" r="8" fill="currentColor" stroke="none"/>
+  <path d="M56 34 V68 A17 17 0 0 1 39 85"/>
+</svg>

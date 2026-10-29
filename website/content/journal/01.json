@@ -1,0 +1,92 @@
+{
+  "no": "01",
+  "slug": "the-voice-i-used-to-hide",
+  "kind": "essay",
+  "length": { "en": "4 min", "mk": "4 мин" },
+  "audio": null,
+  "en": {
+    "title": "The voice I used to hide",
+    "titleHtml": "The voice<br>I used to <em>hide</em>",
+    "excerpt": "I have sung since I was a child, and for years I sang quietly. On shame, on the voice, and on the day I stopped apologising for how I sound.",
+    "lede": "I have sung for as long as I can remember. But for a long time, I sang so that no one would hear me.",
+    "body": [
+      { "n": "I.", "blocks": [
+        { "p": "As a child I sang everywhere. In the kitchen, while my grandmother cooked. In the stairwell of our building, where the echo made my voice bigger than I was. On the bus to school, quietly, my forehead against the glass. Singing wasn’t something I did. It was the way I thought." },
+        { "p": "Then, somewhere around thirteen, something changed. I don’t remember the exact moment. I only remember that I started singing more quietly. Then more quietly still. Then only when I was home alone. Then only in my head." },
+        { "p": "If anyone had asked me why, I would have said I didn’t have a nice voice. That was the easiest answer. The real one took me years." }
+      ] },
+      { "n": "II.", "blocks": [
+        { "p": "Almost no one likes their own voice on a recording. There is a simple, physical reason for it: when we speak or sing, we also hear ourselves through the bones of the skull, and they amplify the low tones. A recording doesn’t have them. The voice other people hear is thinner and sharper than the one we hear from the inside." },
+        { "p": "But for me it wasn’t only that. The first time I heard myself recorded — on a friend’s phone, at someone’s birthday — I wasn’t ashamed because my voice sounded different. I was ashamed because it sounded like me. Too much like me. As if someone had seen me before I’d had the chance to get ready." }
+      ] },
+      { "n": "III.", "blocks": [
+        { "p": "Later, studying psychology, I found a word for what I had been feeling. It wasn’t guilt." },
+        { "quote": "Guilt says: <em>“I did something wrong.”</em><br>Shame says: <em>“I am wrong.”</em>" },
+        { "p": "Guilt is about what we did. Shame takes hold of the whole person. And that is why shame doesn’t want to be fixed — it wants to hide." },
+        { "p": "The voice may be the most naked thing we have. You can’t dress it. You could hear in mine whether I was tired, whether I was scared, whether something mattered to me. When you sing, you put all of that in front of other people. No wonder shame sticks so easily to the voice, of all things." },
+        { "p": "Psychologists also describe something called <em>the spotlight effect</em>: our tendency to believe that others notice and judge us far more than they actually do. In one well-known experiment, students wearing an embarrassing T-shirt guessed that nearly half the room had noticed it. In fact, fewer than a quarter had." },
+        { "p": "For years, I sang under a spotlight no one else could see." }
+      ] },
+      { "n": "IV.", "blocks": [
+        { "p": "I didn’t stop feeling ashamed all at once. First, I stopped apologising." },
+        { "p": "I noticed that every time before I sang in front of someone, I said something. “I haven’t warmed up.” “I’m not in voice today.” “This isn’t really my genre.” Small sentences, like cushions, placed beneath a fall that hadn’t happened yet." },
+        { "p": "One day, at rehearsal, an older colleague cut me off before I could finish the sentence. “Just sing,” she said. “We’ll decide whether it’s good.”" },
+        { "p": "It hit me harder than I wanted to admit. Because she was right. My apologies weren’t protecting anyone from my voice. They were protecting me from their response. And so I never found out what that response was." }
+      ] },
+      { "n": "V.", "blocks": [
+        { "p": "The next time, I said nothing. I just breathed in — for two, hold for two, out for three — and sang." },
+        { "p": "My voice trembled on the first phrase. No one got up. No one told me I was wrong. The song ended, the way songs do, and I was still there." },
+        { "p": "I can’t say I’ve had no stage fright since. I always have it. The difference is that I no longer hide my voice from it. I let the two of them be in the same room." }
+      ] },
+      { "n": "VI.", "blocks": [
+        { "p": "This is the first entry on Jasnota, and it is no accident that it’s about the voice. Everything I write here — about sadness, about the pause, about how someone tunes in to us — I write from the place where I learned that hearing yourself sometimes means you first have to stop making yourself quiet." },
+        { "p": "If you have a voice you’re hiding too — in a song, in a conversation, in a sentence you never say in the meeting — you don’t have to tell me which one it is. It’s enough that you know it’s there." }
+      ] }
+    ],
+    "sign": "Jasna",
+    "foot": "This is not therapy. If shame or anxiety is making everyday life harder, talking to a psychologist or psychotherapist can help a great deal.",
+    "note": "translated from Macedonian"
+  },
+  "mk": {
+    "title": "Гласот што го криев",
+    "titleHtml": "Гласот што<br>го <em>криев</em>",
+    "excerpt": "Пеам од дете, а со години пеев тивко. За срамот, за гласот и за денот кога престанав да се извинувам како звучам.",
+    "lede": "Пеам откако знам за себе. Но долго време пеев така што никој да не ме чуе.",
+    "body": [
+      { "n": "I.", "blocks": [
+        { "p": "Како дете пеев насекаде. Во кујната, додека баба ми готвеше. Во ходникот на зградата, каде што ехото го правеше гласот поголем од мене. Во автобусот кон училиште, тивко, со челото на стаклото. Пеењето не беше нешто што го правев. Беше начинот на кој мислев." },
+        { "p": "Потоа, некаде кога имав тринаесет години, нешто се промени. Не памтам точен момент. Памтам само дека почнав да пеам потивко. Па уште потивко. Па само кога сум сама дома. Па само во мислите." },
+        { "p": "Ако некој ме прашаше тогаш зошто, ќе речев дека немам убав глас. Тоа беше најлесниот одговор. За вистинскиот ми требаа години." }
+      ] },
+      { "n": "II.", "blocks": [
+        { "p": "Речиси никој не го сака својот глас на снимка. За тоа постои и едноставно, физичко објаснување: кога зборуваме или пееме, се слушаме и преку коските на главата, а тие ги засилуваат длабоките тонови. Снимката ги нема. Гласот што другите го слушаат е потенок и поостар од оној што ние го слушаме однатре." },
+        { "p": "Но кај мене не беше само тоа. Кога првпат се слушнав снимена — на телефонот на една другарка, на нечиј роденден — не се засрамив затоа што гласот звучеше поинаку. Се засрамив затоа што звучеше како мене. Премногу. Како некој да ме видел пред да стигнам да се подготвам." }
+      ] },
+      { "n": "III.", "blocks": [
+        { "p": "Подоцна, на студиите по психологија, најдов збор за она што го чувствував. Не беше вина." },
+        { "quote": "Вината вели: <em>„Направив нешто погрешно.“</em><br>Срамот вели: <em>„Јас сум погрешна.“</em>" },
+        { "p": "Вината се однесува на постапката. Срамот ја зафаќа целата личност. И затоа срамот не сака да се поправи — сака да се скрие." },
+        { "p": "Гласот е можеби најголото нешто што го имаме. Не можеш да го облечеш. Во мојот се слушаше дали сум уморна, дали сум исплашена, дали ми е важно. Кога пееш, сето тоа го ставаш пред другите. Не е чудно што срамот толку лесно се залепува токму за гласот." },
+        { "p": "Психолозите опишуваат и нешто што се вика <em>ефект на рефлекторот</em>: склоноста да мислиме дека другите нè забележуваат и нè оценуваат многу повеќе отколку што навистина го прават. Во еден познат експеримент, студенти облечени во непријатна маица проценувале дека ја забележала речиси половина од собата. Всушност, ја забележале помалку од една четвртина." },
+        { "p": "Јас со години пеев под рефлектор што никој друг не го гледаше." }
+      ] },
+      { "n": "IV.", "blocks": [
+        { "p": "Не престанав да се срамам одеднаш. Прво престанав да се извинувам." },
+        { "p": "Забележав дека секој пат пред да запеам пред некого, кажувам нешто. „Не сум загреана.“ „Денеска не сум во глас.“ „Ова не ми е баш мој жанр.“ Мали реченици, како перничиња, ставени пред падот што уште не се случил." },
+        { "p": "Еден ден, на проба, една постара колешка ме прекина пред да ја довршам реченицата. „Само пеј,“ рече. „Ние ќе одлучиме дали е добро.“" },
+        { "p": "Тоа ме погоди повеќе отколку што сакав да признаам. Затоа што имаше право. Извинувањето не ги штитеше другите од мојот глас. Ме штитеше мене од нивниот одговор. И така, никогаш не дознавав каков е тој одговор." }
+      ] },
+      { "n": "V.", "blocks": [
+        { "p": "Следниот пат не реков ништо. Само вдишав — на два, задршка на два, издишување на три — и запеав." },
+        { "p": "Гласот ми трепереше на првата фраза. Никој не стана. Никој не ми рече дека сум погрешна. Песната заврши, како што завршуваат песните, и јас сè уште бев таму." },
+        { "p": "Не можам да кажам дека оттогаш немам трема. Ја имам секогаш. Разликата е во тоа што повеќе не го кријам гласот од неа. Ги пуштам двете да бидат во истата соба." }
+      ] },
+      { "n": "VI.", "blocks": [
+        { "p": "Ова е првиот запис на Јаснота, и не е случајно што е за гласот. Сè што ќе пишувам тука — за тагата, за паузата, за тоа како некој се наштимува на нас — го пишувам од местото каде што научив дека да се слушнеш себеси понекогаш значи прво да престанеш да се стишуваш." },
+        { "p": "Ако и ти имаш глас што го криеш — во песна, во разговор, во реченица што не ја кажуваш на состанок — не мора да ми кажеш кој е. Доволно е ти да знаеш дека е таму." }
+      ] }
+    ],
+    "sign": "Јасна",
+    "foot": "Ова не е терапија. Ако срамот или анксиозноста ти го отежнуваат секојдневието, разговорот со психолог или психотерапевт може многу да помогне."
+  }
+}

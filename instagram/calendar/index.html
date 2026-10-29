@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>November Calendar</title>
+<meta name="description" content="Jasnota on Instagram, November 2026: every feed post, reel, story and launch step by day, filterable by pillar and format.">
+<link rel="icon" href="../../brand/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../brand/tokens.css">
+<link rel="stylesheet" href="../instagram.css?v=10">
+<link rel="stylesheet" href="../site.css?v=10">
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead site">
+  <a class="wordmark" href="../"><span class="mark" aria-hidden="true"></span>jasnota</a>
+  <nav class="sitenav" aria-label="Instagram plan">
+    <a href="../">System</a><a href="../profile/">Profile</a><a href="../month/">Month one</a><a href="./" aria-current="page">Calendar</a><a href="../app/">Prototype</a><a href="../link/">Link in bio</a><a href="../metrics/">Review</a>
+  </nav>
+</header>
+
+<section class="page-open" style="padding-bottom:var(--s-5)">
+  <h1 class="display">November, <em>2026.</em></h1>
+  <p class="lead"><strong>Four days of preparation, then thirty days of the plan.</strong> Feed posts show their cover; stories show their time. Filter by pillar or format: the first tap isolates one, further taps add others. Every item opens its full card.</p>
+</section>
+
+<div class="cal-tools" role="group" aria-label="Filters">
+  <div class="grp"><span>pillar</span>
+    <button class="fchip" type="button" data-filter="pillar" data-key="about" aria-pressed="true">Introductions</button>
+    <button class="fchip" type="button" data-filter="pillar" data-key="sound" aria-pressed="true">Sound of feelings</button>
+    <button class="fchip" type="button" data-filter="pillar" data-key="psycho" aria-pressed="true">Psycho-note</button>
+    <button class="fchip" type="button" data-filter="pillar" data-key="songs" aria-pressed="true">Songs</button>
+    <button class="fchip" type="button" data-filter="pillar" data-key="rest" aria-pressed="true">Rest</button>
+    <button class="fchip" type="button" data-filter="pillar" data-key="*" aria-pressed="false">All</button>
+  </div>
+  <div class="grp"><span>format</span>
+    <button class="fchip" type="button" data-filter="fmt" data-key="single" aria-pressed="true">Single</button>
+    <button class="fchip" type="button" data-filter="fmt" data-key="carousel" aria-pressed="true">Carousel</button>
+    <button class="fchip" type="button" data-filter="fmt" data-key="reel" aria-pressed="true">Reel</button>
+    <button class="fchip" type="button" data-filter="fmt" data-key="story" aria-pressed="true">Story</button>
+    <button class="fchip" type="button" data-filter="fmt" data-key="prep" aria-pressed="true">Prep</button>
+    <button class="fchip" type="button" data-filter="fmt" data-key="*" aria-pressed="false">All</button>
+  </div>
+  <span class="footnote" id="calCount" aria-live="polite"></span>
+</div>
+
+<div class="cal" id="calMount" aria-label="November 2026"></div>
+
+<div class="cal-legend footnote">
+  <span>Mon · Wed · Fri: feed at 20:30</span><span>Sat 10:00: Song of the week</span><span>Sun: rest</span><span>Prep steps link to the handle switch</span>
+</div>
+
+<footer class="end">
+  <p class="display">Rests are <em>written</em> too.</p>
+  <span class="mono">jasnota · instagram calendar · 11/2026</span>
+</footer>
+</div>
+<script src="../render.js?v=10"></script>
+<script src="../data.js?v=10"></script>
+<script src="../pages.js?v=10"></script>
+</body>
+</html>
