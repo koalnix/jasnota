@@ -26,18 +26,19 @@ function q(v){if(v)['ready','finished','updateCallbackDone'].forEach(function(k)
 w.addEventListener('pageswap',function(e){q(e.viewTransition)});
 w.addEventListener('unhandledrejection',function(e){var r=e.reason;if(r&&(r.name==='AbortError'||r.name==='InvalidStateError')&&/transition/i.test(r.message||''))e.preventDefault()});
 w.addEventListener('pagereveal',function(e){q(e.viewTransition)});
-setTimeout(function(){if(!h.hasAttribute('data-booted'))c.remove('i18n-wait','is-arriving','is-first')},3500)})(document,window);`;
+setTimeout(function(){if(!h.hasAttribute('data-booted'))c.remove('i18n-wait','is-arriving','is-first','motion')},3500)})(document,window);`;
 
-export function head(r) {
+export function head(r, withGsap) {
   return `
   <meta name="author" content="Jasna Dimitrovska">
   <meta name="theme-color" content="#0a0a0b">
   <meta name="color-scheme" content="dark">
+  <style>html{background:#0a0a0b;color:#ece8e1}</style>
   <link rel="icon" href="${r}assets/brand/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=Onest:wght@300;400;500&amp;family=JetBrains+Mono:wght@300;400&amp;display=swap">
+${withGsap ? '  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>\n' : ''}  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300&amp;family=Onest:wght@300&amp;family=JetBrains+Mono:wght@300&amp;display=swap">
   <link rel="stylesheet" href="${r}assets/brand/tokens.css">
   <link rel="stylesheet" href="${r}css/shell.css">
   <script>${BOOT}</script>

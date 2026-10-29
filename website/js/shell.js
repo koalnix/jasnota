@@ -27,13 +27,19 @@
   const STATIC = /[?&]static\b/.test(location.search);
   const MOTION = root.classList.contains('motion');
   const FINE = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const TOUCH = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const DPR = () => Math.min(window.devicePixelRatio || 1, 2);   // canvases: sharp on retina, never 3x
   const E_FILM = 'cubic-bezier(0.65, 0, 0.35, 1)';
   const E_OUT = 'cubic-bezier(0.16, 1, 0.3, 1)';
   root.setAttribute('data-booted', '');
 
-  const setVW = () => root.style.setProperty('--vw', root.clientWidth / 100 + 'px');
+  // --vw excludes the scrollbar; only rewritten when the width really changes (the iOS toolbar resizes height only)
+  let lastVW = -1;
+  const setVW = () => { const w = root.clientWidth; if (w !== lastVW) { lastVW = w; root.style.setProperty('--vw', w / 100 + 'px'); } };
   setVW();
   window.addEventListener('resize', setVW);
+  // iOS only applies :active (the touch feedback on rows and buttons) when a touch listener exists
+  if (TOUCH) document.addEventListener('touchstart', () => {}, { passive: true });
 
   /* ================================================================== split words
      Splits an element into word spans, keeping inline markup (<em>, .accent).
@@ -76,6 +82,7 @@
     el.textContent = '';
     el.append(sr, vis);
     el._words = words;
+    el.classList.add('is-split');
     return words;
   }
 
@@ -220,6 +227,9 @@
   })();
 
   /* ================================================================== mobile menu */
+  let viaKeys = false;
+  document.addEventListener('keydown', () => { viaKeys = true; }, true);
+  document.addEventListener('pointerdown', () => { viaKeys = false; }, true);
   const menu = $('#menu');
   const menuBtn = $('.hdr__menu');
   let menuTimer = 0;
@@ -233,8 +243,9 @@
     $('span', menuBtn).textContent = t('menu_close');
     if (lenis) lenis.stop();
     requestAnimationFrame(() => requestAnimationFrame(() => menu.classList.add('is-open')));
+    // focus moves into the menu for keyboard users; a tap doesn't leave a focus ring on "Home"
     const first = $('a', menu);
-    if (first) setTimeout(() => first.focus({ preventScroll: true }), MOTION ? 300 : 0);
+    if (first && viaKeys) setTimeout(() => first.focus({ preventScroll: true }), MOTION ? 300 : 0);
   }
   function closeMenu(returnFocus) {
     if (!menu || menu.hidden) return;
@@ -517,8 +528,11 @@
     scrubbers.push(s);
     return s;
   }
+  // two passes: every rect is read first, then every style written, so a frame never forces layout twice
+  const due = [];
   function runScrubbers(force) {
     const vh = innerHeight;
+    due.length = 0;
     for (const s of scrubbers) {
       const r = s.el.getBoundingClientRect();
       if (!force && (r.bottom < -vh * 0.5 || r.top > vh * 1.5) && s.p >= 0) continue;
@@ -526,14 +540,19 @@
       const a = vh * s.from[1] - e1, b = (e2 - vh * s.to[1]) - (e1 - vh * s.from[1]);
       const p = clamp(b === 0 ? 0 : a / b);
       if (Math.abs(p - s.p) < 0.0005 && !force) continue;
-      s.p = p;
-      s.fn(p, r);
+      s.p = p; s.r = r;
+      due.push(s);
     }
+    for (let i = 0; i < due.length; i++) due[i].fn(due[i].p, due[i].r);
   }
-  let lastScrubY = -1;
+  let lastScrubY = -1, resizeQ = false;
   if (MOTION) {
     onFrame((t, y) => { if (y !== lastScrubY) { lastScrubY = y; runScrubbers(false); } });
-    window.addEventListener('resize', () => runScrubbers(true));
+    window.addEventListener('resize', () => {
+      if (resizeQ) return;
+      resizeQ = true;
+      requestAnimationFrame(() => { resizeQ = false; runScrubbers(true); });
+    });
     langListeners.push(() => requestAnimationFrame(() => runScrubbers(true)));
   }
 
@@ -566,7 +585,11 @@
       const vh = innerHeight;
       const inO = range(vh - r.top, vh * 0.05, vh * 0.55);
       const outO = range(r.bottom, vh * 0.04, vh * 0.42);
-      el.style.opacity = Math.min(inO, outO).toFixed(3);
+      const o = Math.min(inO, outO);
+      el.style.opacity = o.toFixed(3);
+      // its own compositor layer only while it is actually fading (no repaint of the block every frame)
+      const wc = o > 0.001 && o < 0.999 ? 'opacity' : '';
+      if (el._wc !== wc) { el._wc = wc; el.style.willChange = wc; }
     });
   });
 
@@ -701,10 +724,24 @@
       w.setAttribute('aria-valuemin', '0');
       w.setAttribute('aria-valuemax', String(Math.round(this.dur)));
       const at = (e) => { const r = w.getBoundingClientRect(); return clamp((e.clientX - r.left) / r.width) * this.dur; };
-      let dragging = false;
-      w.addEventListener('pointerdown', (e) => { dragging = true; w.setPointerCapture(e.pointerId); this.seek(at(e)); });
-      w.addEventListener('pointermove', (e) => { if (dragging) this.seek(at(e)); else if (e.pointerType === 'mouse') { this.hover = at(e) / this.dur; this.draw(); } });
-      w.addEventListener('pointerup', () => { dragging = false; });
+      // mouse: seek on press and drag. touch: a scroll that starts on the wave never seeks;
+      // a tap seeks, and a sideways drag scrubs once it is clearly sideways
+      let dragging = false, touch = null;
+      w.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'mouse') { dragging = true; w.setPointerCapture(e.pointerId); this.seek(at(e)); return; }
+        touch = { x: e.clientX, y: e.clientY, id: e.pointerId };
+      });
+      w.addEventListener('pointermove', (e) => {
+        if (dragging) { this.seek(at(e)); return; }
+        if (touch) {
+          const dx = e.clientX - touch.x, dy = e.clientY - touch.y;
+          if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy) * 1.5) { dragging = true; w.setPointerCapture(touch.id); touch = null; this.seek(at(e)); }
+          return;
+        }
+        if (e.pointerType === 'mouse') { this.hover = at(e) / this.dur; this.draw(); }
+      });
+      w.addEventListener('pointerup', (e) => { if (touch) this.seek(at(e)); dragging = false; touch = null; });
+      w.addEventListener('pointercancel', () => { dragging = false; touch = null; });
       w.addEventListener('pointerleave', () => { this.hover = -1; this.draw(); });
       w.addEventListener('keydown', (e) => {
         const k = e.key;
@@ -717,7 +754,7 @@
         e.preventDefault();
       });
       if ('ResizeObserver' in window) new ResizeObserver(() => this.build()).observe(w);
-      if ('IntersectionObserver' in window) new IntersectionObserver(([en]) => { this.visible = en.isIntersecting; Mini.update(); }).observe(el);
+      if ('IntersectionObserver' in window) new IntersectionObserver(([en]) => { this.visible = en.isIntersecting; if (this.visible) this.draw(); Mini.update(); }).observe(el);
       this.label();
       langListeners.push(() => this.label());
     }
@@ -734,9 +771,10 @@
     build() {
       const c = this.canvas, w = this.wave.clientWidth, h = this.wave.clientHeight;
       if (!w || !h) return;
-      const dpr = Math.min(2, window.devicePixelRatio || 1);
-      c.width = Math.round(w * dpr); c.height = Math.round(h * dpr);
+      const dpr = DPR(), cw = Math.round(w * dpr), ch = Math.round(h * dpr);
+      if (c.width !== cw || c.height !== ch) { c.width = cw; c.height = ch; }
       this.W = w; this.H = h; this.dpr = dpr;
+      this.ctx = this.ctx || c.getContext('2d');
       // bars in groups of 2 + 2 + 3, with a breath between the groups
       const r = rng(this.seed);
       const bars = [];
@@ -754,8 +792,8 @@
       this.draw();
     }
     draw() {
-      const c = this.canvas, ctx = c.getContext('2d');
-      if (!this.bars) return;
+      const ctx = this.ctx;
+      if (!this.bars || !ctx) return;
       const { W, H, dpr } = this;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, W, H);
@@ -820,7 +858,7 @@
       const ctx = Audio.ctx;
       this.pos = ctx.currentTime - this.t0;
       if (this.pos >= this.dur) { this.pause(); this.pos = 0; this.draw(); Mini.update(); return; }
-      this.draw();
+      if (this.visible && !document.hidden) this.draw();   // offscreen, the mini-player carries the time
       if (Math.round(this.pos) !== this._ap) { this._ap = Math.round(this.pos); this.aria(); }
       Mini.tick(this);
       requestAnimationFrame(() => this.loop());
@@ -1056,7 +1094,7 @@
     window.addEventListener('resize', measure);
     langListeners.push(() => requestAnimationFrame(measure));
     if (document.fonts) document.fonts.ready.then(measure);
-    if ('IntersectionObserver' in window) new IntersectionObserver(([en]) => { visible = en.isIntersecting; }).observe(mq);
+    if ('IntersectionObserver' in window) new IntersectionObserver(([en]) => { visible = en.isIntersecting; mq.classList.toggle('is-live', visible); }, { rootMargin: '25% 0px' }).observe(mq);
     let last = performance.now();
     onFrame((time) => {
       const dt = Math.min(0.05, (time - last) / 1000); last = time;
@@ -1086,18 +1124,21 @@
       const r = art.getBoundingClientRect();
       const p = clamp(-r.top / Math.max(1, r.height - innerHeight));
       line.style.transform = `scaleX(${p.toFixed(4)})`;
-      tc.textContent = fmt(p * total);
+      const f = fmt(p * total);
+      if (tc.textContent !== f) tc.textContent = f;
       prog.classList.toggle('is-done', p > 0.995);
     };
-    window.addEventListener('scroll', upd, { passive: true });
-    window.addEventListener('resize', upd);
-    langListeners.push(() => requestAnimationFrame(upd));
+    let queued = false;
+    const q = () => { if (queued) return; queued = true; requestAnimationFrame(() => { queued = false; upd(); }); };
+    window.addEventListener('scroll', q, { passive: true });
+    window.addEventListener('resize', q);
+    langListeners.push(q);
     upd();
   }
 
   /* ================================================================== public API for page scripts */
   window.Jasnota = {
-    t, splitWords, scrub, onFrame, magnetize, Audio, ready, MOTION, FINE, ROOT,
+    t, splitWords, scrub, onFrame, magnetize, Audio, ready, MOTION, FINE, TOUCH, DPR, ROOT,
     get lang() { return lang; },
     get lenis() { return lenis; },
     get velocity() { return vel; },

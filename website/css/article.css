@@ -7,7 +7,7 @@
 .art { padding: calc(var(--hdr-h) + var(--s-5)) var(--g) var(--s-7); }
 .essay { max-width: 1240px; margin: 0 auto; }
 .essay__back { display: inline-block; color: var(--ash); padding: 6px 0; margin-bottom: var(--s-6); transition: color 0.5s var(--ease-out); }
-.essay__back:hover { color: var(--bone); }
+@media (hover: hover) { .essay__back:hover { color: var(--bone); } }
 
 .essay__head { padding-bottom: var(--s-6); }
 .essay__meta { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); color: var(--ash); margin-bottom: var(--s-4); }
@@ -58,12 +58,14 @@
 .pn__a--next { text-align: right; align-items: flex-end; border-left: 1px solid var(--graphite); padding-left: var(--s-3); }
 .pn__a--prev { padding-right: var(--s-3); }
 .pn__t { font-family: var(--font-display); font-weight: 300; font-size: clamp(1.7rem, 3.2vw, 3.2rem); line-height: 1.02; letter-spacing: -0.015em; max-width: 16ch; transition: transform 0.9s var(--ease-out); }
-.pn__a--prev:hover .pn__t { transform: translateX(-0.25em); font-style: italic; }
-.pn__a--next:hover .pn__t { transform: translateX(0.25em); font-style: italic; }
+@media (hover: hover) {
+  .pn__a--prev:hover .pn__t { transform: translateX(-0.25em); font-style: italic; }
+  .pn__a--next:hover .pn__t { transform: translateX(0.25em); font-style: italic; }
+}
 
 /* reading progress: a staff line + timecode */
 .progress {
-  position: fixed; left: var(--g); right: var(--g); bottom: 18px; z-index: 46;
+  position: fixed; left: var(--gl); right: var(--gr); bottom: calc(18px + var(--safe-b)); z-index: 46;
   display: flex; align-items: center; gap: var(--s-2); pointer-events: none;
   color: var(--ash);
   transition: opacity 0.6s var(--ease-out);
@@ -75,6 +77,13 @@
 .mini.is-on ~ .progress, body:has(.mini.is-on) .progress { right: calc(var(--g) + 400px); }
 
 @media (max-width: 760px) {
+  /* phones: the progress line gets a short fade of black under it, so it never sits on a line of text */
+  .art { padding-bottom: calc(var(--s-7) + var(--safe-b)); }
+  .progress::before {
+    content: ""; position: absolute; z-index: -1; left: calc(-1 * var(--gl)); right: calc(-1 * var(--gr));
+    bottom: calc(-18px - var(--safe-b)); height: calc(64px + var(--safe-b));
+    background: linear-gradient(0deg, var(--ink) 0%, rgba(10, 10, 11, 0.86) 55%, rgba(10, 10, 11, 0));
+  }
   .essay__body { font-size: 1.04rem; }
   .mv { display: block; }
   .mv__n { position: static; display: block; margin-bottom: var(--s-2); font-size: 2.6rem; }

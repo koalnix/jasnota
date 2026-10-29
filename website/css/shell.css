@@ -7,12 +7,23 @@
    (no JS, prefers-reduced-motion, ?static).
    ========================================================================== */
 
+/* metric-matched fallbacks: while the web fonts load, the page already sits where it will stay (no shift on swap) */
+@font-face { font-family: "Cormorant fallback"; src: local("Times New Roman"), local("TimesNewRomanPSMT"), local("Times"); size-adjust: 94.7%; ascent-override: 97%; descent-override: 30.6%; line-gap-override: 0%; }
+@font-face { font-family: "Onest fallback"; src: local("Arial"), local("ArialMT"), local("Helvetica"); size-adjust: 105.1%; ascent-override: 92.3%; descent-override: 28.5%; line-gap-override: 0%; }
+
 :root {
+  --font-display: "Cormorant", "Cormorant fallback", "Times New Roman", serif;
+  --font-text: "Onest", "Onest fallback", system-ui, sans-serif;
   --g: clamp(16px, 4.2vw, 64px);                                   /* side gutter */
   --col: calc((var(--vw, 1vw) * 100 - 2 * var(--g)) / 7);         /* one 7/8 "eighth" */
   --line: rgba(236, 232, 225, 0.14);
   --bone-82: rgba(236, 232, 225, 0.82);
   --hdr-h: 72px;
+  /* iOS: notch / home indicator (viewport-fit=cover) */
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-t: env(safe-area-inset-top, 0px);
+  --gl: max(var(--g), env(safe-area-inset-left, 0px));
+  --gr: max(var(--g), env(safe-area-inset-right, 0px));
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -24,6 +35,7 @@ html {
   scrollbar-width: thin;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
@@ -70,6 +82,7 @@ img, svg, canvas { display: block; max-width: 100%; }
   position: absolute !important;
   width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
   clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+  font-weight: 300;   /* a hidden heading never asks for a bold font file */
 }
 .skip {
   position: fixed; left: var(--g); top: 12px; z-index: 200;
@@ -80,6 +93,7 @@ img, svg, canvas { display: block; max-width: 100%; }
 :focus-visible { outline: 1px solid var(--bone); outline-offset: 4px; }
 
 .w { display: inline-block; }                                       /* split words */
+.motion [data-split]:not(.is-split) { opacity: 0; }                 /* never a flash of the unsplit line */
 
 /* the mark (inline SVG, tuning fork / psi) */
 .mark { display: inline-block; width: 22px; height: auto; aspect-ratio: 1; flex: none; }
@@ -97,13 +111,17 @@ img, svg, canvas { display: block; max-width: 100%; }
   background: currentColor; transform-origin: right; transform: scaleX(0.25); opacity: 0.5;
   transition: transform 0.9s var(--ease-out), opacity 0.6s var(--ease-out);
 }
-.go:hover > span:first-child::after, .go:focus-visible > span:first-child::after { transform: scaleX(1); opacity: 1; transform-origin: left; }
+.go:focus-visible > span:first-child::after { transform: scaleX(1); opacity: 1; transform-origin: left; }
 .go .arr { display: inline-block; transition: transform 0.7s var(--ease-out); }
-.go:hover .arr { transform: translateX(5px); }
+@media (hover: hover) {
+  .go:hover > span:first-child::after { transform: scaleX(1); opacity: 1; transform-origin: left; }
+  .go:hover .arr { transform: translateX(5px); }
+}
 
 /* inline link inside running text */
 a.inl { border-bottom: 1px solid var(--graphite); transition: border-color 0.6s var(--ease-out), color 0.6s var(--ease-out); }
-a.inl:hover, a.inl:focus-visible { color: var(--bone); border-bottom-color: currentColor; }
+a.inl:focus-visible { color: var(--bone); border-bottom-color: currentColor; }
+@media (hover: hover) { a.inl:hover { color: var(--bone); border-bottom-color: currentColor; } }
 
 /* real photographs in placeholder frames (built from /photos by tools/build-journal.mjs):
    a dark, low-key grade; the page grain sits on top */
@@ -129,17 +147,22 @@ img.frame__img, img.portrait__img {
 
 /* ---------------------------------------------------------------- scrim (keeps fixed UI legible) */
 body::before {
-  content: ""; position: fixed; left: 0; right: 0; top: 0; height: 96px; z-index: 45; pointer-events: none;
+  content: ""; position: fixed; left: 0; right: 0; top: 0; height: calc(96px + var(--safe-t)); z-index: 45; pointer-events: none;
   background: linear-gradient(180deg, var(--ink) 0%, rgba(10, 10, 11, 0.86) 45%, rgba(10, 10, 11, 0));
   transition: opacity 0.6s var(--ease-out);
 }
 .hdr-hidden body::before { opacity: 0; }
+/* iOS draws the status bar over the page (viewport-fit=cover): a band of ink keeps text from running under the clock */
+body::after {
+  content: ""; position: fixed; left: 0; right: 0; top: 0; height: var(--safe-t); z-index: 46; pointer-events: none;
+  background: linear-gradient(180deg, var(--ink) 55%, rgba(10, 10, 11, 0.7));
+}
 
 /* ---------------------------------------------------------------- header */
 .hdr {
   position: fixed; inset: 0 0 auto 0; z-index: 50;
   display: flex; align-items: center; gap: var(--s-4);
-  padding: 20px var(--g);
+  padding: calc(20px + var(--safe-t)) var(--gr) 20px var(--gl);
   pointer-events: none;
   transition: transform 0.9s var(--ease-out);
 }
@@ -165,8 +188,12 @@ body::before {
   background: currentColor; transform: scaleX(0); transform-origin: right;
   transition: transform 0.8s var(--ease-out);
 }
-.hdr__nav a:hover, .hdr__nav a:focus-visible, .hdr__nav a[aria-current="page"] { color: var(--bone); }
-.hdr__nav a:hover > span::after { transform: scaleX(1); transform-origin: left; }
+.hdr__nav a:focus-visible, .hdr__nav a[aria-current="page"] { color: var(--bone); }
+@media (hover: hover) {
+  .hdr__nav a:hover { color: var(--bone); }
+  .hdr__nav a:hover > span::after { transform: scaleX(1); transform-origin: left; }
+  .lang button:hover { color: var(--bone); }
+}
 .hdr__nav a[aria-current="page"]::before {
   /* one cinnabar dot marks where you are */
   content: ""; position: absolute; left: 50%; bottom: -2px; width: 3px; height: 3px; margin-left: -1.5px;
@@ -176,7 +203,6 @@ body::before {
 .lang button { font-family: var(--font-mono); font-size: 11px; padding: 8px 5px; }
 .lang button > span { display: inline-block; }
 .lang button[aria-pressed="true"] { color: var(--bone); }
-.lang button:hover { color: var(--bone); }
 .hdr__menu { display: none; font-family: var(--font-mono); font-size: 11px; color: var(--bone); }
 
 /* mobile menu ---------------------------------------------------------- */
@@ -184,7 +210,7 @@ body::before {
   position: fixed; inset: 0; z-index: 49;
   background: var(--ink);
   display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 96px var(--g) 40px;
+  padding: calc(96px + var(--safe-t)) var(--gr) calc(40px + var(--safe-b)) var(--gl);
 }
 .menu__links { display: flex; flex-direction: column; gap: 4px; }
 .menu__links a {
@@ -211,7 +237,7 @@ body::before {
 /* ---------------------------------------------------------------- footer */
 .ftr {
   position: relative;
-  padding: var(--s-7) var(--g) 28px;
+  padding: var(--s-7) var(--g) calc(28px + var(--safe-b));
   border-top: 1px solid var(--graphite);
   overflow: hidden;
 }
@@ -223,7 +249,7 @@ body::before {
 .ftr__list { display: flex; flex-direction: column; gap: 2px; }
 .ftr__list a { display: inline-block; font-size: 1rem; padding: 3px 0; color: var(--bone); }
 .ftr__list a > span { display: inline-block; }
-.ftr__list a:hover { font-style: italic; }
+@media (hover: hover) { .ftr__list a:hover { font-style: italic; } }
 .ftr__letter { grid-column: 3; }
 .ftr__lede { font-family: var(--font-display); font-weight: 300; font-size: clamp(1.7rem, 2.6vw, 2.4rem); line-height: 1.05; letter-spacing: -0.01em; max-width: 16ch; margin-bottom: var(--s-3); }
 .ftr__word {
@@ -261,7 +287,7 @@ body::before {
 .letter input:focus { outline: none; }
 .letter button { font-size: 0.9rem; color: var(--bone); padding: 14px 0 14px 18px; white-space: nowrap; }
 .letter button .arr { display: inline-block; margin-left: 0.45em; transition: transform 0.6s var(--ease-out); }
-.letter button:hover .arr { transform: translateX(4px); }
+@media (hover: hover) { .letter button:hover .arr { transform: translateX(4px); } }
 .letter__msg { min-height: 1.6em; margin-top: 10px; font-size: 0.9rem; color: var(--bone); }
 .letter.is-sent .letter__row { border-color: var(--bone); }
 
@@ -272,7 +298,8 @@ body::before {
   contain: strict;
 }
 .veil.is-on, .is-arriving .veil, .is-first .veil { visibility: visible; pointer-events: auto; }
-.veil__bands i, .veil__lines i { position: absolute; left: 0; right: 0; display: block; will-change: transform; }
+.veil__bands i, .veil__lines i { position: absolute; left: 0; right: 0; display: block; }
+.veil.is-on i, .is-arriving .veil i, .is-first .veil i { will-change: transform; }
 .veil__bands i { height: calc(20% + 2px); background: var(--ink); transform: scaleY(0); }
 .veil__bands i:nth-child(1) { top: -1px; }
 .veil__bands i:nth-child(2) { top: calc(20% - 1px); }
@@ -298,7 +325,7 @@ body::before {
   box-shadow: 0 0 12px 3px rgba(236, 232, 225, 0.5), 0 0 48px 10px rgba(236, 232, 225, 0.1);
   opacity: 0;
 }
-.veil__tc { position: absolute; left: var(--g); bottom: 22px; color: var(--ash); opacity: 0; }
+.veil__tc { position: absolute; left: var(--gl); bottom: calc(22px + var(--safe-b)); color: var(--ash); opacity: 0; }
 .veil__tc b { font-weight: 300; color: var(--bone); }
 .is-arriving .veil__bands i, .is-first .veil__bands i { transform: none; }
 .is-arriving .veil__mark { opacity: 1; }
@@ -338,26 +365,28 @@ body::before {
 .cursor.is-label .cursor__dot { transform: scale(0); }
 .cursor.is-label .cursor__ring { transform: scale(1); opacity: 1; background: var(--bone); }
 .cursor.is-label .cursor__label { opacity: 1; transform: none; transition-delay: 0.08s; }
-.cursor.is-text .cursor__dot { transform: scale(0.35, 2.6); border-radius: 1px; }
 .cursor.is-down .cursor__ring { transform: scale(0.85); }
 .cursor.is-hidden .cursor__dot, .cursor.is-hidden .cursor__ring { opacity: 0; }
 
-/* ---------------------------------------------------------------- grain */
+/* ---------------------------------------------------------------- grain
+   One viewport-sized layer (plus a margin for the jitter), sized with lvh so the iOS toolbar
+   never resizes it. It only ever moves (transform, steps): the noise is rasterised once. */
 .grain {
-  position: fixed; inset: -50%; z-index: 80;
-  width: 200%; height: 200%;
+  position: fixed; left: -64px; top: -64px; z-index: 80;
+  width: calc(100% + 128px); height: calc(100vh + 128px); height: calc(100lvh + 128px);
   pointer-events: none;
   opacity: 0.055;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.6 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 220px 220px;
+  contain: strict;
 }
-.motion .grain { animation: grain 0.9s steps(5) infinite; }
+.motion .grain { animation: grain 0.9s steps(5) infinite; will-change: transform; }
 @keyframes grain {
   0%   { transform: translate3d(0, 0, 0); }
-  20%  { transform: translate3d(-3%, 2%, 0); }
-  40%  { transform: translate3d(2%, -4%, 0); }
-  60%  { transform: translate3d(-4%, -1%, 0); }
-  80%  { transform: translate3d(3%, 3%, 0); }
+  20%  { transform: translate3d(-44px, 30px, 0); }
+  40%  { transform: translate3d(30px, -58px, 0); }
+  60%  { transform: translate3d(-58px, -14px, 0); }
+  80%  { transform: translate3d(44px, 44px, 0); }
   100% { transform: translate3d(0, 0, 0); }
 }
 
@@ -376,7 +405,10 @@ body::before {
   display: grid; place-items: center;
   transition: border-color 0.6s var(--ease-out), background-color 0.6s var(--ease-out);
 }
-.player__btn:hover, .player.is-playing .player__btn { border-color: var(--bone); }
+.player.is-playing .player__btn { border-color: var(--bone); }
+@media (hover: hover) { .player__btn:hover { border-color: var(--bone); } }
+.player__btn { transition: border-color 0.6s var(--ease-out), transform 0.5s var(--ease-out); }
+.player__btn:active { transform: scale(0.94); transition-duration: 0.12s; }   /* a press you can feel on touch */
 .player__icon { position: relative; width: 14px; height: 16px; display: block; }
 .player__icon::before, .player__icon::after {
   content: ""; position: absolute; top: 0; bottom: 0; background: var(--bone);
@@ -404,7 +436,7 @@ body::before {
 
 /* mini-player: "now playing", stays while you read the rest of the page */
 .mini {
-  position: fixed; right: var(--g); bottom: 18px; z-index: 60;
+  position: fixed; right: var(--gr); bottom: calc(18px + var(--safe-b)); z-index: 60;
   display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; column-gap: 14px;
   width: min(380px, calc(100vw - 2 * var(--g)));
   padding: 10px 12px 10px 10px;
@@ -420,7 +452,7 @@ body::before {
 .mini__k { color: var(--ash); }
 .mini__time { color: var(--ash); }
 .mini__x { width: 28px; height: 28px; display: grid; place-items: center; color: var(--ash); font-family: var(--font-mono); font-size: 14px; }
-.mini__x:hover { color: var(--bone); }
+@media (hover: hover) { .mini__x:hover { color: var(--bone); } }
 .mini__bar { position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--graphite); }
 .mini__bar i { position: absolute; inset: 0; background: var(--bone); transform-origin: 0 50%; transform: scaleX(0); }
 
@@ -467,9 +499,12 @@ body::before {
 .row__kind { color: var(--ash); font-size: 0.85rem; }
 .row__dur { color: var(--ash); text-align: right; }
 .row__x { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.row--soon .row__a { cursor: default; }
-.row--soon .row__t { color: var(--ash); }
-.row__soon { color: var(--ash); }
+/* touch: the row answers the finger (the title leans in, the number lights) before the page changes */
+@media (hover: none) {
+  .row__a[href]:active .row__t { transform: translate3d(0.2em, 0, 0); transition-duration: 0.25s; }
+  .row__a[href] .row__no { transition: color 0.4s var(--ease-out); }
+  .row__a[href]:active .row__no { color: var(--bone); transition-duration: 0.1s; }
+}
 @media (hover: hover) and (pointer: fine) {
   .index:hover .row__a { opacity: 0.28; }
   .index .row__a:hover, .index .row__a:focus-visible { opacity: 1; }
@@ -483,7 +518,8 @@ body::before {
   border-top: 1px solid var(--graphite); border-bottom: 1px solid var(--graphite);
   user-select: none;
 }
-.marquee__track { display: flex; width: max-content; will-change: transform; }
+.marquee__track { display: flex; width: max-content; }
+.marquee.is-live .marquee__track { will-change: transform; }      /* a layer only while it is on screen */
 .marquee__item {
   flex: none; padding-right: 0.35em;
   font-family: var(--font-display); font-weight: 300;
@@ -545,7 +581,7 @@ html.no-reveal [data-reveal] { opacity: 1 !important; clip-path: none !important
   .js .hdr__nav { display: none; }
   .js .hdr__menu { display: inline-block; }
   .js .hdr .lang { display: none; }
-  .hdr { padding: 14px var(--g); gap: var(--s-2); flex-wrap: wrap; }
+  .hdr { padding: calc(14px + var(--safe-t)) var(--gr) 14px var(--gl); gap: var(--s-2); flex-wrap: wrap; }
   .hdr__word { font-size: 1.4rem; }
   html:not(.js) .hdr__nav { width: 100%; order: 3; gap: 18px; }
 
@@ -563,7 +599,7 @@ html.no-reveal [data-reveal] { opacity: 1 !important; clip-path: none !important
   .player__time { justify-self: end; }
   .player--big .player__btn { width: 72px; height: 72px; }
   .player--big .player__wave { height: 72px; }
-  .mini { bottom: 12px; }
+  .mini { bottom: calc(12px + var(--safe-b)); }
   .ftr { padding-top: var(--s-6); }
   .ftr__grid { grid-template-columns: 1fr 1fr; column-gap: var(--s-3); }
   .ftr__base { flex-direction: column; }

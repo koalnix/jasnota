@@ -308,7 +308,7 @@ function finish(file, html) {
   const depth = relative(SITE, dirname(file)).split(/[\\/]/).filter(Boolean).length;
   const r = '../'.repeat(depth);
   const page = (html.match(/<body[^>]*data-page="([^"]+)"/) || [])[1] || '';
-  for (const [name, content] of [['shell:head', shell.head(r)], ['shell:top', shell.top(r, page)], ['shell:foot', shell.foot(r, page === 'home')]]) {
+  for (const [name, content] of [['shell:head', shell.head(r, page === 'home')], ['shell:top', shell.top(r, page)], ['shell:foot', shell.foot(r, page === 'home')]]) {
     const next = shell.inject(html, name, content);
     if (next === null) throw new Error(`${relative(SITE, file)}: missing <!-- ${name} --> marker`);
     html = next;
