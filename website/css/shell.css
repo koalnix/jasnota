@@ -618,3 +618,7 @@ html.no-reveal [data-reveal] { opacity: 1 !important; clip-path: none !important
 @media print {
   .hdr, .ftr, .veil, .cursor, .grain, .mini, .preview { display: none !important; }
 }
+
+/* Macedonian italic forms (г д п т). Cormorant keeps them only in its Serbian locl table, so lang="mk" alone
+   draws the Russian italics. Applied to italic runs only, so upright б keeps its standard Macedonian shape. */
+:lang(mk) :is(em, i, cite) { font-language-override: "SRB"; }
