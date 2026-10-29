@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>November Calendar</title>
-<meta name="description" content="Jasnota on Instagram, November 2026: every feed post, reel, story and launch step by day, filterable by pillar and format.">
+<title>Calendar, Nov to Jan</title>
+<meta name="description" content="@jasnota, November 2026 to January 2027: the twelve Monday carousels, the optional stories, preparation and the weekly review, filterable by pillar and format.">
 <link rel="icon" href="../../brand/logo/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../brand/tokens.css">
-<link rel="stylesheet" href="../instagram.css?v=10">
-<link rel="stylesheet" href="../site.css?v=10">
+<link rel="stylesheet" href="../instagram.css?v=12">
+<link rel="stylesheet" href="../site.css?v=12">
 </head>
 <body>
 <div class="wrap">
@@ -16,48 +16,49 @@
 <header class="masthead site">
   <a class="wordmark" href="../"><span class="mark" aria-hidden="true"></span>jasnota</a>
   <nav class="sitenav" aria-label="Instagram plan">
-    <a href="../">System</a><a href="../profile/">Profile</a><a href="../month/">Month one</a><a href="./" aria-current="page">Calendar</a><a href="../app/">Prototype</a><a href="../link/">Link in bio</a><a href="../metrics/">Review</a>
+    <a href="../">Систем</a><a href="../profile/">Профил</a><a href="../month/">12 недели</a><a href="./" aria-current="page">Календар</a><a href="../app/">Прототип</a><a href="../link/">Линк во био</a><a href="../metrics/">Показатели</a>
   </nav>
 </header>
 
 <section class="page-open" style="padding-bottom:var(--s-5)">
-  <h1 class="display">November, <em>2026.</em></h1>
-  <p class="lead"><strong>Four days of preparation, then thirty days of the plan.</strong> Feed posts show their cover; stories show their time. Filter by pillar or format: the first tap isolates one, further taps add others. Every item opens its full card.</p>
+  <h1 class="display" lang="mk">Ноември – <em>јануари.</em></h1>
+  <p class="lead"><strong>Four days of preparation, then twelve Mondays.</strong> Posts show their cover; stories show their time; Thursdays hold the 20-minute review. Filter by pillar or format: the first tap isolates one, further taps add others. Every item opens its full card.</p>
 </section>
 
 <div class="cal-tools" role="group" aria-label="Filters">
-  <div class="grp"><span>pillar</span>
-    <button class="fchip" type="button" data-filter="pillar" data-key="about" aria-pressed="true">Introductions</button>
-    <button class="fchip" type="button" data-filter="pillar" data-key="sound" aria-pressed="true">Sound of feelings</button>
-    <button class="fchip" type="button" data-filter="pillar" data-key="psycho" aria-pressed="true">Psycho-note</button>
-    <button class="fchip" type="button" data-filter="pillar" data-key="songs" aria-pressed="true">Songs</button>
-    <button class="fchip" type="button" data-filter="pillar" data-key="rest" aria-pressed="true">Rest</button>
-    <button class="fchip" type="button" data-filter="pillar" data-key="*" aria-pressed="false">All</button>
+  <div class="grp"><span>столб</span>
+    <button class="fchip" type="button" data-filter="pillar" data-key="1" aria-pressed="false">I · музика</button>
+    <button class="fchip" type="button" data-filter="pillar" data-key="2" aria-pressed="false">II · музичарот</button>
+    <button class="fchip" type="button" data-filter="pillar" data-key="3" aria-pressed="false">III · науката</button>
+    <button class="fchip" type="button" data-filter="pillar" data-key="acc" aria-pressed="false">акаунт</button>
+    <button class="fchip" type="button" data-filter="pillar" data-key="*" aria-pressed="true">сите</button>
   </div>
-  <div class="grp"><span>format</span>
-    <button class="fchip" type="button" data-filter="fmt" data-key="single" aria-pressed="true">Single</button>
-    <button class="fchip" type="button" data-filter="fmt" data-key="carousel" aria-pressed="true">Carousel</button>
-    <button class="fchip" type="button" data-filter="fmt" data-key="reel" aria-pressed="true">Reel</button>
-    <button class="fchip" type="button" data-filter="fmt" data-key="story" aria-pressed="true">Story</button>
-    <button class="fchip" type="button" data-filter="fmt" data-key="prep" aria-pressed="true">Prep</button>
-    <button class="fchip" type="button" data-filter="fmt" data-key="*" aria-pressed="false">All</button>
+  <div class="grp"><span>формат</span>
+    <button class="fchip" type="button" data-filter="fmt" data-key="text" aria-pressed="false">текст</button>
+    <button class="fchip" type="button" data-filter="fmt" data-key="study" aria-pressed="false">студија</button>
+    <button class="fchip" type="button" data-filter="fmt" data-key="concept" aria-pressed="false">поим</button>
+    <button class="fchip" type="button" data-filter="fmt" data-key="myth" aria-pressed="false">мит</button>
+    <button class="fchip" type="button" data-filter="fmt" data-key="story" aria-pressed="false">стории</button>
+    <button class="fchip" type="button" data-filter="fmt" data-key="ops" aria-pressed="false">подготовка и преглед</button>
+    <button class="fchip" type="button" data-filter="fmt" data-key="*" aria-pressed="true">сите</button>
   </div>
   <span class="footnote" id="calCount" aria-live="polite"></span>
 </div>
 
-<div class="cal" id="calMount" aria-label="November 2026"></div>
+<div id="calMount" aria-label="November 2026 to January 2027"></div>
 
 <div class="cal-legend footnote">
-  <span>Mon · Wed · Fri: feed at 20:30</span><span>Sat 10:00: Song of the week</span><span>Sun: rest</span><span>Prep steps link to the handle switch</span>
+  <span>Mon 19:30: carousel (teaser 12:00, repost 19:35)</span><span>Wed 12:00: source of the week</span><span>Thu 10:00: review</span><span>Fri 12:00: one interaction</span><span>Weekend: writing, rest</span>
 </div>
 
 <footer class="end">
-  <p class="display">Rests are <em>written</em> too.</p>
-  <span class="mono">jasnota · instagram calendar · 11/2026</span>
+  <p class="display">One a <em>week</em>, kept.</p>
+  <span class="mono">jasnota · instagram calendar · 11/2026 – 01/2027</span>
 </footer>
 </div>
-<script src="../render.js?v=10"></script>
-<script src="../data.js?v=10"></script>
-<script src="../pages.js?v=10"></script>
+<script src="../render.js?v=12"></script>
+<script src="../refs.js?v=12"></script>
+<script src="../data.js?v=12"></script>
+<script src="../pages.js?v=12"></script>
 </body>
 </html>

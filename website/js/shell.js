@@ -1,10 +1,10 @@
 /* ==========================================================================
    Jasnota — shared shell
-   Language (EN in HTML, MK from js/i18n.js), smooth scroll (Lenis), page
-   transitions + first-visit preloader (the "veil"), custom cursor, magnetic
-   elements, scroll scrubbers (split words, wipes, dips, footer wordmark),
-   marquee, audio players + mini-player, hover previews, journal filter,
-   drag shelves, newsletter form.
+   Language (Macedonian in HTML, English from js/i18n.js and data-en), smooth
+   scroll (Lenis), page transitions + first-visit preloader (the "veil"),
+   custom cursor, magnetic elements, the pillars disclosure, scroll scrubbers
+   (split words, wipes, dips, footer wordmark), marquee, hover previews for
+   lists, reading progress, newsletter form. Filters/search: js/library.js.
    Motion only when <html class="motion"> (set in <head> unless reduced motion
    or ?static). Everything is readable without JS.
    ========================================================================== */
@@ -86,27 +86,36 @@
     return words;
   }
 
-  /* ================================================================== i18n */
+  /* ================================================================== i18n
+     Macedonian is the source in the HTML (works without JS). English comes from:
+       data-i18n="key"            → JASNOTA_I18N.en[key] (interface strings)
+       data-i18n-attr="attr:key"  → the same, for attributes
+       data-en="…"                → inline English for page copy (generated pages, static prose)
+       data-en-content / data-en-label / data-en-placeholder → inline English for those attributes
+       data-lang-block="mk|en"    → whole blocks per language; data-lang-fallback keeps the Macedonian
+                                    block visible in English when a piece has no English version yet */
   const DICT = window.JASNOTA_I18N || { mk: {}, en: {} };
-  const MK = DICT.mk || {};
-  const EN = Object.assign({}, DICT.en || {});
+  const EN = DICT.en || {};
+  const MK = Object.assign({}, DICT.mk || {});
   const i18nNodes = $$('[data-i18n]');
   const attrNodes = $$('[data-i18n-attr]');
-  const mkNodes = $$('[data-mk]');
-  const mkAttrNodes = $$('[data-mk-content], [data-mk-label]');
+  const enNodes = $$('[data-en]');
+  const enAttrNodes = $$('[data-en-content], [data-en-label], [data-en-placeholder]');
   const splitNodes = $$('[data-split]');
   const blocks = $$('[data-lang-block]');
-  i18nNodes.forEach((n) => { EN[n.dataset.i18n] = n.tagName === 'TITLE' ? n.textContent : n.innerHTML.trim(); });
+  const src = (n) => (n.tagName === 'TITLE' ? n.textContent : n.innerHTML.trim());
+  i18nNodes.forEach((n) => { MK[n.dataset.i18n] = src(n); });
   attrNodes.forEach((n) => n.dataset.i18nAttr.split(';').forEach((pair) => {
     const [a, k] = pair.split(':');
-    if (!(k in EN)) EN[k] = n.getAttribute(a) || '';
+    if (!(k in MK)) MK[k] = n.getAttribute(a) || '';
   }));
-  mkNodes.forEach((n) => { n._en = n.tagName === 'TITLE' ? n.textContent : n.innerHTML; });
-  mkAttrNodes.forEach((n) => { n._enContent = n.getAttribute('content'); n._enLabel = n.getAttribute('aria-label'); });
-  splitNodes.forEach((n) => { if (!n.hasAttribute('data-i18n') && !n.hasAttribute('data-mk')) n._en = n.innerHTML; });
+  enNodes.forEach((n) => { n._mk = src(n); });
+  const EN_ATTRS = [['enContent', 'content'], ['enLabel', 'aria-label'], ['enPlaceholder', 'placeholder']];
+  enAttrNodes.forEach((n) => { n._mkAttr = {}; EN_ATTRS.forEach(([d, a]) => { if (d in n.dataset) n._mkAttr[a] = n.getAttribute(a); }); });
+  splitNodes.forEach((n) => { if (!n.hasAttribute('data-i18n') && !n.hasAttribute('data-en')) n._src = n.innerHTML; });
 
-  let lang = root.lang === 'mk' ? 'mk' : 'en';
-  const t = (k) => (lang === 'mk' ? MK[k] : EN[k]) ?? EN[k] ?? MK[k] ?? '';
+  let lang = root.lang === 'en' ? 'en' : 'mk';
+  const t = (k) => (lang === 'en' ? EN[k] ?? MK[k] : MK[k] ?? EN[k]) ?? '';
   const langListeners = [];
 
   function setHTML(n, v) {
@@ -122,14 +131,13 @@
       const v = t(k);
       if (v !== '') n.setAttribute(a, v);
     }));
-    mkNodes.forEach((n) => setHTML(n, lang === 'mk' ? n.dataset.mk : n._en));
-    mkAttrNodes.forEach((n) => {
-      if (n.hasAttribute('data-mk-content')) n.setAttribute('content', lang === 'mk' ? n.dataset.mkContent : n._enContent);
-      if (n.hasAttribute('data-mk-label')) n.setAttribute('aria-label', lang === 'mk' ? n.dataset.mkLabel : n._enLabel);
-    });
-    blocks.forEach((b) => { b.hidden = b.dataset.langBlock !== lang; });
+    enNodes.forEach((n) => setHTML(n, lang === 'en' ? n.dataset.en : n._mk));
+    enAttrNodes.forEach((n) => EN_ATTRS.forEach(([d, a]) => {
+      if (d in n.dataset) n.setAttribute(a, lang === 'en' ? n.dataset[d] : n._mkAttr[a]);
+    }));
+    blocks.forEach((b) => { b.hidden = b.dataset.langBlock !== lang && !('langFallback' in b.dataset); });
     splitNodes.forEach((n) => {
-      if (n._en !== undefined && !n.hasAttribute('data-mk') && !n.hasAttribute('data-i18n')) n.innerHTML = n._en;
+      if (n._src !== undefined) n.innerHTML = n._src;
       splitWords(n);
     });
     $$('.lang button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
@@ -263,6 +271,28 @@
     langListeners.push(() => { $('span', menuBtn).textContent = t(root.classList.contains('menu-open') ? 'menu_close' : 'menu_open'); });
   }
 
+  /* ================================================================== header: the three pillars (a small disclosure) */
+  $$('.drop').forEach((drop) => {
+    const btn = $('.drop__btn', drop), panel = $('.drop__panel', drop);
+    let timer = 0, hoverAt = 0;
+    const set = (open) => {
+      clearTimeout(timer);
+      if (open === (btn.getAttribute('aria-expanded') === 'true')) return;
+      btn.setAttribute('aria-expanded', String(open));
+      if (open) { panel.hidden = false; requestAnimationFrame(() => drop.classList.add('is-open')); }
+      else { drop.classList.remove('is-open'); timer = setTimeout(() => { panel.hidden = true; }, MOTION ? 450 : 0); }
+    };
+    btn.addEventListener('click', () => { if (performance.now() - hoverAt > 700) set(btn.getAttribute('aria-expanded') !== 'true'); });
+    if (FINE) {
+      drop.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { if (btn.getAttribute('aria-expanded') !== 'true') hoverAt = performance.now(); set(true); } });
+      drop.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') timer = setTimeout(() => set(false), 220); });
+    }
+    document.addEventListener('click', (e) => { if (!drop.contains(e.target)) set(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); btn.focus(); } });
+    drop.addEventListener('focusout', (e) => { if (!drop.contains(e.relatedTarget)) set(false); });
+    window.addEventListener('scroll', () => { if (root.classList.contains('hdr-hidden')) set(false); }, { passive: true });
+  });
+
   /* ================================================================== veil: page transitions + first-visit preloader */
   const veil = $('.veil');
   const V = veil && {
@@ -288,7 +318,11 @@
   function destLabel(url) {
     const rel = url.href.startsWith(ROOT) ? url.pathname.slice(new URL(ROOT).pathname.length) : '';
     const seg = rel.split('/')[0];
-    const key = { '': 'nav_home', 'index.html': 'nav_home', journal: 'nav_journal', listen: 'nav_listen', about: 'nav_about', contact: 'nav_contact' }[seg];
+    const key = {
+      '': 'nav_home', 'index.html': 'nav_home', articles: 'nav_articles', concepts: 'nav_concepts', myths: 'nav_myths',
+      sources: 'nav_sources', map: 'nav_map', method: 'nav_method', about: 'nav_about', contact: 'nav_contact',
+      'psychology-of-music': 'p1', musicians: 'p2', 'what-science-says': 'p3',
+    }[seg];
     return key ? t(key) : '';
   }
 
@@ -656,265 +690,11 @@
       msg.textContent = t(ok ? 'nl_ok' : 'nl_bad');
       msg.style.color = ok ? '' : 'var(--ash)';
       form.classList.toggle('is-sent', ok);
-      if (ok) { input.value = ''; Audio.fork(659.25); }
+      if (ok) input.value = '';
     });
   });
 
-  /* ================================================================== audio: one context, synthesized placeholders, never autoplay */
-  const Audio = (() => {
-    let ctx = null, out = null;
-    function ensure() {
-      if (!ctx) {
-        const AC = window.AudioContext || window.webkitAudioContext;
-        if (!AC) return null;
-        ctx = new AC();
-        out = ctx.createGain();
-        out.gain.value = 0.9;
-        const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 5200;
-        const comp = ctx.createDynamicsCompressor();
-        out.connect(lp); lp.connect(comp); comp.connect(ctx.destination);
-      }
-      if (ctx.state === 'suspended') ctx.resume();
-      return ctx;
-    }
-    function note(f, g, at, decay, dest, type = 'sine') {
-      const o = ctx.createOscillator(), v = ctx.createGain();
-      o.type = type; o.frequency.value = f;
-      v.gain.setValueAtTime(0.0001, at);
-      v.gain.exponentialRampToValueAtTime(g, at + 0.012);
-      v.gain.exponentialRampToValueAtTime(0.0001, at + decay);
-      o.connect(v); v.connect(dest || out);
-      o.start(at); o.stop(at + decay + 0.05);
-    }
-    // a tuning-fork strike: fundamental, a soft octave, a brief inharmonic clang
-    function fork(f = 440, g = 0.14, at, dest) {
-      if (!ctx) return;
-      at = at || ctx.currentTime + 0.01;
-      note(f, g, at, 2.6, dest);
-      note(f * 2, g * 0.08, at, 1.1, dest);
-      note(f * 6.27, g * 0.1, at, 0.25, dest);
-    }
-    return { ensure, note, fork: (f, g, at, dest) => { if (ctx) fork(f, g, at, dest); }, get ctx() { return ctx; }, get out() { return out; } };
-  })();
-
-  /* deterministic per-entry randomness */
-  const rng = (seed) => { let s = (seed * 9301 + 49297) % 233280; return () => ((s = (s * 9301 + 49297) % 233280) / 233280); };
-
-  const players = [];
-  let current = null;
-  const SCALE = [146.83, 174.61, 196.0, 220.0, 261.63, 293.66, 349.23, 392.0, 440.0];   // D minor pentatonic-ish, low and warm
-
-  class Player {
-    constructor(el) {
-      this.el = el;
-      this.btn = $('.player__btn', el);
-      this.wave = $('.player__wave', el);
-      this.canvas = $('canvas', this.wave) || this.wave.appendChild(document.createElement('canvas'));
-      this.nowEl = $('.player__time .now', el);
-      this.seed = +el.dataset.seed || 1;
-      this.dur = parseDur(el.dataset.duration) || 180;
-      this.pos = 0; this.playing = false; this.hover = -1; this.visible = true;
-      this.eighth = 0.27;     // 7/8 at a walking pace: 2 + 2 + 3 eighths per bar
-      this.build();
-      this.btn.addEventListener('click', () => (this.playing ? this.pause() : this.play()));
-      // seek: click / drag on the wave, arrows on the keyboard
-      const w = this.wave;
-      w.setAttribute('role', 'slider');
-      w.setAttribute('tabindex', '0');
-      w.setAttribute('aria-valuemin', '0');
-      w.setAttribute('aria-valuemax', String(Math.round(this.dur)));
-      const at = (e) => { const r = w.getBoundingClientRect(); return clamp((e.clientX - r.left) / r.width) * this.dur; };
-      // mouse: seek on press and drag. touch: a scroll that starts on the wave never seeks;
-      // a tap seeks, and a sideways drag scrubs once it is clearly sideways
-      let dragging = false, touch = null;
-      w.addEventListener('pointerdown', (e) => {
-        if (e.pointerType === 'mouse') { dragging = true; w.setPointerCapture(e.pointerId); this.seek(at(e)); return; }
-        touch = { x: e.clientX, y: e.clientY, id: e.pointerId };
-      });
-      w.addEventListener('pointermove', (e) => {
-        if (dragging) { this.seek(at(e)); return; }
-        if (touch) {
-          const dx = e.clientX - touch.x, dy = e.clientY - touch.y;
-          if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy) * 1.5) { dragging = true; w.setPointerCapture(touch.id); touch = null; this.seek(at(e)); }
-          return;
-        }
-        if (e.pointerType === 'mouse') { this.hover = at(e) / this.dur; this.draw(); }
-      });
-      w.addEventListener('pointerup', (e) => { if (touch) this.seek(at(e)); dragging = false; touch = null; });
-      w.addEventListener('pointercancel', () => { dragging = false; touch = null; });
-      w.addEventListener('pointerleave', () => { this.hover = -1; this.draw(); });
-      w.addEventListener('keydown', (e) => {
-        const k = e.key;
-        if (k === 'ArrowRight' || k === 'ArrowUp') this.seek(this.pos + 5);
-        else if (k === 'ArrowLeft' || k === 'ArrowDown') this.seek(this.pos - 5);
-        else if (k === 'Home') this.seek(0);
-        else if (k === 'End') this.seek(this.dur - 1);
-        else if (k === ' ' || k === 'Enter') { this.playing ? this.pause() : this.play(); }
-        else return;
-        e.preventDefault();
-      });
-      if ('ResizeObserver' in window) new ResizeObserver(() => this.build()).observe(w);
-      if ('IntersectionObserver' in window) new IntersectionObserver(([en]) => { this.visible = en.isIntersecting; if (this.visible) this.draw(); Mini.update(); }).observe(el);
-      this.label();
-      langListeners.push(() => this.label());
-    }
-    title() { return (lang === 'mk' && this.el.dataset.titleMk) || this.el.dataset.title || ''; }
-    label() {
-      this.btn.setAttribute('aria-label', t(this.playing ? 'pl_pause' : 'pl_play') + (this.title() ? ': ' + this.title() : ''));
-      this.wave.setAttribute('aria-label', t('pl_seek') + (this.title() ? ': ' + this.title() : ''));
-      this.aria();
-    }
-    aria() {
-      this.wave.setAttribute('aria-valuenow', String(Math.round(this.pos)));
-      this.wave.setAttribute('aria-valuetext', fmt(this.pos) + ' / ' + fmt(this.dur));
-    }
-    build() {
-      const c = this.canvas, w = this.wave.clientWidth, h = this.wave.clientHeight;
-      if (!w || !h) return;
-      const dpr = DPR(), cw = Math.round(w * dpr), ch = Math.round(h * dpr);
-      if (c.width !== cw || c.height !== ch) { c.width = cw; c.height = ch; }
-      this.W = w; this.H = h; this.dpr = dpr;
-      this.ctx = this.ctx || c.getContext('2d');
-      // bars in groups of 2 + 2 + 3, with a breath between the groups
-      const r = rng(this.seed);
-      const bars = [];
-      const bw = 2, gap = 3, ggap = 6;
-      let x = 0, i = 0, shape = [r() * 6, 0.6 + r() * 1.6, r() * 6];
-      while (x < w - bw) {
-        const g = i % 7, u = x / w;
-        const env = 0.35 + 0.65 * Math.pow(Math.sin(Math.PI * clamp(u * 1.02)), 0.6) * (0.75 + 0.25 * Math.sin(u * 9 * shape[1] + shape[0]));
-        const acc = g === 0 || g === 2 || g === 4 ? 1 : 0.62;
-        bars.push({ x, h: clamp(env * acc * (0.45 + r() * 0.55), 0.06, 1) });
-        x += bw + (g === 1 || g === 3 || g === 6 ? ggap : gap);
-        i++;
-      }
-      this.bars = bars;
-      this.draw();
-    }
-    draw() {
-      const ctx = this.ctx;
-      if (!this.bars || !ctx) return;
-      const { W, H, dpr } = this;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, W, H);
-      const p = this.pos / this.dur, hv = this.hover;
-      for (const b of this.bars) {
-        const u = b.x / W, bh = Math.max(2, b.h * H * 0.92);
-        ctx.fillStyle = u < p ? '#ece8e1' : hv >= 0 && u <= hv ? '#8c8a85' : '#3a3a3d';
-        ctx.fillRect(b.x, (H - bh) / 2, 2, bh);
-      }
-      // playhead
-      if (p > 0) { ctx.fillStyle = '#b4452c'; ctx.fillRect(Math.min(W - 1, p * W), 0, 1, H); }
-      if (this.nowEl) { const s = fmt(this.pos); if (this.nowEl.textContent !== s) this.nowEl.textContent = s; }
-    }
-    play() {
-      const ctx = Audio.ensure();
-      if (!ctx) return;
-      if (current && current !== this) current.pause();
-      current = this;
-      if (this.pos >= this.dur - 0.5) this.pos = 0;
-      this.playing = true;
-      this.el.classList.add('is-playing');
-      this.bus = ctx.createGain();
-      this.bus.gain.setValueAtTime(0.0001, ctx.currentTime);
-      this.bus.gain.exponentialRampToValueAtTime(1, ctx.currentTime + 0.35);
-      this.bus.connect(Audio.out);
-      // the drone: a low fifth, barely there
-      this.drone = [146.83, 220].map((f, i) => {
-        const o = ctx.createOscillator(), g = ctx.createGain();
-        o.frequency.value = f + (this.seed % 3) * 0.3; g.gain.value = i ? 0.016 : 0.028;
-        o.connect(g); g.connect(this.bus); o.start();
-        return o;
-      });
-      this.t0 = ctx.currentTime - this.pos;
-      this.nextEighth = Math.ceil(this.pos / this.eighth);
-      this.timer = setInterval(() => this.schedule(), 60);
-      this.schedule();
-      this.loop();
-      this.label();
-      Mini.update();
-    }
-    schedule() {
-      const ctx = Audio.ctx;
-      if (!ctx || !this.playing) return;
-      const ahead = ctx.currentTime + 0.3;
-      while (this.t0 + this.nextEighth * this.eighth < ahead) {
-        const n = this.nextEighth, g = n % 7, bar = Math.floor(n / 7);
-        const at = this.t0 + n * this.eighth;
-        if (at >= ctx.currentTime - 0.01 && n * this.eighth < this.dur) {
-          if (g === 0 || g === 2 || g === 4) {
-            const r = rng(this.seed * 131 + bar * 7 + g);
-            const idx = Math.floor(r() * 6) + (g === 0 ? 0 : 2);
-            Audio.fork(SCALE[Math.min(SCALE.length - 1, idx)], g === 0 ? 0.075 : 0.042, at, this.bus);
-          } else if (bar % 2 === 1 && g === 6) {
-            Audio.note(SCALE[(this.seed + bar) % 5 + 3] * 2, 0.012, at, 0.5, this.bus);
-          }
-        }
-        this.nextEighth++;
-      }
-    }
-    loop() {
-      if (!this.playing) return;
-      const ctx = Audio.ctx;
-      this.pos = ctx.currentTime - this.t0;
-      if (this.pos >= this.dur) { this.pause(); this.pos = 0; this.draw(); Mini.update(); return; }
-      if (this.visible && !document.hidden) this.draw();   // offscreen, the mini-player carries the time
-      if (Math.round(this.pos) !== this._ap) { this._ap = Math.round(this.pos); this.aria(); }
-      Mini.tick(this);
-      requestAnimationFrame(() => this.loop());
-    }
-    pause() {
-      if (!this.playing) return;
-      this.playing = false;
-      clearInterval(this.timer);
-      this.el.classList.remove('is-playing');
-      const ctx = Audio.ctx, bus = this.bus, drone = this.drone;
-      if (ctx && bus) {
-        bus.gain.cancelScheduledValues(ctx.currentTime);
-        bus.gain.setValueAtTime(Math.max(0.0001, bus.gain.value), ctx.currentTime);
-        bus.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
-        setTimeout(() => { drone.forEach((o) => { try { o.stop(); } catch (e) { /* stopped */ } }); bus.disconnect(); }, 400);
-      }
-      this.label();
-      Mini.update();
-    }
-    seek(sec) {
-      this.pos = clamp(sec, 0, this.dur - 0.25);
-      if (this.playing) { const ctx = Audio.ctx; this.t0 = ctx.currentTime - this.pos; this.nextEighth = Math.ceil(this.pos / this.eighth); }
-      this.draw();
-      this.aria();
-      Mini.tick(this);
-    }
-  }
-
-  const Mini = (() => {
-    const el = $('.mini');
-    if (!el) return { update() {}, tick() {} };
-    const btn = $('.mini__play', el), x = $('.mini__x', el), title = $('.mini__t', el), time = $('.mini__time', el), bar = $('.mini__bar i', el);
-    btn.addEventListener('click', () => { if (current) current.playing ? current.pause() : current.play(); });
-    x.addEventListener('click', () => { if (current) { current.pause(); current.seek(0); } el.classList.remove('is-on'); current = null; });
-    const update = () => {
-      const on = !!current && (current.playing || el.classList.contains('is-on')) && !current.visible && (current.playing || current.pos > 0);
-      el.classList.toggle('is-on', on);
-      el.classList.toggle('is-playing', !!current && current.playing);
-      if (current) {
-        title.textContent = current.title();
-        btn.setAttribute('aria-label', t(current.playing ? 'pl_pause' : 'pl_play') + ': ' + current.title());
-        tick(current);
-      }
-    };
-    const tick = (p) => {
-      if (p !== current) return;
-      time.textContent = fmt(p.pos) + ' / ' + fmt(p.dur);
-      bar.style.transform = `scaleX(${(p.pos / p.dur).toFixed(4)})`;
-    };
-    langListeners.push(update);
-    return { update, tick };
-  })();
-
-  $$('[data-player]').forEach((el) => players.push(new Player(el)));
-
-  /* ================================================================== hover previews for journal lists (fine pointers) */
+  /* ================================================================== hover previews for typographic lists (fine pointers) */
   function previewPath(seed) {
     let s = seed * 9301 + 49297;
     const rnd = () => ((s = (s * 9301 + 49297) % 233280) / 233280);
@@ -975,114 +755,6 @@
     }, { passive: true });
   }
 
-  /* ================================================================== journal filter */
-  const filter = $('.filter');
-  if (filter) {
-    const list = $(filter.dataset.for || '.index');
-    const rows = $$('.row', list);
-    const btns = $$('button[data-kind]', filter);
-    const apply = (kind, animate) => {
-      btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.kind === kind)));
-      const show = (r) => kind === 'all' || r.dataset.kind === kind;
-      const swap = () => {
-        rows.forEach((r) => { r.hidden = !show(r); });
-        if (animate && MOTION) {
-          rows.filter((r) => !r.hidden).forEach((r, i) => {
-            r.animate([{ opacity: 0, transform: 'translate3d(0, 14px, 0)' }, { opacity: 1, transform: 'none' }], { duration: 700, delay: i * 55, easing: E_OUT, fill: 'backwards' });
-          });
-        }
-        runScrubbers(true);
-      };
-      if (animate && MOTION) list.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220, easing: E_FILM }).finished.then(swap, swap);
-      else swap();
-      const u = new URL(location.href);
-      if (kind === 'all') u.searchParams.delete('kind'); else u.searchParams.set('kind', kind);
-      history.replaceState(null, '', u.pathname + u.search.replace('static=', 'static') + u.hash);
-    };
-    btns.forEach((b) => b.addEventListener('click', () => apply(b.dataset.kind, true)));
-    const q = new URLSearchParams(location.search).get('kind');
-    if (q && btns.some((b) => b.dataset.kind === q)) apply(q, false);
-  }
-
-  /* ================================================================== drag shelves (mouse drag with a little inertia; touch scrolls natively) */
-  $$('[data-drag]').forEach((shelf) => {
-    let down = false, sx = 0, sl = 0, v = 0, lastX = 0, moved = 0, raf = 0;
-    shelf.addEventListener('pointerdown', (e) => {
-      if (e.pointerType !== 'mouse') return;
-      down = true; moved = 0; sx = lastX = e.clientX; sl = shelf.scrollLeft; v = 0;
-      cancelAnimationFrame(raf);
-      shelf.classList.add('is-dragging');
-    });
-    window.addEventListener('pointermove', (e) => {
-      if (!down) return;
-      const dx = e.clientX - sx;
-      moved = Math.max(moved, Math.abs(dx));
-      v = e.clientX - lastX; lastX = e.clientX;
-      shelf.scrollLeft = sl - dx;
-    });
-    window.addEventListener('pointerup', () => {
-      if (!down) return;
-      down = false;
-      shelf.classList.remove('is-dragging');
-      if (!MOTION) return;
-      const glide = () => { v *= 0.93; shelf.scrollLeft -= v; if (Math.abs(v) > 0.3) raf = requestAnimationFrame(glide); };
-      raf = requestAnimationFrame(glide);
-    });
-    shelf.addEventListener('click', (e) => { if (moved > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
-    shelf.addEventListener('dragstart', (e) => e.preventDefault());
-  });
-
-  /* ================================================================== peeks: a word that opens a small frame (photographs to come) */
-  if ($('[data-peek]') && FINE) {
-    const fr = document.createElement('div');
-    fr.className = 'peek';
-    fr.setAttribute('aria-hidden', 'true');
-    fr.innerHTML = '<div class="peek__img"></div><span class="crop crop--tl"></span><span class="crop crop--br"></span><span class="peek__cap mono"></span>';
-    document.body.appendChild(fr);
-    const cap = $('.peek__cap', fr);
-    const pimg = $('.peek__img', fr);
-    // photos that exist are listed by the build (#jasnota-photos); any other word keeps the placeholder
-    let photos = {};
-    try { photos = JSON.parse(($('#jasnota-photos') || {}).textContent || '{}'); } catch (e) { /* ignore */ }
-    let x = 0, y = 0, tx = 0, ty = 0, on = null;
-    const aim = (e) => { tx = clamp(e.clientX + 28, 8, innerWidth - 268); ty = clamp(e.clientY - 300, 72, innerHeight - 330); };
-    onFrame(() => {
-      if (!on && !fr.classList.contains('is-on')) return;
-      const k = MOTION ? 0.16 : 1;
-      x += (tx - x) * k; y += (ty - y) * k;
-      fr.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
-    });
-    // delegated: the words are re-rendered when the language changes
-    document.addEventListener('mouseover', (e) => {
-      const w = e.target.closest('[data-peek]');
-      if (w === on) return;
-      if (!w) { on = null; fr.classList.remove('is-on'); return; }
-      const ph = photos[w.dataset.peekSlot];
-      fr.classList.toggle('peek--photo', !!ph);
-      pimg.style.backgroundImage = ph ? `url("${ph.src}")` : '';
-      cap.textContent = ph ? (ph[lang] || ph.en) : (lang === 'mk' && w.dataset.peekMk) || w.dataset.peek;
-      aim(e);
-      if (!on) { x = tx; y = ty; }
-      on = w;
-      fr.classList.add('is-on');
-    });
-    document.addEventListener('mousemove', (e) => { if (on) aim(e); }, { passive: true });
-  }
-
-  /* ================================================================== cover art: a staff and one phrase per playlist */
-  $$('svg.cover__art').forEach((svg) => {
-    const seed = +(svg.closest('[data-seed]') || {}).dataset?.seed || 1;
-    const r = rng(seed * 17);
-    let d = '';
-    const f1 = 0.03 + r() * 0.05, f2 = 0.12 + r() * 0.1, ph = r() * 6, shape = seed % 3;
-    for (let x = 0; x <= 200; x += 2) {
-      const u = x / 200;
-      const env = shape === 0 ? Math.exp(-u * 2.6) : shape === 1 ? Math.sin(Math.PI * u) : 0.4 + 0.6 * Math.abs(Math.sin(u * Math.PI * 3.5));
-      d += (x ? 'L' : 'M') + x + ' ' + (60 + env * 34 * (Math.sin(x * f1 + ph) * 0.7 + Math.sin(x * f2) * 0.3)).toFixed(1);
-    }
-    svg.innerHTML = [-2, -1, 0, 1, 2].map((i) => `<line x1="0" x2="200" y1="${60 + i * 12}" y2="${60 + i * 12}"/>`).join('') + `<path d="${d}"/>`;
-  });
-
   /* ================================================================== marquee: drifts on its own, leans and hurries with your scroll */
   $$('.marquee').forEach((mq) => {
     if (!MOTION) return;
@@ -1138,7 +810,7 @@
 
   /* ================================================================== public API for page scripts */
   window.Jasnota = {
-    t, splitWords, scrub, onFrame, magnetize, Audio, ready, MOTION, FINE, TOUCH, DPR, ROOT,
+    t, splitWords, scrub, onFrame, magnetize, ready, MOTION, FINE, TOUCH, DPR, ROOT,
     get lang() { return lang; },
     get lenis() { return lenis; },
     get velocity() { return vel; },

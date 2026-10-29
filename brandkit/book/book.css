@@ -1,4 +1,4 @@
-/* Јаснота / Jasnota — Brand guidelines v1 · print layout.
+/* Јаснота / Jasnota — Brand guidelines v2 · print layout.
    A4 landscape, 297 × 210 mm, one <section class="page"> per sheet. Black first.
    Grid: seven columns grouped 2 · 2 · 3, the first column is the margin (section numbers). */
 
@@ -175,3 +175,65 @@ table.t tr:last-child td { border-bottom: .25mm solid var(--graphite); }
 .files div { break-inside: avoid; margin-bottom: 4mm; }
 .files p { color: var(--ash); margin: 0; }
 .files p b { font-weight: 300; color: var(--bone); }
+
+/* ================================================================ v2 — the editorial system */
+.bign { position: absolute; left: 15mm; bottom: 17mm; font: 300 64pt/.8 var(--font-display); color: var(--ash); }
+.ev-s { font-size: 6.8pt; }
+.ev-m { font-size: 9pt; }
+.ev-l { font-size: 12.5pt; }
+.light .ev, .bone .ev { color: var(--ink); }
+
+/* pillar pages */
+.titles { list-style: none; }
+.titles li { display: grid; grid-template-columns: 14mm 1fr; column-gap: 2mm; padding: 2.3mm 0 2.5mm; border-top: .25mm solid var(--graphite); }
+.titles li .no { padding-top: .9mm; line-height: 1.45; }
+.titles li .d { font-size: 12.4pt; line-height: 1.08; letter-spacing: -.005em; }
+.titles li .e { font-size: 7pt; line-height: 1.4; color: var(--ash); margin-top: .9mm; }
+.sub { list-style: none; columns: 1; }
+.sub li { padding: 1.5mm 0 1.6mm; border-top: .25mm solid var(--graphite); font-size: 8.4pt; line-height: 1.35; }
+.sub li .g { color: var(--ash); font-size: 7pt; display: block; margin-top: .3mm; }
+
+/* checklists, citations, callouts */
+.tick { list-style: none; }
+.tick li { position: relative; padding: 1.6mm 0 1.7mm 4.6mm; border-top: .25mm solid var(--graphite); font-size: 8.2pt; line-height: 1.42; }
+.tick li::before { content: ""; position: absolute; left: 0; top: 2.7mm; width: 2.1mm; height: 2.1mm; box-shadow: inset 0 0 0 .25mm var(--ash); }
+.apa-r { padding-left: 6mm; text-indent: -6mm; font-size: 8.2pt; line-height: 1.5; }
+.apa-r + .apa-r { margin-top: 2.2mm; }
+.doi, .ci { font-family: var(--font-mono); font-size: .86em; letter-spacing: .01em; color: var(--ash); }
+.light .doi, .light .ci, .bone .doi, .bone .ci { color: #66645f; }
+.callout { background: var(--night); border-left: .5mm solid var(--bone); padding: 3mm 4mm 3.4mm; }
+.callout p { font-size: 8.2pt; line-height: 1.5; margin-top: 2mm; color: #d9d5ce; }
+.kblk .hd { display: flex; align-items: center; gap: 2.6mm; padding-bottom: 2.2mm; border-bottom: .25mm solid var(--bone); }
+.kblk .hd svg { width: 6.4mm; height: 6.4mm; color: var(--bone); flex: none; }
+.kblk .hd b { font: 300 15pt/1 var(--font-display); }
+.kblk ul { list-style: none; }
+.kblk li { padding: 1.7mm 0 1.8mm; border-bottom: .25mm solid var(--graphite); font-size: 8.3pt; line-height: 1.42; }
+.kblk + .kblk { margin-top: 6mm; }
+
+/* workflow */
+.steps { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 4mm; }
+.steps > div { border-top: .25mm solid var(--bone); padding-top: 2.6mm; }
+.steps .n { font: 300 24pt/1 var(--font-display); }
+.steps h4 { font-size: 14pt; margin-top: 2.4mm; }
+.steps .mk { font: italic 300 10pt/1.1 var(--font-display); color: var(--ash); margin: .6mm 0 2.4mm; }
+.ladder { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); column-gap: 1.6mm; }
+.ladder div { border-top: .6mm solid var(--bone); padding-top: 1.6mm; font-size: 6.6pt; line-height: 1.35; }
+.ladder div .no { display: block; margin-bottom: .6mm; }
+.ladder div:nth-child(n+5) { border-top-color: #6d6b67; }
+.ladder div:nth-child(n+7) { border-top-color: var(--graphite); }
+
+/* templates */
+.figrow { display: grid; column-gap: 5mm; align-items: start; }
+.figrow figcaption { margin-top: 2.4mm; }
+.figrow figcaption h4 { font-size: 11pt; }
+.figrow figcaption p { font-size: 7pt; line-height: 1.45; color: var(--ash); margin-top: 1mm; }
+.figrow figcaption .mono { margin-top: 1mm; }
+.xs { font-size: 7.2pt; line-height: 1.45; }
+
+/* format table */
+table.t.fmt td { vertical-align: top; padding-top: 2.4mm; padding-bottom: 2.4mm; }
+table.t.fmt td:first-child .d { font-size: 13pt; line-height: 1; }
+.wk { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 1.4mm; }
+.wk div { padding-top: 1.8mm; border-top: .6mm solid var(--graphite); font: 300 6pt/1.45 var(--font-mono); color: var(--ash); letter-spacing: .01em; }
+.wk div.long { border-top-color: var(--bone); }
+.wk div b { display: block; font: 300 13pt/1 var(--font-display); color: var(--bone); margin-bottom: 1mm; }

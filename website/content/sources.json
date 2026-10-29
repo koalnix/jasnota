@@ -1,0 +1,1935 @@
+[
+  {
+    "id": "juslin2003",
+    "apa": "Juslin, P. N., & Laukka, P. (2003). Communication of emotions in vocal expression and music performance: Different channels, same code? Psychological Bulletin, 129(5), 770–814. https://doi.org/10.1037/0033-2909.129.5.770",
+    "doi": "10.1037/0033-2909.129.5.770",
+    "url": "https://doi.org/10.1037/0033-2909.129.5.770",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "emotions",
+      "contagion",
+      "voice"
+    ],
+    "key_finding_mk": "Преглед на 104 студии за гласот и 41 за музичка изведба: основните емоции се пренесуваат со слична точност и со слични акустички знаци (темпо, јачина, висина, артикулација) во говорот и во музиката.",
+    "key_finding_en": "Review of 104 vocal-expression and 41 music-performance studies: discrete emotions are communicated with similar accuracy and similar acoustic cue patterns in speech and music.",
+    "evidence_note": "Квантитативен преглед; силна основа за тезата за „заеднички код“. Повеќето студии се со западни учесници и со неколку основни емоции.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "juslin2008",
+    "apa": "Juslin, P. N., & Västfjäll, D. (2008). Emotional responses to music: The need to consider underlying mechanisms. Behavioral and Brain Sciences, 31(5), 559–575. https://doi.org/10.1017/S0140525X08005293",
+    "doi": "10.1017/S0140525X08005293",
+    "url": "https://doi.org/10.1017/S0140525X08005293",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "emotions",
+      "mechanisms"
+    ],
+    "key_finding_mk": "Теориска рамка: музиката може да предизвика емоции преку повеќе механизми (рефлекси на мозочното стебло, условување, заразување, визуелни слики, епизодна меморија, музичко очекување), не само преку когнитивна процена.",
+    "key_finding_en": "Theoretical framework proposing several mechanisms (brain stem reflex, evaluative conditioning, contagion, visual imagery, episodic memory, musical expectancy) through which music induces emotion.",
+    "evidence_note": "Теорија со проверливи хипотези, не емпириски доказ сам по себе; широко цитирана и прифатена како рамка.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "juslin2013",
+    "apa": "Juslin, P. N. (2013). From everyday emotions to aesthetic emotions: Towards a unified theory of musical emotions. Physics of Life Reviews, 10(3), 235–266. https://doi.org/10.1016/j.plrev.2013.05.008",
+    "doi": "10.1016/j.plrev.2013.05.008",
+    "url": "https://doi.org/10.1016/j.plrev.2013.05.008",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "emotions",
+      "BRECVEMA",
+      "entrainment",
+      "aesthetic judgment"
+    ],
+    "key_finding_mk": "Проширена рамка BRECVEMA со осум механизми: рефлекс на мозочното стебло, ритмичко вовлекување, евалуативно условување, заразување, визуелни слики, епизодна меморија, музичко очекување и естетска проценка.",
+    "key_finding_en": "Updated BRECVEMA framework with eight mechanisms, adding rhythmic entrainment and aesthetic judgment.",
+    "evidence_note": "Теориски модел; поединечните механизми имаат различна емпириска поддршка.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "zentner2008",
+    "apa": "Zentner, M., Grandjean, D., & Scherer, K. R. (2008). Emotions evoked by the sound of music: Characterization, classification, and measurement. Emotion, 8(4), 494–521. https://doi.org/10.1037/1528-3542.8.4.494",
+    "doi": "10.1037/1528-3542.8.4.494",
+    "url": "https://doi.org/10.1037/1528-3542.8.4.494",
+    "type": "cross-sectional",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "emotions",
+      "perceived vs felt",
+      "measurement"
+    ],
+    "key_finding_mk": "Во четири студии (вкупно над 1.300 учесници) емоциите што ги буди музиката најдобро се опишуваат со девет фактори (на пр. чудење, нежност, носталгија, мир, моќ, тага); разликата меѓу „препознаена“ и „доживеана“ емоција е важна.",
+    "key_finding_en": "Four studies yielded a nine-factor model of music-evoked emotions (Geneva Emotional Music Scale); felt and perceived emotions differ.",
+    "evidence_note": "Примероци главно од Швајцарија; моделот е специфичен за музиката и не е целосно потврден меѓукултурно.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "fritz2009",
+    "apa": "Fritz, T., Jentschke, S., Gosselin, N., Sammler, D., Peretz, I., Turner, R., Friederici, A. D., & Koelsch, S. (2009). Universal recognition of three basic emotions in music. Current Biology, 19(7), 573–576. https://doi.org/10.1016/j.cub.2009.02.058",
+    "doi": "10.1016/j.cub.2009.02.058",
+    "url": "https://doi.org/10.1016/j.cub.2009.02.058",
+    "type": "experiment",
+    "pillar": [
+      1,
+      3
+    ],
+    "topics": [
+      "emotions",
+      "universality",
+      "culture"
+    ],
+    "key_finding_mk": "Припадници на народот Мафа (Камерун), без претходен контакт со западна музика, препознаваа среќа, тага и страв во западна музика над нивото на случајност.",
+    "key_finding_en": "Mafa listeners naive to Western music recognised happy, sad and fearful Western excerpts above chance.",
+    "evidence_note": "Една култура, мал примерок и само три основни емоции; не значи дека музиката е „универзален јазик“ во целост.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "mehr2019",
+    "apa": "Mehr, S. A., Singh, M., Knox, D., Ketter, D. M., Pickens-Jones, D., Atwood, S., Lucas, C., Jacoby, N., Egner, A. A., Hopkins, E. J., Howard, R. M., Hartshorne, J. K., Jennings, M. V., Simson, J., Bainbridge, C. M., Pinker, S., O’Donnell, T. J., Krasnow, M. M., & Glowacki, L. (2019). Universality and diversity in human song. Science, 366(6468), Article eaax0868. https://doi.org/10.1126/science.aax0868",
+    "doi": "10.1126/science.aax0868",
+    "url": "https://doi.org/10.1126/science.aax0868",
+    "type": "cross-sectional",
+    "pillar": [
+      1,
+      3
+    ],
+    "topics": [
+      "universality",
+      "culture",
+      "song"
+    ],
+    "key_finding_mk": "Анализа на етнографски записи и снимки од општества ширум светот: музиката постои во секое набљудувано општество и е поврзана со слични контексти (грижа за доенче, лекување, танц, љубов), но варира повеќе внатре во општествата отколку меѓу нив.",
+    "key_finding_en": "Ethnographic and discographic corpora show music in every society studied, linked to recurring behavioural contexts, with more variation within than between societies.",
+    "evidence_note": "Голем меѓукултурен корпус; заклучоците се за постоење и функции, не за тоа дека значењето е исто насекаде.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "koelsch2014",
+    "apa": "Koelsch, S. (2014). Brain correlates of music-evoked emotions. Nature Reviews Neuroscience, 15(3), 170–180. https://doi.org/10.1038/nrn3666",
+    "doi": "10.1038/nrn3666",
+    "url": "https://doi.org/10.1038/nrn3666",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "emotions",
+      "neuroscience"
+    ],
+    "key_finding_mk": "Преглед на невровизуелизациски студии: музиката ја менува активноста во структури клучни за емоциите (амигдала, нуклеус акумбенс, хипокампус, инсула, орбитофронтален кортекс).",
+    "key_finding_en": "Neuroimaging review: music modulates activity in core emotion structures (amygdala, nucleus accumbens, hippocampus, insula, orbitofrontal cortex).",
+    "evidence_note": "Наративен преглед; поврзаноста на активација со конкретно доживување е сложена (обратно заклучување).",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "blood2001",
+    "apa": "Blood, A. J., & Zatorre, R. J. (2001). Intensely pleasurable responses to music correlate with activity in brain regions implicated in reward and emotion. Proceedings of the National Academy of Sciences, 98(20), 11818–11823. https://doi.org/10.1073/pnas.191355898",
+    "doi": "10.1073/pnas.191355898",
+    "url": "https://doi.org/10.1073/pnas.191355898",
+    "type": "experiment",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "chills",
+      "reward",
+      "neuroscience"
+    ],
+    "key_finding_mk": "Со PET-скенирање: колку посилни „морници“ доживуваат учесниците при самоизбрана музика, толку повеќе се менува протокот на крв во регионите за награда и емоции (вентрален стријатум, среден мозок, амигдала, орбитофронтален кортекс).",
+    "key_finding_en": "PET study: intensity of music-induced chills correlated with blood-flow changes in reward and emotion regions.",
+    "evidence_note": "Мал примерок, самоизбрана музика, корелациски дизајн.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "salimpoor2011",
+    "apa": "Salimpoor, V. N., Benovoy, M., Larcher, K., Dagher, A., & Zatorre, R. J. (2011). Anatomically distinct dopamine release during anticipation and experience of peak emotion to music. Nature Neuroscience, 14(2), 257–262. https://doi.org/10.1038/nn.2726",
+    "doi": "10.1038/nn.2726",
+    "url": "https://doi.org/10.1038/nn.2726",
+    "type": "experiment",
+    "pillar": [
+      1,
+      3
+    ],
+    "topics": [
+      "chills",
+      "dopamine",
+      "reward",
+      "anticipation"
+    ],
+    "key_finding_mk": "Со PET (раклоприд) и fMRI кај истите слушатели: ослободување допамин во стријатумот при врвна емоционална возбуда; каудатус повеќе вклучен во исчекувањето, нуклеус акумбенс во самиот врвен момент.",
+    "key_finding_en": "Raclopride PET plus fMRI: striatal dopamine release at peak emotional arousal; caudate during anticipation, nucleus accumbens during the peak.",
+    "evidence_note": "Мал примерок на луѓе што редовно доживуваат морници, самоизбрана музика; клучна, но поединечна студија.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "ferreri2019",
+    "apa": "Ferreri, L., Mas-Herrero, E., Zatorre, R. J., Ripollés, P., Gomez-Andres, A., Alicart, H., Olivé, G., Marco-Pallarés, J., Antonijoan, R. M., Valle, M., Riba, J., & Rodriguez-Fornells, A. (2019). Dopamine modulates the reward experiences elicited by music. Proceedings of the National Academy of Sciences, 116(9), 3793–3798. https://doi.org/10.1073/pnas.1811878116",
+    "doi": "10.1073/pnas.1811878116",
+    "url": "https://doi.org/10.1073/pnas.1811878116",
+    "type": "experiment",
+    "pillar": [
+      1,
+      3
+    ],
+    "topics": [
+      "dopamine",
+      "reward",
+      "causality"
+    ],
+    "key_finding_mk": "Двојно слепа фармаколошка студија (n = 27): леводопа го зголеми, а рисперидон го намали задоволството и мотивацијата при слушање музика – прв директен доказ за причинска улога на допаминот.",
+    "key_finding_en": "Double-blind within-subject pharmacology (n = 27): levodopa increased and risperidone decreased musical pleasure and motivation, showing a causal role for dopamine.",
+    "evidence_note": "Експериментален (причински) дизајн, но мал примерок и млади здрави возрасни.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "masherrero2014",
+    "apa": "Mas-Herrero, E., Zatorre, R. J., Rodriguez-Fornells, A., & Marco-Pallarés, J. (2014). Dissociation between musical and monetary reward responses in specific musical anhedonia. Current Biology, 24(6), 699–704. https://doi.org/10.1016/j.cub.2014.01.068",
+    "doi": "10.1016/j.cub.2014.01.068",
+    "url": "https://doi.org/10.1016/j.cub.2014.01.068",
+    "type": "experiment",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "musical anhedonia",
+      "reward",
+      "individual differences"
+    ],
+    "key_finding_mk": "Пронајдени се здрави луѓе без депресија кои немаат задоволство и автономен одговор на музика, а нормално реагираат на парична награда – специфична музичка анхедонија.",
+    "key_finding_en": "Identified healthy people with reduced pleasure and no autonomic response to music but normal responses to monetary reward (specific musical anhedonia).",
+    "evidence_note": "Мала група; колку е честа појавата во популацијата не е цврсто утврдено.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "sloboda1991",
+    "apa": "Sloboda, J. A. (1991). Music structure and emotional response: Some empirical findings. Psychology of Music, 19(2), 110–120. https://doi.org/10.1177/0305735691192002",
+    "doi": "10.1177/0305735691192002",
+    "url": "https://doi.org/10.1177/0305735691192002",
+    "type": "cross-sectional",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "chills",
+      "tears",
+      "expectancy"
+    ],
+    "key_finding_mk": "Кај 83 слушатели, морниците најчесто се поврзани со нови или неочекувани хармонии, а солзите со секвенци и апоѓатури – во склад со теоријата за потврдување и прекршување на очекувањата.",
+    "key_finding_en": "In 83 listeners, shivers were linked to new or unexpected harmonies and tears to sequences and appoggiaturas, consistent with expectancy theories.",
+    "evidence_note": "Мал примерок, ретроспективни самоизвештаи; класична, но рана студија.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "defleurian2021",
+    "apa": "de Fleurian, R., & Pearce, M. T. (2021). Chills in music: A systematic review. Psychological Bulletin, 147(9), 890–920. https://doi.org/10.1037/bul0000341",
+    "doi": "10.1037/bul0000341",
+    "url": "https://doi.org/10.1037/bul0000341",
+    "type": "systematic review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "chills",
+      "frisson"
+    ],
+    "key_finding_mk": "Систематски преглед на истражувањата за морници од музика: ги опфаќа мерењата, физиолошките и невронските корелати, музичките предизвикувачи и индивидуалните разлики и предлага прелиминарен модел со различни патишта до морниците.",
+    "key_finding_en": "Systematic review of music-evoked chills covering measures, physiological and neural correlates, stimulus elicitors and individual differences; proposes a preliminary multi-pathway model.",
+    "evidence_note": "Авторите истакнуваат нејасни критериуми за тоа што е „морница“ и хетерогени методи.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "huron2006",
+    "apa": "Huron, D. (2006). Sweet anticipation: Music and the psychology of expectation. MIT Press. https://doi.org/10.7551/mitpress/6575.001.0001",
+    "doi": "10.7551/mitpress/6575.001.0001",
+    "url": "https://doi.org/10.7551/mitpress/6575.001.0001",
+    "type": "book",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "expectancy",
+      "chills",
+      "emotions"
+    ],
+    "key_finding_mk": "Теорија на очекувањето (ITPRA): емоциите во музиката произлегуваат од тоа како мозокот предвидува што следува и како реагира кога предвидувањето е потврдено или прекршено.",
+    "key_finding_en": "ITPRA theory: musical emotions arise from prediction and the responses to confirmed or violated expectations.",
+    "evidence_note": "Влијателна теорија; делови се емпириски поддржани, делови остануваат хипотези.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "menninghaus2015",
+    "apa": "Menninghaus, W., Wagner, V., Hanich, J., Wassiliwizky, E., Kuehnast, M., & Jacobsen, T. (2015). Towards a psychological construct of being moved. PLOS ONE, 10(6), Article e0128451. https://doi.org/10.1371/journal.pone.0128451",
+    "doi": "10.1371/journal.pone.0128451",
+    "url": "https://doi.org/10.1371/journal.pone.0128451",
+    "type": "cross-sectional",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "being moved",
+      "mixed emotions"
+    ],
+    "key_finding_mk": "„Трогнатоста“ (being moved) најчесто ја предизвикуваат значајни настани во односите (смрт, раѓање, венчавка, разделба, повторна средба); тоа е мешана емоција со тага и радост истовремено.",
+    "key_finding_en": "Being moved is typically elicited by significant relationship events and involves co-activation of positive and negative affect.",
+    "evidence_note": "Германски примероци, ретроспективни описи; конструктот уште се дефинира.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "kawakami2013",
+    "apa": "Kawakami, A., Furukawa, K., Katahira, K., & Okanoya, K. (2013). Sad music induces pleasant emotion. Frontiers in Psychology, 4, Article 311. https://doi.org/10.3389/fpsyg.2013.00311",
+    "doi": "10.3389/fpsyg.2013.00311",
+    "url": "https://doi.org/10.3389/fpsyg.2013.00311",
+    "type": "experiment",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "sad music",
+      "perceived vs felt"
+    ],
+    "key_finding_mk": "Кај 44 учесници, тажната музика беше препознаена како тажна, но доживеаната емоција беше помалку трагична и повеќе „романтична“ – разлика меѓу препознаена и доживеана емоција.",
+    "key_finding_en": "In 44 participants, sad music was perceived as tragic but felt as more romantic and less tragic: a gap between perceived and felt emotion.",
+    "evidence_note": "Мал јапонски примерок, кратки извадоци; авторите предлагаат идеја за „викарна“ емоција што бара понатамошна проверка.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "taruffi2014",
+    "apa": "Taruffi, L., & Koelsch, S. (2014). The paradox of music-evoked sadness: An online survey. PLOS ONE, 9(10), Article e110490. https://doi.org/10.1371/journal.pone.0110490",
+    "doi": "10.1371/journal.pone.0110490",
+    "url": "https://doi.org/10.1371/journal.pone.0110490",
+    "type": "cross-sectional",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "sad music",
+      "nostalgia",
+      "empathy"
+    ],
+    "key_finding_mk": "Онлајн анкета (N = 772, западни и источни учесници): најчеста емоција при тажна музика е носталгијата, не тагата; наградите се имагинација, регулација на емоции, емпатија и отсуство на „реални последици“.",
+    "key_finding_en": "Online survey (N = 772): nostalgia, not sadness, was the most frequent emotion evoked by sad music; four rewards identified.",
+    "evidence_note": "Самоизбран онлајн примерок, самоизвештај.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "vuoskoski2012",
+    "apa": "Vuoskoski, J. K., Thompson, W. F., McIlwain, D., & Eerola, T. (2012). Who enjoys listening to sad music and why? Music Perception, 29(3), 311–317. https://doi.org/10.1525/mp.2012.29.3.311",
+    "doi": "10.1525/mp.2012.29.3.311",
+    "url": "https://doi.org/10.1525/mp.2012.29.3.311",
+    "type": "experiment",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "sad music",
+      "empathy",
+      "personality"
+    ],
+    "key_finding_mk": "Кај 148 учесници тажната музика буди тага, но и носталгија, мир и чудење; отвореноста кон искуство и емпатијата се поврзани со уживање во тажна музика.",
+    "key_finding_en": "In 148 participants, sad music evoked sadness but also nostalgia, peacefulness and wonder; openness and empathy predicted liking.",
+    "evidence_note": "Корелациски наоди за личноста; финско-австралиски студентски примерок.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "garrido2015",
+    "apa": "Garrido, S., & Schubert, E. (2015). Music and people with tendencies to depression. Music Perception, 32(4), 313–321. https://doi.org/10.1525/mp.2015.32.4.313",
+    "doi": "10.1525/mp.2015.32.4.313",
+    "url": "https://doi.org/10.1525/mp.2015.32.4.313",
+    "type": "experiment",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "sad music",
+      "rumination",
+      "wellbeing"
+    ],
+    "key_finding_mk": "Кај 175 студенти, слушањето самоизбрана тажна музика го зголеми депресивното расположение кај оние со висока склоност кон руминација.",
+    "key_finding_en": "In 175 students, listening to self-selected sad music increased depressed mood in those high in rumination.",
+    "evidence_note": "Краткотраен ефект, студентски примерок, без клиничка дијагноза; важен предупредувачки наод.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "sachs2015",
+    "apa": "Sachs, M. E., Damasio, A., & Habibi, A. (2015). The pleasures of sad music: A systematic review. Frontiers in Human Neuroscience, 9, Article 404. https://doi.org/10.3389/fnhum.2015.00404",
+    "doi": "10.3389/fnhum.2015.00404",
+    "url": "https://doi.org/10.3389/fnhum.2015.00404",
+    "type": "systematic review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "sad music",
+      "pleasure"
+    ],
+    "key_finding_mk": "Тажната музика е пријатна кога не се доживува како закана, кога е естетски убава и кога носи психолошка корист (регулација на расположение, емпатија, размислување за минатото).",
+    "key_finding_en": "Sad music is pleasurable when perceived as non-threatening, aesthetically pleasing and psychologically beneficial.",
+    "evidence_note": "Преглед со предложена рамка; голем дел од основните студии се мали.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "eerola2018",
+    "apa": "Eerola, T., Vuoskoski, J. K., Peltola, H.-R., Putkinen, V., & Schäfer, K. (2018). An integrative review of the enjoyment of sadness associated with music. Physics of Life Reviews, 25, 100–121. https://doi.org/10.1016/j.plrev.2017.11.016",
+    "doi": "10.1016/j.plrev.2017.11.016",
+    "url": "https://doi.org/10.1016/j.plrev.2017.11.016",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "sad music",
+      "being moved",
+      "culture"
+    ],
+    "key_finding_mk": "Уживањето во тажна музика не може да се објасни со едно ниво: потребни се биолошки, психосоцијални и културни објаснувања (социјална замена, носталгија, трогнатост).",
+    "key_finding_en": "Enjoyment of sad music requires biological, psychosocial and cultural levels of explanation, not any single one.",
+    "evidence_note": "Интегративен преглед; авторите нагласуваат дека дел од парадоксот е врзан за западното сфаќање на музиката.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "barrett2010",
+    "apa": "Barrett, F. S., Grimm, K. J., Robins, R. W., Wildschut, T., Sedikides, C., & Janata, P. (2010). Music-evoked nostalgia: Affect, memory, and personality. Emotion, 10(3), 390–403. https://doi.org/10.1037/a0019006",
+    "doi": "10.1037/a0019006",
+    "url": "https://doi.org/10.1037/a0019006",
+    "type": "experiment",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "nostalgia",
+      "memory"
+    ],
+    "key_finding_mk": "Носталгијата при популарни песни е посилна кога песната е автобиографски значајна, позната и будна; носталгијата носи и радост и тага.",
+    "key_finding_en": "Music-evoked nostalgia was stronger for autobiographically salient, familiar, arousing songs and was linked to both joy and sadness.",
+    "evidence_note": "Студентски примерок, лабораториско слушање.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "sedikides2008",
+    "apa": "Sedikides, C., Wildschut, T., Arndt, J., & Routledge, C. (2008). Nostalgia: Past, present, and future. Current Directions in Psychological Science, 17(5), 304–307. https://doi.org/10.1111/j.1467-8721.2008.00595.x",
+    "doi": "10.1111/j.1467-8721.2008.00595.x",
+    "url": "https://doi.org/10.1111/j.1467-8721.2008.00595.x",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "nostalgia"
+    ],
+    "key_finding_mk": "Носталгијата е претежно позитивна, самоповрзана и социјална емоција; често ја поттикнуваат осаменост и лошо расположение, а таа го зголемува позитивниот афект и чувството на поврзаност.",
+    "key_finding_en": "Nostalgia is a predominantly positive, self-relevant, social emotion that can counter loneliness and boost positive affect.",
+    "evidence_note": "Краток преглед на сопствената истражувачка програма на авторите.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "janata2007",
+    "apa": "Janata, P., Tomic, S. T., & Rakowski, S. K. (2007). Characterisation of music-evoked autobiographical memories. Memory, 15(8), 845–860. https://doi.org/10.1080/09658210701734593",
+    "doi": "10.1080/09658210701734593",
+    "url": "https://doi.org/10.1080/09658210701734593",
+    "type": "cross-sectional",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "memory",
+      "autobiographical memory",
+      "nostalgia"
+    ],
+    "key_finding_mk": "Околу 30% од пуштените популарни песни евоцираа автобиографски спомени, главно со позитивни и силни емоции; носталгијата беше трета најчеста емоција.",
+    "key_finding_en": "About 30% of popular-song presentations evoked autobiographical memories, mostly with strong positive emotion; nostalgia was the third most common.",
+    "evidence_note": "Американски студенти; лабораториски и онлајн услови.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "holbrook1989",
+    "apa": "Holbrook, M. B., & Schindler, R. M. (1989). Some exploratory findings on the development of musical tastes. Journal of Consumer Research, 16(1), 119–124. https://doi.org/10.1086/209200",
+    "doi": "10.1086/209200",
+    "url": "https://doi.org/10.1086/209200",
+    "type": "cross-sectional",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "reminiscence bump",
+      "preferences"
+    ],
+    "key_finding_mk": "Вкусот за популарна музика следи обратна U-крива со врв кај песни популарни околу 24-тата година од животот на слушателот.",
+    "key_finding_en": "Preference for popular music follows an inverted-U peaking for songs popular around the listener's 24th year.",
+    "evidence_note": "Истражувачки наод од американски примерок, корелациски.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "rubin1997",
+    "apa": "Rubin, D. C., & Schulkind, M. D. (1997). The distribution of autobiographical memories across the lifespan. Memory & Cognition, 25(6), 859–866. https://doi.org/10.3758/bf03211330",
+    "doi": "10.3758/bf03211330",
+    "url": "https://doi.org/10.3758/bf03211330",
+    "type": "cross-sectional",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "reminiscence bump",
+      "memory"
+    ],
+    "key_finding_mk": "Постарите учесници се сеќаваат на несразмерно многу настани од возраста 10–30 години – т.н. „грпка на спомените“ (reminiscence bump).",
+    "key_finding_en": "Older adults recall a disproportionate number of memories from ages 10–30 (the reminiscence bump).",
+    "evidence_note": "Наодот е многукратно реплициран со различни методи.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "krumhansl2013",
+    "apa": "Krumhansl, C. L., & Zupnick, J. A. (2013). Cascading reminiscence bumps in popular music. Psychological Science, 24(10), 2057–2068. https://doi.org/10.1177/0956797613486486",
+    "doi": "10.1177/0956797613486486",
+    "url": "https://doi.org/10.1177/0956797613486486",
+    "type": "cross-sectional",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "reminiscence bump",
+      "family",
+      "memory"
+    ],
+    "key_finding_mk": "Младите имаат спомени и наклонетост не само кон музиката од својата младост, туку и кон музиката од младоста на нивните родители – „каскадни“ грпки.",
+    "key_finding_en": "Young adults showed memory and preference peaks for their own era and for their parents' youth: cascading reminiscence bumps.",
+    "evidence_note": "Американски студентски примерок; објаснувањето преку домашната средина е толкување.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "rathbone2017",
+    "apa": "Rathbone, C. J., O’Connor, A. R., & Moulin, C. J. A. (2017). The tracks of my years: Personal significance contributes to the reminiscence bump. Memory & Cognition, 45(1), 137–150. https://doi.org/10.3758/s13421-016-0647-2",
+    "doi": "10.3758/s13421-016-0647-2",
+    "url": "https://doi.org/10.3758/s13421-016-0647-2",
+    "type": "cross-sectional",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "reminiscence bump",
+      "identity"
+    ],
+    "key_finding_mk": "Кај учесници постари од 40 години, само лично значајните песни формираа грпка на спомените – во склад со идејата дека тогаш се гради идентитетот.",
+    "key_finding_en": "In over-40s, only personally significant songs produced a reminiscence bump, consistent with identity formation in that period.",
+    "evidence_note": "Британски примероци; мали до умерени.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "jacobsen2015",
+    "apa": "Jacobsen, J.-H., Stelzer, J., Fritz, T. H., Chételat, G., La Joie, R., & Turner, R. (2015). Why musical memory can be preserved in advanced Alzheimer's disease. Brain, 138(8), 2438–2450. https://doi.org/10.1093/brain/awv135",
+    "doi": "10.1093/brain/awv135",
+    "url": "https://doi.org/10.1093/brain/awv135",
+    "type": "experiment",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "memory",
+      "dementia"
+    ],
+    "key_finding_mk": "Регионите што кодираат долгорочна музичка меморија (каудален антериорен цингулат, вентрална пре-СМА) покажаа минимална атрофија кај Алцхајмерова болест – можно објаснување зошто музичката меморија е релативно зачувана.",
+    "key_finding_en": "Regions encoding long-known music showed minimal atrophy in Alzheimer's disease, a possible explanation for relatively preserved musical memory.",
+    "evidence_note": "Комбинација од fMRI кај млади и биомаркери кај пациенти; механизмот е хипотеза.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "kampfe2011",
+    "apa": "Kämpfe, J., Sedlmeier, P., & Renkewitz, F. (2011). The impact of background music on adult listeners: A meta-analysis. Psychology of Music, 39(4), 424–448. https://doi.org/10.1177/0305735610376261",
+    "doi": "10.1177/0305735610376261",
+    "url": "https://doi.org/10.1177/0305735610376261",
+    "type": "meta-analysis",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "attention",
+      "background music",
+      "reading"
+    ],
+    "key_finding_mk": "Вкупниот ефект на музиката во позадина е близу нула, но тоа е просек од спротивни ефекти: малку го пречи читањето и меморијата, а позитивно делува на расположението и на спортските постигнувања.",
+    "key_finding_en": "Overall null effect masks specific effects: background music slightly impairs reading and memory, but helps mood and sport performance.",
+    "evidence_note": "Мал број студии по категорија; авторите бараат подобар квалитет на студиите.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "vasilev2018",
+    "apa": "Vasilev, M. R., Kirkby, J. A., & Angele, B. (2018). Auditory distraction during reading: A Bayesian meta-analysis of a continuing controversy. Perspectives on Psychological Science, 13(5), 567–597. https://doi.org/10.1177/1745691617747398",
+    "doi": "10.1177/1745691617747398",
+    "url": "https://doi.org/10.1177/1745691617747398",
+    "type": "meta-analysis",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "attention",
+      "background music",
+      "reading",
+      "lyrics"
+    ],
+    "key_finding_mk": "Бајесова мета-анализа на 65 студии: бучава, говор и музика имаат мал, но доследен негативен ефект врз читањето; најголемо пречење прават разбирлив говор и музика со текст.",
+    "key_finding_en": "Bayesian meta-analysis of 65 studies: noise, speech and music have small but reliable detrimental effects on reading; intelligible speech and lyrical music disrupt most.",
+    "evidence_note": "Силна мета-аналитичка основа; ефектите се мали и индивидуално варираат.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "dewitte2020",
+    "apa": "de Witte, M., Spruit, A., van Hooren, S., Moonen, X., & Stams, G.-J. (2020). Effects of music interventions on stress-related outcomes: A systematic review and two meta-analyses. Health Psychology Review, 14(2), 294–324. https://doi.org/10.1080/17437199.2019.1627897",
+    "doi": "10.1080/17437199.2019.1627897",
+    "url": "https://doi.org/10.1080/17437199.2019.1627897",
+    "type": "meta-analysis",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "wellbeing",
+      "stress"
+    ],
+    "key_finding_mk": "Две мета-анализи на 104 RCT (9.617 учесници): музичките интервенции го намалуваат стресот – физиолошки (d = 0,38) и психолошки (d = 0,55).",
+    "key_finding_en": "Two meta-analyses of 104 RCTs (9,617 participants): music interventions reduced physiological (d = .38) and psychological (d = .55) stress.",
+    "evidence_note": "Мали до умерени ефекти; хетерогени интервенции и мерки.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "daykin2018",
+    "apa": "Daykin, N., Mansfield, L., Meads, C., Julier, G., Tomlinson, A., Payne, A., Grigsby Duffy, L., Lane, J., D’Innocenzo, G., Burnett, A., Kay, T., Dolan, P., Testoni, S., & Victor, C. (2018). What works for wellbeing? A systematic review of wellbeing outcomes for music and singing in adults. Perspectives in Public Health, 138(1), 39–46. https://doi.org/10.1177/1757913917740391",
+    "doi": "10.1177/1757913917740391",
+    "url": "https://doi.org/10.1177/1757913917740391",
+    "type": "systematic review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "wellbeing",
+      "singing"
+    ],
+    "key_finding_mk": "Музиката и пеењето се поврзани со помала анксиозност, подобро расположение и квалитет на живот, но мерењето на добросостојбата е многу неуедначено меѓу студиите.",
+    "key_finding_en": "Music and singing are associated with reduced anxiety and improved mood and quality of life, but wellbeing measurement is highly inconsistent.",
+    "evidence_note": "Оценка со GRADE/CERQual; голем дел од доказите се со низок квалитет.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "aalbers2017",
+    "apa": "Aalbers, S., Fusar-Poli, L., Freeman, R. E., Spreen, M., Ket, J. C. F., Vink, A. C., Maratos, A., Crawford, M., Chen, X.-J., & Gold, C. (2017). Music therapy for depression. Cochrane Database of Systematic Reviews, 2017(11), Article CD004517. https://doi.org/10.1002/14651858.CD004517.pub3",
+    "doi": "10.1002/14651858.CD004517.pub3",
+    "url": "https://doi.org/10.1002/14651858.CD004517.pub3",
+    "type": "systematic review",
+    "pillar": [
+      1,
+      3
+    ],
+    "topics": [
+      "music therapy",
+      "depression"
+    ],
+    "key_finding_mk": "Cochrane преглед (9 студии, 421 учесник): музикотерапијата додадена на вообичаениот третман дава краткорочно намалување на депресивните симптоми во однос на само вообичаениот третман (умерен квалитет на докази).",
+    "key_finding_en": "Cochrane review (9 studies, 421 participants): music therapy added to usual care reduces depressive symptoms short-term (moderate-quality evidence).",
+    "evidence_note": "Мал број студии; споредбата со психотерапија е многу несигурна; не значи „лек“.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "vandersteen2018",
+    "apa": "van der Steen, J. T., Smaling, H. J. A., van der Wouden, J. C., Bruinsma, M. S., Scholten, R. J. P. M., & Vink, A. C. (2018). Music-based therapeutic interventions for people with dementia. Cochrane Database of Systematic Reviews, 2018(7), Article CD003477. https://doi.org/10.1002/14651858.CD003477.pub4",
+    "doi": "10.1002/14651858.CD003477.pub4",
+    "url": "https://doi.org/10.1002/14651858.CD003477.pub4",
+    "type": "systematic review",
+    "pillar": [
+      1,
+      3
+    ],
+    "topics": [
+      "music therapy",
+      "dementia",
+      "memory"
+    ],
+    "key_finding_mk": "Cochrane преглед (22 студии): музичките интервенции веројатно ги намалуваат депресивните симптоми и можеби го подобруваат благосостојбата, но имаат мал или никаков ефект врз когницијата и агитацијата.",
+    "key_finding_en": "Cochrane review (22 studies): music-based interventions probably reduce depressive symptoms, may improve wellbeing, but have little or no effect on cognition or agitation.",
+    "evidence_note": "Низок до умерен квалитет; долгорочните ефекти се неизвесни.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "bradt2021",
+    "apa": "Bradt, J., Dileo, C., Myers-Coffman, K., & Biondo, J. (2021). Music interventions for improving psychological and physical outcomes in people with cancer. Cochrane Database of Systematic Reviews, 2021(10), Article CD006911. https://doi.org/10.1002/14651858.CD006911.pub4",
+    "doi": "10.1002/14651858.CD006911.pub4",
+    "url": "https://doi.org/10.1002/14651858.CD006911.pub4",
+    "type": "systematic review",
+    "pillar": [
+      1,
+      3
+    ],
+    "topics": [
+      "music therapy",
+      "music medicine",
+      "cancer",
+      "anxiety"
+    ],
+    "key_finding_mk": "Cochrane преглед кој јасно ги разликува музикотерапијата (со обучен музикотерапевт) и „музичката медицина“ (слушање снимена музика понудено од медицински персонал); наоди за помала анксиозност, болка и замор, со главно низок до многу низок квалитет на доказите.",
+    "key_finding_en": "Cochrane review distinguishing music therapy (trained therapists) from music medicine (pre-recorded listening via medical staff); benefits for anxiety, pain and fatigue with mostly low to very-low certainty.",
+    "evidence_note": "Корисен за дефиниција на поимите; поединечните ефекти се несигурни.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "pearce2015",
+    "apa": "Pearce, E., Launay, J., & Dunbar, R. I. M. (2015). The ice-breaker effect: Singing mediates fast social bonding. Royal Society Open Science, 2(10), Article 150221. https://doi.org/10.1098/rsos.150221",
+    "doi": "10.1098/rsos.150221",
+    "url": "https://doi.org/10.1098/rsos.150221",
+    "type": "cohort",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "singing",
+      "social bonding"
+    ],
+    "key_finding_mk": "Во новоформирани групи следени седум месеци, пеачите побрзо се зближија од групите за ракотворби или креативно пишување, иако по третиот месец сите беа подеднакво поврзани.",
+    "key_finding_en": "In new adult-education classes followed for seven months, singers bonded faster than non-singers, though groups converged later.",
+    "evidence_note": "Полуприроден дизајн без случајна распределба.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "tarr2014",
+    "apa": "Tarr, B., Launay, J., & Dunbar, R. I. M. (2014). Music and social bonding: \"Self-other\" merging and neurohormonal mechanisms. Frontiers in Psychology, 5, Article 1096. https://doi.org/10.3389/fpsyg.2014.01096",
+    "doi": "10.3389/fpsyg.2014.01096",
+    "url": "https://doi.org/10.3389/fpsyg.2014.01096",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "social bonding",
+      "synchrony",
+      "endorphins"
+    ],
+    "key_finding_mk": "Преглед: заедничкото музицирање може да зближува преку синхронизација (чувство на „спојување“ со другите) и ослободување ендорфини при ритмичка активност.",
+    "key_finding_en": "Review proposing synchrony-driven self-other merging and endorphin release as mechanisms of music's bonding effect.",
+    "evidence_note": "Хипотетска рамка; директните тестови се малобројни.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "kirschner2010",
+    "apa": "Kirschner, S., & Tomasello, M. (2010). Joint music making promotes prosocial behavior in 4-year-old children. Evolution and Human Behavior, 31(5), 354–364. https://doi.org/10.1016/j.evolhumbehav.2010.04.004",
+    "doi": "10.1016/j.evolhumbehav.2010.04.004",
+    "url": "https://doi.org/10.1016/j.evolhumbehav.2010.04.004",
+    "type": "experiment",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "social bonding",
+      "children",
+      "synchrony"
+    ],
+    "key_finding_mk": "Четиригодишни деца што заедно пееја и свиреа подоцна почесто спонтано си помагаа и соработуваа отколку деца во слична игра без музика.",
+    "key_finding_en": "Four-year-olds who made music together subsequently showed more spontaneous helping and cooperation than after matched non-musical play.",
+    "evidence_note": "Германски примерок, лабораториска задача; ефект краткорочно измерен.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "wesseldijk2019",
+    "apa": "Wesseldijk, L. W., Ullén, F., & Mosing, M. A. (2019). The effects of playing music on mental health outcomes. Scientific Reports, 9(1), Article 12606. https://doi.org/10.1038/s41598-019-49099-9",
+    "doi": "10.1038/s41598-019-49099-9",
+    "url": "https://doi.org/10.1038/s41598-019-49099-9",
+    "type": "cohort",
+    "pillar": [
+      1,
+      2
+    ],
+    "topics": [
+      "wellbeing",
+      "musicians",
+      "mental health"
+    ],
+    "key_finding_mk": "Кај 10.776 шведски близнаци, свирењето инструмент беше поврзано со малку повисок самоизвестен ризик за ментални тешкотии, но врската ослабе по контрола на семејните (генетски и средински) фактори – веројатно не е причинска.",
+    "key_finding_en": "In 10,776 Swedish twins, playing an instrument was linked to slightly more self-reported mental-health problems, but the association weakened under co-twin control, suggesting no causal harm.",
+    "evidence_note": "Голем регистарски примерок; ја оспорува идејата дека музицирањето автоматски е „здраво“ или „штетно“.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "baltazar2016",
+    "apa": "Baltazar, M., & Saarikallio, S. (2016). Toward a better understanding and conceptualization of affect self-regulation through music: A critical, integrative literature review. Psychology of Music, 44(6), 1500–1521. https://doi.org/10.1177/0305735616663313",
+    "doi": "10.1177/0305735616663313",
+    "url": "https://doi.org/10.1177/0305735616663313",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "emotion regulation"
+    ],
+    "key_finding_mk": "Интегративен преглед на 34 публикации: регулацијата на афектот преку музика се проучува нерамномерно, со неконзистентни термини; авторите предлагаат рамка цели–стратегии–тактики–механизми.",
+    "key_finding_en": "Integrative review of 34 publications: research on affect self-regulation through music is conceptually inconsistent; proposes a goals–strategies–tactics–mechanisms framework.",
+    "evidence_note": "Покажува дека полето е младо и терминолошки нејасно.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "gross1998",
+    "apa": "Gross, J. J. (1998). The emerging field of emotion regulation: An integrative review. Review of General Psychology, 2(3), 271–299. https://doi.org/10.1037/1089-2680.2.3.271",
+    "doi": "10.1037/1089-2680.2.3.271",
+    "url": "https://doi.org/10.1037/1089-2680.2.3.271",
+    "type": "review",
+    "pillar": [
+      1,
+      2
+    ],
+    "topics": [
+      "emotion regulation",
+      "reappraisal"
+    ],
+    "key_finding_mk": "Процесен модел: емоциите може да се регулираат на пет точки – избор на ситуација, менување на ситуацијата, насочување на вниманието, менување на проценката (когнитивна преоценка) и модулирање на одговорот.",
+    "key_finding_en": "Process model: emotion can be regulated at situation selection, situation modification, attentional deployment, cognitive change and response modulation.",
+    "evidence_note": "Темелен теориски труд; основа за илјадници понатамошни студии.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "repp2013",
+    "apa": "Repp, B. H., & Su, Y.-H. (2013). Sensorimotor synchronization: A review of recent research (2006–2012). Psychonomic Bulletin & Review, 20(3), 403–452. https://doi.org/10.3758/s13423-012-0371-2",
+    "doi": "10.3758/s13423-012-0371-2",
+    "url": "https://doi.org/10.3758/s13423-012-0371-2",
+    "type": "review",
+    "pillar": [
+      1
+    ],
+    "topics": [
+      "entrainment",
+      "rhythm",
+      "synchrony"
+    ],
+    "key_finding_mk": "Преглед на истражувањата за усогласување на движењето со надворешен ритам – од тапкање до ансамблово свирење и невронски основи.",
+    "key_finding_en": "Review of sensorimotor synchronization research, from finger tapping to ensemble performance and neural bases.",
+    "evidence_note": "Технички преглед; солидна основа за поимот вовлекување (entrainment).",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "kenny2011",
+    "apa": "Kenny, D. T. (2011). The psychology of music performance anxiety. Oxford University Press. https://doi.org/10.1093/acprof:oso/9780199586141.001.0001",
+    "doi": "10.1093/acprof:oso/9780199586141.001.0001",
+    "url": "https://doi.org/10.1093/acprof:oso/9780199586141.001.0001",
+    "type": "book",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "MPA",
+      "definitions",
+      "treatment"
+    ],
+    "key_finding_mk": "Најсеопфатна монографија за музичката анксиозност при изведба: дефиниции, теории, мерење, развој низ животниот век и третмани.",
+    "key_finding_en": "The most comprehensive monograph on music performance anxiety: definitions, theories, assessment, lifespan development and treatments.",
+    "evidence_note": "Стручна книга; авторката е водечка истражувачка во областа.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "kenny2005",
+    "apa": "Kenny, D. T. (2005). A systematic review of treatments for music performance anxiety. Anxiety, Stress & Coping, 18(3), 183–208. https://doi.org/10.1080/10615800500167258",
+    "doi": "10.1080/10615800500167258",
+    "url": "https://doi.org/10.1080/10615800500167258",
+    "type": "systematic review",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "MPA",
+      "treatment"
+    ],
+    "key_finding_mk": "Бројот на студии, малите примероци и слабиот методолошки квалитет не дозволуваат цврсти заклучоци за ефикасноста на кој било третман за музичка анксиозност; потребни се поголеми, ригорозни студии.",
+    "key_finding_en": "Small numbers of studies, small samples and weak methods precluded firm conclusions about any MPA treatment.",
+    "evidence_note": "Постар преглед, но заклучокот за слабата доказна основа е потврден и подоцна (Fernholz et al., 2019).",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "fernholz2019",
+    "apa": "Fernholz, I., Mumm, J. L. M., Plag, J., Noeres, K., Rotter, G., Willich, S. N., Ströhle, A., Berghöfer, A., & Schmidt, A. (2019). Performance anxiety in professional musicians: A systematic review on prevalence, risk factors and clinical treatment effects. Psychological Medicine, 49(14), 2287–2306. https://doi.org/10.1017/S0033291719001910",
+    "doi": "10.1017/S0033291719001910",
+    "url": "https://doi.org/10.1017/S0033291719001910",
+    "type": "systematic review",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "MPA",
+      "prevalence",
+      "treatment"
+    ],
+    "key_finding_mk": "Систематски преглед на 43 студии кај професионални музичари: преваленцата на музичка анксиозност се движи од 16,5% до 60%; почеста е кај жените и кај помладите; КБТ има најмногу корисни резултати, но недостигаат студии со соодветни контролни групи.",
+    "key_finding_en": "Systematic review of 43 studies in professional musicians: MPA prevalence 16.5–60%; more common in women and younger musicians; CBT most promising but under-controlled.",
+    "evidence_note": "Слаб квалитет на многу вклучени студии; широкиот опсег одразува различни дефиниции и мерки.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "burin2017",
+    "apa": "Burin, A. B., & Osório, F. L. (2017). Music performance anxiety: A critical review of etiological aspects, perceived causes, coping strategies and treatment. Archives of Clinical Psychiatry (São Paulo), 44(5), 127–133. https://doi.org/10.1590/0101-60830000000136",
+    "doi": "10.1590/0101-60830000000136",
+    "url": "https://doi.org/10.1590/0101-60830000000136",
+    "type": "review",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "MPA",
+      "causes",
+      "coping"
+    ],
+    "key_finding_mk": "Музичката анксиозност се разбира како подтип на социјална анксиозност; присутна е кај повеќе од 16% од музичарите без оглед на културата; придонесуваат когнитивни, бихевиорални, физиолошки и ситуациони фактори.",
+    "key_finding_en": "MPA is understood as a subtype of social anxiety, affects more than 16% of musicians across cultures, with cognitive, behavioural, physiological and situational contributors.",
+    "evidence_note": "Критички наративен преглед.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "matei2017",
+    "apa": "Matei, R., & Ginsborg, J. (2017). Music performance anxiety in classical musicians – what we know about what works. BJPsych International, 14(2), 33–35. https://doi.org/10.1192/s2056474000001744",
+    "doi": "10.1192/s2056474000001744",
+    "url": "https://doi.org/10.1192/s2056474000001744",
+    "type": "review",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "MPA",
+      "treatment"
+    ],
+    "key_finding_mk": "Краток преглед: анксиозноста може да енергизира на оптимално ниво, но во прекумерна мера го нарушува квалитетот на изведбата; интервенциите се истражувани, но со слаб методолошки квалитет.",
+    "key_finding_en": "Brief review: MPA can energise at optimal levels but impairs quality when excessive; intervention studies are methodologically weak.",
+    "evidence_note": "Краток преглед за клиничари.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "kenny2014",
+    "apa": "Kenny, D. T., Driscoll, T., & Ackermann, B. (2014). Psychological well-being in professional orchestral musicians in Australia: A descriptive population study. Psychology of Music, 42(2), 210–232. https://doi.org/10.1177/0305735612463950",
+    "doi": "10.1177/0305735612463950",
+    "url": "https://doi.org/10.1177/0305735612463950",
+    "type": "cross-sectional",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "MPA",
+      "wellbeing",
+      "orchestral musicians"
+    ],
+    "key_finding_mk": "Анкета кај 377 австралиски оркестарски музичари: жените и најмладите имаа повисока музичка анксиозност; околу 33% можеби ги исполнуваат критериумите за социјална фобија, а 32% имаа позитивен скрининг за депресија.",
+    "key_finding_en": "Survey of 377 Australian orchestral musicians: higher MPA in women and the youngest; ~33% may meet social phobia criteria and 32% screened positive for depression.",
+    "evidence_note": "Скрининг-прашалници, не клинички дијагнози; една земја.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "papageorgi2007",
+    "apa": "Papageorgi, I., Hallam, S., & Welch, G. F. (2007). A conceptual framework for understanding musical performance anxiety. Research Studies in Music Education, 28(1), 83–107. https://doi.org/10.1177/1321103X070280010207",
+    "doi": "10.1177/1321103X070280010207",
+    "url": "https://doi.org/10.1177/1321103X070280010207",
+    "type": "review",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "MPA",
+      "model"
+    ],
+    "key_finding_mk": "Модел кој анксиозноста при изведба ја гледа како процес во време – пред, за време и по настапот – што може да има адаптивни или неадаптивни исходи.",
+    "key_finding_en": "Framework portraying performance anxiety as a time-based process (pre-, during, post-performance) with adaptive or maladaptive outcomes.",
+    "evidence_note": "Концептуален модел, не емпириски тест.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "steptoe1987",
+    "apa": "Steptoe, A., & Fidler, H. (1987). Stage fright in orchestral musicians: A study of cognitive and behavioural strategies in performance anxiety. British Journal of Psychology, 78(2), 241–249. https://doi.org/10.1111/j.2044-8295.1987.tb02243.x",
+    "doi": "10.1111/j.2044-8295.1987.tb02243.x",
+    "url": "https://doi.org/10.1111/j.2044-8295.1987.tb02243.x",
+    "type": "cross-sectional",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "MPA",
+      "catastrophizing",
+      "coping"
+    ],
+    "key_finding_mk": "Кај професионалци, студенти и аматери, катастрофизирањето беше поврзано со поголема трема во сите групи; тремата беше најниска кај професионалците и највисока кај студентите.",
+    "key_finding_en": "Across professional, student and amateur orchestral musicians, catastrophising was linked to higher stage fright; anxiety was lowest in professionals and highest in students.",
+    "evidence_note": "Стара, мала прашалничка студија; наодот за катастрофизирањето е доследен со подоцнежни истражувања.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "dobos2019",
+    "apa": "Dobos, B., Piko, B. F., & Kenny, D. T. (2019). Music performance anxiety and its relationship with social phobia and dimensions of perfectionism. Research Studies in Music Education, 41(3), 310–326. https://doi.org/10.1177/1321103X18804295",
+    "doi": "10.1177/1321103X18804295",
+    "url": "https://doi.org/10.1177/1321103X18804295",
+    "type": "cross-sectional",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "MPA",
+      "perfectionism",
+      "social anxiety"
+    ],
+    "key_finding_mk": "Кај 100 унгарски музичари, социјалната фобија и димензиите на перфекционизам (особено родителската критика и сомнежот во сопствените постапки) ја предвидуваа музичката анксиозност.",
+    "key_finding_en": "In 100 Hungarian musicians, social phobia and perfectionism dimensions (parental criticism, doubts about actions) predicted MPA.",
+    "evidence_note": "Мал пресечен примерок; не покажува причинска насока.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "spahn2021",
+    "apa": "Spahn, C., Krampe, F., & Nusseck, M. (2021). Live music performance: The relationship between flow and music performance anxiety. Frontiers in Psychology, 12, Article 725569. https://doi.org/10.3389/fpsyg.2021.725569",
+    "doi": "10.3389/fpsyg.2021.725569",
+    "url": "https://doi.org/10.3389/fpsyg.2021.725569",
+    "type": "cross-sectional",
+    "pillar": [
+      1,
+      2
+    ],
+    "topics": [
+      "flow",
+      "MPA",
+      "self-efficacy"
+    ],
+    "key_finding_mk": "Кај 363 оркестарски музичари анкетирани веднаш по концерт, повеќе симптоми на анксиозност пред настапот одеа со помалку флоу, а функционалното справување и самоефикасноста со повеќе флоу.",
+    "key_finding_en": "In 363 orchestral musicians surveyed right after a concert, pre-performance MPA symptoms related to less flow; functional coping and self-efficacy to more flow.",
+    "evidence_note": "Пресечен дизајн, ретроспективна проценка.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "fullagar2013",
+    "apa": "Fullagar, C. J., Knight, P. A., & Sovern, H. S. (2013). Challenge/skill balance, flow, and performance anxiety. Applied Psychology, 62(2), 236–259. https://doi.org/10.1111/j.1464-0597.2012.00494.x",
+    "doi": "10.1111/j.1464-0597.2012.00494.x",
+    "url": "https://doi.org/10.1111/j.1464-0597.2012.00494.x",
+    "type": "cohort",
+    "pillar": [
+      1,
+      2
+    ],
+    "topics": [
+      "flow",
+      "MPA",
+      "challenge-skill balance"
+    ],
+    "key_finding_mk": "Кај 27 студенти по музика следени еден семестар, рамнотежата меѓу предизвикот и вештината беше поврзана со флоу; флоуто и анксиозноста при изведба се покажаа како спротивни искуства.",
+    "key_finding_en": "In 27 music students over a semester, challenge-skill balance predicted flow; flow and performance anxiety were antithetical.",
+    "evidence_note": "Мал примерок, но лонгитудинални повторени мерења.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "brooks2014",
+    "apa": "Brooks, A. W. (2014). Get excited: Reappraising pre-performance anxiety as excitement. Journal of Experimental Psychology: General, 143(3), 1144–1158. https://doi.org/10.1037/a0035325",
+    "doi": "10.1037/a0035325",
+    "url": "https://doi.org/10.1037/a0035325",
+    "type": "experiment",
+    "pillar": [
+      2,
+      3
+    ],
+    "topics": [
+      "reappraisal",
+      "MPA",
+      "singing"
+    ],
+    "key_finding_mk": "Во серија експерименти (караоке, n = 113; јавен говор, n = 140; математика, n = 188 и 218), преоценувањето на анксиозноста како возбуда („Возбуден/а сум“) ја зголеми субјективната возбуда и изведбата во однос на обидот да се смириш или без изјава; анксиозноста и пулсот не се намалија.",
+    "key_finding_en": "Across experiments (karaoke n = 113; speech n = 140; maths n = 188, 218), reappraising anxiety as excitement increased felt excitement and performance relative to calming or no statement; anxiety and heart rate did not decrease.",
+    "evidence_note": "Добро контролирани експерименти, но студентски примероци, еднократни лабораториски задачи; директната репликација на студијата за говор (Poynter & Smith Pasqualini, 2025) не го потврди ефектот врз изведбата.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "poynter2025",
+    "apa": "Poynter, M., & Smith Pasqualini, M. (2025). Getting excited about public speaking: A replication. Psychology of Language and Communication, 29(1), 254–265. https://doi.org/10.58734/plc-2025-0011",
+    "doi": "10.58734/plc-2025-0011",
+    "url": "https://doi.org/10.58734/plc-2025-0011",
+    "type": "experiment",
+    "pillar": [
+      2,
+      3
+    ],
+    "topics": [
+      "reappraisal",
+      "replication"
+    ],
+    "key_finding_mk": "Директна репликација на студијата за јавен говор (Brooks, 2014, студија 2), N = 74: ефектот врз самоизвестената возбуда се повтори, но немаше разлика во оценките на набљудувачите за изведбата.",
+    "key_finding_en": "Direct replication of Brooks (2014, Study 2), N = 74: self-reported excitement effect replicated, but no differences in observer-rated performance.",
+    "evidence_note": "Помал примерок од оригиналот; една репликација – не е конечна пресуда, но е важно предупредување.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "jamieson2010",
+    "apa": "Jamieson, J. P., Mendes, W. B., Blackstock, E., & Schmader, T. (2010). Turning the knots in your stomach into bows: Reappraising arousal improves performance on the GRE. Journal of Experimental Social Psychology, 46(1), 208–212. https://doi.org/10.1016/j.jesp.2009.08.015",
+    "doi": "10.1016/j.jesp.2009.08.015",
+    "url": "https://doi.org/10.1016/j.jesp.2009.08.015",
+    "type": "experiment",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "reappraisal",
+      "arousal",
+      "exams"
+    ],
+    "key_finding_mk": "Учесниците на кои им беше кажано дека возбудата ја подобрува изведбата постигнаа подобри резултати на математичкиот дел од пробниот и вистинскиот GRE-тест.",
+    "key_finding_en": "Participants told that arousal improves performance scored higher on GRE-math in the lab and on the actual exam.",
+    "evidence_note": "Мал примерок; не е со музичари.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "jamieson2012",
+    "apa": "Jamieson, J. P., Nock, M. K., & Mendes, W. B. (2012). Mind over matter: Reappraising arousal improves cardiovascular and cognitive responses to stress. Journal of Experimental Psychology: General, 141(3), 417–422. https://doi.org/10.1037/a0025719",
+    "doi": "10.1037/a0025719",
+    "url": "https://doi.org/10.1037/a0025719",
+    "type": "experiment",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "reappraisal",
+      "arousal",
+      "stress"
+    ],
+    "key_finding_mk": "Учесниците упатени да ја толкуваат физиолошката возбуда како функционална покажаа поадаптивни кардиоваскуларни одговори и помала пристрасност на вниманието кон негативни дразби.",
+    "key_finding_en": "Participants instructed to view arousal as functional showed more adaptive cardiovascular responses and less attentional bias to negative information.",
+    "evidence_note": "Лабораториски стрес-тест; не е со музичари.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "yerkes1908",
+    "apa": "Yerkes, R. M., & Dodson, J. D. (1908). The relation of strength of stimulus to rapidity of habit-formation. Journal of Comparative Neurology and Psychology, 18(5), 459–482. https://doi.org/10.1002/cne.920180503",
+    "doi": "10.1002/cne.920180503",
+    "url": "https://doi.org/10.1002/cne.920180503",
+    "type": "experiment",
+    "pillar": [
+      2,
+      3
+    ],
+    "topics": [
+      "arousal",
+      "Yerkes-Dodson"
+    ],
+    "key_finding_mk": "Оригиналниот експеримент со глувци за јачината на дразбата (електричен шок) и брзината на учење задачи со различна тежина – изворот на подоцнежниот „закон Јеркс–Додсон“.",
+    "key_finding_en": "Original mouse experiment on stimulus strength and speed of habit formation for tasks of differing difficulty, the source of the later 'Yerkes–Dodson law'.",
+    "evidence_note": "Мал експеримент со животни; не се однесува директно на „возбуда“ и изведба кај луѓе.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "teigen1994",
+    "apa": "Teigen, K. H. (1994). Yerkes-Dodson: A law for all seasons. Theory & Psychology, 4(4), 525–547. https://doi.org/10.1177/0959354394044004",
+    "doi": "10.1177/0959354394044004",
+    "url": "https://doi.org/10.1177/0959354394044004",
+    "type": "review",
+    "pillar": [
+      2,
+      3
+    ],
+    "topics": [
+      "arousal",
+      "Yerkes-Dodson",
+      "history of psychology"
+    ],
+    "key_finding_mk": "Историски преглед: „законот“ Јеркс–Додсон низ децениите е преформулиран за возбуда, анксиозност, стрес и мотивација, што оригиналните автори не го тврделе; неговата растегливост одразува нејасност на поимите.",
+    "key_finding_en": "Historical review: later authors reformulated Yerkes–Dodson in terms of arousal, anxiety and stress, often misattributing these to the originals.",
+    "evidence_note": "Важен корективен извор против поедноставеното „обратно U“.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "eysenck2007",
+    "apa": "Eysenck, M. W., Derakshan, N., Santos, R., & Calvo, M. G. (2007). Anxiety and cognitive performance: Attentional control theory. Emotion, 7(2), 336–353. https://doi.org/10.1037/1528-3542.7.2.336",
+    "doi": "10.1037/1528-3542.7.2.336",
+    "url": "https://doi.org/10.1037/1528-3542.7.2.336",
+    "type": "review",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "attention",
+      "anxiety"
+    ],
+    "key_finding_mk": "Теорија на контролата на вниманието: анксиозноста ја намалува ефикасноста на целно-насоченото внимание и го зголемува вниманието кон заканата, но не мора да ја намали изведбата ако човекот вложи компензаторен напор.",
+    "key_finding_en": "Attentional control theory: anxiety impairs goal-directed attention and biases attention to threat, but performance may be preserved through compensatory effort.",
+    "evidence_note": "Теорија со широка, но не секогаш конзистентна емпириска поддршка.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "beilock2001",
+    "apa": "Beilock, S. L., & Carr, T. H. (2001). On the fragility of skilled performance: What governs choking under pressure? Journal of Experimental Psychology: General, 130(4), 701–725. https://doi.org/10.1037/0096-3445.130.4.701",
+    "doi": "10.1037/0096-3445.130.4.701",
+    "url": "https://doi.org/10.1037/0096-3445.130.4.701",
+    "type": "experiment",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "choking",
+      "attention"
+    ],
+    "key_finding_mk": "Кај автоматизирани вештини (голф-патување), притисокот предизвика „кочење“ (choking); тренингот со свесност за себеси под набљудување го отстрани ефектот – поддршка за теоријата на експлицитно надгледување.",
+    "key_finding_en": "For proceduralised skills (golf putting), pressure caused choking; self-consciousness training eliminated it, supporting explicit-monitoring theory.",
+    "evidence_note": "Спортски задачи и студенти; пренесувањето кон музика е веројатно, но индиректно.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "wulf2013",
+    "apa": "Wulf, G. (2013). Attentional focus and motor learning: A review of 15 years. International Review of Sport and Exercise Psychology, 6(1), 77–104. https://doi.org/10.1080/1750984X.2012.723728",
+    "doi": "10.1080/1750984X.2012.723728",
+    "url": "https://doi.org/10.1080/1750984X.2012.723728",
+    "type": "review",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "attention",
+      "external focus",
+      "practice"
+    ],
+    "key_finding_mk": "Петнаесет години истражувања: надворешниот фокус (на ефектот на движењето) ја подобрува изведбата и учењето во однос на внатрешниот фокус (на самите движења на телото) кај различни задачи, нивоа и возрасти.",
+    "key_finding_en": "Fifteen years of research show an external focus (on movement effects) enhances motor performance and learning over an internal focus.",
+    "evidence_note": "Конзистентен наод во моториката; студиите со музичари се малку.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "driskell1994",
+    "apa": "Driskell, J. E., Copper, C., & Moran, A. (1994). Does mental practice enhance performance? Journal of Applied Psychology, 79(4), 481–492. https://doi.org/10.1037/0021-9010.79.4.481",
+    "doi": "10.1037/0021-9010.79.4.481",
+    "url": "https://doi.org/10.1037/0021-9010.79.4.481",
+    "type": "meta-analysis",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "mental practice",
+      "preparation"
+    ],
+    "key_finding_mk": "Мета-анализа: менталното вежбање (когнитивна проба без движење) има позитивен и значаен ефект врз изведбата, зависно од типот на задачата, времето до изведбата и времетраењето на вежбањето.",
+    "key_finding_en": "Meta-analysis: mental practice has a positive, significant effect on performance, moderated by task type, retention interval and duration.",
+    "evidence_note": "Постара мета-анализа, главно немузички задачи.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "bernardi2013",
+    "apa": "Bernardi, N. F., De Buglio, M., Trimarchi, P. D., Chielli, A., & Bricolo, E. (2013). Mental practice promotes motor anticipation: Evidence from skilled music performance. Frontiers in Human Neuroscience, 7, Article 451. https://doi.org/10.3389/fnhum.2013.00451",
+    "doi": "10.3389/fnhum.2013.00451",
+    "url": "https://doi.org/10.3389/fnhum.2013.00451",
+    "type": "experiment",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "mental practice",
+      "pianists"
+    ],
+    "key_finding_mk": "Кај експертни пијанисти менталното вежбање ја подобри изведбата на тешки секвенци, иако помалку од физичкото вежбање.",
+    "key_finding_en": "In expert pianists, mental practice improved performance of difficult passages, though less than physical practice.",
+    "evidence_note": "Мал примерок, лабораториски задачи.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "williamon2014",
+    "apa": "Williamon, A., Aufegger, L., & Eiholzer, H. (2014). Simulating and stimulating performance: Introducing distributed simulation to enhance musical learning and performance. Frontiers in Psychology, 5, Article 25. https://doi.org/10.3389/fpsyg.2014.00025",
+    "doi": "10.3389/fpsyg.2014.00025",
+    "url": "https://doi.org/10.3389/fpsyg.2014.00025",
+    "type": "experiment",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "simulation",
+      "exposure",
+      "preparation"
+    ],
+    "key_finding_mk": "Напредни студенти по виолина (n = 11) ги доживеаја симулираните настапи и аудиции како реалистични; кај седуммина, анксиозноста и срцевиот ритам беа слични на оние при вистинска аудиција.",
+    "key_finding_en": "Advanced violin students (n = 11) found simulated recitals and auditions realistic; in seven, anxiety and heart-rate patterns resembled those in a real audition.",
+    "evidence_note": "Многу мал примерок; покажува изводливост, не ефикасност.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "clarke2020",
+    "apa": "Clarke, L. K., Osborne, M. S., & Baranoff, J. A. (2020). Examining a group acceptance and commitment therapy intervention for music performance anxiety in student vocalists. Frontiers in Psychology, 11, Article 1127. https://doi.org/10.3389/fpsyg.2020.01127",
+    "doi": "10.3389/fpsyg.2020.01127",
+    "url": "https://doi.org/10.3389/fpsyg.2020.01127",
+    "type": "experiment",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "ACT",
+      "MPA",
+      "singers"
+    ],
+    "key_finding_mk": "Пилот-програма на групна терапија на прифаќање и посветеност (ACT) со шест студенти по пеење покажа изводливост и подобрувања, со следење по три месеци.",
+    "key_finding_en": "Pilot group ACT programme with six student vocalists showed feasibility and improvements at three-month follow-up.",
+    "evidence_note": "Пилот без контролна група, n = 6; рани докази.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "stoeber2006",
+    "apa": "Stoeber, J., & Otto, K. (2006). Positive conceptions of perfectionism: Approaches, evidence, challenges. Personality and Social Psychology Review, 10(4), 295–319. https://doi.org/10.1207/s15327957pspr1004_2",
+    "doi": "10.1207/s15327957pspr1004_2",
+    "url": "https://doi.org/10.1207/s15327957pspr1004_2",
+    "type": "review",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "perfectionism"
+    ],
+    "key_finding_mk": "Перфекционизмот има две димензии: перфекционистички стремежи (високи стандарди) и перфекционистички загрижености (страв од грешки, негативна оценка); стремежите се поврзани со позитивни карактеристики кога не се придружени со загриженост.",
+    "key_finding_en": "Perfectionism has two dimensions, perfectionistic strivings and concerns; strivings relate to positive characteristics when not accompanied by concerns.",
+    "evidence_note": "Влијателен преглед; „позитивниот перфекционизам“ останува дебатиран.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "stoeber2007",
+    "apa": "Stoeber, J., & Eismann, U. (2007). Perfectionism in young musicians: Relations with motivation, effort, achievement, and distress. Personality and Individual Differences, 43(8), 2182–2192. https://doi.org/10.1016/j.paid.2007.06.036",
+    "doi": "10.1016/j.paid.2007.06.036",
+    "url": "https://doi.org/10.1016/j.paid.2007.06.036",
+    "type": "cross-sectional",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "perfectionism",
+      "young musicians"
+    ],
+    "key_finding_mk": "Кај 146 млади музичари, стремежот кон совршенство беше поврзан со внатрешна мотивација, повеќе труд и постигнувања, а негативните реакции на несовршеноста со надворешна мотивација и повеќе вознемиреност.",
+    "key_finding_en": "In 146 young musicians, striving for perfection related to intrinsic motivation, effort and achievement; negative reactions to imperfection to extrinsic motivation and distress.",
+    "evidence_note": "Пресечна студија, германски примерок.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "limburg2017",
+    "apa": "Limburg, K., Watson, H. J., Hagger, M. S., & Egan, S. J. (2017). The relationship between perfectionism and psychopathology: A meta-analysis. Journal of Clinical Psychology, 73(10), 1301–1326. https://doi.org/10.1002/jclp.22435",
+    "doi": "10.1002/jclp.22435",
+    "url": "https://doi.org/10.1002/jclp.22435",
+    "type": "meta-analysis",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "perfectionism",
+      "mental health"
+    ],
+    "key_finding_mk": "Мета-анализа на 284 студии: двете димензии на перфекционизам се поврзани со различни форми на психопатологија – перфекционизмот е трансдијагностички фактор.",
+    "key_finding_en": "Meta-analysis of 284 studies: both perfectionism dimensions are associated with psychopathology, supporting perfectionism as a transdiagnostic factor.",
+    "evidence_note": "Корелациски податоци; загриженостите се посилно поврзани од стремежите.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "curran2019",
+    "apa": "Curran, T., & Hill, A. P. (2019). Perfectionism is increasing over time: A meta-analysis of birth cohort differences from 1989 to 2016. Psychological Bulletin, 145(4), 410–429. https://doi.org/10.1037/bul0000138",
+    "doi": "10.1037/bul0000138",
+    "url": "https://doi.org/10.1037/bul0000138",
+    "type": "meta-analysis",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "perfectionism",
+      "culture"
+    ],
+    "key_finding_mk": "Кај 41.641 студент од САД, Канада и Велика Британија, сите три форми на перфекционизам растат од 1989 до 2016; најмногу расте чувството дека другите бараат совршенство од нас.",
+    "key_finding_en": "Across 41,641 US, Canadian and British students, all perfectionism forms rose from 1989 to 2016, most strongly socially prescribed perfectionism.",
+    "evidence_note": "Меѓугенерациска мета-анализа; англосаксонски примероци, не музичари.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "hill2018",
+    "apa": "Hill, A. P., Mallinson-Howard, S. H., & Jowett, G. E. (2018). Multidimensional perfectionism in sport: A meta-analytical review. Sport, Exercise, and Performance Psychology, 7(3), 235–270. https://doi.org/10.1037/spy0000125",
+    "doi": "10.1037/spy0000125",
+    "url": "https://doi.org/10.1037/spy0000125",
+    "type": "meta-analysis",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "perfectionism",
+      "performance"
+    ],
+    "key_finding_mk": "Во спортот, перфекционистичките стремежи имаат мала до умерена врска со подобра изведба, а загриженостите со неадаптивна мотивација и емоции, без врска со изведбата.",
+    "key_finding_en": "In sport, perfectionistic strivings relate to better performance while concerns relate to maladaptive motivation and emotion, not performance.",
+    "evidence_note": "Спорт, не музика; аналогијата е разумна, но треба да се провери кај музичари.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "clance1978",
+    "apa": "Clance, P. R., & Imes, S. A. (1978). The imposter phenomenon in high achieving women: Dynamics and therapeutic intervention. Psychotherapy: Theory, Research & Practice, 15(3), 241–247. https://doi.org/10.1037/h0086006",
+    "doi": "10.1037/h0086006",
+    "url": "https://doi.org/10.1037/h0086006",
+    "type": "qualitative",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "impostor phenomenon"
+    ],
+    "key_finding_mk": "Првиот опис на „феноменот на измамник“: успешни луѓе кои упорно веруваат дека не се доволно способни и дека ги измамиле другите, и покрај објективните достигнувања.",
+    "key_finding_en": "First description of the impostor phenomenon: high achievers persistently believing they are not capable and have fooled others.",
+    "evidence_note": "Клинички набљудувања, не систематско истражување; првично само кај жени.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "bravata2020",
+    "apa": "Bravata, D. M., Watts, S. A., Keefer, A. L., Madhusudhan, D. K., Taylor, K. T., Clark, D. M., Nelson, R. S., Cokley, K. O., & Hagg, H. K. (2020). Prevalence, predictors, and treatment of impostor syndrome: A systematic review. Journal of General Internal Medicine, 35(4), 1252–1275. https://doi.org/10.1007/s11606-019-05364-1",
+    "doi": "10.1007/s11606-019-05364-1",
+    "url": "https://doi.org/10.1007/s11606-019-05364-1",
+    "type": "systematic review",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "impostor phenomenon",
+      "burnout"
+    ],
+    "key_finding_mk": "Преглед на 62 студии (14.161 учесник): преваленцата варира од 9% до 82% зависно од инструментот и прагот; појавата е честа кај мажи и жени и е поврзана со депресија, анксиозност и согорување; немало објавени студии за третман.",
+    "key_finding_en": "Review of 62 studies (14,161 participants): prevalence ranged 9–82% depending on tool and cutoff; common in men and women; linked to depression, anxiety and burnout; no treatment studies.",
+    "evidence_note": "Широкиот опсег покажува проблем со мерењето; не е дијагноза.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "dimitrovska2024",
+    "apa": "Dimitrovska, J., & Popovska Nalevska, G. (2024). Self-esteem as a mediator between perfectionism and impostor syndrome among gifted students. International Journal of Research Studies in Education, 13(13), 157–168. https://doi.org/10.5861/ijrse.2024.24112",
+    "doi": "10.5861/ijrse.2024.24112",
+    "url": "https://doi.org/10.5861/ijrse.2024.24112",
+    "type": "cross-sectional",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "impostor phenomenon",
+      "perfectionism",
+      "self-esteem",
+      "North Macedonia"
+    ],
+    "key_finding_mk": "Студија кај 36 надарени средношколци од Северна Македонија; според апстрактот, самопочитта има значајна посредувачка улога во врската меѓу перфекционизмот и синдромот на измамник.",
+    "key_finding_en": "Study of 36 gifted secondary-school students in North Macedonia; per the abstract, self-esteem significantly mediated the perfectionism–impostor syndrome link.",
+    "evidence_note": "Прочитани се само метаподатоците и апстрактот. Мал пресечен примерок; не се однесува на музичари. Коавторка е основачката на Јаснота – да се наведе транспарентно (конфликт на интереси).",
+    "verified_via": "publisher"
+  },
+  {
+    "id": "neff2003",
+    "apa": "Neff, K. D. (2003). Self-compassion: An alternative conceptualization of a healthy attitude toward oneself. Self and Identity, 2(2), 85–101. https://doi.org/10.1080/15298860309032",
+    "doi": "10.1080/15298860309032",
+    "url": "https://doi.org/10.1080/15298860309032",
+    "type": "review",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "self-compassion"
+    ],
+    "key_finding_mk": "Сочувството кон себе се дефинира преку три компоненти: љубезност кон себе наместо осудување, чувство на заедничка човечност наместо изолација и свесност (mindfulness) наместо прекумерно поистоветување со болните мисли.",
+    "key_finding_en": "Self-compassion defined as self-kindness vs self-judgment, common humanity vs isolation, and mindfulness vs over-identification.",
+    "evidence_note": "Теориски труд и развој на скала; скалата има и критики за факторската структура.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "macbeth2012",
+    "apa": "MacBeth, A., & Gumley, A. (2012). Exploring compassion: A meta-analysis of the association between self-compassion and psychopathology. Clinical Psychology Review, 32(6), 545–552. https://doi.org/10.1016/j.cpr.2012.06.003",
+    "doi": "10.1016/j.cpr.2012.06.003",
+    "url": "https://doi.org/10.1016/j.cpr.2012.06.003",
+    "type": "meta-analysis",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "self-compassion",
+      "mental health"
+    ],
+    "key_finding_mk": "Мета-анализа (20 примероци): поголемото сочувство кон себе е силно поврзано со помалку симптоми на депресија, анксиозност и стрес (r = −0,54).",
+    "key_finding_en": "Meta-analysis (20 samples): higher self-compassion strongly associated with less psychopathology (r = −.54).",
+    "evidence_note": "Корелациски студии; причинската насока не е утврдена.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "bandura1977",
+    "apa": "Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change. Psychological Review, 84(2), 191–215. https://doi.org/10.1037/0033-295X.84.2.191",
+    "doi": "10.1037/0033-295X.84.2.191",
+    "url": "https://doi.org/10.1037/0033-295X.84.2.191",
+    "type": "review",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "self-efficacy"
+    ],
+    "key_finding_mk": "Теоријата на самоефикасност: верувањето дека можеме успешно да ја извршиме задачата влијае на изборот, трудот и истрајноста; главни извори се сопствените успеси, набљудувањето на другите, вербалното убедување и физиолошките состојби.",
+    "key_finding_en": "Self-efficacy theory: beliefs in one's capability shape choice, effort and persistence; sources include mastery, vicarious experience, persuasion and physiological states.",
+    "evidence_note": "Темелна теорија со широка емпириска поддршка.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "mccormick2003",
+    "apa": "McCormick, J., & McPherson, G. (2003). The role of self-efficacy in a musical performance examination: An exploratory structural equation analysis. Psychology of Music, 31(1), 37–51. https://doi.org/10.1177/0305735603031001322",
+    "doi": "10.1177/0305735603031001322",
+    "url": "https://doi.org/10.1177/0305735603031001322",
+    "type": "cross-sectional",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "self-efficacy",
+      "exams"
+    ],
+    "key_finding_mk": "Кај 332 инструменталисти на испит на Trinity College London, самоефикасноста беше најдобриот мотивациски предиктор на реалната оценка од испитот.",
+    "key_finding_en": "Among 332 instrumentalists taking graded exams, self-efficacy was the best motivational predictor of actual exam performance.",
+    "evidence_note": "Пресечен дизајн; самоефикасноста делумно го одразува и претходното вежбање.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "gilovich2000",
+    "apa": "Gilovich, T., Medvec, V. H., & Savitsky, K. (2000). The spotlight effect in social judgment: An egocentric bias in estimates of the salience of one's own actions and appearance. Journal of Personality and Social Psychology, 78(2), 211–222. https://doi.org/10.1037/0022-3514.78.2.211",
+    "doi": "10.1037/0022-3514.78.2.211",
+    "url": "https://doi.org/10.1037/0022-3514.78.2.211",
+    "type": "experiment",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "spotlight effect",
+      "evaluation"
+    ],
+    "key_finding_mk": "Луѓето прецениваат колку другите ги забележуваат нивните постапки и изглед („ефект на рефлектор“), бидејќи тргнуваат од сопственото интензивно искуство и недоволно се приспособуваат.",
+    "key_finding_en": "People overestimate how much others notice their actions and appearance, anchoring on their own experience.",
+    "evidence_note": "Добро реплициран ефект; експериментите се со студенти.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "ericsson1993",
+    "apa": "Ericsson, K. A., Krampe, R. T., & Tesch-Römer, C. (1993). The role of deliberate practice in the acquisition of expert performance. Psychological Review, 100(3), 363–406. https://doi.org/10.1037/0033-295X.100.3.363",
+    "doi": "10.1037/0033-295X.100.3.363",
+    "url": "https://doi.org/10.1037/0033-295X.100.3.363",
+    "type": "cross-sectional",
+    "pillar": [
+      2,
+      3
+    ],
+    "topics": [
+      "deliberate practice",
+      "expertise"
+    ],
+    "key_finding_mk": "Кај студенти по виолина, ретроспективно проценетите часови намерно вежбање се поврзуваа со нивото на вештина; авторите заклучија дека разликите во вештина главно се објаснуваат со количината вежбање.",
+    "key_finding_en": "In violin students, retrospective accumulated deliberate practice corresponded to skill level; authors concluded practice largely explains individual differences.",
+    "evidence_note": "Мал примерок и ретроспективни проценки; главниот заклучок не е реплициран во целост (Macnamara & Maitra, 2019).",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "macnamara2014",
+    "apa": "Macnamara, B. N., Hambrick, D. Z., & Oswald, F. L. (2014). Deliberate practice and performance in music, games, sports, education, and professions: A meta-analysis. Psychological Science, 25(8), 1608–1618. https://doi.org/10.1177/0956797614535810",
+    "doi": "10.1177/0956797614535810",
+    "url": "https://doi.org/10.1177/0956797614535810",
+    "type": "meta-analysis",
+    "pillar": [
+      2,
+      3
+    ],
+    "topics": [
+      "deliberate practice",
+      "expertise"
+    ],
+    "key_finding_mk": "Намерното вежбање објаснува 21% од разликите во изведбата во музиката (26% во игри, 18% во спорт, 4% во образование, под 1% во професиите): важно, но не толку колку што се тврдело.",
+    "key_finding_en": "Deliberate practice explained 21% of variance in music performance (26% games, 18% sports, 4% education, <1% professions).",
+    "evidence_note": "Силна мета-аналитичка основа; Ериксон и соработниците го оспоруваа начинот на кодирање.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "macnamara2019",
+    "apa": "Macnamara, B. N., & Maitra, M. (2019). The role of deliberate practice in expert performance: Revisiting Ericsson, Krampe & Tesch-Römer (1993). Royal Society Open Science, 6(8), Article 190327. https://doi.org/10.1098/rsos.190327",
+    "doi": "10.1098/rsos.190327",
+    "url": "https://doi.org/10.1098/rsos.190327",
+    "type": "cross-sectional",
+    "pillar": [
+      2,
+      3
+    ],
+    "topics": [
+      "deliberate practice",
+      "replication"
+    ],
+    "key_finding_mk": "Репликација на класичната студија со виолинисти: основниот наод дека акумулираното намерно вежбање ги разликува сите нивоа на вештина не е реплициран; ефектот е значаен, но многу помал од оригиналниот.",
+    "key_finding_en": "Replication of the violin study: the core finding that accumulated deliberate practice separates each skill level did not replicate; effect substantial but much smaller.",
+    "evidence_note": "Двојно слепа постапка; сè уште мал примерок.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "mosing2014",
+    "apa": "Mosing, M. A., Madison, G., Pedersen, N. L., Kuja-Halkola, R., & Ullén, F. (2014). Practice does not make perfect: No causal effect of music practice on music ability. Psychological Science, 25(9), 1795–1803. https://doi.org/10.1177/0956797614541990",
+    "doi": "10.1177/0956797614541990",
+    "url": "https://doi.org/10.1177/0956797614541990",
+    "type": "cross-sectional",
+    "pillar": [
+      2,
+      3
+    ],
+    "topics": [
+      "deliberate practice",
+      "genetics"
+    ],
+    "key_finding_mk": "Кај 10.500 шведски близнаци, вежбањето музика беше делумно наследно (40–70%); кај еднојајчени близнаци што различно вежбале немаше разлика во измерените музички способности (ритам, мелодија, висина на тон).",
+    "key_finding_en": "In 10,500 Swedish twins, practice was 40–70% heritable; within identical-twin pairs, more practice was not linked to better tested music abilities.",
+    "evidence_note": "Мерени се перцептивни способности, не изведувачка вештина; не значи дека вежбањето е бескорисно.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "nakamura2002",
+    "apa": "Nakamura, J., & Csikszentmihalyi, M. (2002). The concept of flow. In C. R. Snyder & S. J. Lopez (Eds.), Handbook of positive psychology (pp. 89–105). Oxford University Press. https://doi.org/10.1093/oso/9780195135336.003.0007",
+    "doi": "10.1093/oso/9780195135336.003.0007",
+    "url": "https://doi.org/10.1093/oso/9780195135336.003.0007",
+    "type": "book",
+    "pillar": [
+      1,
+      2
+    ],
+    "topics": [
+      "flow"
+    ],
+    "key_finding_mk": "Опис на моделот на флоу: целосна вовлеченост во активноста кога предизвикот и вештината се во рамнотежа, со јасни цели и непосредна повратна информација.",
+    "key_finding_en": "Describes the flow model of optimal experience: full absorption when challenge and skill are balanced, with clear goals and feedback.",
+    "evidence_note": "Поглавје од авторите на теоријата; концептуален извор.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "maslach2016",
+    "apa": "Maslach, C., & Leiter, M. P. (2016). Understanding the burnout experience: Recent research and its implications for psychiatry. World Psychiatry, 15(2), 103–111. https://doi.org/10.1002/wps.20311",
+    "doi": "10.1002/wps.20311",
+    "url": "https://doi.org/10.1002/wps.20311",
+    "type": "review",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "burnout"
+    ],
+    "key_finding_mk": "Согорувањето е професионално специфична состојба со исцрпеност, цинизам/дистанцирање и намалено чувство на ефикасност; полето има малку евалуирани интервенции.",
+    "key_finding_en": "Burnout is an occupation-specific syndrome of exhaustion, cynicism and reduced efficacy; intervention research is scarce.",
+    "evidence_note": "Преглед од авторите на најкористениот модел; фокус на здравствени професии.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "vaag2016",
+    "apa": "Vaag, J., Bjørngaard, J. H., & Bjerkeset, O. (2016). Symptoms of anxiety and depression among Norwegian musicians compared to the general workforce. Psychology of Music, 44(2), 234–248. https://doi.org/10.1177/0305735614564910",
+    "doi": "10.1177/0305735614564910",
+    "url": "https://doi.org/10.1177/0305735614564910",
+    "type": "cross-sectional",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "wellbeing",
+      "mental health",
+      "musicians"
+    ],
+    "key_finding_mk": "Кај 1.607 норвешки музичари, симптомите на анксиозност и депресија беа почести отколку во општата работна популација, особено кај солистите, вокалистите, клавијатуристите и музичарите од традиционалната музика.",
+    "key_finding_en": "Among 1,607 Norwegian musicians, anxiety and depression symptoms were more prevalent than in the general workforce, highest in soloists, vocalists, keyboardists and traditional musicians.",
+    "evidence_note": "Самоизбран синдикален примерок; пресечен дизајн.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "grossmusgrave2020",
+    "apa": "Gross, S. A., & Musgrave, G. (2020). Can music make you sick? Measuring the price of musical ambition. University of Westminster Press. https://doi.org/10.16997/book43",
+    "doi": "10.16997/book43",
+    "url": "https://doi.org/10.16997/book43",
+    "type": "book",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "wellbeing",
+      "music industry",
+      "working conditions"
+    ],
+    "key_finding_mk": "Книга заснована на истражување со музичари во Велика Британија: работните услови (несигурност, нередовни приходи, постојано оценување) се поврзани со менталното здравје на музичарите.",
+    "key_finding_en": "Book based on research with UK musicians linking precarious working conditions to musicians' mental health.",
+    "evidence_note": "Анкета и интервјуа; социолошка перспектива, не клиничка.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "macdonald2017",
+    "apa": "MacDonald, R., Hargreaves, D. J., & Miell, D. (Eds.). (2017). Handbook of musical identities. Oxford University Press. https://doi.org/10.1093/acprof:oso/9780199679485.001.0001",
+    "doi": "10.1093/acprof:oso/9780199679485.001.0001",
+    "url": "https://doi.org/10.1093/acprof:oso/9780199679485.001.0001",
+    "type": "book",
+    "pillar": [
+      1,
+      2
+    ],
+    "topics": [
+      "identity"
+    ],
+    "key_finding_mk": "Зборник за музичкиот идентитет: како музиката го обликува идентитетот и како идентитетот го обликува музичкото однесување кај изведувачи и слушатели.",
+    "key_finding_en": "Edited handbook on how music shapes identity and identity shapes musical behaviour.",
+    "evidence_note": "Зборник со различни перспективи и квалитет на доказите.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "distadio2018",
+    "apa": "Di Stadio, A., Dipietro, L., Ricci, G., Della Volpe, A., Minni, A., Greco, A., De Vincentiis, M., & Ralli, M. (2018). Hearing loss, tinnitus, hyperacusis, and diplacusis in professional musicians: A systematic review. International Journal of Environmental Research and Public Health, 15(10), Article 2120. https://doi.org/10.3390/ijerph15102120",
+    "doi": "10.3390/ijerph15102120",
+    "url": "https://doi.org/10.3390/ijerph15102120",
+    "type": "systematic review",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "hearing health"
+    ],
+    "key_finding_mk": "Преглед на 41 студија (4.618 музичари): оштетување на слухот кај 38,6%, повеќе кај поп/рок (63,5%) отколку кај класични музичари (32,8%); тинитусот е најчест симптом.",
+    "key_finding_en": "Review of 41 studies (4,618 musicians): hearing loss in 38.6%, higher in pop/rock (63.5%) than classical (32.8%); tinnitus most common symptom.",
+    "evidence_note": "Хетерогени студии и дефиниции; бројките се ориентациони.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "schink2014",
+    "apa": "Schink, T., Kreutz, G., Busch, V., Pigeot, I., & Ahrens, W. (2014). Incidence and relative risk of hearing disorders in professional musicians. Occupational and Environmental Medicine, 71(7), 472–476. https://doi.org/10.1136/oemed-2014-102172",
+    "doi": "10.1136/oemed-2014-102172",
+    "url": "https://doi.org/10.1136/oemed-2014-102172",
+    "type": "cohort",
+    "pillar": [
+      2
+    ],
+    "topics": [
+      "hearing health"
+    ],
+    "key_finding_mk": "Во германски здравствени податоци, професионалните музичари имаа 1,45 пати поголем ризик за губење на слухот и 3,61 пати поголем ризик за губење предизвикано од бучава во однос на општата популација.",
+    "key_finding_en": "In German insurance data, professional musicians had adjusted HR 1.45 for hearing loss and 3.61 for noise-induced hearing loss.",
+    "evidence_note": "Голема кохорта, но само 2.227 музичари; зависи од дијагнозите во осигурувањето.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "rauscher1993",
+    "apa": "Rauscher, F. H., Shaw, G. L., & Ky, C. N. (1993). Music and spatial task performance. Nature, 365(6447), 611. https://doi.org/10.1038/365611a0",
+    "doi": "10.1038/365611a0",
+    "url": "https://doi.org/10.1038/365611a0",
+    "type": "experiment",
+    "pillar": [
+      3
+    ],
+    "topics": [
+      "Mozart effect"
+    ],
+    "key_finding_mk": "Студенти што слушале 10 минути Моцарт (Соната за два пијана, K. 448) постигнале подобро на просторни задачи од оние по инструкции за релаксација или тишина; ефектот бил краткотраен.",
+    "key_finding_en": "Students who listened to 10 minutes of Mozart (K. 448) performed better on spatial tasks than after relaxation instructions or silence; the effect was short-lived.",
+    "evidence_note": "Мал примерок (36 студенти), кратко писмо во Nature; општ IQ не е мерен; ефектот подоцна не се реплицира сигурно.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "steele1999",
+    "apa": "Steele, K. M., Bass, K. E., & Crook, M. D. (1999). The mystery of the Mozart effect: Failure to replicate. Psychological Science, 10(4), 366–369. https://doi.org/10.1111/1467-9280.00169",
+    "doi": "10.1111/1467-9280.00169",
+    "url": "https://doi.org/10.1111/1467-9280.00169",
+    "type": "experiment",
+    "pillar": [
+      3
+    ],
+    "topics": [
+      "Mozart effect",
+      "replication"
+    ],
+    "key_finding_mk": "Репликација што ги следеше процедуралните упатства на оригиналните автори не најде ниту статистички значаен ниту практично значаен „Моцартов ефект“.",
+    "key_finding_en": "A replication following the original authors' procedures found no significant or practically meaningful Mozart effect.",
+    "evidence_note": "Една од неколку неуспешни репликации.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "chabris1999",
+    "apa": "Chabris, C. F. (1999). Prelude or requiem for the 'Mozart effect'? Nature, 400(6747), 826–827. https://doi.org/10.1038/23608",
+    "doi": "10.1038/23608",
+    "url": "https://doi.org/10.1038/23608",
+    "type": "meta-analysis",
+    "pillar": [
+      3
+    ],
+    "topics": [
+      "Mozart effect"
+    ],
+    "key_finding_mk": "Мета-анализа на 16 студии: секое когнитивно подобрување е мало, не одразува промена во IQ или општото расудување и се ограничува на еден тип просторна задача.",
+    "key_finding_en": "Meta-analysis of 16 studies: any enhancement is small, does not reflect a change in IQ or general reasoning, and is limited to one type of spatial task.",
+    "evidence_note": "Кратка мета-анализа во Nature; оригиналните автори ја оспоруваа.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "nantais1999",
+    "apa": "Nantais, K. M., & Schellenberg, E. G. (1999). The Mozart effect: An artifact of preference. Psychological Science, 10(4), 370–373. https://doi.org/10.1111/1467-9280.00170",
+    "doi": "10.1111/1467-9280.00170",
+    "url": "https://doi.org/10.1111/1467-9280.00170",
+    "type": "experiment",
+    "pillar": [
+      3
+    ],
+    "topics": [
+      "Mozart effect",
+      "arousal",
+      "preference"
+    ],
+    "key_finding_mk": "Подобрувањето се појави и по Шуберт; кога контролата беше раскажана приказна наместо тишина, предноста на музиката исчезна – резултатот зависеше од тоа што учесникот повеќе го сакал.",
+    "key_finding_en": "The advantage appeared after Schubert too, and vanished when the control was a narrated story; performance followed listener preference.",
+    "evidence_note": "Мали студентски примероци; доследно со хипотезата за возбуда и расположение.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "thompson2001",
+    "apa": "Thompson, W. F., Schellenberg, E. G., & Husain, G. (2001). Arousal, mood, and the Mozart effect. Psychological Science, 12(3), 248–251. https://doi.org/10.1111/1467-9280.00345",
+    "doi": "10.1111/1467-9280.00345",
+    "url": "https://doi.org/10.1111/1467-9280.00345",
+    "type": "experiment",
+    "pillar": [
+      3
+    ],
+    "topics": [
+      "Mozart effect",
+      "arousal",
+      "mood"
+    ],
+    "key_finding_mk": "Подобрувањето на просторната задача се појави по живиот Моцарт, но не по бавниот Албинони; кога разликите во возбудата и расположението беа статистички контролирани, ефектот исчезна.",
+    "key_finding_en": "Spatial performance improved after an energetic Mozart sonata but not a slow Albinoni adagio; controlling for arousal and mood eliminated the effect.",
+    "evidence_note": "Мал студентски примерок; клучен механизам-тест.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "pietschnig2010",
+    "apa": "Pietschnig, J., Voracek, M., & Formann, A. K. (2010). Mozart effect–Shmozart effect: A meta-analysis. Intelligence, 38(3), 314–323. https://doi.org/10.1016/j.intell.2010.03.001",
+    "doi": "10.1016/j.intell.2010.03.001",
+    "url": "https://doi.org/10.1016/j.intell.2010.03.001",
+    "type": "meta-analysis",
+    "pillar": [
+      3
+    ],
+    "topics": [
+      "Mozart effect",
+      "publication bias"
+    ],
+    "key_finding_mk": "Мета-анализа на околу 40 студии со над 3.000 учесници: малку доказ за специфичен Моцартов ефект; ефектите беа значајно поголеми во студиите на оригиналната лабораторија и имаше знаци на пристрасност во објавувањето.",
+    "key_finding_en": "Meta-analysis of about 40 studies with over 3,000 participants: little evidence for a specific Mozart effect; larger effects in the original lab and evidence of publication bias.",
+    "evidence_note": "Силна мета-аналитичка основа против специфичен ефект.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "oberleiter2023",
+    "apa": "Oberleiter, S., & Pietschnig, J. (2023). Unfounded authority, underpowered studies, and non-transparent reporting perpetuate the Mozart effect myth: A multiverse meta-analysis. Scientific Reports, 13(1), Article 3175. https://doi.org/10.1038/s41598-023-30206-w",
+    "doi": "10.1038/s41598-023-30206-w",
+    "url": "https://doi.org/10.1038/s41598-023-30206-w",
+    "type": "meta-analysis",
+    "pillar": [
+      3
+    ],
+    "topics": [
+      "Mozart effect",
+      "epilepsy",
+      "publication bias"
+    ],
+    "key_finding_mk": "Мета-анализа на 8 студии (N = 207) за Моцарт K. 448 и епилепсија: незначајни, тривијални до мали ефекти, веројатно надуени; нема основа за тврдењето дека Моцарт ја лекува епилепсијата.",
+    "key_finding_en": "Meta-analysis of 8 studies (N = 207) on Mozart K. 448 and epilepsy: non-significant, trivial-to-small, likely inflated effects.",
+    "evidence_note": "Мал број и мали студии; авторите укажуваат на нетранспарентно известување.",
+    "verified_via": "crossref"
+  },
+  {
+    "id": "schellenberg2004",
+    "apa": "Schellenberg, E. G. (2004). Music lessons enhance IQ. Psychological Science, 15(8), 511–514. https://doi.org/10.1111/j.0956-7976.2004.00711.x",
+    "doi": "10.1111/j.0956-7976.2004.00711.x",
+    "url": "https://doi.org/10.1111/j.0956-7976.2004.00711.x",
+    "type": "RCT",
+    "pillar": [
+      3
+    ],
+    "topics": [
+      "music training",
+      "transfer",
+      "IQ"
+    ],
+    "key_finding_mk": "Случајна распределба на 144 деца на часови по клавијатура или пеење, драма или без часови: музичките групи имаа мало, но поголемо зголемување на IQ од контролните.",
+    "key_finding_en": "Random assignment of 144 children to keyboard, voice, drama or no lessons: music groups showed small but greater IQ gains.",
+    "evidence_note": "Мал ефект, една студија; подоцнежните мета-анализи со контрола на квалитетот не наоѓаат пренос (Sala & Gobet, 2020).",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "sala2020",
+    "apa": "Sala, G., & Gobet, F. (2020). Cognitive and academic benefits of music training with children: A multilevel meta-analysis. Memory & Cognition, 48(8), 1429–1441. https://doi.org/10.3758/s13421-020-01060-2",
+    "doi": "10.3758/s13421-020-01060-2",
+    "url": "https://doi.org/10.3758/s13421-020-01060-2",
+    "type": "meta-analysis",
+    "pillar": [
+      3
+    ],
+    "topics": [
+      "music training",
+      "transfer",
+      "IQ"
+    ],
+    "key_finding_mk": "Мета-анализа (N = 6.984, 54 студии): кога се контролира квалитетот на дизајнот, ефектот на музичката обука врз когнитивните и училишните вештини на децата е нула; мали ефекти има само во студии без случајна распределба и без активна контролна група.",
+    "key_finding_en": "Meta-analysis (N = 6,984; 54 studies): once design quality is controlled, the effect of music training on children's cognitive and academic skills is null.",
+    "evidence_note": "Силна основа; дел од истражувачите (на пр. Bigand & Tillmann) оспоруваат дел од методите – полето е дебатирано.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "mehr2013",
+    "apa": "Mehr, S. A., Schachner, A., Katz, R. C., & Spelke, E. S. (2013). Two randomized trials provide no consistent evidence for nonmusical cognitive benefits of brief preschool music enrichment. PLOS ONE, 8(12), Article e82007. https://doi.org/10.1371/journal.pone.0082007",
+    "doi": "10.1371/journal.pone.0082007",
+    "url": "https://doi.org/10.1371/journal.pone.0082007",
+    "type": "RCT",
+    "pillar": [
+      3
+    ],
+    "topics": [
+      "music training",
+      "transfer",
+      "children"
+    ],
+    "key_finding_mk": "Две RCT со предучилишни деца: по шест недели музички часови немаше конзистентна предност во четири когнитивни области во однос на ликовни часови или без часови.",
+    "key_finding_en": "Two RCTs in preschoolers: six weeks of music classes gave no consistent advantage in four cognitive domains.",
+    "evidence_note": "Кратка интервенција; не исклучува ефекти од долготрајна обука, но не ги поддржува.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "garciaargibay2019",
+    "apa": "Garcia-Argibay, M., Santed, M. A., & Reales, J. M. (2019). Efficacy of binaural auditory beats in cognition, anxiety, and pain perception: A meta-analysis. Psychological Research, 83(2), 357–372. https://doi.org/10.1007/s00426-018-1066-8",
+    "doi": "10.1007/s00426-018-1066-8",
+    "url": "https://doi.org/10.1007/s00426-018-1066-8",
+    "type": "meta-analysis",
+    "pillar": [
+      3
+    ],
+    "topics": [
+      "binaural beats",
+      "anxiety"
+    ],
+    "key_finding_mk": "Мета-анализа на 22 студии: умерен просечен ефект (g = 0,45) на бинауралните тонови врз меморија, внимание, анксиозност и болка.",
+    "key_finding_en": "Meta-analysis of 22 studies: medium overall effect (g = 0.45) of binaural beats on memory, attention, anxiety and pain.",
+    "evidence_note": "Мали поединечни студии; не потврдува механизам на „штимање на брановите“ (види Ingendoh et al., 2023).",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "ingendoh2023",
+    "apa": "Ingendoh, R. M., Posny, E. S., & Heine, A. (2023). Binaural beats to entrain the brain? A systematic review of the effects of binaural beat stimulation on brain oscillatory activity, and the implications for psychological research and intervention. PLOS ONE, 18(5), Article e0286023. https://doi.org/10.1371/journal.pone.0286023",
+    "doi": "10.1371/journal.pone.0286023",
+    "url": "https://doi.org/10.1371/journal.pone.0286023",
+    "type": "systematic review",
+    "pillar": [
+      3
+    ],
+    "topics": [
+      "binaural beats",
+      "entrainment"
+    ],
+    "key_finding_mk": "Од 14 ЕЕГ-студии, 5 беа во склад со хипотезата за вовлекување на мозочните бранови, 8 противречни и 1 мешана; методите се многу хетерогени.",
+    "key_finding_en": "Of 14 EEG studies, 5 supported brainwave entrainment, 8 contradicted it and 1 was mixed; methods were very heterogeneous.",
+    "evidence_note": "Покажува дека механизмот што се рекламира не е потврден.",
+    "verified_via": "pubmed"
+  },
+  {
+    "id": "calamassi2019",
+    "apa": "Calamassi, D., & Pomponi, G. P. (2019). Music tuned to 440 Hz versus 432 Hz and the health effects: A double-blind cross-over pilot study. Explore, 15(4), 283–290. https://doi.org/10.1016/j.explore.2019.04.001",
+    "doi": "10.1016/j.explore.2019.04.001",
+    "url": "https://doi.org/10.1016/j.explore.2019.04.001",
+    "type": "experiment",
+    "pillar": [
+      3
+    ],
+    "topics": [
+      "432 Hz"
+    ],
+    "key_finding_mk": "Пилот-студија со 33 доброволци: при музика штимана на 432 Hz пулсот беше во просек за околу 4,8 удари во минута понизок (p = 0,05), а другите параметри не се разликуваа значајно; авторите бараат поголеми RCT.",
+    "key_finding_en": "Pilot crossover with 33 volunteers: heart rate about 4.8 bpm lower with 432 Hz (p = .05); other parameters not significantly different; authors call for larger RCTs.",
+    "evidence_note": "Многу мал пилот, гранична значајност, без независна репликација; не поддржува здравствени тврдења.",
+    "verified_via": "pubmed"
+  }
+]

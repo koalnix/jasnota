@@ -1,8 +1,9 @@
 /* ==========================================================================
    Jasnota — home: the film
-   I silence · II manifesto · III three voices · IV 7/8 · V about · VI song ·
-   VII journal · VIII coda. GSAP 3.12.5 + ScrollTrigger; Lenis comes from the
-   shell (window.Jasnota). Degrades to a static page without motion or libs.
+   I silence · II mission · III the three pillars · IV 7/8, then the platform:
+   latest pieces · myth or science? · a concept · the map · the author ·
+   letter · coda. GSAP 3.12.5 + ScrollTrigger; Lenis comes from the shell
+   (window.Jasnota). Degrades to a static page without motion or libs.
    ========================================================================== */
 (() => {
   'use strict';
@@ -29,39 +30,6 @@
   ScrollTrigger.addEventListener('refreshInit', () => { VH = innerHeight; });
   const phoneMQ = window.matchMedia('(max-width: 640px)');
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-
-  /* ------------------------------------------------------------------ sound: off by default, never autoplays.
-     A tuning-fork-like A440, plus very soft 7/8 ticks while the bar plays. */
-  const Sound = (() => {
-    const btn = $('.sound');
-    const label = $('.sound__label');
-    let on = false, gain = null;
-    const bus = () => {
-      const ctx = J.Audio.ensure();
-      if (!ctx) return null;
-      if (!gain) { gain = ctx.createGain(); gain.gain.value = 0; gain.connect(J.Audio.out); }
-      return ctx;
-    };
-    function fork(freq = 440) { if (on && gain) J.Audio.fork(freq, 0.16, 0, gain); }
-    function tick(accent) {
-      if (!on || !gain) return;
-      const ctx = J.Audio.ctx;
-      J.Audio.note(accent ? 1318.5 : 987.8, accent ? 0.05 : 0.022, ctx.currentTime + 0.01, accent ? 0.22 : 0.12, gain, 'triangle');
-    }
-    const renderLabel = () => { label.textContent = J.t(on ? 'snd_on' : 'snd_off'); };
-    btn.addEventListener('click', () => {
-      const ctx = bus();
-      if (!ctx) return;
-      on = !on;
-      btn.setAttribute('aria-pressed', String(on));
-      gain.gain.cancelScheduledValues(ctx.currentTime);
-      gain.gain.setTargetAtTime(on ? 1 : 0, ctx.currentTime, 0.08);
-      renderLabel();
-      if (on) fork();
-    });
-    J.onLang(renderLabel);
-    return { fork, tick };
-  })();
 
   /* Each pinned scene: section is tall, .stage is sticky. render(p, enter):
      enter = 0→1 while the section rises into view, p = 0→1 while the stage is held. */
@@ -155,7 +123,7 @@
 
       // the string sings when plucked, and keeps singing while you scroll
       const vib = range(p, 0.2, 0.25) * (1 - range(p, 0.44, 0.53));
-      if (p > 0.245 && !st.plucked) { st.plucked = true; st.amp = Math.max(st.amp, 1); Sound.fork(); }
+      if (p > 0.245 && !st.plucked) { st.plucked = true; st.amp = Math.max(st.amp, 1); }
       if (p < 0.2) st.plucked = false;
       st.amp = Math.min(1.25, st.amp + Math.min(Math.abs(J.velocity) * 0.01, 0.07) * vib);
       st.amp *= Math.pow(0.42, dt);
@@ -422,10 +390,7 @@
       const bp = range(p, 0.03, 0.9);
       const beat = bp <= 0 ? -1 : Math.min(20, Math.floor(bp * 21));
       if (beat !== last || h._words !== lastWords) {
-        if (beat >= 0 && beat !== last) {
-          hit(beat % 7);
-          if (beat > last) Sound.tick(beat % 7 === 0 || beat % 7 === 2 || beat % 7 === 4);
-        }
+        if (beat >= 0 && beat !== last) hit(beat % 7);
         arrivals(beat);
         last = beat;
         lastWords = h._words;
@@ -433,7 +398,7 @@
     });
   })();
 
-  /* ------------------------------------------------------------------ V. about */
+  /* ------------------------------------------------------------------ the author */
   gsap.fromTo('.portrait__frame',
     { clipPath: 'inset(100% 0% 0% 0%)' },
     { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: '.portrait', start: 'top 92%', end: 'top 28%', scrub: true } });
@@ -447,12 +412,19 @@
     { opacity: 0 },
     { opacity: 1, ease: 'none', stagger: 0.25, scrollTrigger: { trigger: '.about__lead', start: 'top 92%', end: 'top 40%', scrub: true } });
 
-  /* ------------------------------------------------------------------ VI. song: the block slides in from the right as the heading settles */
-  gsap.fromTo('.tease-listen .song',
-    { opacity: 0, x: () => innerWidth * 0.06 },
-    { opacity: 1, x: 0, ease: 'none', scrollTrigger: { trigger: '.tease-listen', start: 'top 80%', end: 'top 25%', scrub: true } });
+  /* ------------------------------------------------------------------ myth or science? a line strikes through the claim, then the verdict */
+  (() => {
+    const claim = $('[data-strike]'), v = $('.myth-h__v');
+    if (!claim) return;
+    const update = (s) => {
+      const q = s.progress;
+      claim.style.setProperty('--strike', outCubic(range(q, 0.2, 0.75)).toFixed(4));
+      if (v) v.style.setProperty('--v', outCubic(range(q, 0.7, 1)).toFixed(3));
+    };
+    ScrollTrigger.create({ trigger: '.myth-h', start: 'top 80%', end: 'top 20%', onUpdate: update, onRefresh: update });
+  })();
 
-  /* ------------------------------------------------------------------ VII. journal */
+  /* ------------------------------------------------------------------ latest pieces */
   gsap.fromTo('.journal__h',
     { xPercent: 7, opacity: 0 },
     { xPercent: 0, opacity: 1, ease: 'none', scrollTrigger: { trigger: '.journal', start: 'top 85%', end: 'top 25%', scrub: true } });
@@ -463,7 +435,7 @@
       .fromTo([$('.row__no', row), $('.row__kind', row), $('.row__dur', row)], { opacity: 0 }, { opacity: 1, ease: 'none', duration: 0.5 }, 0.45);
   });
 
-  /* ------------------------------------------------------------------ VIII. coda — the words come together */
+  /* ------------------------------------------------------------------ coda — the words come together */
   (() => {
     const hEl = $('.coda__h');
     const note = $('.coda__note');

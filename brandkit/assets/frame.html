@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="mk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jasnota — template export</title>
+<!-- Renders one template from mockups.js at the full width of the viewport, for build.mjs:
+     frame.html#ig-cover (1080 wide) · #st-poll (1080) · #newsletter (1200) · #citation-card (1080)
+     #hl:I · #hl:s04 (highlight cover, 1080 × 1920) · #ev:2:mk:bone (evidence label, transparent) -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Onest:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=block">
+<link rel="stylesheet" href="../../brand/tokens.css">
+<link rel="stylesheet" href="kit.css">
+<style>
+  html, body { margin: 0; padding: 0; background: transparent; -webkit-font-smoothing: antialiased; }
+  body { width: 100vw; overflow: hidden; }
+  #f > .ev { display: inline-flex; padding: 6px 4px; font-size: 40px; }
+  .hlc { position: relative; width: 100vw; aspect-ratio: 9 / 16; background: var(--ink); color: var(--bone); display: grid; place-items: center; container-type: inline-size; }
+  .hlc svg { width: 30cqi; height: 30cqi; }
+  .hlc span { font: italic 300 30cqi/1 var(--font-display); }
+</style>
+</head>
+<body>
+<div id="f"></div>
+<script src="logos.js"></script>
+<script src="mockups.js"></script>
+<script>
+  (function () {
+    var a = decodeURIComponent(location.hash.slice(1)).split(':'), M = window.JASNOTA_MOCKS, f = document.getElementById('f');
+    if (a[0] === 'ev') {
+      f.innerHTML = '<span data-ev="' + a[1] + '"' + (a[2] === 'en' ? ' data-evl="en"' : '') + ' style="color:' + (a[3] === 'ink' ? '#0A0A0B' : '#ECE8E1') + '"></span>';
+    } else if (a[0] === 'hl') {
+      f.innerHTML = '<div class="hlc">' + (/^I+$/.test(a[1]) ? '<span>' + a[1] + '</span>' : '<svg data-l="' + a[1] + '"></svg>') + '</div>';
+    } else if (M[a[0]]) {
+      f.innerHTML = M[a[0]]();
+    }
+  })();
+</script>
+<script src="kit.js"></script>
+</body>
+</html>

@@ -1,79 +1,89 @@
-# Jasnota website — site map & content contract
+# Jasnota website — information architecture, content contract, build
 
-Shared contract between the site build and the content writing. Read with `/BRAND.md`.
+Read with `/STRATEGY.md` (wins over everything) and `/BRAND.md`. Jasnota is an **educational platform on the psychology
+behind music**, not a personal artist site: text-first, science-based, every claim sourced, no therapy or sessions.
 
 ## Languages
-- **English is the default.** Macedonian (`mk`) is a full second language.
-- First visit: `navigator.language` starting with `mk` → Macedonian, otherwise English.
-  After that the choice is remembered in `localStorage['jasnota-lang']` (`"en"` | `"mk"`), shared by all pages.
-- Every page ships its English copy in the HTML (works without JS); Macedonian is swapped in by JS.
-  Set `<html lang>` accordingly.
+- **Macedonian is the default.** Every page ships Macedonian in the HTML (works without JS); `<html lang="mk">`.
+- English is swapped in by `js/shell.js`:
+  - interface strings: `data-i18n="key"` / `data-i18n-attr="attr:key"` → `JASNOTA_I18N.en[key]` in `js/i18n.js`;
+  - page copy: inline `data-en="…"` (and `data-en-content`, `data-en-label`, `data-en-placeholder` for attributes);
+  - whole blocks: `data-lang-block="mk|en"`. A piece without an English version keeps its Macedonian block visible
+    (`data-lang-fallback`) and shows "This piece is available in Macedonian only for now."
+- First visit is always Macedonian (no auto-switch). The choice is stored in `localStorage['jasnota-lang']` (`mk` | `en`).
+- Wordmark: `јаснота` in MK, `jasnota` in EN. Descriptor: „Психологијата зад музиката“ / *The psychology behind music*.
+- Macedonian typography: „…“ quotes, decimal comma, unspaced range dash. Italic Cyrillic uses the Serbian locl forms.
 
-## Site map (all under `website/`)
-| URL | File | Purpose |
+## Site map (all under `website/`; English slugs, Macedonian labels)
+| URL | Source | Contents |
 |---|---|---|
-| `/website/` | `index.html` | Home — the cinematic film (existing, enhanced) + teasers into every section |
-| `/website/about/` | `about/index.html` | Jasna Dimitrovska: story, psychologist & Gestalt counsellor × vocal artist (Orchestra DIVA), Bitola roots, "not therapy, no sessions" note |
-| `/website/journal/` | `journal/index.html` | All entries, filter by kind (essay · conversation · recording · song) |
-| `/website/journal/<slug>/` | generated | One page per entry (from `content/journal/*.json`) |
-| `/website/listen/` | `listen/index.html` | Her voice: songs, recordings, "Song of the week", playlists |
-| `/website/contact/` | `contact/index.html` | Talks & workshops, collaborations, press, newsletter, email, Instagram |
-| `/website/404.html` | `404.html` | "A rest where a note should be." |
+| `/` **Почетна** | `index.html` (+ generated blocks) | The film: point of light → string → mark → `јаснота` + descriptor · the mission (word-by-word) · the three pillars (pinned horizontal score) · 7/8 · latest pieces · „Мит или наука?“ · one concept · map teaser · the author · newsletter · coda |
+| `/articles/` **Текстови** | generated | All pieces + upcoming calendar items („наскоро“, planned date, not links); filters by pillar and format |
+| `/articles/<slug>/` | generated | Title, metadata line *below* it (pillar · format · date · reading time), dek, contents in the margin, body (h2, p, quote, list), evidence callouts, „Што знаеме / Што сè уште не знаеме“, ethics note, numbered APA 7 sources with DOI, founder disclosure when her study is cited, links to method/corrections, prev/next, reading progress |
+| `/psychology-of-music/` · `/musicians/` · `/what-science-says/` | generated | Pillar I · II · III: purpose, intro, subtopics (STRATEGY §5), its pieces and upcoming items, related concepts, related myths |
+| `/concepts/` **Поимник** | generated | 44 concepts, Macedonian collation (re-sorted A–Z in English), letter index, anchor per concept, pillar filter, search, evidence label, sources |
+| `/myths/` **Митови и наука** | generated | 12 myths: verdict (мит / делумно точно / точно / непознато), evidence label, explanation, sources, link to the piece that treats it |
+| `/sources/` **Извори** | generated | The bibliography by pillar, APA 7, type of study, key finding, DOI, "cited in" back-links; search + filters |
+| `/map/` **Мапа на полето** | generated | Why we map, the five gap findings (sourced), the public directory (region/type filters, search, confidence, last seen, source links), "Пропушивме нешто?" |
+| `/about/` **За Јаснота** | `about/index.html` | What it is / isn't, the name, mission, vision, six principles, success measures, the author (+ the 2024 study, generated) |
+| `/method/` **Како работиме** | `method/index.html` | Six steps, source hierarchy, evidence labels (`#evidence`), uncertainty, APA 7, ethics checklist, corrections policy |
+| `/contact/` **Соработка** | `contact/index.html` | Suggest a topic, report a correction, collaborate/partner, letters; zdravo@jasnota.mk, Instagram @jasnota. No counselling or booking |
+| `/404.html` | `404.html` | „Пауза таму каде што требаше да има нота.“ |
 
-Contact facts: email `zdravo@jasnota.mk`, Instagram `@jasnota` (https://www.instagram.com/jasnota).
-Newsletter has no provider yet: the form only shows a thank-you state.
+Navigation: Текстови · Столбови (disclosure with the three pillars) · Поимник · Мапа · За Јаснота · Соработка · мк/en.
+The phone menu lists the same, plus Митови и наука · Извори · Како работиме. The footer carries the descriptor, the
+pillars, the platform pages, contact and © 2026 Јаснота · Јасна Димитровска, Битола, Македонија.
 
-## Journal content: `website/content/journal/NN.json`
-One file per entry, `NN` = `01`…`07`. Inline HTML allowed in strings: only `<em>` and `<br>`.
+**Retired** (contained invented personal stories or sat outside the pillars): the old `/journal/` entries and `/listen/`.
+Their URLs are tiny `noindex` redirect stubs written by the build: `journal/stage-fright/` → the MPA article,
+`journal/why-sad-songs-make-us-calmer/` → `articles/why-music-moves-us/`, other journal URLs → `articles/`, `listen/` → `about/`.
 
-```json
-{
-  "no": "01",
-  "slug": "the-voice-i-used-to-hide",
-  "kind": "essay",                      // essay | conversation | recording | song
-  "length": { "en": "4 min", "mk": "4 мин" },   // reading time, or a duration like "07:08" for audio
-  "audio": null,                         // audio kinds: { "src": null, "duration": "07:08" } (file to come)
-  "en": {
-    "title": "The voice I used to hide",
-    "titleHtml": "The voice<br>I used to <em>hide</em>",
-    "excerpt": "One or two sentences for the index and previews.",
-    "lede": "The italic opening line(s).",
-    "body": [
-      { "n": "I.", "blocks": [ { "p": "Paragraph." }, { "quote": "Pull quote, may contain <br>." } ] }
-    ],
-    "foot": "This is not therapy. …",
-    "note": "translated from Macedonian"   // optional small meta line
-  },
-  "mk": { "...same keys...": "" }
-}
-```
+## Content (`website/content/`, the only data the site reads)
+`research/` is private and never published. Refresh the copies with `node website/tools/import-content.mjs`
+(copies the content bank; merges article files so website-only fields such as `en.known` survive; derives `map.json`).
 
-Slugs (fixed, English, used by both the index and the generated pages):
-| NN | slug | kind |
-|---|---|---|
-| 01 | `the-voice-i-used-to-hide` | essay |
-| 02 | `why-sad-songs-make-us-calmer` | essay |
-| 03 | `tuning-fork-on-attunement` | essay |
-| 04 | `breathing-in-7-8` | recording |
-| 05 | `stage-fright` | essay |
-| 06 | `what-were-you-listening-to-at-seventeen` | conversation |
-| 07 | `zajdi-zajdi-jasno-sonce` | song |
-
-## Photo slots
-Real photos go in `/photos/` as `<slot>.jpg|jpeg|png` (see `/photos/README.md`). The build copies them to
-`website/assets/photos/` (large files are downscaled with macOS `sips` when available) and fills the
-`<!-- photo:… -->` blocks; a slot without a photo keeps its art-directed placeholder, decided at build time,
-so no image is ever requested that doesn't exist. Removing a photo and rebuilding restores the placeholder.
-| slot | where |
+| File | Schema (abridged) |
 |---|---|
-| `portrait` | About hero frame (`photo:about-portrait`), home About teaser (`photo:home-portrait`) |
-| `stage` | Listen, Orchestra DIVA block (`photo:listen-stage`); About word peek "on stage" |
-| `hands` | About word peek "microphone" |
-| `bitola` | About word peek "Bitola" |
-Word peeks read `#jasnota-photos` (`photo:map` on the About page). Photos get a dark grayscale grade in CSS;
-the page grain sits on top. Alt text and captions (EN/MK) are in `SLOTS` in the build and `ph_*` keys in `js/i18n.js`.
+| `articles/NN-*.json` | `slug, pillar (1-3), format (text·study·concept·myth·list), lang, date (YYYY-MM-DD), title, dek, reading_min, body[{h2?, blocks[{p}|{quote}|{list:[…]}|{evidence:{level, text}}]}], known[], unknown[], note, references[source ids], tags[], en?{title, dek, body, known, unknown, note}` — HTML allowed: `<em> <strong> <sup>` |
+| `sources.json` | `[{id, apa, doi, url, type, pillar[], topics[], key_finding_mk, key_finding_en, evidence_note, verified_via}]` |
+| `concepts.json` | `[{slug, term_mk, term_en, definition_mk, definition_en, pillar, evidence, source_ids[]}]` |
+| `myths.json` | `[{id, claim_mk, claim_en, verdict, evidence, what_science_says_mk, source_ids[]}]` |
+| `calendar.json` | `[{week, date, pillar, format, title_mk, title_en, research_question, source_ids[], article?}]` — items without a built article show as „наскоро“ |
+| `map.json` | `{checked, entries:[{id, name_mk, name_en, type, region (mk·region·int), country_mk/en, city, fields[], work?{authors, year, title, venue, url}, inst_mk/en, summary_mk/en, url, sources[], confidence (verified·likely), last_seen}]}` |
 
-## Page copy
-About, listen and contact copy lives in those pages (English in HTML, Macedonian in the i18n dictionary).
-Journal pages are generated by `node website/tools/build-journal.mjs` from `content/journal/*.json` —
-rerun it whenever a JSON file changes.
+Evidence labels (exact strings): `силни докази` · `умерени докази` · `рани/ограничени докази` · `отворено прашање`
+(English bodies may use `strong/moderate/early/limited evidence`, `open question`). They render as a three-step meter
+and link to `method/#evidence`. In-text citations stay as (Author, Year); the build links each to its numbered reference
+when the first author and year match a source in `references`.
+
+**Map privacy rule** (enforced in `tools/import-content.mjs`): only institutions, associations, journals, networks, events,
+education programmes and published research (author + institution + title + link). Never `partnership_potential`,
+`relevance_to_jasnota`, `notes`, the partner ranking, or anything about individuals beyond their published work;
+`unverified` entries are dropped; the Gestalt Institute Skopje site is not linked. Person entries are rewritten in `PUBLIC`.
+
+**Adding a piece:** write `content/articles/NN-slug.json` (or add it to the content bank and import), point the calendar
+item's `article` at it, rebuild. Upcoming items disappear from „наскоро“ automatically once their article exists.
+
+## Build
+```
+node website/tools/import-content.mjs   # only when the content bank or mapping changed
+node website/tools/build.mjs            # always after any JSON, page, shell or photo change
+SITE_URL=https://example.org/ node website/tools/build.mjs   # canonical origin (default https://jasnota.mk/)
+```
+`tools/build-journal.mjs` is a shim that runs `build.mjs`. The build: syncs `/brand` assets; copies `/photos/portrait.*`
+into the About and home portrait frames (placeholder otherwise) and writes `/photos/manifest.json` for Instagram;
+generates the data pages; fills the `<!-- name -->…<!-- /name -->` blocks in the hand-written pages (`home:latest`,
+`home:myth`, `home:concept`, `home:map`, `photo:*`, `about:study`, `about:ld`); injects the shell (`tools/shell.mjs`:
+head + JSON-LD Organization, header/menu/veil, footer); writes the redirect stubs, `sitemap.xml` and `robots.txt`.
+Generated files carry "generated by tools/build.mjs": edit the JSON or the build, not the HTML.
+
+SEO: Macedonian titles/descriptions (English in `data-en*`), canonical + og:url from `SITE_URL`, JSON-LD `Organization`
+(every page), `Person` + `ScholarlyArticle` (About), `Article` with `citation[]` (articles), `DefinedTermSet` (glossary).
+
+## Front-end
+- `js/shell.js` — language, Lenis, veil transitions + first-visit preloader, cursor, magnetic, pillars disclosure, menu,
+  scrubbers, reveals, marquee, row previews, reading progress, newsletter (no provider yet: thank-you state only).
+- `js/home.js` — the film (GSAP 3.12.5 + ScrollTrigger). Phones: scenes stay lit, pillar panels hold/glide, 7/8 phone layout.
+- `js/library.js` — filters, search, per-language sorting; state in the URL (`?pillar=2&format=myth&q=…`).
+- CSS: `shell.css` (shared, evidence/verdict/confidence tags, rows), `home.css`, `pages.css`, `article.css`.
+- `prefers-reduced-motion` and `?static` give a calm, fully readable site. No audio anywhere.

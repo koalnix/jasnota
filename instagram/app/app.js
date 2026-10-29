@@ -1,47 +1,32 @@
-/* Јаснота — profile prototype interactions.
-   Grid (with optional pins), post view with swipeable carousel and EN/MK captions, reel player that
-   plays the on-screen text timeline, story viewer (tap, hold, auto-advance, progress bars), highlights,
-   and the “first 3 seconds” stranger’s view. */
+/* Јаснота — profile prototype interactions (v3).
+   Grid of 12 carousels, post view with swipeable carousel, Macedonian caption + EN line, per-slide alt text,
+   story viewer (tap, hold to pause, auto-advance, progress bars), seven highlights, “first 3 seconds”. */
 (function () {
   'use strict';
   var J = window.J;
   var $ = function (s) { return document.querySelector(s); };
   var scr = $('#scr'), vProfile = $('#vProfile');
-  var PINS = ['p02', 'p03', 'p07'];
   var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var state = { pins: false, lang: 'both', storySeen: false };
   var opener = [];   // focus return stack
+  var NOW = J.POSTS[J.POSTS.length - 1];   // the profile on the day of week 12
 
-  function newest() { return J.POSTS.slice().sort(function (a, b) { return b.n - a.n; }).map(function (p) { return p.id; }); }
-  function order() {
-    var n = newest();
-    return state.pins ? PINS.concat(n.filter(function (id) { return PINS.indexOf(id) < 0; })) : n;
-  }
+  function newest() { return J.POSTS.slice().sort(function (a, b) { return b.n - a.n; }); }
   function avatar(cls) { return '<span class="avatar ' + (cls || '') + '">' + J.avatarInner() + '</span>'; }
 
   /* ---------------- profile ---------------- */
   $('#avInner').innerHTML = J.avatarInner();
+  $('#stats').innerHTML = '<div><b>' + J.STATS.posts + '</b><span>објави</span></div><div><b>' + J.STATS.followers + '</b><span>следбеници</span></div><div><b>' + J.STATS.following + '</b><span>следи</span></div>';
+  $('#bioTop').innerHTML = '<p class="n">' + J.esc(J.NAME) + '</p><p class="cat">' + J.CATEGORY + '</p><p>' + J.esc(J.BIO[0]) + '</p>';
+  $('#bioRest').innerHTML = J.BIO.slice(1).map(function (l) { return '<p>' + J.esc(l) + '</p>'; }).join('') + '<p class="link"><svg class="ico" aria-hidden="true"><use href="#i-link"/></svg>' + J.LINK + '</p>';
   $('#hlRow').innerHTML = J.HIGHLIGHTS.map(function (h) {
-    var sign = J.hlSign(h);
-    return '<button type="button" class="hl" data-hl="' + h.id + '" aria-label="Highlight: ' + h.label + '"><div class="c"><div class="hlc">' + sign + '</div></div>' + h.label + '</button>';
+    return '<button type="button" class="hl" data-hl="' + h.id + '" aria-label="Highlight: ' + h.label + '"><div class="c"><div class="hlc tone-' + h.tone + '">' + J.hlSign(h) + '</div></div>' + h.label + '</button>';
   }).join('');
 
-  function renderGrid() {
-    $('#grid').innerHTML = order().map(function (id, i) {
-      var p = J.post(id), pinned = state.pins && PINS.indexOf(id) > -1;
-      var ic = pinned ? J.icon('pin', 'gi') : (J.fmtIcon(p) ? J.icon(J.fmtIcon(p), 'gi') : '');
-      var label = (pinned ? 'Pinned. ' : '') + 'Post ' + p.n + ': ' + p.title.en + ', ' + J.FORMATS[p.fmt].toLowerCase() + ', ' + J.fmtDate(p.date);
-      return '<button type="button" class="tile" data-id="' + id + '" aria-label="' + J.esc(label) + '"' + (i < 3 ? ' data-eye="4"' + (i === 0 ? ' data-eye-first' : '') : '') + '>' +
-        J.slide(J.cover(p), '34', 'hide-tags') + ic + '</button>';
-    }).join('');
-  }
-  renderGrid();
-  $('#reelsGrid').innerHTML = newest().map(J.post).filter(function (p) { return p.fmt === 'reel'; }).map(function (p) {
-    return '<button type="button" class="tile r916" data-id="' + p.id + '" aria-label="' + J.esc('Reel: ' + p.title.en + ', ' + p.reel.length) + '">' + J.slide(p.cover, '916', 'hide-tags') +
-      '<span class="dur">' + J.icon('play') + p.reel.length.replace(' s', 's') + '</span></button>';
+  $('#grid').innerHTML = newest().map(function (p, i) {
+    var label = 'Објава ' + p.n + ': ' + p.title + ', ' + J.fmtLabel(p) + ', ' + J.fmtDate(p.date, 'mk', true);
+    return '<button type="button" class="tile" data-id="' + p.id + '" aria-label="' + J.esc(label) + '"' + (i < 3 ? ' data-eye="4"' + (i === 0 ? ' data-eye-first' : '') : '') + '>' +
+      J.slide(J.cover(p), '34', 'hide-tags') + J.icon('car', 'gi') + '</button>';
   }).join('');
-  $('#tagged').innerHTML = '<div class="tile" aria-hidden="true">' + J.slide({ html: J.h.ph('stage', 'stage') + '<div class="pc on-photo"><p class="meta push">@chamber_orchestra_diva</p></div>', alt: '' }, '34', 'hide-tags') + '</div>' +
-    '<p>Photos of Jasna from Orchestra DIVA’s concerts appear here when the orchestra tags her. Set tags to manual approval, so only ones she chooses are shown.</p>';
 
   /* tabs */
   var tabs = [['#tabGrid', '#pGrid'], ['#tabReels', '#pReels'], ['#tabTag', '#pTag']];
@@ -66,7 +51,7 @@
     el.hidden = false;
     void el.offsetWidth;
     el.classList.add('in');
-    var f = el.querySelector('[data-close], button');
+    var f = el.querySelector('[data-close]') || el.querySelector('button');
     if (f) setTimeout(function () { f.focus({ preventScroll: true }); }, 40);
   }
   function closeLayer(el) {
@@ -79,46 +64,29 @@
   }
 
   /* ---------------- post view ---------------- */
-  var car = null, curPost = null;
+  var car = null;
   function captionHTML(p) {
-    var tags = '<span class="tg">' + p.tags.map(function (t) { return '#' + t; }).join(' ') + '</span>';
-    var en = J.esc(p.caption.en), mk = '<span lang="mk">' + J.esc(p.caption.mk) + '</span>';
-    var body = state.lang === 'en' ? en : state.lang === 'mk' ? mk : en + '\n\n<span class="div78">' + J.DIVIDER + '</span>\n\n' + mk;
-    return '<b>jasnota</b>' + (p.collab ? ' <b>' + p.collab + '</b>' : '') + ' ' + body + '\n\n' + tags;
+    return '<b>jasnota</b> ' + J.esc(p.caption.mk) + '\n\n<span class="div78">' + J.DIVIDER + '</span>\n<span lang="en">EN: ' + J.esc(p.caption.en) + '</span>\n\n<span class="tg">' + p.tags.map(function (t) { return '#' + t; }).join(' ') + '</span>';
   }
   function openPost(id, from) {
-    var p = J.post(id); curPost = p;
-    if (p.fmt === 'reel') { openReel(id, from); return; }
-    var n = p.slides.length;
+    var p = J.post(id), n = p.slides.length;
     var slides = p.slides.map(function (s) { return J.slide(s, '45'); }).join('');
     $('#pvBody').innerHTML =
-      '<div class="pv-head">' + avatar() + '<div class="who"><b>jasnota</b>' + (p.collab ? ' and <b>' + p.collab + '</b>' : '') + (p.location ? '<small>' + p.location + '</small>' : '') + '</div><span class="icon-btn" aria-hidden="true">' + J.icon('dots') + '</span></div>' +
-      '<div class="media" id="media" tabindex="0" aria-roledescription="carousel" aria-label="' + J.esc(p.title.en) + (n > 1 ? ', ' + n + ' slides. Use left and right arrows.' : '') + '">' +
+      '<div class="pv-head">' + avatar() + '<div class="who"><b>jasnota</b><small>' + J.FMT[p.fmt].mk + ' · столб ' + J.PILLARS[p.pillar].roman + '</small></div><span class="icon-btn" aria-hidden="true">' + J.icon('dots') + '</span></div>' +
+      '<div class="media" id="media" tabindex="0" aria-roledescription="carousel" aria-label="' + J.esc(p.title) + ', ' + n + ' слајда. Use left and right arrows.">' +
         '<div class="track">' + slides + '</div>' +
-        (n > 1 ? '<span class="count" aria-live="polite">1/' + n + '</span><button class="arr p" type="button" aria-label="Previous slide" disabled>' + J.icon('back') + '</button><button class="arr n" type="button" aria-label="Next slide">' + J.icon('next') + '</button>' : '') +
+        '<span class="count" aria-live="polite">1/' + n + '</span><button class="arr p" type="button" aria-label="Previous slide" disabled>' + J.icon('back') + '</button><button class="arr n" type="button" aria-label="Next slide">' + J.icon('next') + '</button>' +
       '</div>' +
-      '<div class="pv-actions"><span class="l" aria-hidden="true">' + J.icon('heart') + J.icon('comment') + J.icon('send') + '</span><span class="dots" aria-hidden="true">' + (n > 1 ? new Array(n + 1).join('<i></i>') : '') + '</span><span class="r" aria-hidden="true">' + J.icon('save') + '</span></div>' +
-      '<div class="pv-cap"><div class="seg" role="group" aria-label="Caption language"><button type="button" data-cl="both">EN + МК</button><button type="button" data-cl="en">EN</button><button type="button" data-cl="mk">МК</button></div>' +
-      '<p class="capt clamp" id="capt"></p><button class="more" type="button" id="more">more</button>' +
-      '<p class="date">' + J.fmtDate(p.date, 'en', false).slice(4) + ' 2026 · ' + p.time + '</p>' +
-      '<p class="alt"><span class="footnote">alt text, slide <span id="altN">1</span>:</span> <span id="altT"></span></p></div>';
-    renderCaption(p);
-    $('#pvBody').querySelectorAll('[data-cl]').forEach(function (b) {
-      b.addEventListener('click', function () { setLang(b.getAttribute('data-cl')); renderCaption(p); });
-    });
+      '<div class="pv-actions"><span class="l" aria-hidden="true">' + J.icon('heart') + J.icon('comment') + J.icon('send') + '</span><span class="dots" aria-hidden="true">' + new Array(n + 1).join('<i></i>') + '</span><span class="r" aria-hidden="true">' + J.icon('save') + '</span></div>' +
+      '<div class="pv-cap" lang="mk">' +
+      '<p class="capt clamp" id="capt">' + captionHTML(p) + '</p><button class="more" type="button" id="more">повеќе</button>' +
+      '<p class="date">' + J.longDate(p.date) + ' · ' + p.time + '</p>' +
+      '<p class="alt"><span class="footnote">alt текст, слајд <span id="altN">1</span>:</span> <span id="altT"></span></p></div>';
     $('#more').addEventListener('click', function () { $('#capt').classList.remove('clamp'); $('#more').hidden = true; });
     car = carousel($('#media'), n, function (i) { $('#altN').textContent = i + 1; $('#altT').textContent = p.slides[i].alt; });
+    J.applyPhotos($('#pvBody'));
     $('#pvBody').scrollTop = 0;
     openLayer($('#vPost'), from);
-  }
-  function renderCaption(p) {
-    var c = $('#capt'); if (!c) return;
-    c.innerHTML = captionHTML(p);
-    document.querySelectorAll('[data-cl]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cl') === state.lang ? 'true' : 'false'); });
-  }
-  function setLang(l) {
-    state.lang = l;
-    document.querySelectorAll('[data-lang]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-lang') === l ? 'true' : 'false'); });
   }
 
   function carousel(root, n, onChange) {
@@ -163,52 +131,9 @@
     return { go: go, get: function () { return i; } };
   }
 
-  /* ---------------- reel player ---------------- */
-  var rp = { p: null, t: 0, last: 0, raf: 0, paused: false, shot: -1, total: 0 };
-  function secs(s) { return parseInt(s, 10) || 0; }
-  function shotRange(s) { var m = s.t.split(/[–-]/); return [secs(m[0]), secs(m[1])]; }
-  function openReel(id, from) {
-    var p = J.post(id); rp.p = p; rp.t = 0; rp.shot = -1; rp.paused = false; rp.total = secs(p.reel.length);
-    $('#reelUI').innerHTML =
-      '<button class="icon-btn back" type="button" data-close aria-label="Back to profile">' + J.icon('back') + '</button><span class="ttl">Reels</span>' +
-      '<span class="muted" aria-hidden="true">' + J.icon('sound') + '</span>' +
-      '<div class="side" aria-hidden="true">' + J.icon('heart') + J.icon('comment') + J.icon('send') + J.icon('dots') + '</div>' +
-      '<div class="bottom"><div class="who">' + avatar() + '<b>jasnota</b>' + (p.collab ? '<span>and <b>' + p.collab + '</b></span>' : '') + '<span class="f">Follow</span></div>' +
-      '<p class="cl" style="margin:0">' + J.esc(p.caption.en.split('\n')[0]) + '</p>' +
-      '<p class="au" style="margin:0">' + J.icon('music') + J.esc(p.reel.audio.split('.')[0]) + '</p></div>' +
-      '<div class="pz" id="pz">' + J.icon('pause') + '</div><div class="prog"><i id="rprog"></i></div>';
-    $('#reelUI').querySelector('[data-close]').addEventListener('click', closeReel);
-    $('#vReel').setAttribute('aria-label', 'Reel: ' + p.title.en);
-    openLayer($('#vReel'), from);
-    rp.last = performance.now();
-    cancelAnimationFrame(rp.raf);
-    rp.raf = requestAnimationFrame(reelLoop);
-  }
-  function reelLoop(now) {
-    var dt = (now - rp.last) / 1000; rp.last = now;
-    if (!rp.paused) rp.t += dt;
-    if (rp.t >= rp.total) rp.t = 0;
-    var shots = rp.p.reel.shots, k = 0;
-    for (var i = 0; i < shots.length; i++) { var r = shotRange(shots[i]); if (rp.t >= r[0] && rp.t < r[1]) { k = i; break; } if (rp.t >= r[1]) k = i; }
-    if (k !== rp.shot) {
-      rp.shot = k;
-      $('#reelStage').innerHTML = '<div class="frame-wrap reelplay">' + J.reelFrame(shots[k], rp.p.reel) + '</div>';
-    }
-    var bar = $('#rprog'); if (bar) bar.style.width = (rp.t / rp.total * 100) + '%';
-    rp.raf = requestAnimationFrame(reelLoop);
-  }
-  function toggleReel() {
-    rp.paused = !rp.paused;
-    var pz = $('#pz'); if (!pz) return;
-    pz.innerHTML = J.icon(rp.paused ? 'pause' : 'play');
-    pz.classList.add('on');
-    clearTimeout(pz._t); if (!rp.paused) pz._t = setTimeout(function () { pz.classList.remove('on'); }, 600);
-  }
-  $('#reelTap').addEventListener('click', toggleReel);
-  function closeReel() { cancelAnimationFrame(rp.raf); closeLayer($('#vReel')); }
-
   /* ---------------- story viewer ---------------- */
-  var sv = { items: [], i: 0, el: 0, last: 0, raf: 0, paused: false, dur: 5000, held: false, holdT: 0, kind: '' };
+  /* items: [{ f: frame, time?: 'HH:MM' }] */
+  var sv = { items: [], i: 0, el: 0, last: 0, raf: 0, paused: false, dur: 5500, held: false, holdT: 0, kind: '' };
   function openStories(items, head, from, kind) {
     sv.items = items; sv.i = 0; sv.kind = kind || '';
     $('#bars').innerHTML = items.map(function () { return '<span><i></i></span>'; }).join('');
@@ -219,12 +144,11 @@
   }
   function show(i) {
     sv.i = i; sv.el = 0; sv.paused = false; sv.last = performance.now();
-    var it = sv.items[i];
-    $('#storyStage').innerHTML = '<div class="frame-wrap">' + J.story(J.frameOf(it)) + '</div>';
-    var f = J.frameOf(it);
-    var alt = f && f.share ? 'shares the post ' + J.post(f.share).title.en : (f && f.alt) || '';
-    $('#vStory').setAttribute('aria-label', 'Story ' + (i + 1) + ' of ' + sv.items.length + (alt ? ': ' + alt : ''));
-    var tm = $('#storyHead').querySelector('.tm'); if (tm && it.time) tm.textContent = it.time;
+    var it = sv.items[i], r = J.frame(it.f);
+    $('#storyStage').innerHTML = '<div class="frame-wrap">' + J.story(it.f) + '</div>';
+    J.applyPhotos($('#storyStage'));
+    $('#vStory').setAttribute('aria-label', 'Story ' + (i + 1) + ' of ' + sv.items.length + ': ' + (r ? r.alt : ''));
+    var tm = $('#storyHead').querySelector('.tm'); if (tm) tm.textContent = it.time || '';
     $('#bars').querySelectorAll('span').forEach(function (s, k) {
       s.classList.toggle('done', k < i);
       s.querySelector('i').style.transform = k < i ? 'scaleX(1)' : 'scaleX(0)';
@@ -245,11 +169,10 @@
   function pauseStory(on) { sv.paused = on; $('#pausedTag').classList.toggle('on', on); }
   function closeStories() {
     cancelAnimationFrame(sv.raf);
-    if (sv.kind === 'today') { state.storySeen = true; $('#avBtn').classList.add('seen'); }
+    if (sv.kind === 'week') $('#avBtn').classList.add('seen');
     pauseStory(false);
     closeLayer($('#vStory'));
   }
-  /* tap / hold */
   [['#stPrev', prevStory], ['#stNext', nextStory]].forEach(function (z) {
     var b = $(z[0]);
     b.addEventListener('pointerdown', function () { sv.held = false; clearTimeout(sv.holdT); sv.holdT = setTimeout(function () { sv.held = true; pauseStory(true); }, 260); });
@@ -258,14 +181,14 @@
     b.addEventListener('click', function (e) { if (sv.held) { e.preventDefault(); return; } z[1](); });
   });
 
-  function todayStories(from) {
-    var day = J.DAYS.filter(function (d) { return d.date === '2026-11-30'; })[0];
-    openStories(day.items, avatar() + '<b>jasnota</b><small class="tm">' + day.items[0].time + '</small>', from, 'today');
+  /* this week’s stories: Monday’s two, so far (it is Monday evening of week 12) */
+  function weekStories(from) {
+    var items = NOW.stories.filter(function (s) { return s.date === NOW.date; }).map(function (s) { return { f: s.f, time: s.time }; });
+    openStories(items, avatar() + '<b>jasnota</b><small class="tm">' + items[0].time + '</small>', from, 'week');
   }
   function openHighlight(id, from) {
     var h = J.HIGHLIGHTS.filter(function (x) { return x.id === id; })[0];
-    var sign = J.hlSign(h);
-    openStories(h.items, '<span class="avatar hlav"><span class="hlc">' + sign + '</span></span><b>' + h.label + '</b><small lang="mk">' + h.mk + '</small>', from, 'hl');
+    openStories(h.items.map(function (f) { return { f: f }; }), '<span class="avatar hlav"><span class="hlc tone-' + h.tone + '">' + J.hlSign(h) + '</span></span><b lang="mk">' + h.label + '</b>', from, 'hl');
   }
 
   /* ---------------- events ---------------- */
@@ -274,28 +197,19 @@
     if (t && !scr.classList.contains('eye')) { openPost(t.getAttribute('data-id'), t); return; }
     var hl = e.target.closest('[data-hl]');
     if (hl && !scr.classList.contains('eye')) { openHighlight(hl.getAttribute('data-hl'), hl); return; }
+    var op = e.target.closest('[data-open]');
+    if (op) { resetLayers(); exitEye(true); openPost(op.getAttribute('data-open'), op); }
   });
   $('#vPost').querySelector('[data-close]').addEventListener('click', function () { closeLayer($('#vPost')); });
-  $('#avBtn').addEventListener('click', function () { if (!scr.classList.contains('eye')) todayStories($('#avBtn')); });
-  $('#todayBtn').addEventListener('click', function () { resetLayers(); todayStories($('#todayBtn')); });
-  $('#hlBtn').addEventListener('click', function () { resetLayers(); openHighlight('jasna', $('#hlBtn')); });
-  document.querySelectorAll('[data-pins]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      state.pins = b.getAttribute('data-pins') === 'on';
-      document.querySelectorAll('[data-pins]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-      renderGrid(); selectTab(0, false);
-    });
-  });
-  document.querySelectorAll('[data-lang]').forEach(function (b) {
-    b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); if (curPost && !$('#vPost').hidden) renderCaption(curPost); });
-  });
+  $('#avBtn').addEventListener('click', function () { if (!scr.classList.contains('eye')) weekStories($('#avBtn')); });
+  $('#todayBtn').addEventListener('click', function () { resetLayers(); exitEye(true); weekStories($('#todayBtn')); });
+  $('#hlBtn').addEventListener('click', function () { resetLayers(); exitEye(true); openHighlight('metod', $('#hlBtn')); });
 
   document.addEventListener('keydown', function (e) {
-    var story = !$('#vStory').hidden, reel = !$('#vReel').hidden, post = !$('#vPost').hidden;
+    var story = !$('#vStory').hidden, post = !$('#vPost').hidden;
     if (e.key === 'Escape') {
       if (scr.classList.contains('eye')) { exitEye(); e.preventDefault(); return; }
       if (story) { closeStories(); e.preventDefault(); return; }
-      if (reel) { closeReel(); e.preventDefault(); return; }
       if (post) { closeLayer($('#vPost')); e.preventDefault(); return; }
     }
     if (story) {
@@ -304,14 +218,13 @@
       else if (e.key === ' ') { e.preventDefault(); pauseStory(!sv.paused); }
       return;
     }
-    if (reel && e.key === ' ' && !e.target.closest('button[data-close]')) { e.preventDefault(); toggleReel(); return; }
-    if (post && car && (e.key === 'ArrowRight' || e.key === 'ArrowLeft') && !e.target.closest('#media, .seg')) {
+    if (post && car && (e.key === 'ArrowRight' || e.key === 'ArrowLeft') && !e.target.closest('#media')) {
       e.preventDefault(); car.go(car.get() + (e.key === 'ArrowRight' ? 1 : -1));
     }
   });
   /* keep keyboard focus inside an open layer */
   document.addEventListener('focusin', function (e) {
-    var open = ['#vStory', '#vReel', '#vPost'].map($).filter(function (l) { return !l.hidden; })[0];
+    var open = ['#vStory', '#vPost'].map($).filter(function (l) { return !l.hidden; })[0];
     if (open && !open.contains(e.target) && scr.contains(e.target)) {
       var f = open.querySelector('[data-close]'); if (f) f.focus({ preventScroll: true });
     }
@@ -319,7 +232,6 @@
 
   function resetLayers() {
     if (!$('#vStory').hidden) closeStories();
-    if (!$('#vReel').hidden) closeReel();
     if (!$('#vPost').hidden) closeLayer($('#vPost'));
     opener = [];
   }

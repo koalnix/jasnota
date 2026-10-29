@@ -1,837 +1,691 @@
-/* Јаснота — month one on Instagram (2 Nov – 1 Dec 2026).
-   Single source of truth for the plan, calendar, prototype and moodboard grid.
-   Requires render.js (J.h helpers). Captions: English, the 7/8 divider, Macedonian, hashtags. */
+/* Јаснота — @jasnota on Instagram, the first 12 weeks (2 Nov 2026 – 18 Jan 2027).
+   Source of truth for the plan, calendar, prototype and the hub. Requires render.js + refs.js.
+
+   Strategy: STRATEGY.md (wins over everything) · BRAND.md v2 · research/content-bank/calendar.json.
+   One quality carousel a week, Mondays. Text-first, science-based, Macedonian first, no face, no video.
+   Every slide is structured data rendered by a strict template per format (render.js → J.T):
+     текст            cover → 4–5 content slides → Што знаеме / Што сè уште не знаеме → Извори
+     приказ на студија cover → study card → result → limits → replication / what came next → знаеме → Извори
+     поим             cover → definition → how common / how measured → example from music → Извори
+     мит или наука    cover (the claim) → verdict stamp → what science says ×3 → Извори
+   Evidence labels (EDITORIAL.md §3): strong · moderate · early · open. Last slide is always Извори. */
 (function () {
   'use strict';
-  var J = window.J, h = J.h;
-
-  J.HANDLE = 'jasnota';
-  J.NAME = 'Jasna Dimitrovska · Jasnota';
-  J.BIO = ['Psychologist · Gestalt counsellor', 'Vocal artist, @chamber_orchestra_diva', 'To hear yourself. Да се слушнеш себеси.', 'Bitola · EN / МК'];
-  J.LINK = 'jasnota.mk';
-  J.STATS = { posts: 15, followers: '1.562', following: 212 };
-
-  J.PILLARS = {
-    about:  { en: 'Introductions', mk: 'Запознавање', note: 'Launch only: who is talking and why.' },
-    sound:  { en: 'The sound of feelings', mk: 'Звукот на чувствата', note: 'Psychology heard through musical ideas.' },
-    psycho: { en: 'Psycho-note', mk: 'Психо-нота', note: 'Numbered explainers, one term each.' },
-    songs:  { en: 'Songs that remember us', mk: 'Песни што нè паметат', note: 'Music, memory, the weekly song.' },
-    rest:   { en: 'Rest', mk: 'Пауза', note: 'Silence, breath, Bitola. Asks for nothing.' }
-  };
-  J.FORMATS = { single: 'Single', carousel: 'Carousel', reel: 'Reel', story: 'Story' };
-
-  /* ---------- photos to shoot / supply (→ /photos/<slot>.jpg) ---------- */
-  J.SHOTS = {
-    profile:   { title: 'Profile picture', shot: 'Head and shoulders, three-quarter profile. One window or lamp from the side, half the face in shadow, plain dark background. Square; keep the face inside the central 60% so the circle crop holds.', use: 'Profile picture (until then: the Ψ mark on ink)' },
-    portrait:  { title: 'Portrait, rim light', shot: 'Jasna in profile, looking off-frame, dark room, a single source behind or beside her drawing the edge of the face and hair. 4:5, lots of black above the head.', use: 'Intro carousel slide 2, Jasna highlight' },
-    stage:     { title: 'On stage with Orchestra DIVA', shot: 'Mid-phrase on stage with the orchestra, from the side or from behind, stage light as the only source; the orchestra soft in the background. Ask the orchestra or its photographer for permission and credit them.', use: 'Intro carousel slide 4' },
-    hands:     { title: 'Hands and microphone', shot: 'Close-up of her hands around a microphone (or resting on sheet music), raking side light, everything else falling to true black. No jewellery that catches light.', use: 'Post 12 (journal 01), story 26 Nov' },
-    bitola:    { title: 'Bitola at night', shot: 'Širok Sokak after the shops close, a weeknight between 21:00 and 22:00. Long lens down the street, lamps as points of light, few or no people. Alternative: the Clock Tower from below, lit, sky almost black.', use: 'Post 6, story 9 Nov, Rest highlight' },
-    'extra-01': { title: 'Backstage, a door of light', shot: 'Backstage before a DIVA concert: a corridor, the stage door ajar with a line of light, Jasna as a silhouette or only her hands. Also the cover frame of reel 5.', use: 'Post 5 cover' },
-    'extra-02': { title: 'Vinyl, label hidden', shot: 'A record on a turntable, cropped off-centre so it bleeds out of frame, needle down, one lamp. Label and sleeve not legible (no artwork or brands).', use: 'Post 7 cover' },
-    'extra-03': { title: 'Cassette or old earbuds', shot: 'A cassette, or an old phone with wired earbuds, on a dark wooden table. Side light, shallow focus, a lot of black.', use: 'Post 13 cover' },
-    'extra-04': { title: 'Singing, one lamp', shot: 'Jasna singing “Zajdi, zajdi”, profile, eyes closed, one practical lamp in a quiet room. A frame grab from the reel works.', use: 'Post 14 cover, story 28 Nov' },
-    'extra-05': { title: 'The orchestra tuning', shot: 'Orchestra DIVA tuning before a concert, wide from the back of the stage or hall: music stands, stand lights, bows raised. Filmed and shot with the orchestra’s permission.', use: 'Post 8 frames, story 13 Nov' },
-    'extra-06': { title: 'Sheet music, pencil marks', shot: 'Sheet music on a stand with pencil breath marks, her hand and a pencil entering frame. Rehearsal light.', use: 'Stories 5 Nov, Stage highlight' }
-  };
-
-  var NT = 'This explains; it isn’t therapy.';
-  var NTmk = 'Ова објаснува; не е терапија.';
+  var J = window.J;
 
   /* =================================================================
-     FEED — 15 posts. n = posting order (1 = oldest). Bars of 7: 2+2+3.
+     ACCOUNT
+     ================================================================= */
+  J.HANDLE = 'jasnota';
+  J.HANDLE_FALLBACKS = ['jasnota.mk', 'jasnota_mk'];
+  J.NAME = 'Јаснота · психологијата зад музиката';
+  J.BIO = [
+    'Музика, психолошко искуство и однесување – научно и со извори.',
+    'Нова објава секој понеделник.',
+    'Уредува: Јасна Димитровска, психолог'
+  ];
+  J.CATEGORY = 'Образование';
+  J.LINK = 'jasnota.mk/ig';
+  J.POST_TIME = '19:30';
+  /* illustrative only: the profile in the prototype needs numbers. Not targets (see metrics/). */
+  J.STATS = { posts: 12, followers: '318', following: 41 };
+
+  /* website pages the link page points to. Relative to the project root (as built in website/ on 29 Oct);
+     on the future domain these become jasnota.mk/… */
+  J.SITE = {
+    texts:    { path: 'website/articles/', mk: 'Текстови', en: 'Texts', domain: 'jasnota.mk/articles' },
+    glossary: { path: 'website/concepts/', mk: 'Поимник', en: 'Glossary', domain: 'jasnota.mk/concepts' },
+    map:      { path: 'website/map/', mk: 'Мапа', en: 'Map', domain: 'jasnota.mk/map' },
+    method:   { path: 'website/method/', mk: 'Како работиме', en: 'How we work', domain: 'jasnota.mk/method' },
+    about:    { path: 'website/about/', mk: 'За Јаснота', en: 'About', domain: 'jasnota.mk/about' },
+    letter:   { path: 'website/#letter', mk: 'Билтен', en: 'Newsletter', domain: 'jasnota.mk/#letter' },
+    contact:  { path: 'website/contact/', mk: 'Контакт', en: 'Contact', domain: 'jasnota.mk/contact' }
+  };
+  /* web twins already on the site (website/articles/<slug>/); the rest link to the Texts index until written */
+  J.ARTICLES = { w01: 'music-performance-anxiety-what-we-know', w02: 'study-brooks-2014-get-excited', w03: 'why-music-moves-us', w04: 'myth-mozart-effect' };
+
+  J.PILLARS = {
+    1: { mk: 'Психологијата на музиката', en: 'The psychology of music', roman: 'I', tone: 'ink',
+         note: 'How music connects to psychological processes and everyday life. For the wider public.' },
+    2: { mk: 'Психолошкиот свет на музичарот', en: 'The musician’s mind', roman: 'II', tone: 'staff',
+         note: 'Preparation, performance and professional life. Speaks to musicians directly.' },
+    3: { mk: '„Што вели науката?“', en: 'What does science say?', roman: 'III', tone: 'paper',
+         note: 'Short, checkable formats: one study, one concept, one myth. Rigour first.' }
+  };
+  J.TONES = {
+    ink:   { mk: 'мастило', en: 'Ink', note: 'Pillar I. Black #0A0A0B, bone type. The brand default.' },
+    staff: { mk: 'мастило + нотен систем', en: 'Ink + stave', note: 'Pillar II. Black with five hairline stave lines across the cover: the musician’s page.' },
+    paper: { mk: 'хартија', en: 'Paper', note: 'Pillar III. The whole carousel on paper #F6F4EF: a reading card, a document of evidence.' }
+  };
+
+  var NOTE = 'Ова не е дијагноза ни терапија.';
+  var MORE = 'Целиот текст со сите извори: jasnota.mk · линк во био';
+
+  /* =================================================================
+     THE 12 POSTS (calendar.json, weeks 1–12). Mondays at 19:30.
      ================================================================= */
   J.POSTS = [
 
   /* ---------------- 1 ---------------- */
   {
-    id: 'p01', n: 1, date: '2026-11-02', time: '20:20', fmt: 'single', pillar: 'about', light: true, bar: 'I', b: 1, g: 'a',
-    title: { en: 'A clear note', mk: 'Јасна нота' },
-    goal: ['follows', 'profile clarity'],
-    why: 'Downbeat of bar I, on paper. The name explained in one line. Lives bottom-right of the grid for good.',
-    slides: [{
-      light: true,
-      alt: 'Off-white square. A small black tuning-fork mark that reads as the Greek letter psi. Large serif text: A clear note. Below it, in Macedonian: Јасна нота.',
-      html: '<div class="pc">' + h.mark(13) + '<div class="push">' + h.q('A clear <em>note.</em>', 'l') + h.mk('Јасна нота.', 'margin-top:3cqi') + '</div>' +
-        h.row(h.meta('jasna + nota'), h.meta('01 · Bitola'), 'margin-top:7cqi') + '</div>'
-    }],
+    id: 'w01', n: 1, date: '2026-11-02', pillar: 2, fmt: 'text', web: true,
+    title: 'Трема: што навистина знаеме за музичката анксиозност при изведба',
+    title_en: 'Stage fright: what we actually know about music performance anxiety',
+    rq: 'Што е музичката анксиозност при изведба, колку е честа, што ја одржува и кои пристапи имаат поддршка во истражувањата?',
+    why: 'Opens pillar II with a topic almost every musician knows, and sets the tone: numbers and evidence labels instead of quick tips.',
+    ethics: 'No personal stories, no medication advice; a clear referral line (psychologist, psychotherapist or doctor).',
+    src: [
+      { t: 'cover-text', h: '<em>Трема</em>', dek: 'Што навистина знаеме за музичката анксиозност при изведба' },
+      { t: 'text', h: 'Трема или <em>MPA?</em>', bg: { kind: 'slit', slot: 'extra-01', alt: 'врата кон сцена, низ која минува линија светлина; AI-генерирана' },
+        p: 'Во истражувањата: музичка анксиозност при изведба (music performance anxiety, MPA). Изразена и трајна загриженост поврзана со настапот – во телото, мислите и однесувањето. Не е „сè или ништо“: спектар од минлива нервоза до анксиозност што ја попречува изведбата.',
+        c: ['kenny2011'] },
+      { t: 'num', num: '16,5–60%', h: 'Колку е <em>честа?</em>',
+        p: 'Толку изнесуваат проценките кај професионални музичари, во 43 студии. Опсегот е широк затоа што студиите мерат различно – „честа“ е попрецизно од која било една бројка.',
+        ev: 'moderate', c: ['fernholz2019'] },
+      { t: 'list', h: 'Што ја <em>одржува?</em>', items: [
+          'Вниманието се лепи за можните закани, наместо за музиката.',
+          'Катастрофизирање: „една грешка значи пропаст“.',
+          'Страв од грешки и од проценка.',
+          'Тремата е најизразена кај студентите, а најблага кај професионалците.'
+        ], ev: 'moderate', c: ['kenny2011', 'steptoe1987'] },
+      { t: 'evlist', h: 'Што <em>помага?</em>', items: [
+          { t: 'Когнитивно-бихевиорални пристапи (КБТ): најистражувани, со корисни резултати; недостигаат контролирани студии.', ev: 'moderate', c: ['kenny2005', 'fernholz2019'] },
+          { t: '„Возбуден/а сум“ наместо „смири се“: го менува чувството, но ефектот врз изведбата не се потврди.', ev: 'early', c: ['brooks2014', 'poynter2025'] },
+          { t: 'Лековите се истражуваат; тоа е одлука само за лекар.', c: ['fernholz2019'] }
+        ] },
+      { t: 'known',
+        known: ['Тремата е честа и кај професионалците.', 'Катастрофизирањето и стравот од грешки одат заедно со посилна трема.', 'КБТ е најистражуваниот пристап.'],
+        unknown: ['Точно колку е распространета.', 'Што делува кај кого: пејачи, инструменталисти, жанрови.', 'Како изгледа тремата кај музичарите во Македонија.'],
+        help: 'Ако тремата те тера да одбиваш настапи, трае и надвор од сцената или ти го нарушува сонот, разговарај со психолог, психотерапевт или лекар.' },
+      { t: 'sources', ids: ['kenny2011', 'fernholz2019', 'steptoe1987', 'kenny2005', 'brooks2014', 'poynter2025'], eth: NOTE, more: MORE }
+    ],
     caption: {
-      en: `My name is Jasna. In Macedonian, jasna means clear, and nota is a note. Together: a clear note. Split differently: jas + nota, I + a note.
-
-Jasnota is where I write about feelings through sound, and about sound through feelings. Psychology you can hear, one idea per post.
-
-Monday, Wednesday and Friday at 20:30. English first, Macedonian always.`,
-      mk: `Се викам Јасна. Јасна нота е чист, бистар тон. А поделено поинаку: јас + нота.
-
-Јаснота е место каде што пишувам за чувствата преку звукот, и за звукот преку чувствата. Психологија што се слуша, по една мисла во објава.
-
-Понеделник, среда и петок во 20:30. Прво на англиски, секогаш и на македонски.`
+      mk: 'Ладни дланки, срце што брза пред метрономот, сува уста пред фраза што бара здив. Тремата ја познаваат и учениците и професионалците. Што навистина знае науката за неа?\n\n' +
+        'Во истражувањата се вика музичка анксиозност при изведба (music performance anxiety, MPA). Кај професионалните музичари проценките се движат од 16,5% до 60%, зависно од тоа како се мери. Затоа „честа“ е попрецизно од која било една бројка.\n\n' +
+        'Во каруселот: што ја одржува, што помага и колку сме сигурни. Секое тврдење има ознака за доказите и извор.\n\n' +
+        'Ова не е дијагноза ни терапија. Ако тремата те тера да одбиваш настапи, трае и надвор од сцената или ти го нарушува сонот, разговарај со психолог, психотерапевт или лекар.\n\n' +
+        'Извори: последниот слајд. Целиот текст: линкот во био.',
+      en: 'What research actually knows about music performance anxiety: how common it is, what keeps it going, what helps and how sure we are.'
     },
-    tags: ['jasnota', 'јаснота', 'musicpsychology', 'psychologyofmusic', 'bitola'],
-    audio: '—',
-    notes: 'Publish first, at 20:20. The three launch posts go up five minutes apart so the first row is complete by 20:30.'
+    tags: ['јаснота', 'трема', 'психологијанамузиката', 'musicperformanceanxiety', 'musicpsychology'],
+    story: {
+      tq: 'Колку е честа тремата кај професионалните <em>музичари?</em>',
+      bg: { kind: 'slit', slot: 'extra-01', alt: 'врата кон сцена со линија светлина; AI-генерирана' },
+      source: { id: 'fernholz2019', line: 'Систематски преглед на 43 студии кај професионални музичари: проценките се 16,5%–60%, зависно од мерењето.', ev: 'moderate' },
+      ask: { k: 'question', q: 'Што те интересира за психологијата на <em>музиката?</em>', note: 'ги читаме сите; објавуваме само со дозвола' }
+    },
+    notes: 'Slide 2 uses the backstage-door image (photos/extra-01.jpg) as a darkened atmospheric background. It is an AI-generated stand-in, not a documentary photo: keep it labelled as such in alt text, or replace it with an owned photo.'
   },
 
   /* ---------------- 2 ---------------- */
   {
-    id: 'p02', n: 2, date: '2026-11-02', time: '20:25', fmt: 'carousel', pillar: 'about', bar: 'I', b: 2, g: 'a',
-    title: { en: 'I’m Jasna', mk: 'Јас сум Јасна' },
-    goal: ['follows', 'trust', 'profile visits'],
-    why: 'The introduction carousel. Type-led cover (group of two = words); the face appears once, on slide 2.',
-    usertags: ['chamber_orchestra_diva (slide 4)'],
-    photos: ['portrait', 'stage'],
-    slides: [
-      { alt: 'Black slide. Large serif text: I’m Jasna. Below, three small lines: psychologist, Gestalt counsellor, vocal artist with Orchestra DIVA.',
-        html: '<div class="pc">' + h.row(h.mark(7), h.meta('1/7')) + '<div class="push">' + h.q('I’m <em>Jasna.</em>', 'l') +
-          '<ul class="roles"><li>psychologist</li><li>Gestalt counsellor</li><li>vocal artist, Orchestra DIVA</li></ul></div></div>' },
-      { alt: 'Photo: Jasna in profile, lit only from behind so the edge of her face glows against a black room. Text: Jasna Dimitrovska. Bitola, Macedonia.',
-        html: h.ph('rim', 'portrait') + '<div class="pc on-photo"><p class="meta" style="text-align:right">02/07</p><div class="push">' + h.q('Jasna <em>Dimitrovska</em>', 's') + h.meta('Bitola, Macedonia', 'margin-top:3cqi') + '</div></div>' },
-      { alt: 'Black slide. Text: I’m a psychologist, and a Gestalt counsellor. Gestalt work pays attention to what is happening now: in the body, in the voice, between two people.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">03/07</p>' + h.q('I’m a <em>psychologist</em>', 's', 'margin-top:12cqi') +
-          h.body('and a Gestalt counsellor. Gestalt work pays attention to what is happening now: in the body, in the voice, between two people.', 'margin-top:5cqi') + h.meta('psychology', 'margin-top:auto') + '</div>' },
-      { alt: 'Photo: Jasna singing on stage with Orchestra DIVA, from the side, in stage light. Text: And I sing. Vocalist with Orchestra DIVA, Bitola.',
-        html: h.ph('stage', 'stage') + '<div class="pc on-photo"><p class="meta" style="text-align:right">04/07</p><div class="push">' + h.q('And I <em>sing.</em>', 's') + h.body('Vocalist with Orchestra DIVA, Bitola.', 'margin-top:3cqi') + h.meta('@chamber_orchestra_diva', 'margin-top:4cqi') + '</div></div>' },
-      { alt: 'Black slide. Text: I also do research. In 2024 I co-authored a study on perfectionism, self-esteem and impostor feelings among gifted students.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">05/07</p>' + h.q('I also do <em>research.</em>', 's', 'margin-top:12cqi') +
-          h.body('In 2024 I co-authored a study on perfectionism, self-esteem and impostor feelings among gifted students.', 'margin-top:5cqi') + h.meta('International Slavic University · 2024', 'margin-top:auto') + '</div>' },
-      { alt: 'Black slide. Text: Jasnota is psychology you can hear. Feelings through sound, sound through feelings, one idea per post. Below: It isn’t therapy. I don’t diagnose here, and I don’t offer sessions.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">06/07</p>' + h.q('Jasnota is psychology you can <em>hear.</em>', 's', 'margin-top:12cqi') +
-          h.body('Feelings through sound. Sound through feelings. One idea per post.', 'margin-top:5cqi') +
-          '<p class="body" style="margin-top:auto;max-width:34ch">It isn’t therapy. I don’t diagnose here, and I don’t offer sessions.</p></div>' },
-      { alt: 'Black slide. Large serif text: To hear yourself. Below, in Macedonian: Да се слушнеш себеси. Footer: Monday, Wednesday, Friday at 20:30, and the mark.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">07/07</p><div class="push">' + h.q('To hear <em>yourself.</em>', 'l') + h.mk('Да се слушнеш себеси.', 'margin-top:3cqi') + '</div>' +
-          h.row(h.meta('Mon · Wed · Fri, 20:30'), h.mark(6), 'margin-top:7cqi') + '</div>' }
+    id: 'w02', n: 2, date: '2026-11-09', pillar: 3, fmt: 'study', web: true,
+    title: '„Возбуден/а сум“: една позната студија за тремата, под лупа',
+    title_en: '“I am excited”: a well-known stage-fright study under the microscope',
+    rq: 'Дали преименувањето на анксиозноста во возбуда навистина ја подобрува изведбата – и што покажа репликацијата?',
+    why: 'Follows week 1 directly and shows how Jasnota reads a study: design, results, limitations, replication.',
+    ethics: 'Do not present “one sentence” as treatment for marked anxiety.',
+    src: [
+      { t: 'cover-study', h: '„Возбуден/а <em>сум</em>“', dek: '„Смири се“ или „возбуди се“? Една позната студија за тремата, под лупа.', cite: 'Brooks (2014) · Journal of Experimental Psychology: General' },
+      { t: 'card', h: 'Како беше <em>направена</em>', rows: [
+          ['Учесници', 'студенти во САД; пред тоа анкета: над 90% од 300 возрасни би советувале „смири се“'],
+          ['Задачи', 'караоке (113), јавен говор (140), математика (188 и 218)'],
+          ['Дизајн', 'случајна распределба: „Возбуден/а сум“, „Анксиозен/на сум“, „Смирен/а сум“ или ништо'],
+          ['Мерење', 'точност на пеењето (софтвер), оценки на набљудувачи, резултати, пулс']
+        ], c: ['brooks2014'] },
+      { t: 'bars', h: '<em>Наодите</em>', bars: [['„Возбуден/а сум“', 81, '≈81%'], ['без изјава', 69, '≈69%'], ['„Анксиозен/на сум“', 53, '≈53%']],
+        p: 'Точност на пеењето во караоке-студијата. Возбудата порасна, но анксиозноста и пулсот не се намалија.', ev: 'early', c: ['brooks2014'] },
+      { t: 'list', h: '<em>Ограничувањата</em>', items: [
+          'Студенти, не музичари.',
+          'Еднократна лабораториска задача пред еден експериментатор.',
+          'Софтверот мери точност, не музикалност.',
+          'Нема податоци за луѓе со изразена трема.'
+        ], c: ['brooks2014'] },
+      { t: 'text', h: 'Репликацијата, <em>2025</em>',
+        p: 'Директна репликација на студијата со говор (N = 74): чувството на возбуда се повтори, но набљудувачите не оценија подобра изведба. Помал примерок – не е конечна пресуда, но е важно предупредување.',
+        ev: 'early', c: ['poynter2025'] },
+      { t: 'known',
+        known: ['Преименувањето ја зголемува субјективната возбуда.', 'Обидот да се смириш не го спушта пулсот пред стресна задача.'],
+        unknown: ['Дали ефектот врз изведбата е стабилен.', 'Дали важи за музичари и за вистински настапи пред публика.', 'Дали помага кај изразена трема.'],
+        not: 'Една реченица не е третман. Возбудата пред настап не мора да се гаси; нејзиното толкување може да го смени доживувањето (Jamieson et al., 2012).' },
+      { t: 'sources', ids: ['brooks2014', 'poynter2025', 'jamieson2012'], eth: NOTE + ' Приказот објаснува една студија; ако тремата те спречува да настапуваш, разговарај со психолог или психотерапевт.', more: MORE }
     ],
     caption: {
-      en: `I’m Jasna Dimitrovska. I’m a psychologist and a Gestalt counsellor, and I sing with Orchestra DIVA in Bitola (@chamber_orchestra_diva).
-
-For years these were three separate rooms in my life. Jasnota is the door between them: what psychology knows about feelings, heard through music, and what music knows about us.
-
-What you’ll find here: short explainers I call Psycho-notes, a song each week, journal entries on jasnota.mk, and posts that ask for nothing but a minute of quiet.
-
-What you won’t find: diagnoses, quick fixes or therapy. I explain; I don’t treat.`,
-      mk: `Јас сум Јасна Димитровска. Психолог сум и гешталт советник, и пеам со Оркестарот DIVA од Битола.
-
-Со години ова беа три одделни соби во мојот живот. Јаснота е вратата меѓу нив: она што психологијата го знае за чувствата, слушнато преку музиката, и она што музиката го знае за нас.
-
-Тука ќе најдеш кратки објаснувања што ги викам Психо-ноти, по една песна секоја недела, текстови на jasnota.mk и објави што не бараат ништо освен една минута тишина.
-
-Тука нема да најдеш дијагнози, брзи решенија ни терапија. Објаснувам, не лекувам.`
+      mk: '„Смири се“ е најчестиот совет пред настап. Една позната студија од 2014 година предложи нешто друго: тремата да ја наречеш возбуда.\n\n' +
+        'Во караоке-експериментот, групата што пред пеењето рекла „Возбуден/а сум“ пеела попрецизно од другите. Но возбудата не ја намалила анксиозноста, а пулсот останал висок.\n\n' +
+        'Во 2025 година, директна репликација на студијата со јавен говор го повтори чувството на возбуда, но не и подобрата изведба.\n\n' +
+        'Затоа ознаката е: рани/ограничени докази. Една реченица може да го промени доживувањето; не е третман за изразена трема.\n\n' +
+        'Извори: последниот слајд. Целиот приказ: линкот во био.',
+      en: 'A well-known study on reappraising anxiety as excitement, read closely: design, results, limitations and a 2025 replication.'
     },
-    tags: ['jasnota', 'psychologist', 'gestalt', 'vocalartist', 'bitola', 'психолог', 'битола'],
-    audio: '—',
-    notes: 'Tag @chamber_orchestra_diva on slide 4. Pin from week 2.'
+    tags: ['јаснота', 'трема', 'приказнастудија', 'replication', 'musicpsychology'],
+    story: {
+      tq: '„Смири се“ или „возбуди <em>се“?</em>',
+      source: { id: 'poynter2025', line: 'Директна репликација (N = 74): чувството на возбуда се повтори, подобрата изведба не.', ev: 'early' },
+      ask: { k: 'quiz', q: 'Што се повтори во репликацијата од <em>2025?</em>', opts: ['чувството на возбуда', 'подобрата изведба', 'и двете'], right: 0, note: 'одговорот е на слајд 5' }
+    }
   },
 
   /* ---------------- 3 ---------------- */
   {
-    id: 'p03', n: 3, date: '2026-11-02', time: '20:30', fmt: 'reel', pillar: 'rest', bar: 'I', b: 3, g: 'b',
-    title: { en: 'Breathing in 7/8', mk: 'Дишење во 7/8' },
-    goal: ['shares', 'saves', 'site visits'],
-    why: 'Something to do, not just read. The meter itself is the graphic; one cinnabar dot marks the long beat.',
-    link: { path: 'website/journal/breathing-in-7-8/', label: 'jasnota.mk/journal/breathing-in-7-8' },
-    photos: ['hands'],
-    cover: {
-      alt: 'Reel cover, black. Large serif text: Breathing in 7/8, with the Macedonian title below. Seven dots grouped two, two, three, labelled in for two, hold for two, out for three; the long beat is marked with one red dot.',
-      html: '<div class="pc">' + h.q('Breathing<br>in <em>7/8</em>', 'l', 'padding-right:8cqi') + h.mk('Дишење во 7/8', 'margin-top:3cqi') +
-        '<div class="push">' + h.b78(['in · 2', 'hold · 2', 'out · 3']) + '</div></div>'
-    },
-    reel: {
-      length: '35 s', split: '10 + 10 + 15',
-      audio: 'Jasna’s own voice counting, taken from the 07:08 recording (journal 04), and a soft click on each beat. No music.',
-      shots: [
-        { t: '00–03', shot: 'Title card on black.', sound: 'Room tone.', os: { en: 'Breathing in 7/8', mk: 'Дишење во 7/8' }, art: '<div class="ph dotbreath" aria-hidden="true"><span></span></div>' },
-        { t: '03–10', shot: 'A single bone-white dot in the centre grows on “in” (2 beats), holds (2), shrinks over 3.', sound: 'Her voice: “in, two — hold, two — out, two, three.”', os: { en: 'In for two. Hold for two. Out for three.', mk: 'Вдиши на два. Задржи на два. Издиши на три.' }, art: '<div class="ph dotbreath big" aria-hidden="true"><span></span></div>' },
-        { t: '10–20', shot: 'Her hands resting on her knees, low-key side light, a slow rise and fall. Locked off.', sound: 'Voice counts bars two and three, quieter.', os: { en: 'The long out-breath tells the body it can slow down.', mk: 'Долгиот издишок му кажува на телото дека може да забави.' }, ph: 'mic', slot: 'hands' },
-        { t: '20–35', shot: 'Back to the dot. Two bars with clicks only, no voice. Fade to black at 33 s.', sound: 'Clicks, then 2 s of silence.', os: { en: 'The full seven minutes: jasnota.mk', mk: 'Целата снимка: jasnota.mk' }, art: '<div class="ph dotbreath" aria-hidden="true"><span></span></div>' }
-      ]
-    },
+    id: 'w03', n: 3, date: '2026-11-16', pillar: 1, fmt: 'text', web: true,
+    title: 'Зошто музиката нè допира: механизми, морници и парадоксот на тажната песна',
+    title_en: 'Why music moves us: mechanisms, chills and the sad-song paradox',
+    rq: 'Преку кои психолошки механизми музиката предизвикува емоции и зошто уживаме во тажна музика?',
+    why: 'Opens pillar I with the widest question; sets vocabulary (mechanisms, chills, nostalgia) for later pieces.',
+    ethics: 'No neuro-hype (“music is like a drug”); say plainly that the brain studies are small.',
+    src: [
+      { t: 'cover-text', h: 'Зошто музиката нè <em>допира</em>', dek: 'Механизми, морници и парадоксот на тажната песна' },
+      { t: 'grid8', h: 'Не еден, туку <em>осум</em> механизми', items: ['рефлекс на мозочното стебло', 'ритмичко вовлекување', 'евалуативно условување', 'емоционално заразување', 'визуелни слики', 'епизодна меморија', 'музичко очекување', 'естетска проценка'],
+        p: 'Теориска рамка (BRECVEMA). Поединечните механизми имаат различна поддршка.', ev: 'moderate', c: ['juslin2013'] },
+      { t: 'text', h: 'Ист <em>код</em> за гласот и музиката',
+        p: 'Преглед на 104 студии за гласот и 41 за музичка изведба: основните емоции се пренесуваат со слични знаци – темпо, јачина, висина, артикулација. Затоа тажната мелодија „звучи“ како тажен глас.',
+        ev: 'moderate', c: ['juslin2003'] },
+      { t: 'text', h: 'Морници и <em>награда</em>',
+        p: 'При најсилните музички моменти се ослободува допамин – и во исчекувањето и во самиот врв. Студијата е мала и со луѓе што редовно доживуваат морници. Не значи дека „музиката е дрога“.',
+        ev: 'early', c: ['salimpoor2011'] },
+      { t: 'text', h: 'Тажна песна, <em>пријатно</em> чувство',
+        p: 'Тагата во музиката ја препознаваме, но не мора да ја доживееме. Во онлајн анкета (N = 772) најчеста емоција при тажна музика била носталгијата, не тагата.',
+        ev: 'moderate', c: ['kawakami2013', 'taruffi2014'] },
+      { t: 'known',
+        known: ['Музиката буди емоции по повеќе патишта, не по еден.', 'Гласот и музиката делат сличен „код“ за емоциите.', { t: 'Кај склоност кон руминација, тажната музика може да го влоши расположението.', c: ['garrido2015'] }],
+        unknown: ['Колку придонесува секој механизам.', 'Зошто некои луѓе речиси немаат морници.', 'Како изгледа ова во нашата музичка традиција.'],
+        help: 'Ако тагата трае со недели, разговор со психолог, психотерапевт или лекар може да помогне.' },
+      { t: 'sources', ids: ['juslin2013', 'juslin2003', 'salimpoor2011', 'kawakami2013', 'taruffi2014', 'garrido2015'], eth: NOTE, more: MORE }
+    ],
     caption: {
-      en: `In for two. Hold for two. Out for three.
-
-That’s 7/8, the uneven meter of a lot of Macedonian music, and the exercise I do before every performance. The out-breath is the longest part of the bar, which leans the whole rhythm towards rest.
-
-Try three bars now. If counting makes you dizzy or more anxious, stop and breathe normally.
-
-The full recording, seven minutes and eight seconds of just my voice, is on jasnota.mk (link in bio).`,
-      mk: `Вдиши на два. Задржи на два. Издиши на три.
-
-Тоа е 7/8, нерамниот такт на многу македонски песни, и вежбата што ја правам пред секој настап. Издишувањето е најдолгиот дел од тактот, па целиот ритам се навалува кон одмор.
-
-Пробај три такта сега. Ако броењето ти предизвика вртоглавица или вознемиреност, престани и диши нормално.
-
-Целата снимка, седум минути и осум секунди само со мојот глас, е на jasnota.mk (линкот е во био).`
+      mk: 'Зошто една песна може да нè расплаче, а друга да ни донесе морници?\n\n' +
+        'Истражувањата не нудат едно објаснување, туку повеќе механизми: од ритамот што го „фаќа“ телото до спомените што ги буди една мелодија. Музиката и гласот користат сличен акустички код за емоциите, а најсилните музички моменти се поврзани со системот за награда во мозокот.\n\n' +
+        'А тажните песни? Тагата во музиката ја препознаваме, но не мора да ја доживееме. Најчеста емоција при тажна музика е носталгијата.\n\n' +
+        'Ова не е дијагноза ни терапија. Ако тагата трае со недели и ти го обојува секојдневието, разговор со психолог, психотерапевт или лекар може да помогне.\n\n' +
+        'Извори: последниот слајд. Целиот текст: линкот во био.',
+      en: 'How music moves us: several mechanisms, a shared code with the voice, chills and reward, and why sad songs can feel good.'
     },
-    tags: ['jasnota', 'breathing', 'macedonianmusic', 'performanceanxiety', 'дишење'],
-    notes: 'Last of the three launch posts, 20:30. Pin from week 3.'
+    tags: ['јаснота', 'музикаиемоции', 'психологијанамузиката', 'musicandemotion', 'musicpsychology'],
+    story: {
+      tq: 'Зошто тажна песна може да ни <em>прија?</em>',
+      source: { id: 'juslin2003', line: '104 студии за гласот и 41 за музиката: емоциите се пренесуваат со слични акустички знаци.', ev: 'moderate' },
+      ask: { k: 'question', q: 'Која песна ти носи <em>морници?</em>', ph: 'песна, изведувач…', note: 'објавуваме само со твоја дозвола' }
+    }
   },
 
   /* ---------------- 4 ---------------- */
   {
-    id: 'p04', n: 4, date: '2026-11-04', time: '20:30', fmt: 'carousel', pillar: 'psycho', bar: 'I', b: 4, g: 'b',
-    title: { en: 'Psycho-note №01 — Attunement', mk: 'Психо-нота №01 — Усогласување' },
-    goal: ['saves', 'site visits'],
-    why: 'Opens the Psycho-note series with the idea behind the mark itself. Same frame every time: mark, term, italic analogy.',
-    link: { path: 'website/journal/tuning-fork-on-attunement/', label: 'jasnota.mk/journal/tuning-fork-on-attunement' },
-    slides: [
-      { alt: 'Black slide. The tuning-fork mark top left. Large serif word: Attunement. In italic below: one tuning fork answering another. Footnote: Psycho-note number 01.',
-        html: '<div class="pc">' + h.row(h.mark(7), h.meta('1/7')) + '<div class="push">' + h.q('Attunement', '', 'font-size:13cqi') +
-          h.q('<em>one tuning fork answering another</em>', 'xs', 'margin-top:2cqi;color:var(--ash)') + h.meta('Psycho-note №01', 'margin-top:6cqi') + '</div></div>' },
-      { alt: 'Line drawing of two tuning forks with dotted arcs between them. Text: Strike one fork, then silence it. A second fork of the same pitch, nearby, keeps singing. Nobody touched it.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">02/07</p><div style="margin-top:6cqi;color:var(--bone)">' + h.forks() + '</div>' +
-          h.q('Strike one fork, then <em>silence</em> it.', 's', 'margin-top:auto') +
-          h.body('A second fork of the same pitch, standing nearby, keeps singing. Nobody touched it. This is called sympathetic resonance.', 'margin-top:4cqi') + '</div>' },
-      { alt: 'Text: In people, it’s called attunement. The psychiatrist Daniel Stern described it in 1985: a parent answers a baby’s excited banging with the voice, in the same tempo. Different channel, same shape.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">03/07</p>' + h.q('In people, it’s called <em>attunement.</em>', 's', 'margin-top:12cqi') +
-          h.body('The psychiatrist Daniel Stern described it in 1985. A baby bangs a toy in a quick, uneven rhythm; the parent answers with the voice, <em>ye-es, ye-es</em>, in the same tempo. Different channel, same shape.', 'margin-top:5cqi') +
-          h.meta('Stern, The Interpersonal World of the Infant, 1985', 'margin-top:auto') + '</div>' },
-      { alt: 'Two lines of serif text. Imitation says: I saw what you did. Attunement says: I feel how it is for you.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">04/07</p><div class="push">' +
-          h.q('Imitation says: <em>I saw what you did.</em>', 's', 'color:var(--ash)') + h.q('Attunement says: <em>I feel how it is for you.</em>', 's', 'margin-top:6cqi') + '</div></div>' },
-      { alt: 'Text: Falling out of tune is normal. Watching ordinary families, researcher Edward Tronick saw parents and babies lose sync all the time. What mattered was finding each other again: rupture and repair.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">05/07</p>' + h.q('Falling out of tune is <em>normal.</em>', 's', 'margin-top:12cqi') +
-          h.body('Watching ordinary families, the researcher Edward Tronick saw parents and babies lose sync all the time. What mattered was finding each other again. Psychology calls it rupture and repair.', 'margin-top:5cqi') + '</div>' },
-      { alt: 'Text: Try it tonight. When someone tells you something that matters to them, listen for their tempo before you answer. Then answer in it.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">06/07</p>' + h.q('Try it <em>tonight.</em>', 's', 'margin-top:12cqi') +
-          h.body('When someone tells you something that matters to them, listen for their tempo before you answer. Then answer in it: slower if they are slow, quiet if they are quiet.', 'margin-top:5cqi') + '</div>' },
-      { alt: 'Closing slide. Large mark. Text: Being attuned doesn’t mean never falling out of tune. It means finding each other again. Footnotes: essay on jasnota.mk; this explains, it isn’t therapy.',
-        html: '<div class="pc">' + h.mark(12) + h.q('Being attuned doesn’t mean never falling out of tune. It means finding each other <em>again.</em>', 's', 'margin-top:auto') +
-          h.row(h.meta('Essay · jasnota.mk/journal'), h.meta('Explains. Not therapy.'), 'margin-top:7cqi') + '</div>' }
+    id: 'w04', n: 4, date: '2026-11-23', pillar: 3, fmt: 'myth', web: true,
+    title: 'Мит наспроти наука: дали Моцарт нè прави попаметни?',
+    title_en: 'Myth vs science: does Mozart make us smarter?',
+    rq: 'Дали слушањето Моцарт ја зголемува интелигенцијата и што покажаа репликациите и мета-анализите?',
+    why: 'Introduces the myth format with a classic, well-documented case; teaches readers to ask “how many studies, was it replicated?”.',
+    ethics: 'Do not mock the parents or teachers who believed the myth; explain, don’t lecture.',
+    src: [
+      { t: 'cover-myth', h: 'Слушањето Моцарт нè прави <em>попаметни.</em>“', dek: 'Мит или наука? Што покажаа триесет години истражувања.' },
+      { t: 'verdict', v: 'мит', h: 'Нема специфичен ефект на Моцартовата музика врз <em>интелигенцијата.</em>', ev: 'strong', c: ['pietschnig2010'] },
+      { t: 'text', h: '1993: од каде <em>дојде</em>',
+        p: '36 студенти, 10 минути Моцартова соната за два пијана, подобар резултат на просторни задачи – краткотрајно. Без деца, без трајно подобрување, без мерење на IQ.',
+        c: ['rauscher1993'] },
+      { t: 'text', h: 'Што покажаа <em>репликациите</em>',
+        p: 'Повторување по упатствата на оригиналните автори не најде ефект. Кога наместо тишина учесниците слушале приказна, предноста на музиката исчезнала.',
+        ev: 'strong', c: ['steele1999', 'nantais1999'] },
+      { t: 'text', h: 'Будност и <em>расположение</em>',
+        p: 'Живахниот Моцарт помогнал, бавниот и тажен Албинони не. Кога разликите во будноста и расположението се изедначиле статистички, ефектот исчезнал.',
+        ev: 'moderate', c: ['thompson2001'] },
+      { t: 'num', num: '~40', h: 'студии, над 3.000 <em>учесници</em>',
+        p: 'Мета-анализата наоѓа малку докази за специфичен ефект, поголеми ефекти во оригиналната лабораторија и знаци на пристрасност во објавувањето. Ни тврдењето за епилепсија нема основа (8 студии, N = 207).',
+        ev: 'strong', c: ['pietschnig2010', 'oberleiter2023'] },
+      { t: 'sources', ids: ['rauscher1993', 'steele1999', 'nantais1999', 'thompson2001', 'pietschnig2010', 'oberleiter2023'], more: MORE }
     ],
     caption: {
-      en: `Psycho-note №01 — Attunement.
-
-The mark of Jasnota is a tuning fork, drawn so it reads as Ψ. This is why.
-
-Strike one tuning fork, silence it with your hand, and a second fork of the same pitch nearby keeps singing. In people, the psychiatrist Daniel Stern called this affect attunement: answering someone’s feeling in its own tempo and intensity, rather than copying it.
-
-The full essay, Tuning fork: on attunement, is on jasnota.mk. Save this for the next time someone needs you to listen.
-
-${NT}`,
-      mk: `Психо-нота №01 — Усогласување.
-
-Знакот на Јаснота е камертон, нацртан така што се чита како Ψ. Еве зошто.
-
-Удри еден камертон, стишај го со дланка, и вториот камертон со ист тон до него продолжува да ѕвони. Кај луѓето, психијатарот Даниел Стерн ова го нарече афективно усогласување: да одговориш на нечие чувство во неговото темпо и јачина, наместо да го копираш.
-
-Целиот текст, Камертон: за усогласувањето, е на jasnota.mk. Зачувај ја објавава за следниот пат кога некому ќе му треба да го слушнеш.
-
-${NTmk}`
+      mk: '„Пуштете му Моцарт на бебето, ќе биде попаметно.“ Оваа реченица кружи повеќе од триесет години.\n\n' +
+        'Пресудата: мит. Студијата од 1993 мерела краткотрајно подобрување на просторни задачи кај 36 студенти, не интелигенција. Репликациите не го повторија ефектот, а кога ќе се изедначат будноста и расположението, „Моцартовиот ефект“ исчезнува.\n\n' +
+        'Слушај Моцарт затоа што е убав, не затоа што ќе те направи попаметен/а. А кога ќе прочиташ „научно докажано“, прашај: колку студии, колку луѓе, дали е повторено?\n\n' +
+        'Ознака: силни докази. Извори: последниот слајд. Целиот текст: линкот во био.',
+      en: 'Myth vs science: there is no specific Mozart effect on intelligence – a small 1993 finding, failed replications and meta-analyses.'
     },
-    tags: ['jasnota', 'psychonote', 'attunement', 'developmentalpsychology', 'musicandpsychology', 'психологија'],
-    audio: '—'
+    tags: ['јаснота', 'митнаспротинаука', 'моцартовефект', 'mozarteffect', 'musicpsychology'],
+    story: {
+      tq: 'Дали Моцарт нè прави <em>попаметни?</em>',
+      source: { id: 'pietschnig2010', line: 'Околу 40 студии, над 3.000 учесници: малку доказ за специфичен Моцартов ефект.', ev: 'strong' },
+      ask: { k: 'poll', q: 'Кој мит <em>следно?</em>', a: '„Музиката помага при учење“', b: '„Професионалците немаат трема“', pa: 58, note: 'победникот: неделата 9 · резултатите се пример' }
+    }
   },
 
   /* ---------------- 5 ---------------- */
   {
-    id: 'p05', n: 5, date: '2026-11-06', time: '20:30', fmt: 'reel', pillar: 'sound', bar: 'I', b: 5, g: 'c',
-    title: { en: 'Ten minutes before', mk: 'Десет минути пред' },
-    goal: ['reach', 'follows'],
-    why: 'First image of the long group. Backstage with Orchestra DIVA: a door of light, nothing staged.',
-    link: { path: 'website/journal/stage-fright/', label: 'jasnota.mk/journal/stage-fright' },
-    usertags: ['chamber_orchestra_diva'],
-    photos: ['extra-01'],
-    cover: {
-      alt: 'Reel cover: a dark backstage corridor, a stage door ajar with a thin vertical line of light. Text low in the frame: Ten minutes before. Footnote: Orchestra DIVA, backstage.',
-      html: h.ph('slit', 'extra-01') + '<div class="pc on-photo"><div class="push">' + h.q('Ten minutes <em>before.</em>', 's') + '</div>' +
-        h.row(h.meta('Orchestra DIVA · backstage'), h.meta('00:28'), 'margin-top:5cqi') + '</div>'
-    },
-    reel: {
-      length: '28 s', split: '8 + 8 + 12',
-      audio: 'Original sound recorded backstage: the orchestra tuning behind the door, footsteps, her breath. No added music. Film with the orchestra’s permission.',
-      shots: [
-        { t: '00–08', shot: 'Backstage corridor, stage door ajar, a line of light. Her hands, cold, rubbed together in close-up.', sound: 'Orchestra tuning, muffled through the door.', os: { en: 'Ten minutes before I sing, my hands go cold.', mk: 'Десет минути пред да запеам, рацете ми се ладат.' }, ph: 'slit', slot: 'extra-01' },
-        { t: '08–16', shot: 'Close on her collarbone and breath riding high; her hand comes to rest on her sternum.', sound: 'Breath, the tuning A held long.', os: { en: 'Fear and excitement share one heartbeat.', mk: 'Стравот и возбудата делат исто чукање на срцето.' }, ph: 'rim' },
-        { t: '16–28', shot: 'She walks to the stage door; the camera stays in the corridor as she goes through into the light, back to camera. The door closes. Hold 2 s.', sound: 'Applause swells, door shuts, near-silence.', os: { en: 'I don’t tell myself to calm down. I say: I’m excited.', mk: 'Не си велам да се смирам. Си велам: возбудена сум.' }, ph: 'slit', slot: 'extra-01' }
-      ]
-    },
+    id: 'w05', n: 5, date: '2026-11-30', pillar: 2, fmt: 'text', web: true,
+    title: 'Перфекционизмот кај музичарите: кога високите стандарди помагаат, а кога пречат',
+    title_en: 'Perfectionism in musicians: when high standards help and when they hurt',
+    rq: 'Кои аспекти на перфекционизмот се поврзани со мотивација и постигнување, а кои со вознемиреност и анксиозност при изведба?',
+    why: 'Bridges week 1 (performance anxiety) and week 8 (impostor phenomenon); central to the founder’s research interest.',
+    ethics: 'Correlational evidence stated as such; no “test yourself” checklists that read as diagnosis.',
+    src: [
+      { t: 'cover-text', h: 'Две лица на <em>перфекционизмот</em>', dek: 'Кога високите стандарди помагаат, а кога пречат' },
+      { t: 'compare', a: { h: '<em>Стремежи</em>', p: 'Високи лични стандарди. Понекогаш одат заедно со мотивација, труд и постигнување.' },
+        b: { h: '<em>Загрижености</em>', p: 'Страв од грешка, сомнеж, чувство дека другите очекуваат совршенство. Доследно одат заедно со вознемиреност.' },
+        ev: 'strong', c: ['stoeber2006'] },
+      { t: 'text', h: 'Кај млади <em>музичари</em>',
+        p: 'Кај 146 млади музичари, стремежите одеа заедно со внатрешна мотивација, повеќе труд и постигнувања; негативните реакции на грешка – со повеќе вознемиреност.',
+        ev: 'early', c: ['stoeber2007'] },
+      { t: 'num', num: '284', h: '<em>студии</em>',
+        p: 'Мета-анализата покажува дека перфекционизмот е поврзан со повеќе форми на психолошки тешкотии – загриженостите посилно од стремежите. Поврзаност, не причина.',
+        ev: 'strong', c: ['limburg2017'] },
+      { t: 'text', h: 'Расте низ <em>генерациите</em>',
+        p: 'Кај 41.641 студент (1989–2016) сите форми на перфекционизам растат – најмногу чувството дека другите бараат совршенство од нас. Податоците се од САД, Канада и Велика Британија.',
+        ev: 'moderate', c: ['curran2019'] },
+      { t: 'text', h: 'Врската со <em>тремата</em>',
+        p: 'Кај 100 унгарски музичари, социјалната фобија, родителската критика и сомнежот во сопствените постапки ја предвидуваа анксиозноста при изведба.',
+        ev: 'early', c: ['dobos2019'] },
+      { t: 'known',
+        known: ['Перфекционизмот има две лица.', 'Загриженостите одат заедно со вознемиреност и трема.', { t: 'Сочувството кон себе е поврзано со помалку анксиозност и стрес.', c: ['macbeth2012'] }],
+        unknown: ['Што е причина, а што последица.', 'Дали има „здрав“ перфекционизам – дебатата трае.', 'Податоци за музичарите во Македонија.'],
+        help: 'Ако стравот од грешка ти го одзема музицирањето или секојдневието, разговарај со психолог или психотерапевт.' },
+      { t: 'sources', ids: ['stoeber2006', 'stoeber2007', 'limburg2017', 'curran2019', 'dobos2019', 'macbeth2012'], eth: NOTE, more: MORE }
+    ],
     caption: {
-      en: `Ten minutes before a concert with Orchestra DIVA. Cold hands, dry mouth, a heart that has started the song a few bars early.
-
-I have stage fright before every performance. Studying psychology didn’t take it away, but it changed what I think it is: the same racing heart can be read as fear, or as excitement. In 2014 the researcher Alison Wood Brooks found that people who told themselves “I’m excited” before singing karaoke sang more accurately than those who tried to calm down.
-
-So that’s what I say in the corridor. Some nights it feels like a lie. I say it anyway.
-
-The essay, Stage fright: when your body sings before you do, is on jasnota.mk. Filmed backstage with @chamber_orchestra_diva.`,
-      mk: `Десет минути пред концерт со Оркестарот DIVA. Ладни раце, сува уста, срце што ја почнало песната неколку такта порано.
-
-Имам трема пред секој настап. Психологијата не ми ја одзеде, но го смени она што мислам дека е: истото забрзано срце може да се прочита како страв или како возбуда. Во 2014 година истражувачката Алисон Вуд Брукс покажала дека луѓето што пред караоке си рекле „возбуден/а сум“ пееле попрецизно од оние што се обидувале да се смират.
-
-Тоа го велам и јас во ходникот. Некои вечери звучи како лага. Сепак го велам.
-
-Текстот Трема: кога телото запее пред тебе е на jasnota.mk.`
+      mk: 'Високите стандарди се дел од секое сериозно музицирање. Но перфекционизмот има две лица.\n\n' +
+        'Перфекционистичките стремежи (високи лични стандарди) понекогаш одат заедно со мотивација и постигнување. Перфекционистичките загрижености (страв од грешка, сомнеж, чувство дека другите очекуваат совршенство) доследно одат заедно со вознемиреност и со посилна трема.\n\n' +
+        'Повеќето од овие податоци се корелациски: покажуваат поврзаност, не причина.\n\n' +
+        'Ова не е дијагноза ни терапија. Ако стравот од грешка ти го одзема музицирањето или секојдневието, разговарај со психолог или психотерапевт.\n\n' +
+        'Извори: последниот слајд. Целиот текст: линкот во био.',
+      en: 'Perfectionism in musicians: high standards (strivings) versus fear of mistakes (concerns), and what each is linked to.'
     },
-    tags: ['jasnota', 'stagefright', 'performanceanxiety', 'orchestradiva', 'трема', 'битола']
+    tags: ['јаснота', 'перфекционизам', 'музичари', 'perfectionism', 'musicianswellbeing'],
+    story: {
+      tq: 'Кога високите стандарди помагаат, а кога <em>пречат?</em>',
+      source: { id: 'curran2019', line: 'Перфекционизмот расте од 1989 до 2016 – најмногу чувството дека другите бараат совршенство од нас.', ev: 'moderate' },
+      ask: { k: 'question', q: 'Што те интересира за перфекционизмот и <em>музиката?</em>', note: 'ги читаме сите; објавуваме само со дозвола' }
+    }
   },
 
   /* ---------------- 6 ---------------- */
   {
-    id: 'p06', n: 6, date: '2026-11-09', time: '20:30', fmt: 'single', pillar: 'rest', bar: 'I', b: 6, g: 'c',
-    title: { en: 'Bitola, 21:40', mk: 'Битола, 21:40' },
-    goal: ['comments', 'follows'],
-    why: 'Image only, location as a footnote. Roots, quietly: where she lives and sings.',
-    location: 'Bitola, Macedonia',
-    photos: ['bitola'],
-    slides: [{
-      alt: 'Photo: Širok Sokak in Bitola at night after the shops have closed, street lamps receding as points of light, almost nobody on the street. Small text: Bitola, Širok Sokak, 21:40.',
-      html: h.ph('street', 'bitola', '<span class="lamps"></span><span class="tower"></span>') + '<div class="pc"><p class="meta push">Bitola · Širok Sokak · 21:40</p></div>'
-    }],
+    id: 'w06', n: 6, date: '2026-12-07', pillar: 1, fmt: 'text', web: true,
+    title: 'Што слушавте на седумнаесет? Музика, меморија и идентитет',
+    title_en: 'What were you listening to at seventeen? Music, memory and identity',
+    rq: 'Зошто музиката од доцната адолесценција и раната зрелост останува најсилно врзана за спомените и идентитетот?',
+    why: 'Rewrites old journal piece 06 with verified sources; a strong engagement topic without exposing personal data.',
+    ethics: 'Readers’ songs and stories are never published without explicit consent; on dementia, no promises of cure.',
+    src: [
+      { t: 'cover-text', h: 'Што слушавте на <em>седумнаесет?</em>', dek: 'Музика, меморија и идентитет' },
+      { t: 'num', num: '10–30', h: '<em>години</em>',
+        p: 'Од тој период имаме несразмерно многу спомени – „грпка на спомените“ (reminiscence bump). Наодот е многукратно реплициран.',
+        ev: 'strong', c: ['rubin1997'] },
+      { t: 'num', num: '~24', h: '<em>години</em>',
+        p: 'Вкусот за популарна музика има врв кај песните што биле популарни околу 24-тата година од нашиот живот. Истражувачки наод од американски примерок.',
+        ev: 'early', c: ['holbrook1989'] },
+      { t: 'text', h: 'Музиката на нашите <em>родители</em>',
+        p: 'Младите имаат спомени и наклонетост и кон музиката од младоста на своите родители – „каскадни“ грпки. Објаснувањето преку домашната средина е толкување.',
+        ev: 'early', c: ['krumhansl2013'] },
+      { t: 'text', h: 'Песните што нè <em>граделе</em>',
+        p: 'Кај луѓе над 40 години, само лично значајните песни правеа грпка на спомените – во склад со идејата дека тогаш го градиме идентитетот.',
+        ev: 'early', c: ['rathbone2017'] },
+      { t: 'known',
+        known: ['Најмногу спомени имаме од 10 до 30 години.', { t: 'Околу 30% од пуштените популарни песни будат автобиографски спомени.', c: ['janata2007'] }, { t: 'Кај деменција, музичките интервенции веројатно помагаат на расположението, малку или воопшто не на когницијата.', c: ['vandersteen2018'] }],
+        unknown: ['Зошто токму тој период: идентитет, новина, емоции?', 'Колку важи надвор од САД и Велика Британија.'],
+        not: 'Музиката не ја лечи деменцијата.' },
+      { t: 'sources', ids: ['rubin1997', 'holbrook1989', 'krumhansl2013', 'rathbone2017', 'janata2007', 'vandersteen2018'], more: MORE }
+    ],
     caption: {
-      en: `Bitola on a weeknight, after the shops on Širok Sokak have closed.
-
-This is where I live and sing. I like the street best at this hour, when you can hear your own steps, and sometimes someone practising behind a window.
-
-Where do you go when you need to hear yourself think?`,
-      mk: `Битола, обична вечер, откако ќе се затворат дуќаните на Широк сокак.
-
-Тука живеам и пеам. Улицата најмногу ја сакам во овој час, кога ги слушаш сопствените чекори, а понекогаш и некого што вежба зад некој прозорец.
-
-Каде одиш кога ти треба да си ги слушнеш мислите?`
+      mk: 'Што слушаше кога имаше седумнаесет? Најверојатно го знаеш одговорот веднаш.\n\n' +
+        'Од годините меѓу 10 и 30 имаме несразмерно многу спомени. Психологијата тоа го вика грпка на спомените (reminiscence bump). И музичкиот вкус и спомените врзани за песни имаат врв токму тогаш, веројатно затоа што тогаш го градиме идентитетот.\n\n' +
+        'Во каруселот: каскадните грпки (музиката на нашите родители), лично значајните песни и што знаеме за музиката и деменцијата, без ветувања.\n\n' +
+        'Ако сакаш, напиши ни песна и година во сториите. Ништо не објавуваме без твоја дозвола.\n\n' +
+        'Извори: последниот слајд. Целиот текст: линкот во био.',
+      en: 'Why music from our late teens and early twenties stays tied to memory and identity: the reminiscence bump.'
     },
-    tags: ['jasnota', 'bitola', 'битола', 'northmacedonia', 'широксокак'],
-    audio: '—'
+    tags: ['јаснота', 'музикаимеморија', 'психологијанамузиката', 'reminiscencebump', 'musicpsychology'],
+    story: {
+      tq: 'Што слушаше на <em>седумнаесет?</em>',
+      source: { id: 'rubin1997', line: 'Најмногу спомени имаме од возраста 10–30 години; наодот е многукратно реплициран.', ev: 'strong' },
+      ask: { k: 'question', q: 'Што слушаше на <em>седумнаесет?</em>', ph: 'песна + година…', note: 'објавуваме анонимно и само со твоја дозвола' }
+    }
   },
 
   /* ---------------- 7 ---------------- */
   {
-    id: 'p07', n: 7, date: '2026-11-11', time: '20:30', fmt: 'carousel', pillar: 'songs', bar: 'I', b: 7, g: 'c',
-    title: { en: 'Why sad songs make us calmer', mk: 'Зошто тажните песни нè смируваат' },
-    goal: ['saves', 'comments', 'site visits'],
-    why: 'Journal 02, retold in eight slides. Vinyl bleeds off the cover; the cinnabar label dot is the only colour in bar I.',
-    link: { path: 'website/journal/why-sad-songs-make-us-calmer/', label: 'jasnota.mk/journal/why-sad-songs-make-us-calmer' },
-    photos: ['extra-02'],
-    slides: [
-      { alt: 'Photo: a record on a turntable, cropped so it bleeds off the top right, one small red label dot. Text: Why sad songs make us calmer.',
-        html: h.ph('vinyl', 'extra-02', '<div class="disc"></div>') + '<div class="pc on-photo"><div class="push">' + h.q('Why sad songs make us <em>calmer</em>', 's') + '</div>' + h.row(h.meta('Journal 02'), h.meta('1/8'), 'margin-top:4cqi') + '</div>' },
-      { alt: 'Text: Not happier. Calmer. When I’m sad, I don’t reach for cheerful music. I reach for the saddest song I know.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">02/08</p>' + h.q('Not happier. <em>Calmer.</em>', 's', 'margin-top:12cqi') +
-          h.body('When I’m sad, I don’t reach for cheerful music. I reach for the saddest song I know. For years I thought that said something bad about me.', 'margin-top:5cqi') + '</div>' },
-      { alt: 'Text: A sad song speaks in a sad voice. Slower tempo, lower pitch, softer touch, falling phrases. Music and speech use much the same code for emotion. Source: Juslin and Laukka, 2003.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">03/08</p>' + h.q('A sad song speaks in a sad <em>voice.</em>', 's', 'margin-top:12cqi') +
-          h.body('Slower tempo, lower pitch, softer touch, phrases that fall. Reviewing over a hundred studies, Patrik Juslin and Petri Laukka found that music and speech use much the same code for emotion.', 'margin-top:5cqi') + h.meta('Juslin & Laukka, 2003', 'margin-top:auto') + '</div>' },
-      { alt: 'Text: In music, sadness is safe. Listeners heard sad music as sad but felt it as less sad, often as tender. Source: Kawakami and colleagues, 2013.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">04/08</p>' + h.q('In music, sadness is <em>safe.</em>', 's', 'margin-top:12cqi') +
-          h.body('In a study by Ai Kawakami and colleagues, listeners heard sad music as sad, but felt it as less sad, and often as tender. The feeling arrives without a real loss.', 'margin-top:5cqi') + h.meta('Kawakami et al., 2013', 'margin-top:auto') + '</div>' },
-      { alt: 'A single large line of serif text: Sadness in a song is sadness with an ending.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">05/08</p><div class="push">' + h.q('Sadness in a song is sadness with an <em>ending.</em>', '', 'font-size:11cqi') + '</div>' + h.meta('a song has a last chord', 'margin-top:7cqi') + '</div>' },
-      { alt: 'Text: It is rarely only sad. People often named nostalgia, peacefulness and tenderness. Source: Taruffi and Koelsch, 2014.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">06/08</p>' + h.q('It is rarely <em>only</em> sad.', 's', 'margin-top:12cqi') +
-          h.body('Asked what sad music made them feel, people in a large survey by Liila Taruffi and Stefan Koelsch often named nostalgia, peacefulness and tenderness.', 'margin-top:5cqi') + h.meta('Taruffi & Koelsch, 2014', 'margin-top:auto') + '</div>' },
-      { alt: 'Text: Sometimes it isn’t helping. For people who tend to ruminate, sad music can become a loop rather than a release. Ask: is this song holding my sadness, or keeping it?',
-        html: '<div class="pc"><p class="meta" style="text-align:right">07/08</p>' + h.q('Sometimes it isn’t <em>helping.</em>', 's', 'margin-top:12cqi') +
-          h.body('For people who tend to ruminate, sad music can become a loop rather than a release. A quiet question: is this song holding my sadness, or keeping it?', 'margin-top:5cqi') + h.meta('Garrido & Schubert', 'margin-top:auto') + '</div>' },
-      { alt: 'Closing slide. Text: Which song do you play when you need to be sad properly? Tell me in the comments. Footnote: Journal 02, five minutes, and the mark.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">08/08</p><div class="push">' + h.q('Which song do you play when you need to be sad <em>properly?</em>', 's') +
-          h.body('Tell me in the comments. The full essay is on jasnota.mk.', 'margin-top:4cqi') + '</div>' + h.row(h.meta('Journal 02 · 5 min'), h.mark(6), 'margin-top:7cqi') + '</div>' }
+    id: 'w07', n: 7, date: '2026-12-14', pillar: 3, fmt: 'study', web: false,
+    title: 'Допамин и морници: студијата на Салимпур и соработниците (2011)',
+    title_en: 'Dopamine and chills: Salimpoor et al. (2011)',
+    rq: 'Дали силното задоволство од музика е поврзано со ослободување допамин и каде во мозокот се случува тоа – во исчекувањето или во врвот?',
+    why: 'Shows how neuroscience complements the psychological explanation from week 3, without hype.',
+    ethics: 'Avoid the “music is a drug” frame. Check the sample size in the full paper before publishing (the slides say “small, selected” on purpose).',
+    src: [
+      { t: 'cover-study', h: 'Допамин и <em>морници</em>', dek: 'Зошто апстрактни звуци ни носат толкаво задоволство?', cite: 'Salimpoor et al. (2011) · Nature Neuroscience' },
+      { t: 'card', h: 'Како беше <em>направена</em>', rows: [
+          ['Учесници', 'мала, селектирана група луѓе што редовно доживуваат морници'],
+          ['Музика', 'самоизбрана – делови што на секој учесник му носат морници'],
+          ['Метод', 'PET со раклоприд (го следи допаминот) и fMRI кај истите слушатели'],
+          ['Претходно', 'PET-студија (2001): посилни морници, поголема активност во регионите за награда']
+        ], c: ['salimpoor2011', 'blood2001'] },
+      { t: 'compare', h: '<em>Наодите</em>', a: { h: 'Исчекување', p: 'Каудатус: повеќе вклучен додека го чекаме врвниот момент.' },
+        b: { h: 'Врв', p: 'Нуклеус акумбенс: повеќе вклучен во самиот момент на морниците.' },
+        p: 'Допамин во стријатумот и во двете фази.', ev: 'early', c: ['salimpoor2011'] },
+      { t: 'list', h: '<em>Ограничувањата</em>', items: [
+          'Мал и селектиран примерок.',
+          'Самоизбрана музика: тешко е да се одвои музиката од личните спомени.',
+          'Активност во регион на мозокот не е исто што и доживување.'
+        ], c: ['salimpoor2011'] },
+      { t: 'text', h: 'Што дојде <em>потоа</em>',
+        p: 'Двојно слепа студија (n = 27): леводопа го зголеми, а рисперидон го намали задоволството од музика – прв директен доказ за причинска улога на допаминот. Постојат и здрави луѓе без задоволство од музика: музичка анхедонија.',
+        ev: 'early', c: ['ferreri2019', 'masherrero2014'] },
+      { t: 'known',
+        known: ['Силното музичко задоволство е поврзано со системот за награда.', 'Допаминот има улога и во исчекувањето, не само во врвот.'],
+        unknown: ['Зошто некои луѓе речиси никогаш немаат морници.', 'Колку важи за музика што не ја избираме сами.'],
+        not: 'Ова не значи дека „музиката е дрога“.' },
+      { t: 'sources', ids: ['salimpoor2011', 'blood2001', 'ferreri2019', 'masherrero2014'] }
     ],
     caption: {
-      en: `Why do we choose sad songs when we’re already sad?
-
-Part of it is the sound: a sad song speaks in something very close to a sad human voice. Part of it is safety: in music, sadness arrives without a real loss, and it has a last chord. And part of it is company.
-
-But not always. If a song keeps you circling the same thought, it may be keeping your sadness rather than holding it. Worth noticing.
-
-Eight slides, four studies, one question at the end. The full essay is on jasnota.mk.
-
-Tell me the song you play when you need to be sad properly. I’ll read every one.`,
-      mk: `Зошто избираме тажни песни кога веќе сме тажни?
-
-Дел од одговорот е во звукот: тажната песна зборува со нешто многу блиску до тажен човечки глас. Дел е во безбедноста: во музиката тагата доаѓа без вистинска загуба, и има последен акорд. А дел е во друштвото.
-
-Но не секогаш. Ако една песна те врти во круг околу истата мисла, можеби не ја држи твојата тага, туку ја задржува. Вреди да се забележи.
-
-Осум слајда, четири истражувања, едно прашање на крајот. Целиот текст е на jasnota.mk.
-
-Кажи ми која песна ја пушташ кога ти треба да бидеш тажен или тажна како што треба. Ќе ги прочитам сите.`
+      mk: 'Зошто апстрактни звуци можат да ни донесат толкаво задоволство?\n\n' +
+        'Студијата на Салимпур и соработниците (2011) го следеше ослободувањето допамин при музика: во исчекувањето на врвниот момент и во самиот врв, во различни делови од стријатумот.\n\n' +
+        'Примерокот е мал и селектиран, а музиката самоизбрана. Подоцнежна фармаколошка студија даде прв директен доказ дека допаминот има причинска улога. Тоа сепак не значи дека „музиката е дрога“.\n\n' +
+        'Ознака: рани/ограничени докази. Извори: последниот слајд.',
+      en: 'Salimpoor et al. (2011): dopamine release during the anticipation and the peak of musical pleasure – what it shows and what it doesn’t.'
     },
-    tags: ['jasnota', 'musicpsychology', 'sadsongs', 'musicandemotion', 'психологија', 'музика'],
-    audio: '—'
+    tags: ['јаснота', 'морници', 'приказнастудија', 'musicandthebrain', 'musicpsychology'],
+    story: {
+      tq: 'Што се случува во мозокот при <em>морници?</em>',
+      source: { id: 'ferreri2019', line: 'Двојно слепа студија (n = 27): леводопа го зголеми, рисперидон го намали задоволството од музика.', ev: 'early' },
+      ask: { k: 'quiz', q: 'Кој дел повеќе се вклучува во <em>исчекувањето?</em>', opts: ['каудатус', 'нуклеус акумбенс', 'малиот мозок'], right: 0, note: 'одговорот е на слајд 3' }
+    }
   },
 
   /* ---------------- 8 ---------------- */
   {
-    id: 'p08', n: 8, date: '2026-11-13', time: '20:30', fmt: 'reel', pillar: 'sound', light: true, bar: 'II', b: 1, g: 'a',
-    title: { en: 'One note — with Orchestra DIVA', mk: 'Една нота — со Оркестарот DIVA' },
-    goal: ['reach', 'follows', 'collab audience'],
-    collab: 'chamber_orchestra_diva',
-    why: 'Downbeat of bar II, on paper, one column to the right. A Collab post: it appears on both profiles and shares one set of likes and comments.',
-    link: { path: 'website/journal/tuning-fork-on-attunement/', label: 'jasnota.mk/journal/tuning-fork-on-attunement' },
-    photos: ['extra-05'],
-    cover: {
-      light: true,
-      alt: 'Reel cover on off-white. A very large italic serif letter A. Below: Before every concert, everyone listens for one note. Footnote: 440 Hz, Jasnota with Orchestra DIVA.',
-      html: '<div class="pc">' + h.row(h.meta('with Orchestra DIVA'), h.meta('00:35')) +
-        '<p class="q" style="font-size:54cqi;line-height:.78;margin-top:auto;letter-spacing:-.04em"><em>A</em></p>' +
-        h.q('Before every concert, everyone listens for one <em>note.</em>', 'xs', 'margin-top:4cqi') + h.meta('440 Hz · Jasnota × DIVA', 'margin-top:5cqi') + '</div>'
-    },
-    reel: {
-      length: '35 s', split: '10 + 10 + 15',
-      audio: 'Original sound: the orchestra tuning, recorded live at a DIVA rehearsal or before a concert, with permission. No repertoire, so no composition rights are involved.',
-      shots: [
-        { t: '00–10', shot: 'Wide from the back of the stage: musicians seated, chatter. The oboe (or the concertmaster) gives the A; the room quiets.', sound: 'Chatter fades into a single A.', os: { en: 'Before every concert, everyone listens for one note.', mk: 'Пред секој концерт, сите слушаат една нота.' }, ph: 'stands', slot: 'extra-05' },
-        { t: '10–20', shot: 'Close-ups, one beat each: a violinist’s ear tilted to the strings, fingers on a peg, a cello bow, Jasna humming the A under her breath.', sound: 'The A spreads through the sections.', os: { en: 'Nobody plays the same instrument. Everyone finds the same pitch.', mk: 'Никој не свири на ист инструмент. Сите го наоѓаат истиот тон.' }, ph: 'strings' },
-        { t: '20–35', shot: 'Wide again: the tuning settles into one sustained sound. The conductor lifts both hands. Two seconds of silence. Cut to black, end card.', sound: 'Settled A, then silence.', os: { en: 'That’s attunement. Not sounding the same — finding each other.', mk: 'Тоа е усогласување. Не да звучиме исто, туку да се најдеме.' }, ph: 'stands', slot: 'extra-05' }
-      ]
-    },
+    id: 'w08', n: 8, date: '2026-12-21', pillar: 2, fmt: 'concept', web: false,
+    title: 'Поим: феноменот на измамник',
+    title_en: 'Concept: the impostor phenomenon',
+    rq: 'Што е феноменот на измамник, колку е чест и што знаеме (и не знаеме) за него кај луѓе со високи постигнувања?',
+    why: 'Common among music students and young professionals; linked to the founder’s own research, so the conflict of interest is disclosed on the slide.',
+    ethics: 'Mandatory conflict-of-interest disclosure (the founder co-authored the 2024 study); only what is in the paper. Never “diagnose” a “syndrome”.',
+    src: [
+      { t: 'cover-concept', no: '01', h: 'феномен на <em>измамник</em>', en: 'impostor phenomenon', dek: 'Кога успехот не се чувствува заслужен' },
+      { t: 'def', h: '<em>Дефиниција</em>', p: 'Упорно чувство дека не сме доволно способни и дека успехот е резултат на среќа или „измама“ – и покрај објективните достигнувања.',
+        note: 'Опишан е во 1978 година, од клинички набљудувања. Не е дијагноза.', ev: 'moderate', c: ['clance1978', 'bravata2020'] },
+      { t: 'num', num: '9–82%', h: 'Колку е <em>чест?</em>',
+        p: 'Преглед на 62 студии (14.161 учесник): опсегот зависи од прашалникот и прагот. Се јавува и кај мажите и кај жените и е поврзан со анксиозност, депресија и согорување.',
+        ev: 'moderate', c: ['bravata2020'] },
+      { t: 'text', h: 'Во <em>музиката</em>',
+        p: '„Поминав на аудицијата, но комисијата сигурно згрешила.“ Ваква мисла е типична за феноменот (пример за илустрација, не наод). Кај музичарите феноменот е речиси неистражуван.',
+        ev: 'open', c: ['bravata2020'] },
+      { t: 'text', h: 'Една студија <em>од Македонија</em>',
+        p: 'Кај 36 надарени средношколци, самопочитта има посредувачка улога меѓу перфекционизмот и феноменот на измамник (според апстрактот). Мал пресечен примерок; не е со музичари. Откривање: коавторка е уредничката на Јаснота.',
+        ev: 'early', c: ['dimitrovska2024'] },
+      { t: 'sources', ids: ['clance1978', 'bravata2020', 'dimitrovska2024'], eth: NOTE + ' Нема проверени третмани за феноменот (до 2018 немало објавени студии за третман).' }
+    ],
     caption: {
-      en: `Before every concert, the orchestra stops and listens for one note: A, usually tuned to around 440 vibrations a second. The oboe gives it, or the concertmaster, and then every instrument in the room finds it in its own voice.
-
-I’ve stood inside that sound for years with Orchestra DIVA and only lately noticed what it is. It’s attunement, the thing psychology describes when one person tunes in to another. Nobody has to sound the same. They just have to find each other.
-
-A collaboration with @chamber_orchestra_diva. Their next concerts are on their profile.`,
-      mk: `Пред секој концерт оркестарот застанува и слуша една нота: А, обично наштимано на околу 440 треперења во секунда. Ја дава обоата или концертмајсторот, а потоа секој инструмент во салата ја наоѓа со својот глас.
-
-Со години стојам во тој звук со Оркестарот DIVA и дури неодамна сфатив што е тоа. Усогласување, она што психологијата го опишува кога еден човек се наштимува на друг. Никој не мора да звучи исто. Само треба да се најдат.
-
-Соработка со @chamber_orchestra_diva. Нивните следни концерти се на нивниот профил.`
+      mk: 'Поминал/а си на аудиција, а мислиш дека комисијата згрешила? Тоа чувство има име: феномен на измамник (impostor phenomenon).\n\n' +
+        'Тоа е упорно чувство дека успехот не е заслужен, и покрај доказите. Не е дијагноза. Колку е чест зависи од прашалникот: проценките се движат од 9% до 82%.\n\n' +
+        'Откривање на интерес: уредничката на Јаснота е коавторка на студијата од 2024 година што ја спомнуваме. Пренесуваме само она што е во трудот.\n\n' +
+        'Ова не е дијагноза ни терапија. Ако ова чувство ти го отежнува учењето, работата или настапите, разговарај со психолог или психотерапевт.\n\n' +
+        'Извори: последниот слајд.',
+      en: 'Concept: the impostor phenomenon – a persistent sense that success isn’t deserved. Not a diagnosis; how it is measured matters.'
     },
-    tags: ['jasnota', 'orchestradiva', 'chamberorchestra', 'attunement', 'bitola', 'оркестар'],
-    notes: 'Send the Collab invite to @chamber_orchestra_diva when publishing; agree the caption and the cut with them by Wed 11 Nov.'
+    tags: ['јаснота', 'поим', 'феноменнаизмамник', 'impostorphenomenon', 'musicianswellbeing'],
+    story: {
+      tq: 'Кога успехот не се чувствува <em>заслужен.</em>',
+      source: { id: 'bravata2020', line: '62 студии, 14.161 учесник: проценките варираат од 9% до 82%, зависно од прашалникот.', ev: 'moderate' },
+      ask: { k: 'answers', h: 'Ваши <em>прашања</em>', q: 'од кутијата „Што те интересира?“', items: ['[ прашање од читател, со дозвола ]', '[ прашање од читател, со дозвола ]', '[ прашање од читател, со дозвола ]'] }
+    }
   },
 
   /* ---------------- 9 ---------------- */
   {
-    id: 'p09', n: 9, date: '2026-11-16', time: '20:30', fmt: 'single', pillar: 'sound', bar: 'II', b: 2, g: 'a',
-    title: { en: 'A wrong note is not a wrong person', mk: 'Погрешна нота не е погрешен човек' },
-    goal: ['shares', 'saves'],
-    why: 'One line, one staff. The displaced note is the only cinnabar in bar II.',
-    link: { path: 'website/journal/the-voice-i-used-to-hide/', label: 'jasnota.mk/journal/the-voice-i-used-to-hide' },
-    slides: [{
-      alt: 'Black square. Serif text: A wrong note is not a wrong person. Below, a thin five-line staff with five notes climbing; the fifth note sits too low and is the only red mark.',
-      html: '<div class="pc">' + h.q('A wrong note is not a wrong <em>person.</em>', '', 'font-size:11cqi;padding-right:6cqi') +
-        '<div class="push"><svg class="g" viewBox="0 0 200 60" aria-hidden="true"><g class="stroke" stroke-width=".7" style="color:#3a3a3f"><path d="M0 10H200M0 18H200M0 26H200M0 34H200M0 42H200"/></g>' +
-        '<g fill="currentColor"><ellipse cx="26" cy="46" rx="5" ry="3.6" transform="rotate(-20 26 46)"/><ellipse cx="62" cy="38" rx="5" ry="3.6" transform="rotate(-20 62 38)"/><ellipse cx="98" cy="30" rx="5" ry="3.6" transform="rotate(-20 98 30)"/><ellipse cx="134" cy="22" rx="5" ry="3.6" transform="rotate(-20 134 22)"/></g>' +
-        '<g class="stroke" stroke-width="1"><path d="M30.6 45V20M66.6 37V12M102.6 29V4M138.6 21V-4"/></g>' +
-        '<ellipse cx="170" cy="34" rx="5" ry="3.6" transform="rotate(-20 170 34)" fill="#b4452c"/><path d="M174.6 33V8" stroke="#b4452c" stroke-width="1"/></svg>' +
-        h.row(h.meta('♩ = 60'), h.meta('jasnota'), 'margin-top:6cqi') + '</div></div>'
-    }],
+    id: 'w09', n: 9, date: '2026-12-28', pillar: 3, fmt: 'myth', web: false,
+    title: 'Мит наспроти наука: музиката во позадина помага при учење',
+    title_en: 'Myth vs science: background music helps you study',
+    rq: 'Дали музиката во позадина го подобрува или влошува читањето и учењето?',
+    why: 'Timed before the January exams; practical for pupils, students and parents. The topic won the week-4 story poll.',
+    ethics: 'No strict rules for individuals; stress individual variability.',
+    src: [
+      { t: 'cover-myth', h: 'Музиката во позадина помага при <em>учење.</em>“', dek: 'Мит или наука? Што покажуваат 65 студии.' },
+      { t: 'verdict', v: 'мит', sub: 'за читање и разбирање текст', h: 'Звукот во позадина има мал, но <em>доследен</em> негативен ефект врз читањето.', ev: 'strong', c: ['vasilev2018'] },
+      { t: 'num', num: '65', h: '<em>студии</em>',
+        p: 'Бајесова мета-анализа: бучава, говор и музика малку, но доследно го пречат читањето.',
+        ev: 'strong', c: ['vasilev2018'] },
+      { t: 'text', h: 'Најмногу пречи <em>текстот</em>',
+        p: 'Најголемо пречење прават разбирливиот говор и музиката со текст. Веројатно затоа што јазикот во ушите се натпреварува со јазикот на страницата.',
+        ev: 'moderate', c: ['vasilev2018'] },
+      { t: 'text', h: 'Зошто тогаш ја <em>сакаме?</em>',
+        p: 'Вкупниот ефект е близу нула затоа што се собираат спротивни ефекти: музиката малку го пречи читањето и меморијата, но може да го подобри расположението.',
+        ev: 'moderate', c: ['kampfe2011'] },
+      { t: 'takeaway', h: 'Што да земеме од <em>ова</em>', items: [
+          'За сложено читање: тишина или инструментална музика.',
+          'За рутински задачи музиката може да помогне на расположението.',
+          'Луѓето се разликуваат: забележи што важи за тебе.'
+        ], c: ['vasilev2018', 'kampfe2011'] },
+      { t: 'sources', ids: ['vasilev2018', 'kampfe2011'] }
+    ],
     caption: {
-      en: `Guilt says: I did something wrong. Shame says: I am wrong.
-
-Musicians know the difference in their bodies. A missed note lasts a fraction of a second; the shame after it can last the whole concert. It takes hold of the person, not just the mistake.
-
-If you played a wrong note somewhere this week, at work, in a conversation, on an actual stage: it was a note. It wasn’t you.
-
-More on shame and the voice in my first journal entry, The voice I used to hide, on jasnota.mk.`,
-      mk: `Вината вели: направив нешто погрешно. Срамот вели: јас сум погрешен.
-
-Музичарите ја чувствуваат разликата во телото. Промашената нота трае дел од секунда; срамот потоа може да трае цел концерт. Го зафаќа целиот човек, не само грешката.
-
-Ако оваа недела отсвири погрешна нота некаде, на работа, во разговор, на вистинска сцена: тоа беше нота. Не беше ти.
-
-Повеќе за срамот и гласот во мојот прв текст, Гласот што го криев, на jasnota.mk.`
+      mk: 'Учиш со слушалки? Овој мит е упорен затоа што музиката навистина може да ни го подобри расположението.\n\n' +
+        'Пресудата: мит, барем за читање и разбирање текст. Бајесова мета-анализа на 65 студии покажа мал, но доследен негативен ефект на звукот во позадина врз читањето. Најмногу пречат разбирливиот говор и музиката со текст.\n\n' +
+        'За сложено читање: тишина или инструментална музика. За рутински задачи, музиката може да помогне на расположението. Луѓето се разликуваат, па забележи што важи за тебе.\n\n' +
+        'Ознака: силни докази. Извори: последниот слајд.',
+      en: 'Myth vs science: background music doesn’t help reading – a small but consistent cost, largest with lyrics.'
     },
-    tags: ['jasnota', 'shame', 'perfectionism', 'musicians', 'срам'],
-    audio: '—'
+    tags: ['јаснота', 'митнаспротинаука', 'учење', 'backgroundmusic', 'musicpsychology'],
+    story: {
+      tq: 'Дали музиката помага при <em>учење?</em>',
+      source: { id: 'kampfe2011', line: 'Вкупниот ефект е близу нула, затоа што се собираат спротивни ефекти: читање наспроти расположение.', ev: 'moderate' },
+      ask: { k: 'poll', q: 'Кој мит после <em>празниците?</em>', a: '„Тажната музика е лоша за тебе“', b: '„432 Hz е поздрава музика“', pa: 47, note: 'резултатите се пример' }
+    }
   },
 
   /* ---------------- 10 ---------------- */
   {
-    id: 'p10', n: 10, date: '2026-11-18', time: '20:30', fmt: 'carousel', pillar: 'psycho', bar: 'II', b: 3, g: 'b',
-    title: { en: 'Psycho-note №02 — The impostor feeling', mk: 'Психо-нота №02 — Чувството на измамник' },
-    goal: ['saves', 'shares'],
-    why: 'The research-linked post. General, well-established psychology only; the 2024 study is credited, its findings are not stated.',
-    slides: [
-      { alt: 'Black slide, mark top left. Large serif text: The impostor feeling. Italic below: playing the part, waiting to be found out. Footnote: Psycho-note number 02.',
-        html: '<div class="pc">' + h.row(h.mark(7), h.meta('1/8')) + '<div class="push">' + h.q('The impostor <em>feeling</em>', '', 'font-size:12.5cqi') +
-          h.q('<em>playing the part, waiting to be found out</em>', 'xs', 'margin-top:2cqi;color:var(--ash)') + h.meta('Psycho-note №02', 'margin-top:6cqi') + '</div></div>' },
-      { alt: 'Text in quotation marks: Soon they’ll realise I don’t really know what I’m doing. Below: If you’ve had this thought after a success, not before a failure, you’re in large company.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">02/08</p>' + h.q('“Soon they’ll realise I don’t really <em>know</em> what I’m doing.”', 's', 'margin-top:12cqi') +
-          h.body('If you’ve had this thought after a success, not before a failure, you’re in large company.', 'margin-top:5cqi') + '</div>' },
-      { alt: 'Text: It has a name. In 1978 Pauline Clance and Suzanne Imes described the impostor phenomenon: a lasting sense of being a fraud despite clear evidence of competence.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">03/08</p>' + h.q('It has a <em>name.</em>', 's', 'margin-top:12cqi') +
-          h.body('In 1978 the psychologists Pauline Clance and Suzanne Imes described the impostor phenomenon: a lasting sense of being a fraud, despite clear evidence of competence.', 'margin-top:5cqi') + h.meta('Clance & Imes, 1978', 'margin-top:auto') + '</div>' },
-      { alt: 'Text: It isn’t a diagnosis. You won’t find it in diagnostic manuals. It is a pattern of thinking and feeling, common among high achievers and people starting something new.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">04/08</p>' + h.q('It isn’t a <em>diagnosis.</em>', 's', 'margin-top:12cqi') +
-          h.body('You won’t find it in diagnostic manuals. It is a pattern of thinking and feeling, common among high achievers and people starting something new.', 'margin-top:5cqi') + '</div>' },
-      { alt: 'Diagram: a circle with four points. A new task. Over-prepare, or put it off. It goes well. It was luck. Then back to a new task. Text: The impostor cycle. Success doesn’t count, so the next task feels just as risky.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">05/08</p>' + h.q('The impostor <em>cycle</em>', 's', 'margin-top:4cqi') +
-          '<svg class="g" viewBox="0 0 200 150" aria-hidden="true" style="margin-top:3cqi"><circle cx="100" cy="75" r="48" class="stroke" stroke-width=".9" stroke-dasharray="3 4" style="color:#8c8a85"/>' +
-          '<g fill="currentColor"><circle cx="100" cy="27" r="2.4"/><circle cx="148" cy="75" r="2.4"/><circle cx="100" cy="123" r="2.4"/><circle cx="52" cy="75" r="2.4"/></g>' +
-          '<g font-family="Onest, sans-serif" font-size="7.6" fill="currentColor" font-weight="300"><text x="100" y="17" text-anchor="middle">a new task</text><text x="156" y="72">over-prepare,</text><text x="156" y="81">or put it off</text><text x="100" y="138" text-anchor="middle">it goes well</text><text x="44" y="78" text-anchor="end"><tspan font-style="italic">“it was luck”</tspan></text></g></svg>' +
-          h.body('Success doesn’t count, so the next task feels just as risky.', 'margin-top:auto') + '</div>' },
-      { alt: 'Text: Its close relative: perfectionism. Researchers often separate two sides: high standards themselves, and the worry about mistakes and other people’s judgement. It is mostly the second side that hurts.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">06/08</p>' + h.q('Its close relative: <em>perfectionism.</em>', 's', 'margin-top:12cqi') +
-          h.body('Researchers often separate two sides: high standards themselves, and the worry about mistakes and other people’s judgement. It is mostly the second side that hurts.', 'margin-top:5cqi') + '</div>' },
-      { alt: 'Text: Why this matters to me. In 2024 I co-authored a study on perfectionism, self-esteem and impostor feelings among gifted students. I’ll write about the study itself separately. This post is the general psychology.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">07/08</p>' + h.q('Why this matters to <em>me</em>', 's', 'margin-top:12cqi') +
-          h.body('In 2024 I co-authored a study on perfectionism, self-esteem and impostor feelings among gifted students. I’ll write about the study itself separately. This post is the general psychology.', 'margin-top:5cqi') +
-          h.meta('International Slavic University · 2024', 'margin-top:auto') + '</div>' },
-      { alt: 'Closing slide. Text: Write down one thing you did well this week, and don’t add but. Footnotes: this is not therapy; the mark.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">08/08</p><div class="push">' + h.q('Write down one thing you did well this week. Don’t add <em>“but”.</em>', 's') + '</div>' +
-          h.row(h.meta('Explains. Not therapy.'), h.mark(6), 'margin-top:7cqi') + '</div>' }
+    id: 'w10', n: 10, date: '2027-01-04', pillar: 2, fmt: 'text', web: true,
+    title: 'Психолошка подготовка за настап: што има поддршка во истражувањата',
+    title_en: 'Psychological preparation for performance: what the research supports',
+    rq: 'Кои психолошки стратегии за подготовка на настап имаат емпириска поддршка и колку е таа силна?',
+    why: 'Practical at the start of the exam and audition season; follows weeks 1 and 2.',
+    ethics: 'General information, not an individual plan; repeat the referral for marked anxiety.',
+    src: [
+      { t: 'cover-text', h: 'Подготовка за <em>настап</em>', dek: 'Што има поддршка во истражувањата – и колку е таа силна' },
+      { t: 'text', h: 'Ментално <em>вежбање</em>',
+        p: 'Вежбањето во мислите, без движење, ја подобрува изведбата – помалку од физичкото вежбање. Кај експертни пијанисти помогнало кај тешки секвенци. Најдобро како дополнение.',
+        ev: 'moderate', c: ['driskell1994', 'bernardi2013'] },
+      { t: 'text', h: 'Фокус на <em>звукот</em>',
+        p: 'Вниманието насочено кон ефектот (звукот, фразата, намерата), а не кон самите движења, ја подобрува изведбата и учењето. Студиите со музичари се малку.',
+        ev: 'moderate', c: ['wulf2013'] },
+      { t: 'text', h: '„Кочење“ под <em>притисок</em>',
+        p: 'Под притисок почнуваме свесно да надгледуваме вештини што инаку се автоматски – и тие се распаѓаат. Вежбањето под набљудување го отстранило ефектот кај спортски задачи.',
+        ev: 'early', c: ['beilock2001'] },
+      { t: 'text', h: 'Симулација на <em>настап</em>',
+        p: 'Симулирани аудиции предизвикале реакции слични на вистинските кај напредни студенти по виолина (n = 11). Изводливо – но ефикасноста уште не е тестирана.',
+        ev: 'early', c: ['williamon2014'] },
+      { t: 'num', num: '332', h: '<em>инструменталисти</em>',
+        p: 'На вистински испит, самоефикасноста – верувањето дека ќе успееш – беше најдобриот мотивациски предиктор на оценката. Делумно го одразува и претходното вежбање.',
+        ev: 'early', c: ['mccormick2003'] },
+      { t: 'known',
+        known: ['Менталното вежбање помага, особено како дополнение.', 'Надворешниот фокус е доследен наод во моториката.'],
+        unknown: ['Колку овие стратегии ја намалуваат тремата кај музичари.', 'Која комбинација делува кај кого.'],
+        help: 'Ова се општи информации, не индивидуален план. Ако тремата е изразена, разговарај со психолог или психотерапевт.' },
+      { t: 'sources', ids: ['driskell1994', 'bernardi2013', 'wulf2013', 'beilock2001', 'williamon2014', 'mccormick2003'], eth: NOTE, more: MORE }
     ],
     caption: {
-      en: `Psycho-note №02 — The impostor feeling.
-
-The sense that you’re playing a part, and that sooner or later someone will notice. Pauline Clance and Suzanne Imes named it the impostor phenomenon in 1978. It isn’t a diagnosis; it’s a pattern, and it tends to visit people who are doing well.
-
-It often travels with perfectionism: less the high standards themselves than the fear of mistakes and of being judged.
-
-The topic is close to me. In 2024 I co-authored a study on perfectionism, self-esteem and impostor feelings among gifted students (International Slavic University). I’ll write about that study on its own; here, only the well-established basics.
-
-If these feelings are making everyday life hard, a psychologist or psychotherapist can help. ${NT}`,
-      mk: `Психо-нота №02 — Чувството на измамник.
-
-Чувството дека играш улога и дека порано или подоцна некој ќе забележи. Полин Кланс и Сузан Ајмс во 1978 година го нарекоа феномен на измамник (познат и како синдром на измамник). Не е дијагноза; тоа е образец, и често ги посетува луѓето на кои добро им оди.
-
-Често оди заедно со перфекционизмот: не толку со високите стандарди, колку со стравот од грешка и од туѓиот суд.
-
-Темата ми е блиска. Во 2024 година бев коавторка на истражување за перфекционизмот, самопочитта и синдромот на измамник кај надарените ученици (Меѓународен славјански универзитет). За тоа истражување ќе пишувам посебно; тука се само добро познатите основи.
-
-Ако овие чувства ти го отежнуваат секојдневието, психолог или психотерапевт може да помогне. ${NTmk}`
+      mk: 'Испитите и аудициите се пред врата. Што од психолошката подготовка за настап има поддршка во истражувањата?\n\n' +
+        'Менталното вежбање помага, но помалку од физичкото. Вниманието насочено кон звукот и намерата, а не кон прстите, ја подобрува изведбата. Вежбањето под набљудување може да го намали „кочењето“ под притисок. Симулацијата на настап е изводлива, но нејзината ефикасност уште не е тестирана.\n\n' +
+        'Ова се општи информации со ознака за доказите, не индивидуален план. Ако тремата е изразена, разговарај со психолог или психотерапевт.\n\n' +
+        'Извори: последниот слајд. Целиот текст: линкот во био.',
+      en: 'Psychological preparation for performance: mental practice, external focus, practising under pressure, simulation – and how strong the evidence is.'
     },
-    tags: ['jasnota', 'psychonote', 'impostorsyndrome', 'perfectionism', 'giftedstudents', 'синдромнаизмамник'],
-    audio: '—'
+    tags: ['јаснота', 'подготовказанастап', 'трема', 'performancepsychology', 'musicpsychology'],
+    story: {
+      tq: 'Што навистина помага пред <em>настап?</em>',
+      bg: { kind: 'sheet', slot: 'extra-06', alt: 'ноти на пулт со ознаки од молив; AI-генерирана' },
+      source: { id: 'wulf2013', line: 'Петнаесет години истражувања: надворешниот фокус ја подобрува изведбата и учењето.', ev: 'moderate' },
+      ask: { k: 'question', q: 'Каква подготовка пред настап те <em>интересира?</em>', note: 'ги читаме сите; објавуваме само со дозвола' }
+    },
+    notes: 'The Monday teaser story uses the sheet-music image (photos/extra-06.jpg) as atmosphere. It is an AI-generated stand-in: labelled in the alt text; replace with an owned photo when possible.'
   },
 
   /* ---------------- 11 ---------------- */
   {
-    id: 'p11', n: 11, date: '2026-11-20', time: '20:30', fmt: 'reel', pillar: 'psycho', bar: 'II', b: 4, g: 'b',
-    title: { en: 'Psycho-note №03 — Co-regulation', mk: 'Психо-нота №03 — Ко-регулација' },
-    goal: ['shares', 'reach'],
-    why: 'The physics demo as an explainer. Line-art cover keeps it in the word group.',
-    link: { path: 'website/journal/tuning-fork-on-attunement/', label: 'jasnota.mk/journal/tuning-fork-on-attunement' },
-    cover: {
-      alt: 'Reel cover, black. Text: Two metronomes on one table. A line drawing of two metronomes on a shared base, their arms at different angles. Footnote: Psycho-note number 03, 28 seconds.',
-      html: '<div class="pc">' + h.q('Two metronomes on one <em>table</em>', 'xs', 'padding-right:8cqi;font-size:8.6cqi') + '<div class="push">' + h.metronomes() +
-        h.row(h.meta('Psycho-note №03'), h.meta('00:28'), 'margin-top:5cqi') + '</div></div>'
-    },
-    reel: {
-      length: '28 s', split: '8 + 8 + 12',
-      audio: 'Original sound only: two mechanical metronomes and room tone. No music, no voice-over.',
-      shots: [
-        { t: '00–08', shot: 'Top-down wide: a light wooden board resting on two empty tins, two metronomes started out of phase. One overhead lamp, black surroundings.', sound: 'Two clicking tempos, uneven.', os: { en: 'Two nervous systems.', mk: 'Два нервни системи.' }, art: '<div class="ph metro" aria-hidden="true">' + h.metronomes('position:absolute;left:12%;right:12%;width:76%;top:40%') + '</div>' },
-        { t: '08–16', shot: 'Alternating close-ups of the two arms; the board sways slightly under them.', sound: 'Clicks begin to converge.', os: { en: 'When we’re close, we start to fall into step.', mk: 'Кога сме блиску, почнуваме да одиме во чекор.' }, ph: 'keys' },
-        { t: '16–28', shot: 'Back to wide: perfect sync. At 24 s a hand stops both arms. Hold on stillness.', sound: 'One shared click, then silence.', os: { en: 'Co-regulation. A calm person beside you is a metronome.', mk: 'Ко-регулација. Мирниот човек до тебе е метроном.' }, art: '<div class="ph metro" aria-hidden="true">' + h.metronomes('position:absolute;left:12%;right:12%;width:76%;top:40%') + '</div>' }
-      ]
-    },
+    id: 'w11', n: 11, date: '2027-01-11', pillar: 1, fmt: 'text', web: true,
+    title: 'Пеењето заедно: што знаеме за музиката и поврзаноста',
+    title_en: 'Singing together: what we know about music and social bonding',
+    rq: 'Дали заедничкото пеење и музицирање ги зближува луѓето и преку кои механизми?',
+    why: 'A winter topic with a link to our tradition of singing together, without claiming what hasn’t been studied locally.',
+    ethics: 'Do not claim that choral singing “heals”; say that local data does not exist.',
+    src: [
+      { t: 'cover-text', h: 'Пеењето <em>заедно</em>', dek: 'Што знаеме за музиката и поврзаноста' },
+      { t: 'text', h: 'Во секое <em>општество</em>',
+        p: 'Анализа на етнографски записи и снимки од општества ширум светот: музиката постои во секое набљудувано општество, во слични контексти – грижа за доенче, лекување, танц, љубов.',
+        ev: 'strong', c: ['mehr2019'] },
+      { t: 'text', h: 'Ефект на „кршење <em>мраз</em>“',
+        p: 'Во новоформирани групи следени седум месеци, пеачите се зближија побрзо од групите за ракотворби или креативно пишување. По третиот месец сите беа подеднакво поврзани.',
+        ev: 'early', c: ['pearce2015'] },
+      { t: 'text', h: 'Децата и <em>соработката</em>',
+        p: 'Четиригодишни деца што заедно пееле и свиреле потоа почесто спонтано си помагале отколку деца во слична игра без музика.',
+        ev: 'early', c: ['kirschner2010'] },
+      { t: 'text', h: 'Зошто? Две <em>хипотези</em>',
+        p: 'Синхронизацијата – чувство на „спојување“ со другите – и ослободувањето ендорфини при ритмичка активност. Директните тестови на механизмите се малку.',
+        ev: 'open', c: ['tarr2014'] },
+      { t: 'known',
+        known: ['Музиката е дел од секое проучено општество.', { t: 'Пеењето и музиката се поврзани со помала анксиозност и подобро расположение; мерењата се неуедначени.', c: ['daykin2018'] }],
+        unknown: ['Преку кои механизми.', 'Колку траат ефектите.', 'Заедничкото пеење кај нас: локални истражувања нема.'],
+        not: 'Хорското пеење не „лечи“.' },
+      { t: 'sources', ids: ['mehr2019', 'pearce2015', 'kirschner2010', 'tarr2014', 'daykin2018'], more: MORE }
+    ],
     caption: {
-      en: `Psycho-note №03 — Co-regulation.
-
-Put two metronomes on a board that can move, start them out of step, and wait. Soon they tick together: the board carries each one’s motion to the other.
-
-Nervous systems do something similar. A baby can’t calm itself alone; it borrows calm from a slower heartbeat, a voice that drops, a breath that lengthens. Psychologists call this co-regulation. Adults never fully stop doing it.
-
-Who is your steady metronome? Send this to them.
-
-${NT}`,
-      mk: `Психо-нота №03 — Ко-регулација.
-
-Стави два метронома на даска што може да се движи, пушти ги во различен такт и почекај. Наскоро чукаат заедно: даската го пренесува движењето од едниот на другиот.
-
-Нервните системи прават нешто слично. Бебето не може само да се смири; позајмува мир од побавно срце, од глас што се спушта, од здив што се издолжува. Психолозите тоа го викаат ко-регулација. Возрасните никогаш целосно не престануваат.
-
-Кој е твојот мирен метроном? Испрати му го ова.
-
-${NTmk}`
+      mk: 'Во секое проучено општество луѓето пеат. Дали заедничкото пеење нè зближува?\n\n' +
+        'Неколку студии сугерираат дека да: пеачите во новоформирани групи се зближиле побрзо, а децата што музицирале заедно почесто си помагале. Зошто е тоа така, сè уште е отворено прашање. Најчесто се спомнуваат синхронизацијата и ендорфините.\n\n' +
+        'Хорското пеење не „лечи“. А за заедничкото пеење кај нас нема локални истражувања – можеби токму тоа е најинтересното прашање.\n\n' +
+        'Извори: последниот слајд. Целиот текст: линкот во био.',
+      en: 'Singing together and social bonding: what the studies show, which mechanisms are proposed, and what remains open.'
     },
-    tags: ['jasnota', 'psychonote', 'coregulation', 'nervoussystem', 'metronome', 'психологија']
+    tags: ['јаснота', 'пеење', 'психологијанамузиката', 'socialbonding', 'musicpsychology'],
+    story: {
+      tq: 'Дали пеењето заедно нè <em>зближува?</em>',
+      source: { id: 'mehr2019', line: 'Музиката постои во секое набљудувано општество, во слични контексти.', ev: 'strong' },
+      ask: { k: 'poll', q: 'Пееш или свириш <em>со други?</em>', a: 'да, редовно', b: 'не, или ретко', pa: 41, note: 'резултатите се пример' }
+    }
   },
 
   /* ---------------- 12 ---------------- */
   {
-    id: 'p12', n: 12, date: '2026-11-23', time: '20:30', fmt: 'single', pillar: 'sound', bar: 'II', b: 5, g: 'c',
-    title: { en: 'The voice I used to hide', mk: 'Гласот што го криев' },
-    goal: ['site visits', 'link taps'],
-    why: 'Journal 01 promotion. Long group = image: hands and a microphone in raking light.',
-    link: { path: 'website/journal/the-voice-i-used-to-hide/', label: 'jasnota.mk/journal/the-voice-i-used-to-hide' },
-    photos: ['hands'],
-    slides: [{
-      alt: 'Photo: close-up of two hands around a microphone in raking side light, the rest of the frame black. Text: The voice I used to hide. Footnote: Journal 01, four-minute read, jasnota.mk.',
-      html: h.ph('mic', 'hands') + '<div class="pc on-photo"><div class="push">' + h.q('The voice I used to <em>hide</em>', 's') + '</div>' +
-        h.row(h.meta('Journal 01 · 4 min read'), h.meta('jasnota.mk'), 'margin-top:5cqi') + '</div>'
-    }],
-    caption: {
-      en: `As a child I sang everywhere: in the kitchen, in the stairwell, on the bus with my forehead against the glass. Then, somewhere around thirteen, I started singing more quietly. Then only at home. Then only in my head.
-
-It took me years, and a psychology degree, to find the word for it. Not guilt. Shame.
-
-The first entry in the Jasnota journal is about the voice, the spotlight no one else could see, and the day an older colleague at rehearsal told me: “Just sing. We’ll decide whether it’s good.”
-
-Four minutes on jasnota.mk, link in bio. In English and Macedonian.`,
-      mk: `Како дете пеев насекаде: во кујната, по скалите, во автобусот со челото на стаклото. А потоа, некаде околу тринаесеттата, почнав да пеам потивко. Потоа само дома. Потоа само во мојата глава.
-
-Ми требаа години, и студии по психологија, за да го најдам зборот за тоа. Не вина. Срам.
-
-Првиот текст во дневникот на Јаснота е за гласот, за рефлекторот што никој друг не го гледаше, и за денот кога една постара колешка на проба ми рече: „Само пеј. Ние ќе одлучиме дали е добро.“
-
-Четири минути на jasnota.mk, линкот е во био. На англиски и на македонски.`
-    },
-    tags: ['jasnota', 'voice', 'shame', 'singing', 'глас', 'пеење'],
-    audio: '—'
-  },
-
-  /* ---------------- 13 ---------------- */
-  {
-    id: 'p13', n: 13, date: '2026-11-25', time: '20:30', fmt: 'carousel', pillar: 'psycho', bar: 'II', b: 6, g: 'c',
-    title: { en: 'Psycho-note №04 — The reminiscence bump', mk: 'Психо-нота №04 — Врвот на сеќавањата' },
-    goal: ['comments', 'saves', 'site visits'],
-    why: 'A Psycho-note that lands in the image group, so the cover is a photograph with the series frame laid over it. Slide 5 is built from story answers.',
-    link: { path: 'website/journal/what-were-you-listening-to-at-seventeen/', label: 'jasnota.mk/journal/what-were-you-listening-to-at-seventeen' },
-    photos: ['extra-03'],
-    slides: [
-      { alt: 'Photo: a cassette on a dark wooden table in side light. Text: Reminiscence bump. Italic: why seventeen keeps playing. Footnote: Psycho-note number 04.',
-        html: h.ph('cassette', 'extra-03', '<span class="tape"></span>') + '<div class="pc on-photo"><p class="meta" style="text-align:right">1/7</p><div class="push">' + h.q('Reminiscence <em>bump</em>', '', 'font-size:12cqi') +
-          h.q('<em>why seventeen keeps playing</em>', 'xs', 'margin-top:2cqi;color:var(--ash)') + '</div>' + h.row(h.meta('Psycho-note №04'), h.mark(6), 'margin-top:6cqi') + '</div>' },
-      { alt: 'Text: Ask for your most vivid memories, and they tend to cluster in the teens and twenties. Psychologists call this the reminiscence bump.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">02/07</p>' + h.q('Ask for your most vivid <em>memories</em> —', 's', 'margin-top:12cqi') +
-          h.body('and they tend to cluster in the same stretch of life: the teens and twenties. Psychologists have studied this since the 1980s and call it the reminiscence bump.', 'margin-top:5cqi') + h.meta('Rubin, Wetzler & Nebes, 1986', 'margin-top:auto') + '</div>' },
-      { alt: 'Text: Music keeps the same calendar. Songs from our teens tend to stay more familiar and more emotional than most of what we hear later.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">03/07</p>' + h.q('Music keeps the same <em>calendar.</em>', 's', 'margin-top:12cqi') +
-          h.body('Studies of musical memory find a similar bump: songs from our teens tend to stay more familiar, and more emotional, than most of what we hear later.', 'margin-top:5cqi') + '</div>' },
-      { alt: 'Text: Why then? Those are the years we work out who we are. Memories from that time get woven into the story we tell about ourselves.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">04/07</p>' + h.q('Why <em>then?</em>', 's', 'margin-top:12cqi') +
-          h.body('A common explanation: those are the years we work out who we are. Memories from that time get woven into the story we tell about ourselves.', 'margin-top:5cqi') + '</div>' },
-      { alt: 'Slide of reader answers, shown as a list of placeholder lines: song and year, from the story question on 19 November, anonymous.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">05/07</p>' + h.q('From your <em>answers</em>', 's', 'margin-top:8cqi') +
-          '<ul class="answers"><li><span>[ song ]</span><span>[ year ]</span></li><li><span>[ song ]</span><span>[ year ]</span></li><li><span>[ song ]</span><span>[ year ]</span></li><li><span>[ song ]</span><span>[ year ]</span></li><li><span>[ song ]</span><span>[ year ]</span></li></ul>' +
-          h.meta('from the 19 Nov question sticker · anonymous, with permission', 'margin-top:auto') + '</div>' },
-      { alt: 'Text: It isn’t only nostalgia. One of those songs can bring back a room, a smell, a person. That isn’t living in the past. It’s the past still being part of you.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">06/07</p>' + h.q('It isn’t <em>only</em> nostalgia.', 's', 'margin-top:12cqi') +
-          h.body('One of those songs can bring back a room, a smell, a person. That isn’t living in the past. It’s the past still being part of you.', 'margin-top:5cqi') + '</div>' },
-      { alt: 'Closing slide. Text: What were you listening to at seventeen? A slow conversation about it, 38 minutes, notes on jasnota.mk. Footnote: Journal 06 and the mark.',
-        html: '<div class="pc"><p class="meta" style="text-align:right">07/07</p><div class="push">' + h.q('What were you listening to at <em>seventeen?</em>', 's') +
-          h.body('A slow conversation about it, 38 minutes. Notes on jasnota.mk.', 'margin-top:4cqi') + '</div>' + h.row(h.meta('Journal 06'), h.mark(6), 'margin-top:7cqi') + '</div>' }
+    id: 'w12', n: 12, date: '2027-01-18', pillar: 3, fmt: 'concept', web: false,
+    title: 'Поим: музикотерапија и „музичка медицина“ – што е што',
+    title_en: 'Concept: music therapy vs music medicine',
+    rq: 'По што се разликуваат музикотерапијата и слушањето музика во здравствен контекст и што покажуваат Cochrane-прегледите?',
+    why: 'Lays the ground for the mapping of music therapy in Macedonia (research/mapping/) and closes the first series.',
+    ethics: 'No recommending individual practitioners or services; no efficacy claims beyond the reviews; use the title “music therapist” precisely.',
+    src: [
+      { t: 'cover-concept', no: '02', h: '<em>музикотерапија</em>', en: 'music therapy', dek: 'и „музичка медицина“: што е што' },
+      { t: 'compare', a: { h: '<em>Музикотерапија</em>', p: 'Процес што го води обучен музикотерапевт, во терапевтски однос и со цели.' },
+        b: { h: '„Музичка <em>медицина</em>“', p: 'Слушање снимена музика што ја нуди медицински персонал, на пример пред операција.' },
+        p: 'Двете имаат докази за одредени исходи. Ниту едната не е замена за лекување.', c: ['bradt2021'] },
+      { t: 'text', h: '<em>Депресија</em>',
+        p: 'Музикотерапијата додадена на вообичаениот третман краткорочно ги намалува депресивните симптоми, во однос на само вообичаениот третман (9 студии, 421 учесник).',
+        ev: 'moderate', c: ['aalbers2017'] },
+      { t: 'text', h: '<em>Деменција</em>',
+        p: 'Музичките интервенции веројатно ги намалуваат депресивните симптоми, а имаат мал или никаков ефект врз когницијата и агитацијата (22 студии).',
+        ev: 'moderate', c: ['vandersteen2018'] },
+      { t: 'num', num: '104', h: 'рандомизирани <em>студии</em>',
+        p: 'Две мета-анализи за стресот: музичките интервенции имаат мал до умерен ефект, физиолошки и психолошки. Интервенциите и мерките се многу различни.',
+        ev: 'moderate', c: ['dewitte2020'] },
+      { t: 'text', h: 'Што <em>не е</em>',
+        p: '„Лечи“ е прејак збор. Музиката е вредно дополнение, не замена за стручен третман. Титулата „музикотерапевт“ подразбира обука. Во следната серија: кој во Македонија работи на ова – јавни институции и објавени трудови.',
+        c: ['aalbers2017', 'vandersteen2018'] },
+      { t: 'sources', ids: ['bradt2021', 'aalbers2017', 'vandersteen2018', 'dewitte2020'], eth: NOTE + ' Не препорачуваме конкретни практичари или услуги.' }
     ],
     caption: {
-      en: `Psycho-note №04 — The reminiscence bump.
-
-Ask people for the memories they hold most vividly and they cluster around the same stretch of life: the teens and twenties. The songs from those years tend to stay with us the same way, more familiar and more charged than almost anything we hear later.
-
-One likely reason: those are the years we work out who we are, and the music gets woven into that story.
-
-Slide 5 is your answers from last week’s story. Thank you. The conversation, What were you listening to at seventeen?, is on jasnota.mk.
-
-So: what were you listening to at seventeen?`,
-      mk: `Психо-нота №04 — Врвот на сеќавањата (reminiscence bump).
-
-Кога луѓето ќе ги прашаш за најживите сеќавања, тие се собираат околу истиот период од животот: тинејџерските и дваесеттите години. Песните од тие години остануваат со нас на ист начин, поблиски и поемотивни од речиси сè што слушаме подоцна.
-
-Една веројатна причина: тоа се годините кога откриваме кои сме, и музиката се вткајува во таа приказна.
-
-Петтиот слајд се твоите одговори од сторито минатата недела. Благодарам. Разговорот Што слушаше кога имаше седумнаесет? е на jasnota.mk.
-
-Значи: што слушаше ти кога имаше седумнаесет?`
+      mk: 'Музикотерапија и „музичка медицина“ не се исто.\n\n' +
+        'Музикотерапијата ја води обучен музикотерапевт, во терапевтски однос и со цели. „Музичката медицина“ е слушање снимена музика што ја нуди медицински персонал, на пример пред операција.\n\n' +
+        'Cochrane-прегледите покажуваат корисни, но скромни ефекти: краткорочно намалување на депресивните симптоми кога музикотерапијата се додава на вообичаениот третман; кај деменција подобро расположение, без ефект врз когницијата. „Лечи“ е прејак збор.\n\n' +
+        'Со ова ја затвораме првата серија. Следно: кој во Македонија работи на ова.\n\n' +
+        'Ова не е дијагноза ни терапија. Извори: последниот слајд.',
+      en: 'Concept: music therapy (with a trained therapist) vs music medicine (recorded listening in care) – what the Cochrane reviews show.'
     },
-    tags: ['jasnota', 'psychonote', 'reminiscencebump', 'musicandmemory', 'nostalgia', 'музика'],
-    audio: '—'
-  },
-
-  /* ---------------- 14 ---------------- */
-  {
-    id: 'p14', n: 14, date: '2026-11-27', time: '20:30', fmt: 'reel', pillar: 'songs', bar: 'II', b: 7, g: 'c',
-    title: { en: 'Song of the week №04 — Zajdi, zajdi, jasno sonce', mk: 'Песна на неделата №04 — Зајди, зајди, јасно сонце' },
-    goal: ['shares', 'follows', 'site visits'],
-    why: 'The month’s feed edition of Song of the week, and the first time her voice is the whole post. Closes bar II.',
-    link: { path: 'website/journal/zajdi-zajdi-jasno-sonce/', label: 'jasnota.mk/journal/zajdi-zajdi-jasno-sonce' },
-    photos: ['extra-04'],
-    cover: {
-      alt: 'Reel cover: Jasna in profile, eyes closed, singing, lit by one lamp in a dark room. Text: Zajdi, zajdi, jasno sonce, with the Cyrillic title below. Footnote: Song of the week number 04, voice: Jasna.',
-      html: h.ph('rim', 'extra-04') + '<div class="pc on-photo"><div class="push">' + h.q('Zajdi, zajdi, <em>jasno</em> sonce', 's') + h.mk('Зајди, зајди, јасно сонце', 'margin-top:2cqi') + '</div>' +
-        h.row(h.meta('Song of the week №04'), h.meta('voice: Jasna'), 'margin-top:5cqi') + '</div>'
-    },
-    reel: {
-      length: '42 s', split: '12 + 12 + 18',
-      audio: 'Jasna’s own unaccompanied recording of the traditional song (public-domain melody and words). Record by Wed 25 Nov in a quiet room; the same take becomes the audio for journal 07.',
-      shots: [
-        { t: '00–12', shot: 'Black. The first phrase begins, voice only. Slow fade up on her profile, rim light from one practical lamp.', sound: 'First phrase, unaccompanied.', os: { en: 'Zajdi, zajdi, jasno sonce — a traditional Macedonian song', mk: 'Зајди, зајди, јасно сонце — македонска народна песна' }, ph: 'rim', slot: 'extra-04' },
-        { t: '12–24', shot: 'Close: her hand resting on a wooden table; the breath before the second phrase is visible in the shoulders.', sound: 'Second phrase; the pause before it left long.', os: { en: 'Listen for the pauses between the lines.', mk: 'Слушај ги паузите меѓу стиховите.' }, ph: 'mic' },
-        { t: '24–42', shot: 'Wider: the room, the single lamp. She finishes the phrase and holds the silence for three seconds. Lamp off.', sound: 'Last note decays, 3 s of room tone.', os: { en: 'The whole song: jasnota.mk', mk: 'Целата песна: jasnota.mk' }, ph: 'bokeh' }
-      ]
-    },
-    caption: {
-      en: `Song of the week №04 — Zajdi, zajdi, jasno sonce. A traditional Macedonian song, sung with nothing but a voice and the silence around it.
-
-The title is spoken to the sun: set, set, clear sun. I don’t remember learning it; it seems to have always been there. And jasno, clear, shares its root with my name. I didn’t choose the song for that, but once I noticed, I couldn’t stop noticing.
-
-Listen to the pauses between the lines. I leave them long on purpose.
-
-The full recording, and why this song, are on jasnota.mk (link in bio).`,
-      mk: `Песна на неделата №04 — Зајди, зајди, јасно сонце. Македонска народна песна, отпеана само со глас и со тишината околу него.
-
-Насловот е обраќање кон сонцето: некој го моли јасното сонце да зајде. Не се сеќавам кога ја научив; како секогаш да била тука. А јасно има ист корен како моето име. Не ја избрав песната поради тоа, но штом го забележав, не можев да престанам да го забележувам.
-
-Слушај ги паузите меѓу стиховите. Ги оставам долги намерно.
-
-Целата снимка, и зошто токму оваа песна, се на jasnota.mk (линкот е во био).`
-    },
-    tags: ['jasnota', 'macedonianfolk', 'traditionalsong', 'voice', 'македонскинародни', 'зајдизајди']
-  },
-
-  /* ---------------- 15 ---------------- */
-  {
-    id: 'p15', n: 15, date: '2026-11-30', time: '20:30', fmt: 'single', pillar: 'rest', light: true, bar: 'III', b: 1, g: 'a',
-    title: { en: 'Silence is not empty', mk: 'Тишината не е празнина' },
-    goal: ['saves', 'comments'],
-    why: 'Downbeat of bar III, on paper, top-left of the month-one grid. The three light tiles now form a clean diagonal.',
-    slides: [{
-      light: true,
-      alt: 'Off-white square. A small whole-rest symbol in grey at the top. Large serif text: Silence is not empty. Macedonian below: Тишината не е празнина. Footnote: a rest is written down, like a note.',
-      html: '<div class="pc">' + h.rest(14, 'color:#8c8a85') + '<div class="push">' + h.q('Silence is not <em>empty.</em>', 'l') + h.mk('Тишината не е празнина.', 'margin-top:3cqi') + '</div>' +
-        h.row(h.meta('a rest is written down, like a note'), h.meta('30 · 11'), 'margin-top:7cqi') + '</div>'
-    }],
-    caption: {
-      en: `In music, a rest is written down just like a note. It has its own length, its own place, its own meaning. Nobody calls it empty.
-
-This was the first month of Jasnota. Thank you for listening with me. Before December starts, a rest: one evening this week with no input. No podcast on the walk, no song in the kitchen. Just the room.
-
-Then tell me what you heard.`,
-      mk: `Во музиката паузата се запишува исто како нота. Има своја должина, свое место, свое значење. Никој не ја нарекува празна.
-
-Ова беше првиот месец на Јаснота. Ти благодарам што слушаше со мене. Пред да почне декември, една пауза: една вечер оваа недела без ништо однадвор. Без подкаст на прошетка, без песна во кујната. Само собата.
-
-Потоа кажи ми што слушна.`
-    },
-    tags: ['jasnota', 'silence', 'rest', 'musicpsychology', 'тишина'],
-    audio: '—'
+    tags: ['јаснота', 'музикотерапија', 'поим', 'musictherapy', 'musicpsychology'],
+    story: {
+      tq: 'Музикотерапија или <em>музичка медицина?</em>',
+      source: { id: 'aalbers2017', line: 'Cochrane: музикотерапијата додадена на вообичаениот третман краткорочно ги намалува депресивните симптоми.', ev: 'moderate' },
+      ask: { k: 'question', q: 'Што да обработиме во следните <em>12 недели?</em>', note: 'ги читаме сите; објавуваме само со дозвола' }
+    }
   }
   ];
 
-  /* =================================================================
-     STORY FRAMES (designed). Safe zones: top and bottom 13% stay clear.
-     ================================================================= */
-  function st(inner, pad) { return '<div class="pc storypc"' + (pad ? ' style="' + pad + '"' : '') + '>' + inner + '</div>'; }
-  function mkb(t, s) { return '<p class="body mkbody" lang="mk"' + (s ? ' style="' + s + '"' : '') + '>' + t + '</p>'; }
-  function poll(q, qmk, a, b, pa) {
-    return '<div class="sticker"><p class="sq">' + q + '</p>' + (qmk ? '<p class="sqmk" lang="mk">' + qmk + '</p>' : '') + '<div class="opts">' +
-      '<div class="opt"><span class="bar" style="width:' + pa + '%"></span><span>' + a + '</span><span class="pct">' + pa + '%</span></div>' +
-      '<div class="opt"><span class="bar" style="width:' + (100 - pa) + '%"></span><span>' + b + '</span><span class="pct">' + (100 - pa) + '%</span></div></div></div>';
-  }
-  function quiz(q, qmk, opts, right) {
-    return '<div class="sticker quiz"><p class="sq">' + q + '</p>' + (qmk ? '<p class="sqmk" lang="mk">' + qmk + '</p>' : '') + '<div class="opts">' +
-      opts.map(function (o, i) { return '<div class="opt' + (i === right ? ' right' : '') + '"><span class="l">' + 'ABC'[i] + '</span><span>' + o + '</span></div>'; }).join('') + '</div></div>';
-  }
-  function question(q, qmk, ph) {
-    return '<div class="sticker"><p class="sq">' + q + '</p>' + (qmk ? '<p class="sqmk" lang="mk">' + qmk + '</p>' : '') + '<div class="field">' + ph + '</div></div>';
-  }
-  function slider(q, qmk, v) {
-    return '<div class="sticker slider"><p class="sq">' + q + '</p>' + (qmk ? '<p class="sqmk" lang="mk">' + qmk + '</p>' : '') +
-      '<div class="track"><i style="width:' + v + '%"></i><b style="left:' + v + '%"></b></div><div class="ends"><span>quiet</span><span>loud</span></div></div>';
-  }
-  function linkSt(t) { return '<span class="lnk">' + J.icon('link') + t + '</span>'; }
-  function music(title, who, note) {
-    return '<div class="music"><span class="cov" aria-hidden="true">' + J.icon('music') + '</span><span class="tx"><b>' + title + '</b><span>' + who + '</span></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></div>' + (note ? '<p class="meta" style="margin-top:2.4cqi;text-align:center">' + note + '</p>' : '');
-  }
-
-  J.FRAMES = {
-    S01: { sticker: 'countdown', alt: 'Story: mark at top. Text: Tonight at 20:30 this account becomes Jasnota. A countdown sticker reads Jasnota, 20:30.',
-      html: st(h.mark(10) + '<div class="push">' + h.q('Tonight at 20:30 this account becomes <em>Jasnota.</em>', 's') + mkb('Вечерва во 20:30 овој профил станува Јаснота.', 'margin-top:3cqi') +
-        '<div class="sticker count" style="margin-top:7cqi"><p class="sq">Jasnota · 20:30</p><div class="digits"><span>10</span><i>:</i><span>30</span><i>:</i><span>00</span></div><p class="meta">hours · minutes · seconds</p></div></div>') },
-    S02: { sticker: 'link', alt: 'Story: Jasnota explains. It doesn’t treat. I’m a psychologist, but this account is not therapy and I don’t offer sessions. If you are struggling, talk to a psychologist, psychotherapist or your doctor. In danger right now: your local emergency number, 112 in most of Europe. Link sticker to the about page.',
-      html: st(h.q('Jasnota explains. It doesn’t <em>treat.</em>', 's') +
-        h.body('I’m a psychologist, but this account is not therapy, and I don’t offer sessions. If you’re struggling, please talk to a psychologist, a psychotherapist or your doctor.', 'margin-top:5cqi') +
-        mkb('Јаснота објаснува, не лекува. Ако ти е тешко, разговарај со психолог, психотерапевт или со твојот лекар.', 'margin-top:4cqi') +
-        '<div class="push">' + h.body('In danger right now: your local emergency number (112 in most of Europe).', 'margin-bottom:5cqi', 'b') + linkSt('jasnota.mk/about') + '</div>') },
-    S03: { sticker: 'poll', alt: 'Story poll: When you’re anxious, does music help or get in the way? Options: it helps, it gets in the way.',
-      html: st('<div style="margin-top:auto;margin-bottom:auto">' + poll('When you’re anxious, does music <em>help</em>?', 'Кога си вознемирен/а, дали музиката помага?', 'it helps', 'it gets in the way', 64) + '</div>' + h.meta('poll · results shown as an example', 'text-align:center')) },
-    S04: { sticker: 'quiz', alt: 'Story quiz: An orchestra usually tunes to which note? A: A. B: C. C: E. The answer A is marked.',
-      html: st(h.mark(9, 'color:var(--ash)') + '<div class="push">' + quiz('An orchestra usually tunes to which <em>note?</em>', 'На која нота најчесто се штима оркестарот?', ['A', 'C', 'E'], 0) + '</div>') },
-    S05: { sticker: 'slider', alt: 'Story slider: How loud is your stage fright today? Any stage counts. The slider thumb sits at about two-thirds.',
-      html: st(h.q('Any stage counts: a meeting, an exam, a <em>phone call.</em>', 'xs', 'color:var(--ash)') + '<div class="push">' + slider('How loud is your stage fright <em>today?</em>', 'Колку е гласна твојата трема денес?', 68) + '</div>') },
-    S06: { sticker: 'music', alt: 'Story: Song of the week number 01. Gymnopédie No. 1, Erik Satie, 1888, with a music sticker. Listen for the left hand. It never hurries.',
-      html: st(h.meta('Song of the week №01') + '<div class="push">' + h.q('Listen for the left hand. It never <em>hurries.</em>', 's') + mkb('Слушај ја левата рака. Никогаш не брза.', 'margin-top:3cqi') +
-        '<div style="margin-top:7cqi">' + music('Gymnopédie No. 1', 'Erik Satie · 1888', 'in-app music sticker') + '</div></div>') },
-    S07: { sticker: 'location', alt: 'Story: photo of Bitola at night, Širok Sokak with street lamps. Location sticker: Bitola. Text: The street at 21:40.',
-      html: h.ph('street', 'bitola', '<span class="lamps"></span><span class="tower"></span>') + st('<div class="push">' + h.q('The street at <em>21:40.</em>', 's') + '<span class="loc" style="margin-top:5cqi">' + J.icon('pinloc') + 'Bitola</span></div>') },
-    S08: { sticker: 'question', alt: 'Story question sticker: Which song do you play when you need to be sad properly? Answer field: a song, an artist.',
-      html: st(h.mark(9) + '<div class="push">' + question('Which song do you play when you need to be sad <em>properly?</em>', 'Која песна ја пушташ кога ти треба да бидеш тажен/тажна како што треба?', 'a song, an artist…') + '</div>') },
-    S09: { sticker: 'link', alt: 'Story: Why sad songs make us calmer. Five minutes, four studies, one song I played too many times at sixteen. Link sticker to the journal.',
-      html: st(h.meta('Journal 02 · 5 min') + '<div class="push">' + h.q('Why sad songs make us <em>calmer</em>', '') + h.body('Five minutes. Four studies. One song I played too many times at sixteen.', 'margin-top:4cqi') +
-        mkb('Зошто тажните песни нè смируваат.', 'margin-top:3cqi') + '<div style="margin-top:7cqi">' + linkSt('Read the essay') + '</div></div>') },
-    S10: { sticker: 'reply', alt: 'Story: Tuesday’s question shown small, with three placeholder answer cards: an answer from Tuesday, anonymous.',
-      html: st(h.q('You <em>answered.</em>', 's') + mkb('Ваши одговори, анонимно.', 'margin-top:2cqi') +
-        '<div class="push replies"><p class="rq">Which song do you play when you need to be sad properly?</p><p class="ra">“[ an answer from Tuesday ]”</p><p class="ra">“[ an answer from Tuesday ]”</p><p class="ra">“[ an answer from Tuesday ]”</p></div>') },
-    S11: { sticker: 'mention', alt: 'Story: photo of the orchestra’s music stands under stand lights. Text: Tonight, 20:30: one note, a whole orchestra. Mention sticker: chamber_orchestra_diva.',
-      html: h.ph('stands', 'extra-05') + st('<div class="push">' + h.q('Tonight, 20:30: one note, a whole <em>orchestra.</em>', 's') + mkb('Вечерва, 20:30: една нота, цел оркестар.', 'margin-top:3cqi') + '<span class="mention" style="margin-top:5cqi">@chamber_orchestra_diva</span></div>', 'background:linear-gradient(to bottom,transparent 40%,rgba(10,10,11,.85))') },
-    S12: { sticker: 'poll', alt: 'Story poll: After a mistake, which voice is louder? Options: I did something wrong, I am wrong.',
-      html: st('<div style="margin-block:auto">' + poll('After a mistake, which voice is <em>louder?</em>', 'По грешка, кој глас е погласен?', '“I did something wrong”', '“I am wrong”', 41) + '</div>' + h.meta('Monday’s post, continued', 'text-align:center')) },
-    S13: { sticker: 'quiz', alt: 'Story quiz: The impostor phenomenon was first described in… A: 1978. B: 1998. C: 2008. The answer 1978 is marked.',
-      html: st(h.mark(9, 'color:var(--ash)') + '<div class="push">' + quiz('The impostor phenomenon was first described <em>in…</em>', 'Феноменот на измамник првпат е опишан во…', ['1978', '1998', '2008'], 0) + h.meta('tomorrow: Psycho-note №02', 'margin-top:4cqi;text-align:center') + '</div>') },
-    S14: { sticker: 'question', alt: 'Story question sticker: What were you listening to at seventeen? Answer field: song and year. Note: answers may appear anonymously in Wednesday’s post.',
-      html: st(h.q('<em>17</em>', '', 'font-size:44cqi;line-height:.8;color:var(--ash)') + '<div class="push">' + question('What were you listening to at <em>seventeen?</em>', 'Што слушаше кога имаше седумнаесет?', 'song + year…') +
-        h.meta('answers may appear, anonymously, in Wednesday’s post', 'margin-top:4cqi;text-align:center') + '</div>') },
-    S15: { sticker: 'music', alt: 'Story: Song of the week number 03. Spiegel im Spiegel, Arvo Pärt, 1978, with an in-app music sticker. Listen for the silence between the piano notes.',
-      html: st(h.meta('Song of the week №03') + '<div class="push">' + h.q('Listen for the silence between the piano <em>notes.</em>', 's') + mkb('Слушај ја тишината меѓу тоновите на пијаното.', 'margin-top:3cqi') +
-        '<div style="margin-top:7cqi">' + music('Spiegel im Spiegel', 'Arvo Pärt · 1978', 'in-app music sticker only') + '</div></div>') },
-    S16: { sticker: 'none', alt: 'Story: close-up of hands and a microphone in low light. Text: Recording tomorrow’s song. One take, one lamp.',
-      html: h.ph('mic', 'hands') + st('<div class="push">' + h.q('Recording tomorrow’s song. One take, one <em>lamp.</em>', 's') + mkb('Ја снимам утрешната песна. Една снимка, една ламба.', 'margin-top:3cqi') + '</div>', 'background:linear-gradient(to bottom,transparent 45%,rgba(10,10,11,.85))') },
-    S17: { sticker: 'poll', alt: 'Story poll: What should Psycho-note number 05 be? Options: window of tolerance, rumination.',
-      html: st(h.mark(9) + '<div class="push">' + poll('What should Psycho-note №05 <em>be?</em>', 'Која да биде Психо-нота №05?', 'window of tolerance', 'rumination', 55) + '</div>') },
-    S18: { sticker: 'question', alt: 'Story question sticker: What did you hear in your evening of silence?',
-      html: st(h.rest(16, 'color:var(--ash)') + '<div class="push">' + question('What did you hear in your evening of <em>silence?</em>', 'Што слушна во твојата тивка вечер?', 'I heard…') + '</div>') },
-    S19: { sticker: 'music', alt: 'Story: Song of the week number 02. Jovano, Jovanke, traditional Macedonian, with a music sticker. A song that is one long question.',
-      html: st(h.meta('Song of the week №02') + '<div class="push">' + h.q('A song that is one long <em>question.</em>', 's') + mkb('Песна што е едно долго прашање.', 'margin-top:3cqi') +
-        '<div style="margin-top:7cqi">' + music('Jovano, Jovanke', 'traditional · Macedonia', 'in-app music sticker, any licensed recording') + '</div></div>') },
-    S20: { sticker: 'link', alt: 'Story: photo of Jasna singing in lamplight. Text: Song of the week number 04 is my own. Link sticker: Listen.',
-      html: h.ph('rim', 'extra-04') + st(h.meta('Song of the week №04') + '<div class="push">' + h.q('This week’s song is my <em>own.</em>', 's') + mkb('Песната оваа недела е моја.', 'margin-top:3cqi') + '<div style="margin-top:6cqi">' + linkSt('jasnota.mk/listen') + '</div></div>', 'background:linear-gradient(to bottom,transparent 40%,rgba(10,10,11,.85))') },
-    S21: { sticker: 'link', alt: 'Story: The voice I used to hide. Guilt says I did something wrong; shame says I am wrong. Link sticker: read the essay.',
-      html: st(h.meta('Journal 01 · 4 min') + '<div class="push">' + h.q('The voice I used to <em>hide</em>', '') + h.body('Guilt says: I did something wrong. Shame says: I am wrong.', 'margin-top:4cqi') +
-        mkb('Гласот што го криев.', 'margin-top:3cqi') + '<div style="margin-top:7cqi">' + linkSt('Read the essay') + '</div></div>') },
-    S22: { sticker: 'poll', alt: 'Story poll: Do you like hearing your own voice on a recording? Options: yes, not at all. Footnote: almost nobody does, and there is a physical reason.',
-      html: st('<div style="margin-block:auto">' + poll('Do you like hearing your own voice on a <em>recording?</em>', 'Дали го сакаш својот глас на снимка?', 'yes', 'not at all', 23) + '</div>' +
-        h.meta('tomorrow: why almost nobody does', 'text-align:center')) },
-    S24: { sticker: 'none', alt: 'Story: photo of sheet music on a stand with pencil breath marks. Text: Rehearsal with DIVA tonight. The pencil marks are where I breathe.',
-      html: h.ph('sheet', 'extra-06') + st('<div class="push">' + h.q('Rehearsal with DIVA tonight. The pencil marks are where I <em>breathe.</em>', 's') + mkb('Проба со DIVA вечерва. Ознаките со молив се местата каде што дишам.', 'margin-top:3cqi') + '</div>', 'background:linear-gradient(to bottom,transparent 40%,rgba(10,10,11,.88))') },
-    H01: { sticker: 'none', alt: 'Highlight frame: portrait of Jasna in rim light. Text: Jasna Dimitrovska. Psychologist, Gestalt counsellor, vocal artist with Orchestra DIVA. Bitola.',
-      html: h.ph('rim', 'portrait') + st('<div class="push">' + h.q('Jasna <em>Dimitrovska</em>', 's') + '<ul class="roles"><li>psychologist</li><li>Gestalt counsellor</li><li>vocal artist, Orchestra DIVA</li><li>Bitola</li></ul></div>', 'background:linear-gradient(to bottom,transparent 40%,rgba(10,10,11,.88))') },
-    H02: { sticker: 'link', alt: 'Highlight frame: list of the seven journal entries, with a link sticker to the journal.',
-      html: st(h.q('The <em>journal</em>', 's') + '<ol class="jlist"><li>The voice I used to hide</li><li>Why sad songs make us calmer</li><li>Tuning fork: on attunement</li><li>Breathing in 7/8</li><li>Stage fright</li><li>What were you listening to at seventeen?</li><li>Zajdi, zajdi, jasno sonce</li></ol><div class="push">' + linkSt('jasnota.mk/journal') + '</div>') }
-  };
+  J.POSTS.forEach(function (p) { p.time = J.POST_TIME; J.compose(p); });
 
   /* =================================================================
-     STORIES — day by day. Sundays are a written rest.
+     STORIES — light and optional. Four a week at most, no face, no video:
+       Mon 12:00 тема на неделата · Mon 19:35 repost of the carousel ·
+       Wed 12:00 извор на неделата · Fri 12:00 one interaction (question / poll / quiz / answers)
      ================================================================= */
-  function S(time, f, note) { return { time: time, f: f, note: note }; }
-  function SH(time, id, en, mk, sticker) { return { time: time, share: id, note: { en: en, mk: mk }, sticker: sticker }; }
-  J.DAYS = [
-    { date: '2026-11-02', theme: 'Launch', items: [S('10:00', 'S01'), SH('20:35', 'p02', 'Who’s talking.', 'Кој зборува.'), S('21:00', 'S02')] },
-    { date: '2026-11-03', theme: 'Think: a question', items: [S('12:00', 'S03'), SH('20:30', 'p03', 'Three bars before sleep.', 'Три такта пред спиење.')] },
-    { date: '2026-11-04', theme: 'Explain', items: [SH('20:35', 'p04', 'Psycho-note №01 is up.', 'Психо-нота №01.'), S('21:00', 'S04')] },
-    { date: '2026-11-05', theme: 'Answers + rehearsal', items: [S('18:30', 'S24')] },
-    { date: '2026-11-06', theme: 'Listen', items: [S('18:00', 'S05'), SH('20:35', 'p05', 'Ten minutes before.', 'Десет минути пред.')] },
-    { date: '2026-11-07', theme: 'Song of the week №01', items: [S('10:00', 'S06')] },
-    { date: '2026-11-08', theme: 'Rest', rest: true, items: [] },
-    { date: '2026-11-09', theme: 'Think', items: [SH('20:35', 'p06', 'Where I live.', 'Каде живеам.'), S('21:30', 'S07')] },
-    { date: '2026-11-10', theme: 'Think: a question', items: [S('12:00', 'S08')] },
-    { date: '2026-11-11', theme: 'Explain → journal', items: [SH('20:35', 'p07', 'Eight slides, four studies.', 'Осум слајда, четири истражувања.'), S('21:00', 'S09')] },
-    { date: '2026-11-12', theme: 'Your answers', items: [S('12:00', 'S10')] },
-    { date: '2026-11-13', theme: 'Listen · collab', items: [S('19:00', 'S11'), SH('20:35', 'p08', 'With Orchestra DIVA.', 'Со Оркестарот DIVA.', '<span class="mention" style="align-self:center">@chamber_orchestra_diva</span>')] },
-    { date: '2026-11-14', theme: 'Song of the week №02', items: [S('10:00', 'S19')] },
-    { date: '2026-11-15', theme: 'Rest', rest: true, items: [] },
-    { date: '2026-11-16', theme: 'Think', items: [SH('20:35', 'p09', 'A note. Not you.', 'Нота. Не ти.'), S('21:00', 'S12')] },
-    { date: '2026-11-17', theme: 'Think: a quiz', items: [S('12:00', 'S13')] },
-    { date: '2026-11-18', theme: 'Explain', items: [SH('20:35', 'p10', 'Psycho-note №02.', 'Психо-нота №02.')] },
-    { date: '2026-11-19', theme: 'Question for Wednesday’s post', items: [S('12:00', 'S14')] },
-    { date: '2026-11-20', theme: 'Listen', items: [SH('20:35', 'p11', 'Send this to your steady metronome.', 'Испрати го ова на твојот мирен метроном.')] },
-    { date: '2026-11-21', theme: 'Song of the week №03', items: [S('10:00', 'S15')] },
-    { date: '2026-11-22', theme: 'Rest', rest: true, items: [] },
-    { date: '2026-11-23', theme: 'Think → journal', items: [SH('20:35', 'p12', 'The first entry.', 'Првиот текст.'), S('21:00', 'S21')] },
-    { date: '2026-11-24', theme: 'Think: a poll', items: [S('12:00', 'S22')] },
-    { date: '2026-11-25', theme: 'Explain', items: [SH('20:35', 'p13', 'Slide 5 is you.', 'Петтиот слајд си ти.')] },
-    { date: '2026-11-26', theme: 'Behind the scenes', items: [S('19:00', 'S16')] },
-    { date: '2026-11-27', theme: 'Listen', items: [SH('20:35', 'p14', 'Voice only.', 'Само глас.', '<span class="lnk" style="align-self:center">' + J.icon('link') + 'jasnota.mk/listen</span>')] },
-    { date: '2026-11-28', theme: 'Song of the week №04', items: [S('10:00', 'S20')] },
-    { date: '2026-11-29', theme: 'Rest', rest: true, items: [] },
-    { date: '2026-11-30', theme: 'Think · month one closes', items: [SH('20:35', 'p15', 'A rest before December.', 'Пауза пред декември.'), S('21:00', 'S17')] },
-    { date: '2026-12-01', theme: 'Question', items: [S('12:00', 'S18')] }
+  J.STORY_SLOTS = [
+    { off: 0, time: '12:00', kind: 'teaser', mk: 'тема на неделата' },
+    { off: 0, time: '19:35', kind: 'share', mk: 'репост на каруселот' },
+    { off: 2, time: '12:00', kind: 'source', mk: 'извор на неделата' },
+    { off: 4, time: '12:00', kind: 'ask', mk: 'интеракција' }
   ];
+  var ASK_MK = { question: 'кутија за прашања', poll: 'анкета', quiz: 'квиз', answers: 'ваши прашања' };
+  J.POSTS.forEach(function (p) {
+    var s = p.story;
+    p.stories = J.STORY_SLOTS.map(function (slot) {
+      var f;
+      if (slot.kind === 'teaser') f = { k: 'teaser', post: p.id, q: s.tq, bg: s.bg };
+      else if (slot.kind === 'share') f = { k: 'share', post: p.id, note: 'Нов карусел · ' + J.FMT[p.fmt].mk };
+      else if (slot.kind === 'source') f = { k: 'source', id: s.source.id, line: s.source.line, ev: s.source.ev };
+      else f = s.ask;
+      return { date: J.addDays(p.date, slot.off), time: slot.time, slot: slot.kind, label: slot.kind === 'ask' ? ASK_MK[s.ask.k] : slot.mk, f: f, post: p.id };
+    });
+  });
 
   /* =================================================================
-     HIGHLIGHTS — cover sign + frames (frame ids or shares)
+     HIGHLIGHTS — seven designed covers. Order reads like a visit: the three pillars, the two series,
+     how we work, who we are.
      ================================================================= */
+  function sh(id, note) { return { k: 'share', post: id, note: note }; }
   J.HIGHLIGHTS = [
-    { id: 'jasna', label: 'Jasna', mk: 'Јасна', sign: 'note', items: [{ f: 'H01' }, { f: 'S02' }, { share: 'p02', note: { en: 'Start here.', mk: 'Почни тука.' } }] },
-    { id: 'psycho', label: 'Psycho-note', mk: 'Психо-нота', sign: 'mark', items: [{ share: 'p04', note: { en: '№01', mk: '' } }, { share: 'p10', note: { en: '№02', mk: '' } }, { share: 'p11', note: { en: '№03', mk: '' } }, { share: 'p13', note: { en: '№04', mk: '' } }, { f: 'S17' }] },
-    { id: 'songs', label: 'Songs', mk: 'Песни', sign: 'meter', items: [{ f: 'S06' }, { f: 'S19' }, { f: 'S15' }, { f: 'S20' }] },
-    { id: 'stage', label: 'Stage', mk: 'Сцена', sign: 'resonance', items: [{ f: 'S24' }, { share: 'p05', note: { en: 'Backstage.', mk: 'Зад сцена.' } }, { f: 'S11' }, { f: 'S16' }] },
-    { id: 'journal', label: 'Journal', mk: 'Дневник', sign: 'pilcrow', items: [{ f: 'H02' }, { f: 'S09' }, { f: 'S21' }] },
-    { id: 'rest', label: 'Rest', mk: 'Пауза', sign: 'fermata', items: [{ share: 'p03', note: { en: 'Three bars.', mk: 'Три такта.' } }, { f: 'S07' }, { share: 'p15', note: { en: 'A rest.', mk: 'Пауза.' } }, { f: 'S18' }] }
+    { id: 'p1', label: 'Столб I', sign: 'I', tone: 'ink', note: 'Психологијата на музиката: every pillar-I carousel, shared to stories.',
+      items: [sh('w03', 'Зошто музиката нè допира'), sh('w06', 'Музика, меморија, идентитет'), sh('w11', 'Пеењето заедно')] },
+    { id: 'p2', label: 'Столб II', sign: 'II', tone: 'staff', note: 'Психолошкиот свет на музичарот: stage fright, perfectionism, preparation.',
+      items: [sh('w01', 'Трема'), sh('w05', 'Перфекционизмот'), sh('w10', 'Подготовка за настап')] },
+    { id: 'p3', label: 'Столб III', sign: 'III', tone: 'paper', note: '„Што вели науката?“: every study, concept and myth.',
+      items: [sh('w02', 'Студија под лупа'), sh('w04', 'Мит или наука'), sh('w07', 'Студија под лупа'), sh('w09', 'Мит или наука'), sh('w12', 'Поим')] },
+    { id: 'poimi', label: 'Поими', sign: 'Аа', tone: 'ink', note: 'The glossary: concept posts plus a link to the website glossary.',
+      items: [{ k: 'glossary', items: ['музичка анксиозност при изведба', 'перфекционизам: стремежи и загрижености', 'грпка на спомените', 'морници (фрисон)', 'феномен на измамник', 'музикотерапија'] }, sh('w08', 'Поим 01'), sh('w12', 'Поим 02')] },
+    { id: 'mitovi', label: 'Митови', sign: '„“', tone: 'ink', note: 'Myth vs science, with the polls that chose the next myth.',
+      items: [sh('w04', 'Моцартовиот ефект'), J.POSTS[3].story.ask, sh('w09', 'Музика при учење'), J.POSTS[8].story.ask] },
+    { id: 'metod', label: 'Како работиме', sign: 'ev', tone: 'ink', note: 'Method: evidence labels, the six-step process, corrections policy. Label may truncate on small phones; fallback “Метод”.',
+      items: [{ k: 'method' }, { k: 'process' }, { k: 'corrections' }] },
+    { id: 'za', label: 'За Јаснота', sign: 'mark', tone: 'ink', note: 'What Jasnota is, who edits it, what it is not (therapy), where to find help, how to reach us.',
+      items: [{ k: 'about' }, { k: 'care' }, { k: 'contact' }] }
+  ];
+  /* highlight cover: typography and brand signs on a circle */
+  J.hlSign = function (hl) {
+    if (hl.sign === 'mark') return '<span class="sg mark"></span>';
+    if (hl.sign === 'ev') return '<span class="hl-ev" aria-hidden="true"><i></i><i></i><i></i></span>';
+    return '<span class="hl-t' + (hl.sign.length > 2 ? ' sm' : '') + '">' + hl.sign + '</span>';
+  };
+
+  /* =================================================================
+     SAVED REPLIES (DMs). Shortcuts in the Instagram app: Settings → Business tools → Saved replies.
+     ================================================================= */
+  J.REPLIES = [
+    { key: '/помош', when: 'Someone asks for therapy, a diagnosis or personal advice.',
+      mk: 'Ти благодарам што ни пишуваш и за довербата. Јаснота е едукативна платформа: не можеме да даваме дијагнози, терапија ни лични совети, ниту да нудиме сесии. Те молиме, обрати се до психолог, психотерапевт или до твојот лекар – тие можат да ти помогнат токму во твојата ситуација. Ако си во непосредна опасност, јави се на 112.',
+      en: 'Thank you for writing and for your trust. Jasnota is an educational platform: we can’t give diagnoses, therapy or personal advice, or offer sessions. Please contact a psychologist, a psychotherapist or your doctor. If you are in immediate danger, call 112.' },
+    { key: '/извор', when: 'Someone asks where a claim comes from.',
+      mk: 'Добро прашање. Сите извори се на последниот слајд од објавата, со DOI-број што води до оригиналниот труд. Ако некој извор ти е недостапен или нешто не се совпаѓа, кажи ни – проверуваме.',
+      en: 'Good question. All sources are on the last slide, with a DOI that leads to the original paper. If a source isn’t accessible or something doesn’t match, tell us and we’ll check.' },
+    { key: '/грешка', when: 'Someone reports a mistake.',
+      mk: 'Ти благодарам што ни укажа. Ќе го провериме во изворот и, ако е грешка, ќе ја исправиме видливо, со датум, во коментар под објавата.',
+      en: 'Thank you for pointing this out. We’ll check it against the source and, if it’s a mistake, correct it visibly, with a date, in a comment under the post.' },
+    { key: '/соработка', when: 'A researcher, teacher, therapist or institution gets in touch.',
+      mk: 'Ви благодариме за пораката. За соработка, извори или покана пишете ни на zdravo@jasnota.mk, со неколку реченици за вашата работа, и ќе ви одговориме во рок од една недела.',
+      en: 'Thank you for your message. For collaboration, sources or invitations, please write to zdravo@jasnota.mk with a few lines about your work; we reply within a week.' }
   ];
 
-  /* resolve a story item (frame id or share) into a frame object */
-  J.frameOf = function (it) {
-    if (it.share) return { share: it.share, note: it.note, sticker: it.sticker };
-    return J.FRAMES[it.f];
-  };
+  /* the review ritual's per-post source-quality checklist (EDITORIAL.md §1, §5, §6) */
+  J.CHECKS = [
+    'Секој DOI е проверен (Crossref / PubMed)',
+    'Секоја бројка е најдена во изворот, не во препричување',
+    'Популацијата е наведена (кои, колку, од каде)',
+    'Секое тврдење има ознака за доказите',
+    'Наслов и корица не тврдат повеќе од текстот',
+    'Има „Што знаеме / не знаеме“ (столб I и II)',
+    'Последниот слајд е „Извори“ (APA, DOI)',
+    'Етичка забелешка и упатување, каде што треба',
+    'Второ читање, по најмалку еден ден пауза'
+  ];
 })();

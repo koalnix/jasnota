@@ -1,217 +1,240 @@
-/* Јаснота — builders for the mini-site pages (month plan, calendar, review scorecard, moodboard grid).
-   Requires render.js + data.js. Each builder runs only if its mount point exists. */
+/* Јаснота — builders for the mini-site pages: 12 weeks, calendar, per-post log, hub grid and template gallery.
+   Requires render.js + refs.js + data.js. Each builder runs only if its mount point exists. */
 (function () {
   'use strict';
   var J = window.J, esc = J.esc;
 
+  /* preparation before week 1 (the account is new) and the weekly review */
   J.PREP = [
-    { date: '2026-10-29', title: 'Check @jasnota is free; archive old posts', note: 'Archive, never delete. Secure @jasnota on Threads, TikTok, YouTube too.' },
-    { date: '2026-10-30', title: 'Tell current followers', note: 'One story on @jasna.dzasna: this account becomes Jasnota on Monday.' },
-    { date: '2026-10-31', title: 'Switch: public, Creator, @jasnota', note: 'Name, bio, link, category, picture. Upload highlight covers.' },
-    { date: '2026-11-01', title: 'Rest. Schedule day one', note: 'Three launch posts drafted and scheduled 20:20 / 20:25 / 20:30.' }
+    { date: '2026-10-29', title: 'Create @jasnota', note: 'New account from Jasna’s phone (Add account), own e-mail, 2FA. Fallbacks @jasnota.mk, @jasnota_mk.' },
+    { date: '2026-10-30', title: 'Professional account, profile', note: 'Business · Education. Name, bio, link, mark as picture, saved replies, comment filters.' },
+    { date: '2026-10-31', title: 'Highlights before launch', note: 'Post the 6 method / about frames as stories, save them into Како работиме and За Јаснота, set the covers.' },
+    { date: '2026-11-01', title: 'Schedule week 1', note: 'Carousel for Mon 19:30, teaser for 12:00. Re-read the sources slide one last time.' }
   ];
-  var FRAME_PILLAR = { S01: 'about', S02: 'about', S03: 'sound', S04: 'psycho', S05: 'sound', S06: 'songs', S07: 'rest', S08: 'songs', S09: 'songs', S10: 'songs', S11: 'sound', S12: 'sound', S13: 'psycho', S14: 'psycho', S15: 'songs', S16: 'songs', S17: 'psycho', S18: 'rest', S19: 'songs', S20: 'songs', S21: 'sound', S22: 'sound', S24: 'sound' };
-  J.storyPillar = function (it) { return it.share ? J.post(it.share).pillar : (FRAME_PILLAR[it.f] || 'sound'); };
-  J.storyLabel = function (it) {
-    if (it.share) return 'shares №' + J.pad(J.post(it.share).n);
-    var f = J.FRAMES[it.f]; return f && f.sticker !== 'none' ? f.sticker + ' sticker' : 'frame';
-  };
-  var PILLAR_ORDER = ['about', 'sound', 'psycho', 'songs', 'rest'];
-  var FMT_ORDER = ['single', 'carousel', 'reel', 'story', 'prep'];
+  var HOLIDAYS = { '2026-12-08': 'Св. Климент Охридски', '2027-01-01': 'Нова година', '2027-01-07': 'Божиќ', '2027-01-19': 'Богојавление' };
+  J.REVIEW_DOW = 4;   /* Thursday: the post has had three days */
 
   function chip(t, on) { return '<span class="chip' + (on ? ' on' : '') + '">' + t + '</span>'; }
+  function refList(ids) {
+    return '<ol class="reflist">' + ids.map(function (id) {
+      var r = J.REFS[id]; if (!r) return '';
+      return '<li>' + esc(r.apa.replace(/\s*https?:\/\/\S+$/, '')) + (r.doi ? ' <a href="https://doi.org/' + esc(r.doi) + '" rel="noopener">doi.org/' + esc(r.doi) + '</a>' : '') + '</li>';
+    }).join('') + '</ol>';
+  }
+  function allSourceIds(p) {
+    var ids = [];
+    p.src.forEach(function (s) { if (s.t === 'sources') s.ids.forEach(function (i) { if (ids.indexOf(i) < 0) ids.push(i); }); });
+    return ids;
+  }
+  J.allSourceIds = allSourceIds;
 
-  /* ---------------- caption box ---------------- */
-  J.captionBox = function (p, uid) {
-    var id = 'cap-' + uid;
-    var tags = p.tags.map(function (t) { return '#' + t; }).join(' ');
-    return '<div class="cap-box" id="' + id + '" data-show="both">' +
-      '<div class="cap-tools"><div class="seg" data-langtoggle="' + id + '" role="group" aria-label="Caption language">' +
-      '<button type="button" data-l="both" aria-pressed="true">EN + MK</button><button type="button" data-l="en" aria-pressed="false">EN</button><button type="button" data-l="mk" aria-pressed="false">MK</button></div>' +
-      '<button type="button" class="btn" data-copy="' + p.id + '">Copy caption</button></div>' +
-      '<p class="cap-text"><span data-l="en">' + esc(p.caption.en) + '</span><span class="div78">' + J.DIVIDER + '</span><span data-l="mk" lang="mk">' + esc(p.caption.mk) + '</span>\n<span class="tags">' + esc(tags) + '</span></p></div>';
+  /* ---------------- caption box (MK, the 7/8 divider, one EN line, tags) ---------------- */
+  J.captionBox = function (p) {
+    return '<div class="cap-box">' +
+      '<div class="cap-tools"><span class="mono-s">опис · ' + J.publishedCaption(p).length + ' / 2.200 знаци</span><button type="button" class="btn" data-copy="' + p.id + '">Копирај опис</button></div>' +
+      '<p class="cap-text" lang="mk">' + esc(p.caption.mk) + '<span class="div78">' + J.DIVIDER + '</span><span class="en" lang="en">EN: ' + esc(p.caption.en) + '</span>\n<span class="tags">' + esc(p.tags.map(function (t) { return '#' + t; }).join(' ')) + '</span></p></div>';
   };
 
-  /* ---------------- one post card ---------------- */
-  function card(p) {
-    var vis = '';
-    if (p.fmt === 'reel') {
-      vis += '<figure class="w916">' + J.slide(p.cover, '916') + '<figcaption>cover · 9:16 (grid shows the centre 3:4)</figcaption></figure>';
-      p.reel.shots.forEach(function (s) { vis += '<figure class="w916s">' + J.reelFrame(s, p.reel) + '<figcaption>' + s.t + '</figcaption></figure>'; });
-    } else {
-      p.slides.forEach(function (s, i) { vis += '<figure class="w45">' + J.slide(s, '45') + '<figcaption>' + (p.slides.length > 1 ? 'slide ' + (i + 1) + '/' + p.slides.length : 'single · 4:5 · 1080 × 1350') + '</figcaption></figure>'; });
-    }
-    var alts = p.fmt === 'reel' ? '<p>' + esc(p.cover.alt) + '</p>' :
-      (p.slides.length > 1 ? '<ol>' + p.slides.map(function (s) { return '<li>' + esc(s.alt) + '</li>'; }).join('') + '</ol>' : esc(p.slides[0].alt));
-    var photos = (p.photos || []).map(function (s) { var x = J.SHOTS[s]; return '<li><b>' + s + '.jpg</b> — ' + esc(x.shot) + '</li>'; }).join('');
+  /* ---------------- one week, fully shown ---------------- */
+  function weekCard(p) {
+    var N = p.slides.length;
+    var vis = p.slides.map(function (s, i) {
+      return '<figure class="w45">' + J.slide(s, '45') + '<figcaption>' + J.pad(i + 1) + ' / ' + J.pad(N) + ' · ' + slotName(p, i) + '</figcaption></figure>';
+    }).join('');
+    var alts = '<ol class="alts">' + p.slides.map(function (s) { return '<li lang="mk">' + esc(s.alt) + '</li>'; }).join('') + '</ol>';
+    var ids = allSourceIds(p);
     var kv = '<dl class="kv">' +
-      '<dt>when</dt><dd>' + J.fmtDate(p.date, 'en', true) + ', ' + p.time + '</dd>' +
-      '<dt>format</dt><dd>' + J.fmtLabel(p) + (p.collab ? '<br><small>Collab post with @' + p.collab + '</small>' : '') + '</dd>' +
-      '<dt>pillar</dt><dd>' + J.PILLARS[p.pillar].en + ' <small lang="mk">· ' + J.PILLARS[p.pillar].mk + '</small></dd>' +
-      '<dt>goal</dt><dd>' + p.goal.join(' · ') + '</dd>' +
-      '<dt>grid</dt><dd>Bar ' + p.bar + ', beat ' + p.b + (p.light ? ' — downbeat, on paper' : '') + '<br><small>' + esc(p.why) + '</small></dd>' +
-      (p.link ? '<dt>drives to</dt><dd><a href="' + J.link(p.link.path) + '">' + p.link.label + '</a><br><small>Caption says “jasnota.mk, link in bio”; same-day story carries a link sticker.</small></dd>' : '') +
-      '<dt>hashtags</dt><dd>' + p.tags.length + ' · ' + p.tags.map(function (t) { return '#' + t; }).join(' ') + '</dd>' +
-      '<dt>audio</dt><dd>' + esc(p.fmt === 'reel' ? p.reel.audio : 'None (static post).') + '</dd>' +
-      '<dt>alt text</dt><dd>' + alts + '</dd>' +
-      (photos ? '<dt>photos</dt><dd><ul>' + photos + '</ul></dd>' : '') +
-      (p.usertags ? '<dt>tags</dt><dd>@' + p.usertags.join(', @') + '</dd>' : '') +
-      (p.location ? '<dt>location</dt><dd>' + p.location + '</dd>' : '') +
+      '<dt>објава</dt><dd>' + J.fmtDate(p.date, 'mk', true) + ', ' + p.time + '<br><small>Stories: Mon 12:00 teaser, Mon 19:35 repost, Wed 12:00 source, Fri 12:00 interaction.</small></dd>' +
+      '<dt>столб</dt><dd>' + J.PILLARS[p.pillar].roman + ' · ' + J.PILLARS[p.pillar].mk + '<br><small>Tone: ' + J.TONES[J.toneOf(p)].en.toLowerCase() + '.</small></dd>' +
+      '<dt>формат</dt><dd>' + J.FMT[p.fmt].mk + ' · ' + N + ' слајда' + (p.web ? '<br><small>Web twin: the full text goes up on the site the same day; caption says “линкот во био”.</small>' : '<br><small>Instagram only for now; no web text yet, so the caption has no link line.</small>') + '</dd>' +
+      '<dt>прашање</dt><dd lang="mk">' + esc(p.rq) + '</dd>' +
+      '<dt>why now</dt><dd>' + esc(p.why) + '</dd>' +
+      '<dt>ethics</dt><dd>' + esc(p.ethics) + '</dd>' +
+      '<dt>хаштагови</dt><dd>' + p.tags.length + ' · ' + p.tags.map(function (t) { return '#' + t; }).join(' ') + '</dd>' +
+      '<dt>извори</dt><dd>' + refList(ids) + '</dd>' +
+      '<dt>alt текст</dt><dd>' + alts + '</dd>' +
       (p.notes ? '<dt>notes</dt><dd>' + esc(p.notes) + '</dd>' : '') +
       '</dl>';
-    var reel = '';
-    if (p.fmt === 'reel') {
-      reel = '<div style="margin-top:var(--s-4)"><p class="day-sub">Shot list and on-screen text · ' + p.reel.length + ' · ' + p.reel.split + ' (2 + 2 + 3)</p><table class="shots"><thead><tr><th>Time</th><th>Shot</th><th>Sound</th><th>On screen</th></tr></thead><tbody>' +
-        p.reel.shots.map(function (s) { return '<tr><td>' + s.t + '</td><td>' + esc(s.shot) + '</td><td>' + esc(s.sound) + '</td><td class="os">' + (s.os ? esc(s.os.en) + '<small lang="mk">' + esc(s.os.mk) + '</small>' : '—') + '</td></tr>'; }).join('') +
-        '</tbody></table></div>';
-    }
     return '<article class="card" id="' + p.id + '">' +
-      '<div class="card-h"><h3>' + esc(p.title.en) + '</h3><span class="num">№' + J.pad(p.n) + ' · ' + J.fmtDate(p.date) + ' · ' + p.time + '</span>' +
-      '<div class="chips">' + chip(J.FORMATS[p.fmt].toLowerCase(), true) + chip(J.PILLARS[p.pillar].en.toLowerCase()) + p.goal.map(function (g) { return chip(g); }).join('') + (p.collab ? chip('collab') : '') + '</div></div>' +
-      '<div class="strip zoomable-strip">' + vis + '</div>' +
-      '<div class="facts">' + J.captionBox(p, p.id) + kv + '</div>' + reel + '</article>';
+      '<div class="card-h"><h3 lang="mk">' + esc(p.title) + '</h3><span class="num">' + J.pad(p.n) + ' · ' + J.fmtDate(p.date, 'mk') + ' · ' + p.time + '</span>' +
+      '<div class="chips">' + chip(J.FMT[p.fmt].mk, true) + chip('столб ' + J.PILLARS[p.pillar].roman) + chip(N + ' слајда') + (p.web ? chip('+ текст на веб') : '') + '</div></div>' +
+      '<div class="strip">' + vis + '</div>' +
+      '<div class="facts">' + J.captionBox(p) + kv + '</div>' + storiesRow(p) + '</article>';
   }
-
-  function storiesRow(day) {
-    if (!day || !day.items.length) return '';
-    return '<p class="day-sub">Stories · ' + day.items.length + ' frame' + (day.items.length > 1 ? 's' : '') + '</p><div class="stories-row">' +
-      day.items.map(function (it) {
-        var f = J.frameOf(it);
-        return '<figure>' + J.story(f) + '<figcaption><b>' + it.time + '</b> · ' + esc(J.storyLabel(it)) + (it.f ? ' · ' + it.f : '') + '</figcaption></figure>';
+  function slotName(p, i) {
+    var s = p.src[i] || p.src[p.src.length - 1], t = p.slides[i].t;
+    return ({ 'cover-text': 'корица', 'cover-study': 'корица', 'cover-concept': 'корица', 'cover-myth': 'тврдење', verdict: 'пресуда', card: 'картичка', bars: 'резултат', known: 'знаеме / не знаеме', sources: 'извори', takeaway: 'што да земеме', def: 'дефиниција', compare: 'споредба' })[t] || 'содржина';
+  }
+  function storiesRow(p) {
+    return '<p class="day-sub">Stories · optional · ' + p.stories.length + ' frames this week</p><div class="stories-row">' +
+      p.stories.map(function (s) {
+        return '<figure>' + J.story(s.f) + '<figcaption><b>' + J.dow(s.date) + ' ' + s.time + '</b> · ' + esc(s.label) + '</figcaption></figure>';
       }).join('') + '</div>';
   }
 
-  /* ---------------- month page ---------------- */
-  function buildMonth(mount) {
-    var weeks = [
-      { n: 1, from: '2026-11-02', to: '2026-11-08', title: 'Week one: <em>launch</em>' },
-      { n: 2, from: '2026-11-09', to: '2026-11-15', title: 'Week two: <em>roots</em>' },
-      { n: 3, from: '2026-11-16', to: '2026-11-22', title: 'Week three: <em>the research</em>' },
-      { n: 4, from: '2026-11-23', to: '2026-11-29', title: 'Week four: <em>the voice</em>' },
-      { n: 5, from: '2026-11-30', to: '2026-12-01', title: 'The <em>turn</em>' }
-    ];
+  function buildWeeks(mount) {
     var html = '';
-    weeks.forEach(function (w) {
-      var posts = J.POSTS.filter(function (p) { return p.date >= w.from && p.date <= w.to; });
-      html += '<section class="week-block" id="week-' + w.n + '"><div class="week-h"><h2 class="display">' + w.title + '</h2><span class="mono-s">' + J.fmtDate(w.from) + ' – ' + J.fmtDate(w.to) + ' · ' + posts.length + ' feed</span></div>';
-      J.DAYS.filter(function (d) { return d.date >= w.from && d.date <= w.to; }).forEach(function (d) {
-        var dp = J.POSTS.filter(function (p) { return p.date === d.date; });
-        var dt = J.date(d.date);
-        if (d.rest) {
-          html += '<div class="day-row rest" id="d-' + d.date + '"><div class="dlabel"><b>' + dt.getDate() + '</b>' + J.dow(d.date) + ' · Nov<span class="th">rest</span></div><div class="dcontent">' +
-            '<svg viewBox="0 0 40 24" aria-hidden="true"><use href="#i-rest"/></svg>Sunday is a written rest. No posts, no stories. Reply to comments if you want to; nothing new.</div></div>';
-          return;
+    J.POSTS.forEach(function (p) {
+      html += '<section class="week-block" id="week-' + p.n + '"><div class="week-h"><h2 class="display">Недела <em>' + J.pad(p.n) + '</em></h2><span class="mono-s">' + J.longDate(p.date) + ' · ' + J.PILLARS[p.pillar].mk + '</span></div>' +
+        weekCard(p) + '</section>';
+    });
+    mount.innerHTML = html;
+  }
+
+  /* ---------------- calendar: Nov 2026 – Jan 2027 ---------------- */
+  function buildCalendar(mount) {
+    var months = [[2026, 10], [2026, 11], [2027, 0]];
+    var head = ['пон', 'вто', 'сре', 'чет', 'пет', 'саб', 'нед'].map(function (d, i) { return '<div class="dh' + (i === 0 ? ' g2' : '') + '">' + d + (i === 0 ? ' · објава' : i === 3 ? ' · преглед' : '') + '</div>'; }).join('');
+    var html = '';
+    months.forEach(function (ym, mi) {
+      var first = new Date(ym[0], ym[1], 1), start = new Date(first);
+      start.setDate(1 - ((first.getDay() + 6) % 7));
+      var last = new Date(ym[0], ym[1] + 1, 0), cells = '';
+      var n = Math.ceil(((first.getDay() + 6) % 7 + last.getDate()) / 7) * 7;
+      for (var i = 0; i < n; i++) {
+        var d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i), iso = J.iso(d);
+        var inMonth = d.getMonth() === ym[1];
+        var showItems = inMonth || (mi === 0 && iso >= '2026-10-29');
+        var items = '';
+        if (showItems) {
+          J.PREP.filter(function (x) { return x.date === iso; }).forEach(function (x) {
+            items += '<a class="it prep" data-fmt="ops" data-pillar="acc" href="../profile/#create"><span class="th">prep</span><span class="tt">' + esc(x.title) + '<small>' + esc(x.note) + '</small></span></a>';
+          });
+          J.POSTS.filter(function (p) { return p.date === iso; }).forEach(function (p) {
+            items += '<a class="it" data-fmt="' + p.fmt + '" data-pillar="' + p.pillar + '" href="../month/#' + p.id + '"><span class="th">' + J.slide(J.cover(p), '34', 'hide-tags') + '</span><span class="tt" lang="mk">' + esc(p.title) +
+              '<small>' + p.time + ' · ' + J.FMT[p.fmt].mk + ' · столб ' + J.PILLARS[p.pillar].roman + '</small></span></a>';
+          });
+          J.POSTS.forEach(function (p) {
+            p.stories.forEach(function (s) {
+              if (s.date !== iso) return;
+              items += '<a class="it story" data-fmt="story" data-pillar="' + p.pillar + '" href="../month/#' + p.id + '"><span class="th">' + s.time.slice(0, 2) + '</span><span class="tt">Сторија<small>' + s.time + ' · ' + esc(s.label) + '</small></span></a>';
+            });
+          });
+          if (d.getDay() === J.REVIEW_DOW && iso >= '2026-11-05' && iso <= '2027-01-21') {
+            items += '<a class="it prep rev" data-fmt="ops" data-pillar="acc" href="../metrics/#ritual"><span class="th">20′</span><span class="tt">Неделен преглед<small>10:00 · log + one decision</small></span></a>';
+          }
         }
-        html += '<div class="day-row" id="d-' + d.date + '"><div class="dlabel"><b>' + dt.getDate() + '</b>' + J.dow(d.date) + ' · ' + (dt.getMonth() === 10 ? 'Nov' : 'Dec') + '<span class="th">' + esc(d.theme) + '</span></div><div class="dcontent">' +
-          dp.map(card).join('') + storiesRow(d) + '</div></div>';
-      });
-      html += '</section>';
+        var hol = HOLIDAYS[iso] && inMonth ? '<span class="hol">' + HOLIDAYS[iso] + '</span>' : '';
+        cells += '<div class="cell' + (!inMonth ? ' out' : '') + (!items ? ' empty' : '') + '" data-date="' + iso + '">' +
+          '<div class="dn">' + d.getDate() + '<small>' + J.dow(iso) + '</small></div>' + hol + items + '</div>';
+      }
+      html += '<section class="cal-month"><h2 class="sub-h">' + J.MONL[ym[1]].replace(/^./, function (c) { return c.toUpperCase(); }) + ' <em>' + ym[0] + '</em></h2><div class="cal">' + head + cells + '</div></section>';
     });
     mount.innerHTML = html;
 
-    var shots = document.getElementById('shotlist');
-    if (shots) {
-      shots.innerHTML = Object.keys(J.SHOTS).map(function (k) {
-        var s = J.SHOTS[k];
-        return '<tr><td>' + k + '.jpg</td><td><b>' + esc(s.title) + '</b><br>' + esc(s.shot) + '</td><td>' + esc(s.use) + '</td></tr>';
-      }).join('');
-    }
-  }
-
-  /* ---------------- calendar ---------------- */
-  function buildCalendar(mount) {
-    var start = new Date(2026, 9, 26), cells = '';
-    ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].forEach(function (d, i) {
-      cells += '<div class="dh' + (i === 0 || i === 2 || i === 4 ? ' g2' : '') + '">' + d + (i === 0 ? ' · think' : i === 2 ? ' · explain' : i === 4 ? ' · listen' : '') + '</div>';
-    });
-    for (var i = 0; i < 42; i++) {
-      var d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
-      var iso = d.getFullYear() + '-' + J.pad(d.getMonth() + 1) + '-' + J.pad(d.getDate());
-      var items = '';
-      J.PREP.filter(function (x) { return x.date === iso; }).forEach(function (x) {
-        items += '<a class="it prep" data-fmt="prep" data-pillar="about" href="../profile/#switch"><span class="th">prep</span><span class="tt">' + esc(x.title) + '<small>' + esc(x.note) + '</small></span></a>';
-      });
-      J.POSTS.filter(function (p) { return p.date === iso; }).forEach(function (p) {
-        items += '<a class="it" data-fmt="' + p.fmt + '" data-pillar="' + p.pillar + '" href="../month/#' + p.id + '"><span class="th">' + J.slide(J.cover(p), '34', 'hide-tags') + '</span><span class="tt">' + esc(p.title.en) +
-          '<small>' + p.time + ' · ' + p.fmt + ' · ' + J.PILLARS[p.pillar].en.toLowerCase() + '</small></span></a>';
-      });
-      var day = null;
-      J.DAYS.forEach(function (x) { if (x.date === iso) day = x; });
-      if (day) day.items.forEach(function (it) {
-        items += '<a class="it story" data-fmt="story" data-pillar="' + J.storyPillar(it) + '" href="../month/#d-' + iso + '"><span class="th">' + it.time.slice(0, 2) + '</span><span class="tt">Story<small>' + it.time + ' · ' + esc(J.storyLabel(it)) + '</small></span></a>';
-      });
-      var inPlan = iso >= '2026-10-29' && iso <= '2026-12-01';
-      var isRest = day && day.rest;
-      cells += '<div class="cell' + (d.getMonth() !== 10 ? ' out' : '') + (isRest ? ' rest' : '') + (!items && !isRest ? ' empty' : '') + '" data-date="' + iso + '">' +
-        '<div class="dn">' + d.getDate() + '<small>' + (isRest ? 'rest' : (d.getMonth() === 10 ? '' : J.fmtDate(iso).slice(4))) + '</small></div>' + items +
-        (isRest ? '<svg class="restmark" viewBox="0 0 40 24" aria-hidden="true"><use href="#i-rest"/></svg>' : '') + (!inPlan && !items ? '' : '') + '</div>';
-    }
-    mount.innerHTML = cells;
-
-    var state = { pillar: {}, fmt: {} };
-    PILLAR_ORDER.forEach(function (k) { state.pillar[k] = true; });
-    FMT_ORDER.forEach(function (k) { state.fmt[k] = true; });
+    var state = { pillar: { 1: true, 2: true, 3: true, acc: true }, fmt: { text: true, study: true, concept: true, myth: true, story: true, ops: true } };
     function apply() {
       mount.querySelectorAll('.it').forEach(function (a) {
         a.hidden = !(state.pillar[a.getAttribute('data-pillar')] && state.fmt[a.getAttribute('data-fmt')]);
       });
+      mount.querySelectorAll('.cell').forEach(function (c) { c.classList.toggle('none', !c.querySelector('.it:not([hidden])')); });
       var shown = mount.querySelectorAll('.it:not([hidden])').length;
-      var c = document.getElementById('calCount'); if (c) c.textContent = shown + ' items shown';
+      var posts = mount.querySelectorAll('.it:not([hidden]):not(.story):not(.prep)').length;
+      var c = document.getElementById('calCount'); if (c) c.textContent = posts + ' објави · ' + shown + ' ставки';
     }
     document.querySelectorAll('[data-filter]').forEach(function (b) {
       b.addEventListener('click', function () {
         var kind = b.getAttribute('data-filter'), key = b.getAttribute('data-key');
         if (key === '*') {
           Object.keys(state[kind]).forEach(function (k) { state[kind][k] = true; });
-          document.querySelectorAll('[data-filter="' + kind + '"]').forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-key') === '*' ? 'false' : 'true'); });
         } else {
           /* first click from "all on" isolates that key; later clicks toggle */
           var allOn = Object.keys(state[kind]).every(function (k) { return state[kind][k]; });
           if (allOn) { Object.keys(state[kind]).forEach(function (k) { state[kind][k] = (k === key); }); }
           else state[kind][key] = !state[kind][key];
           if (!Object.keys(state[kind]).some(function (k) { return state[kind][k]; })) Object.keys(state[kind]).forEach(function (k) { state[kind][k] = true; });
-          document.querySelectorAll('[data-filter="' + kind + '"]').forEach(function (x) {
-            var k = x.getAttribute('data-key');
-            if (k !== '*') x.setAttribute('aria-pressed', state[kind][k] ? 'true' : 'false');
-          });
         }
+        document.querySelectorAll('[data-filter="' + kind + '"]').forEach(function (x) {
+          var k = x.getAttribute('data-key'), all = Object.keys(state[kind]).every(function (z) { return state[kind][z]; });
+          x.setAttribute('aria-pressed', k === '*' ? (all ? 'true' : 'false') : (state[kind][k] && !all ? 'true' : 'false'));
+        });
         apply();
       });
     });
     apply();
   }
 
-  /* ---------------- review scorecard ---------------- */
-  function buildScore(mount) {
-    var KEY = 'jasnota-ig-score';
+  /* ---------------- per-post log (metrics) ---------------- */
+  function buildLog(mount) {
+    var KEY = 'jasnota-ig-log-v3';
     var saved = {};
     try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
-    var cols = ['reach', 'saves', 'shares', 'follows', 'link taps'];
+    function save() { try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {} }
+    var nums = [['reach', 'досег'], ['saves', 'зачувувања'], ['shares', 'споделувања'], ['talk', 'значајни коментари / прашања'], ['contacts', 'професионални контакти']];
     mount.innerHTML = J.POSTS.map(function (p) {
-      return '<tr><td data-h="post">№' + J.pad(p.n) + ' ' + esc(p.title.en) + '<br><small class="footnote">' + J.fmtDate(p.date) + ' · ' + p.fmt + '</small></td><td data-h="goal">' + p.goal.join(', ') + '</td>' +
-        cols.map(function (c) { var k = p.id + ':' + c; return '<td data-h="' + c + '"><input inputmode="numeric" aria-label="' + esc(c + ' for post ' + p.n) + '" data-k="' + k + '" value="' + esc(saved[k] || '') + '"></td>'; }).join('') + '</tr>';
+      var k = p.id;
+      var checks = J.CHECKS.map(function (c, i) {
+        var ck = k + ':c' + i;
+        return '<label><input type="checkbox" data-k="' + ck + '"' + (saved[ck] ? ' checked' : '') + '><span lang="mk">' + esc(c) + '</span></label>';
+      }).join('');
+      var done = J.CHECKS.filter(function (c, i) { return saved[k + ':c' + i]; }).length;
+      return '<tr><td data-h="објава"><b>' + J.pad(p.n) + '</b> <span lang="mk">' + esc(p.title) + '</span><br><small class="footnote">' + J.fmtDate(p.date, 'mk') + ' · ' + J.FMT[p.fmt].mk + '</small></td>' +
+        '<td data-h="навреме"><label class="ontime"><input type="checkbox" data-k="' + k + ':ontime"' + (saved[k + ':ontime'] ? ' checked' : '') + ' aria-label="Објавено навреме, недела ' + p.n + '"> да</label></td>' +
+        '<td data-h="извори"><details class="chk"><summary><span data-count="' + k + '">' + done + '</span> / ' + J.CHECKS.length + '</summary><div>' + checks + '</div></details></td>' +
+        nums.map(function (c) { var kk = k + ':' + c[0]; return '<td data-h="' + c[1] + '"><input inputmode="numeric" aria-label="' + esc(c[1] + ', недела ' + p.n) + '" data-k="' + kk + '" value="' + esc(saved[kk] || '') + '"></td>'; }).join('') +
+        '<td data-h="белешка"><input class="wide" aria-label="Белешка, недела ' + p.n + '" data-k="' + k + ':note" value="' + esc(saved[k + ':note'] || '') + '"></td></tr>';
     }).join('');
-    mount.addEventListener('input', function (e) {
+    function onChange(e) {
       var k = e.target.getAttribute('data-k'); if (!k) return;
-      saved[k] = e.target.value;
-      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (err) {}
+      saved[k] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+      if (/:c\d+$/.test(k)) {
+        var id = k.split(':')[0];
+        var n = J.CHECKS.filter(function (c, i) { return saved[id + ':c' + i]; }).length;
+        var el = mount.querySelector('[data-count="' + id + '"]'); if (el) el.textContent = n;
+      }
+      save(); summary();
+    }
+    mount.addEventListener('input', onChange);
+    mount.addEventListener('change', onChange);
+    function summary() {
+      var el = document.getElementById('logSummary'); if (!el) return;
+      var today = J.iso(new Date());
+      var due = J.POSTS.filter(function (p) { return p.date <= today; }).length;
+      var on = J.POSTS.filter(function (p) { return saved[p.id + ':ontime']; }).length;
+      var full = J.POSTS.filter(function (p) { return J.CHECKS.every(function (c, i) { return saved[p.id + ':c' + i]; }); }).length;
+      var sum = function (f) { return J.POSTS.reduce(function (a, p) { return a + (parseInt(saved[p.id + ':' + f], 10) || 0); }, 0); };
+      el.innerHTML = '<div><b>' + on + ' / 12</b><span>weeks published on time' + (due ? ' (' + due + ' due so far)' : '') + '</span></div>' +
+        '<div><b>' + full + ' / 12</b><span>posts with the full source checklist</span></div>' +
+        '<div><b>' + sum('talk') + '</b><span>meaningful comments and questions</span></div>' +
+        '<div><b>' + sum('contacts') + '</b><span>professional contacts made</span></div>';
+    }
+    summary();
+    var csv = document.getElementById('logCsv');
+    if (csv) csv.addEventListener('click', function () {
+      var rows = [['week', 'date', 'title', 'on_time', 'checks'].concat(nums.map(function (c) { return c[0]; })).concat(['note'])];
+      J.POSTS.forEach(function (p) {
+        rows.push([p.n, p.date, p.title, saved[p.id + ':ontime'] ? 1 : 0, J.CHECKS.filter(function (c, i) { return saved[p.id + ':c' + i]; }).length]
+          .concat(nums.map(function (c) { return saved[p.id + ':' + c[0]] || ''; })).concat([saved[p.id + ':note'] || '']));
+      });
+      J.copy(rows.map(function (r) { return r.map(function (v) { v = String(v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(','); }).join('\n'), csv);
     });
   }
 
-  /* ---------------- moodboard grid (index.html) ---------------- */
-  J.buildMoodGrid = buildMoodGrid;
-  function buildMoodGrid(mount) {
-    mount.removeAttribute('data-generate');
+  /* ---------------- hub grid (index.html): newest first ---------------- */
+  J.buildMoodGrid = function (mount) {
     var list = J.POSTS.slice().sort(function (a, b) { return b.n - a.n; });
     mount.innerHTML = list.map(function (p) {
-      var c = J.cover(p);
-      var icon = J.fmtIcon(p) ? '<svg class="fi" aria-hidden="true"><use href="#i-' + J.fmtIcon(p) + '"/></svg>' : '';
-      return '<article class="post hide-tags' + (p.light ? ' light' : '') + '" data-n="' + p.n + '" data-bar="' + p.bar + '" data-b="' + p.b + '" data-g="' + p.g + '" data-fmt="' + esc(J.fmtLabel(p)) + '" data-pillar="' + esc(J.PILLARS[p.pillar].en) + '" data-why="' + esc(p.why) + '">' +
-        icon + c.html + '<p class="cap">' + esc(J.publishedCaption(p)) + '</p></article>';
+      return '<button type="button" class="tile" data-id="' + p.id + '" data-pillar="' + p.pillar + '" aria-label="' + esc('Објава ' + p.n + ': ' + p.title + ', ' + J.fmtLabel(p)) + '">' +
+        J.slide(J.cover(p), '34', 'hide-tags') + J.icon('car', 'gi') + '<span class="code" aria-hidden="true">' + J.PILLARS[p.pillar].roman + ' · ' + J.FMT[p.fmt].mk + '</span></button>';
+    }).join('');
+  };
+
+  /* ---------------- template gallery (index.html) ---------------- */
+  function buildTemplates(mount) {
+    var rows = [
+      { id: 'w01', name: 'Текст', seq: 'cover → 4–5 content slides → Што знаеме / не знаеме → Извори', note: 'The long read’s carousel twin. Headline in Cormorant, one italic word; body in Onest ≤ 230 characters a slide; every claim ends with its evidence label and in-text citation. Slide 6 is always the honest one: what we know, what we don’t, and when to see a professional.' },
+      { id: 'w02', name: 'Приказ на студија', seq: 'cover (specimen frame) → study card → result → limitations → replication / what came next → знаеме → Извори', note: 'One paper, read like a lab card. The cover is framed by four crop marks; the study card is always the same table (who · tasks · design · measures); results are drawn, never decorated; limitations get their own slide.' },
+      { id: 'w08', name: 'Поим', seq: 'cover (dictionary entry) → definition → how common / measured → example from music → (local study) → Извори', note: 'A term set like a dictionary entry: lowercase, the English term in brackets, a hairline, the plain-language gloss. Examples from music are marked as illustrations, not findings.' },
+      { id: 'w04', name: 'Мит или наука', seq: 'cover (the claim, in quotes) → verdict stamp → what science says ×3 → Извори', note: 'The claim stands alone on the cover, so the swipe is the reveal. The verdict stamp is the only place cinnabar appears in the whole feed.' }
+    ];
+    mount.innerHTML = rows.map(function (r) {
+      var p = J.post(r.id);
+      return '<div class="tpl-fmt"><div class="tpl-h"><h3 class="display">' + r.name + '</h3><p class="spec">' + r.seq + '</p><p class="note">' + r.note + '</p></div>' +
+        '<div class="strip">' + p.slides.map(function (s, i) { return '<figure class="w45">' + J.slide(s, '45') + '<figcaption>' + J.pad(i + 1) + ' · ' + slotName(p, i) + '</figcaption></figure>'; }).join('') + '</div></div>';
     }).join('');
   }
 
-  /* ---------------- zoom dialog for frames (month page) ---------------- */
+  /* ---------------- zoom dialog for frames ---------------- */
   function bindZoom() {
     var dlg = document.getElementById('zoom');
     if (!dlg || !dlg.showModal) return;
@@ -238,11 +261,10 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     var m;
-    if ((m = document.getElementById('monthMount'))) buildMonth(m);
+    if ((m = document.getElementById('monthMount'))) buildWeeks(m);
     if ((m = document.getElementById('calMount'))) buildCalendar(m);
-    if ((m = document.getElementById('scoreMount'))) buildScore(m);
-    if ((m = document.getElementById('feed')) && m.hasAttribute('data-generate')) buildMoodGrid(m);
-    J.bindLangToggles(document);
+    if ((m = document.getElementById('logMount'))) buildLog(m);
+    if ((m = document.getElementById('tplMount'))) buildTemplates(m);
     document.addEventListener('click', function (e) {
       var b = e.target.closest('[data-copy]'); if (!b) return;
       J.copy(J.publishedCaption(J.post(b.getAttribute('data-copy'))), b);

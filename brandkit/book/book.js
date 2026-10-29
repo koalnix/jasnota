@@ -18,7 +18,7 @@ window.JASNOTA_AFTER = function () {
     if (p.hasAttribute('data-nofoot')) return;
     var f = document.createElement('footer');
     f.className = 'rf';
-    f.innerHTML = '<span>jasnota — Brand guidelines · v1 · 2026</span><span>' + (ch ? ch + ' · ' + p.dataset.chn : '') + '</span><span>' + pad(n) + ' / ' + total + '</span>';
+    f.innerHTML = '<span><span lang="mk">јаснота</span> — Brand guidelines · v2 · 2026</span><span>' + (ch ? ch + ' · ' + p.dataset.chn : '') + '</span><span>' + pad(n) + ' / ' + total + '</span>';
     p.appendChild(f);
   });
   var toc = document.getElementById('toc');

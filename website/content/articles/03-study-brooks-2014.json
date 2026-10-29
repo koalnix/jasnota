@@ -1,0 +1,163 @@
+{
+  "slug": "study-brooks-2014-get-excited",
+  "pillar": 3,
+  "format": "study",
+  "lang": "mk",
+  "date": "2026-11-09",
+  "title": "„Возбуден/а сум“: една позната студија за тремата, под лупа",
+  "dek": "Во 2014 година, Алисон Вуд Брукс објави експерименти според кои е подобро анксиозноста да ја наречеме возбуда отколку да се обидуваме да се смириме. Што точно направи, што најде и зошто тоа не е крајот на приказната.",
+  "reading_min": 4,
+  "body": [
+    {
+      "h2": "Прашањето",
+      "blocks": [
+        {
+          "p": "Пред настап, испит или говор, најчестиот совет е „смири се“. Брукс тргна од едноставно прашање: дали тоа е најдобрата стратегија? Анксиозноста и возбудата се и двете состојби на висока телесна возбуда – срцето чука, енергијата расте. Нејзината хипотеза беше дека е полесно анксиозноста да се „преименува“ во возбуда отколку возбудата да се спушти до смиреност (Brooks, 2014)."
+        }
+      ]
+    },
+    {
+      "h2": "Дизајнот",
+      "blocks": [
+        {
+          "p": "Студијата содржи прелиминарна онлајн анкета со возрасни Американци и четири експерименти со студенти:"
+        },
+        {
+          "list": [
+            "<strong>Анкета (300 учесници):</strong> од оние што замислувале дека самите треба да држат говор пред цела компанија, над 90% избрале „обиди се да се опуштиш и смириш“ како најдобар совет.",
+            "<strong>Караоке (113 учесници):</strong> пред да ја испеат истата песна, учесниците по случаен избор рекле „Анксиозен/на сум“, „Возбуден/а сум“ или ништо. Точноста на пеењето (висина на тонот, јачина и траење на тоновите) ја мереше софтверот на видеоиграта за караоке.",
+            "<strong>Јавен говор (140 учесници):</strong> пред кратко убедувачко излагање рекле „Возбуден/а сум“ или „Смирен/а сум“; снимките ги оценуваа независни оценувачи.",
+            "<strong>Математика (188 и 218 учесници):</strong> пред тешка задача прочитале „Обиди се да се возбудиш“ или „Обиди се да останеш смирен/а“ (во првата студија имаше и неутрална порака)."
+          ]
+        }
+      ]
+    },
+    {
+      "h2": "Наодите",
+      "blocks": [
+        {
+          "p": "Во караоке-студијата, групата „Возбуден/а сум“ имаше просечна точност од околу 81%, групата без изјава околу 69%, а групата „Анксиозен/на сум“ околу 53%. Во студијата со говор, „возбудените“ беа оценети како поубедливи, посамоуверени и покомпетентни и зборуваа подолго. Во математичките задачи, пораката „Обиди се да се возбудиш“ доведе до повеќе точни одговори од пораката за смирување, која не се разликуваше од неутралната."
+        },
+        {
+          "p": "Двата детали се особено важни. Прво, преоценувањето <strong>ја зголеми возбудата, но не ја намали анксиозноста</strong> – двете чувства постоеја истовремено. Второ, пулсот остана висок без разлика дали учесниците се обидуваа да се смират или да се „возбудат“. Според авторката, разликата е во начинот на кој ја гледаме ситуацијата: повеќе како можност, помалку како закана."
+        },
+        {
+          "evidence": {
+            "level": "рани/ограничени докази",
+            "text": "Добро контролирани, но краткотрајни лабораториски експерименти со студенти. Ефектот врз изведбата не е потврден во директната репликација на студијата со говор."
+          }
+        }
+      ]
+    },
+    {
+      "h2": "Ограничувањата",
+      "blocks": [
+        {
+          "list": [
+            "Учесниците во експериментите беа студенти, не музичари, а „настапот“ беше еднократна лабораториска задача пред еден експериментатор.",
+            "Пеењето го оценуваше софтвер за караоке, кој мери точност, а не музикалност или изразност.",
+            "Нема податоци за луѓе со изразена или долготрајна анксиозност при изведба.",
+            "Самата авторка наведува дека не се знае како делуваат различни формулации, тајминг и публика."
+          ]
+        },
+        {
+          "p": "Најважното ограничување дојде подоцна. Во 2025 година, директна репликација на студијата со јавен говор, со 74 учесници, доби речиси идентични резултати за самоизвестената возбуда, но <strong>никаква разлика</strong> во оценките на набљудувачите за изведбата (Poynter & Smith Pasqualini, 2025). Репликацијата е помала од оригиналот и не ја „поништува“ студијата, но покажува дека ефектот врз изведбата е понесигурен отколку што изгледаше."
+        }
+      ]
+    },
+    {
+      "h2": "Што значи ова за музичарите?",
+      "blocks": [
+        {
+          "p": "Студијата убедливо покажува една скромна, но корисна работа: возбудата пред настап не мора да се гаси за да се свири или пее. Нејзиното различно толкување може да го промени доживувањето – слично на поширокото истражување за преоценување на телесната возбуда (Jamieson et al., 2012). Дали тоа сигурно ја подобрува изведбата, особено кај музичари со изразена трема, сè уште не знаеме. Една реченица не е третман."
+        }
+      ]
+    }
+  ],
+  "known": [
+    "Повеќето луѓе мислат дека смирувањето е најдобриот совет пред настап.",
+    "Преименувањето на анксиозноста во возбуда ја зголемува субјективната возбуда.",
+    "Обидот за смирување не го спушта пулсот пред стресна задача."
+  ],
+  "unknown": [
+    "Дали ефектот врз изведбата е стабилен – репликацијата не го потврди.",
+    "Дали истото важи за музичари и за вистински настапи пред публика.",
+    "Дали помага кај луѓе со изразена музичка анксиозност при изведба."
+  ],
+  "note": "Ова не е дијагноза ниту терапија. Приказот објаснува една студија; ако тремата ве спречува да настапувате, разговарајте со психолог или психотерапевт.",
+  "references": [
+    "brooks2014",
+    "poynter2025",
+    "jamieson2012"
+  ],
+  "tags": [
+    "краток приказ на студија",
+    "преоценка",
+    "трема",
+    "репликација",
+    "столб 3"
+  ],
+  "en": {
+    "title": "“I am excited”: a well-known stage-fright study under the microscope",
+    "dek": "In 2014 Alison Wood Brooks published experiments suggesting that calling anxiety excitement works better than trying to calm down. What she did, what she found, and why it is not the end of the story.",
+    "body": [
+      {
+        "h2": "The question",
+        "blocks": [
+          {
+            "p": "Anxiety and excitement are both high-arousal states. Brooks hypothesised that relabelling anxiety as excitement is easier than bringing arousal down to calm (Brooks, 2014)."
+          }
+        ]
+      },
+      {
+        "h2": "Design",
+        "blocks": [
+          {
+            "list": [
+              "Online survey of US adults (300): imagining giving a company-wide speech themselves, over 90% chose “try to relax and calm down” as the best advice.",
+              "Karaoke (113): participants said “I am anxious”, “I am excited” or nothing before singing; accuracy (pitch, volume, note duration) was scored by the game software.",
+              "Public speaking (140): “I am excited” vs “I am calm”; videos rated by independent judges.",
+              "Maths (188 and 218): “Try to get excited” vs “Try to remain calm” (plus a neutral message in the first)."
+            ]
+          }
+        ]
+      },
+      {
+        "h2": "Findings",
+        "blocks": [
+          {
+            "p": "Singing accuracy averaged about 81% after “I am excited”, 69% with no statement and 53% after “I am anxious”. “Excited” speakers were rated more persuasive and confident; “get excited” improved maths scores. Reappraisal increased excitement but did not reduce anxiety, and heart rate stayed high in all conditions."
+          }
+        ]
+      },
+      {
+        "h2": "Limitations",
+        "blocks": [
+          {
+            "p": "Student participants, one-off lab tasks, software-scored singing, no clinical samples. A 2025 direct replication of the speech study (N = 74) reproduced the self-reported excitement effect but found no difference in observer-rated performance (Poynter & Smith Pasqualini, 2025)."
+          }
+        ]
+      },
+      {
+        "h2": "What it means for musicians",
+        "blocks": [
+          {
+            "p": "Arousal before performing need not be extinguished; reinterpreting it can change how it feels. Whether it reliably improves performance, especially for musicians with severe anxiety, remains unknown."
+          }
+        ]
+      }
+    ],
+    "known": [
+      "Most people think calming down is the best advice before a performance.",
+      "Relabelling anxiety as excitement increases how excited people feel.",
+      "Trying to calm down does not lower heart rate before a stressful task."
+    ],
+    "unknown": [
+      "Whether the effect on performance is stable: the replication did not confirm it.",
+      "Whether the same holds for musicians and for real performances in front of an audience.",
+      "Whether it helps people with marked music performance anxiety."
+    ],
+    "note": "This is not a diagnosis or therapy. The summary explains one study; if stage fright stops you from performing, talk to a psychologist or a psychotherapist."
+  },
+  "word_count": 553
+}

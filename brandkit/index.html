@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jasnota — Brand kit</title>
-<meta name="description" content="The Jasnota brand kit: brand guidelines (PDF), logo pack (SVG, PDF, PNG) and the identity applied to print, Instagram, the website and objects.">
-<meta property="og:title" content="Jasnota — Brand kit">
-<meta property="og:description" content="To hear yourself. The Jasnota identity: mark, wordmark, colour, type and applications.">
+<title>Jasnota — Brand kit v2</title>
+<meta name="description" content="The Jasnota brand kit, version 2: an educational platform on the psychology of music. Positioning, the editorial system with evidence labels, templates, logo files and the 44-page guidelines.">
+<meta property="og:title" content="Јаснота — Brand kit v2">
+<meta property="og:description" content="Психологијата зад музиката · The psychology behind music. The editorial system, templates and identity of Jasnota.">
 <meta property="og:image" content="logo-pack/06-social/jasnota-share-1200x630.png">
 <link rel="icon" href="../brand/logo/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,7 @@
   a:hover { text-decoration-color: var(--bone); }
   svg { display: block; }
   em { font-style: italic; }
+  ul { list-style: none; }
 
   .wrap { max-width: 1440px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 80px); }
   .g7 { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); column-gap: clamp(12px, 2.2vw, 32px); }
@@ -30,18 +31,26 @@
   .mono b { font-weight: 400; color: var(--bone); }
   .ash { color: var(--ash); }
   .d { font-family: var(--font-display); font-weight: 300; letter-spacing: -.015em; }
-  h1, h2, h3 { font-family: var(--font-display); font-weight: 300; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 300; }
   h2 { font-size: clamp(44px, 7vw, 112px); line-height: .94; letter-spacing: -.02em; }
   h3 { font-size: clamp(26px, 2.6vw, 38px); line-height: 1.05; letter-spacing: -.01em; }
+  h4 { font-size: clamp(22px, 2vw, 28px); line-height: 1.1; }
   .lead { font-size: clamp(19px, 1.6vw, 22px); line-height: 1.5; }
+  .small { font-size: 15px; line-height: 1.55; }
   section.wrap { padding-top: clamp(112px, 15vw, 200px); }
   .head { align-items: start; margin-bottom: var(--s-6); }
   .head .num { grid-column: 1 / 2; padding-top: 1.2em; }
   .head h2 { grid-column: 2 / 8; }
+  .sub-h { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); column-gap: clamp(12px, 2.2vw, 32px); margin: var(--s-7) 0 var(--s-4); align-items: baseline; }
+  .sub-h .mono { grid-column: 1 / 2; }
+  .sub-h h3 { grid-column: 2 / 6; }
+  .sub-h p.r { grid-column: 6 / 8; }
+  .rule-list li { padding: 14px 0 15px; border-top: 1px solid var(--graphite); }
+  .rule-list li:last-child { border-bottom: 1px solid var(--graphite); }
 
   /* top */
   .top { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); padding-top: var(--s-4); }
-  .top .lk { width: 132px; height: auto; color: var(--bone); }
+  .top .lk { width: 140px; height: auto; color: var(--bone); }
   .top nav { display: flex; gap: var(--s-3); flex-wrap: wrap; justify-content: flex-end; }
   .top nav a { text-decoration: none; }
   .top nav a:hover { color: var(--bone); }
@@ -49,12 +58,13 @@
   /* hero */
   .hero { min-height: calc(100svh - 80px); display: grid; grid-template-rows: 1fr auto; padding-bottom: var(--s-4); }
   .hero-body { align-items: end; padding-top: var(--s-5); }
-  .hero-mark { grid-column: 5 / 8; grid-row: 1; justify-self: end; align-self: start; width: min(30vw, 440px); aspect-ratio: 1; color: var(--bone); }
+  .hero-mark { grid-column: 5 / 8; grid-row: 1; justify-self: end; align-self: start; width: min(28vw, 400px); aspect-ratio: 1; color: var(--bone); }
   .hero-mark svg { width: 100%; height: 100%; }
-  .hero h1 { grid-column: 1 / 6; grid-row: 1; font-size: clamp(64px, 12.5vw, 210px); line-height: .86; letter-spacing: -.03em; margin-top: clamp(140px, 20vw, 300px); }
+  .hero h1 { grid-column: 1 / 7; grid-row: 1; font-size: clamp(54px, 10vw, 168px); line-height: .88; letter-spacing: -.03em; margin-top: clamp(140px, 18vw, 280px); }
   .hero h1 em { display: block; padding-left: .5em; }
   .hero .intro { grid-column: 1 / 4; margin-top: var(--s-5); }
-  .hero .intro .mk { margin-top: var(--s-2); color: var(--ash); font-family: var(--font-display); font-style: italic; font-size: clamp(20px, 1.8vw, 26px); line-height: 1.3; }
+  .hero .intro .en { margin-top: var(--s-2); color: var(--ash); font-family: var(--font-display); font-style: italic; font-size: clamp(20px, 1.8vw, 26px); line-height: 1.3; }
+  .hero .side { grid-column: 5 / 8; margin-top: var(--s-5); align-self: end; }
   .hero-foot { display: flex; justify-content: space-between; gap: var(--s-3); margin-top: var(--s-6); padding-top: var(--s-2); border-top: 1px solid var(--graphite); }
   @media (prefers-reduced-motion: no-preference) {
     .hero-mark path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.6s var(--ease-out) forwards; }
@@ -64,13 +74,62 @@
   }
   @keyframes draw { to { stroke-dashoffset: 0; } }
 
-  /* downloads */
-  .dl { border-top: 1px solid var(--graphite); }
-  .dl a { display: grid; grid-template-columns: 4ch 1fr auto; gap: var(--s-3); align-items: baseline; padding: var(--s-3) 0; border-bottom: 1px solid var(--graphite); text-decoration: none; }
-  .dl a strong { font: 300 clamp(30px, 4.4vw, 60px)/1 var(--font-display); letter-spacing: -.015em; transition: transform var(--dur-med) var(--ease-out); display: inline-block; }
-  .dl a small { display: block; margin-top: 10px; font-size: 15px; color: var(--ash); }
-  .dl a:hover strong, .dl a:focus-visible strong { transform: translateX(var(--s-2)); font-style: italic; }
-  .dl .arr { font: 300 13px var(--font-mono); color: var(--ash); }
+  /* platform */
+  .def { grid-column: 2 / 7; font-size: clamp(26px, 3vw, 44px); line-height: 1.14; }
+  .isnt { margin-top: var(--s-6); }
+  .isnt > div:nth-child(1) { grid-column: 2 / 4; } .isnt > div:nth-child(2) { grid-column: 4 / 6; } .isnt > div:nth-child(3) { grid-column: 6 / 8; }
+  .isnt h4 { margin-bottom: var(--s-2); }
+  .panel { background: var(--night); padding: clamp(20px, 2.4vw, 32px); }
+  .princ { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5) clamp(12px, 2.2vw, 32px); margin-top: var(--s-7); }
+  .princ div { border-top: 1px solid var(--bone); padding-top: var(--s-2); }
+  .princ h4 { margin-top: 10px; }
+  .princ .mkn { font-family: var(--font-display); font-style: italic; color: var(--ash); font-size: 18px; }
+  .princ p.small { margin-top: 12px; }
+
+  /* editorial system */
+  .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2.2vw, 32px); }
+  .pillar { border-top: 1px solid var(--bone); padding-top: var(--s-3); }
+  .pillar .n { font: 300 clamp(64px, 7vw, 104px)/.8 var(--font-display); color: var(--ash); }
+  .pillar h3 { margin-top: var(--s-3); }
+  .pillar .en { color: var(--ash); font-size: 15px; margin-top: 6px; }
+  .pillar .p { margin-top: var(--s-2); }
+  .pillar ul { margin-top: var(--s-3); }
+  .pillar li { padding: 12px 0; border-top: 1px solid var(--graphite); font-family: var(--font-display); font-size: 20px; line-height: 1.15; }
+  .pillar li .w { display: block; font: 300 12px/1.4 var(--font-mono); color: var(--ash); margin-bottom: 4px; }
+  .fmts li { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 4fr); column-gap: clamp(12px, 2.2vw, 32px); align-items: baseline; }
+  .fmts li .d { font-size: clamp(24px, 2.2vw, 32px); line-height: 1; }
+  .evs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 2.2vw, 32px); }
+  .evs .panel .ev { font-size: clamp(14px, 1.3vw, 18px); }
+  .evs .panel p.mono { margin-top: 8px; }
+  .evs .panel p.small { margin-top: var(--s-2); }
+  .evs .panel p.ex { margin-top: 12px; color: var(--ash); font-style: italic; font-size: 15px; }
+  .kn { margin-top: var(--s-5); }
+  .kn > div:nth-child(1) { grid-column: 2 / 5; } .kn > div:nth-child(2) { grid-column: 5 / 8; }
+  .kblk .hd { display: flex; align-items: center; gap: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--bone); }
+  .kblk .hd svg { width: 34px; height: 34px; color: var(--bone); flex: none; }
+  .kblk .hd b { font: 300 clamp(26px, 2.4vw, 34px)/1 var(--font-display); }
+  .kblk li { padding: 12px 0; border-bottom: 1px solid var(--graphite); font-size: 16px; line-height: 1.45; }
+  .callout { background: var(--night); border-left: 2px solid var(--bone); padding: 20px 24px 22px; }
+  .callout .ev { font-size: 13px; }
+  .callout p { margin-top: 12px; font-size: 16px; color: #d9d5ce; }
+  .steps { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--s-3) clamp(12px, 2.2vw, 32px); }
+  .steps div { border-top: 1px solid var(--bone); padding-top: var(--s-2); }
+  .steps .n { font: 300 34px/1 var(--font-display); }
+  .steps h4 { margin-top: 10px; font-size: 22px; }
+  .steps p.small { margin-top: 8px; color: var(--ash); }
+
+  /* templates */
+  .row5 { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 24px); }
+  .row5 figcaption, .apps figcaption { margin-top: 14px; }
+  .row5 figcaption h4 { font-size: 22px; }
+  .row5 figcaption p { font-size: 14px; color: var(--ash); margin-top: 4px; }
+  .apps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(40px, 5vw, 80px) clamp(12px, 2.2vw, 32px); }
+  .apps figure.w { grid-column: 1 / -1; }
+  .apps figcaption { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-2); }
+  .apps figcaption h3 { font-size: clamp(22px, 2vw, 30px); }
+  .apps figcaption p { font-size: 15px; color: var(--ash); grid-column: 1 / -1; max-width: 46em; }
+  .nlcc { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: clamp(12px, 2.2vw, 32px); align-items: start; }
+  .hlbox { margin-top: var(--s-4); padding: clamp(20px, 3vw, 40px); background: var(--night); }
 
   /* logo */
   .stage { display: grid; place-items: center; position: relative; padding: clamp(28px, 5vw, 72px) clamp(20px, 4vw, 56px); min-height: clamp(220px, 26vw, 380px); }
@@ -79,11 +138,11 @@
   .stage.bone { background: var(--bone); color: var(--ink); }
   .stage.bone .mono { color: #66645f; }
   .logos { row-gap: clamp(12px, 2.2vw, 32px); }
-  .lk-h { grid-column: 1 / 5; } .lk-h svg { width: min(100%, 520px); height: auto; }
-  .lk-s { grid-column: 5 / 8; } .lk-s svg { width: min(62%, 220px); height: auto; }
+  .lk-h { grid-column: 1 / 5; } .lk-h svg { width: min(100%, 540px); height: auto; }
+  .lk-s { grid-column: 5 / 8; } .lk-s svg { width: min(62%, 230px); height: auto; }
   .ways { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 2.2vw, 32px); margin-top: var(--s-6); }
   .way a { display: grid; place-items: center; aspect-ratio: 4 / 3; text-decoration: none; position: relative; }
-  .way a svg { width: 62%; height: auto; }
+  .way a svg { width: 66%; height: auto; }
   .way p { margin-top: 10px; }
   .chk { background: repeating-conic-gradient(#1b1b1d 0 25%, #141416 0 50%) 0 0 / 16px 16px; }
   .chk.lt { background: repeating-conic-gradient(#e2ded6 0 25%, #f1eee9 0 50%) 0 0 / 16px 16px; }
@@ -93,7 +152,7 @@
   .signs p { margin-top: 10px; }
 
   /* colour + type */
-  .pal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: clamp(8px, 1.4vw, 20px); }
+  .pal { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: clamp(8px, 1.4vw, 20px); }
   .pal span { display: block; aspect-ratio: 3 / 4; }
   .pal p { margin-top: 10px; }
   .pal p b { display: block; font: 300 22px/1 var(--font-display); color: var(--bone); margin-bottom: 4px; letter-spacing: 0; }
@@ -102,12 +161,13 @@
   .types .mono { grid-column: 1 / 3; }
   .types .s { grid-column: 3 / 8; }
 
-  /* applications */
-  .apps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(40px, 5vw, 80px) clamp(12px, 2.2vw, 32px); }
-  .apps figure.w { grid-column: 1 / -1; }
-  .apps figcaption { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-2); margin-top: 14px; }
-  .apps figcaption h3 { font-size: clamp(22px, 2vw, 30px); }
-  .apps figcaption p { font-size: 15px; color: var(--ash); grid-column: 1 / -1; max-width: 46em; }
+  /* downloads */
+  .dl { border-top: 1px solid var(--graphite); }
+  .dl a { display: grid; grid-template-columns: 4ch 1fr auto; gap: var(--s-3); align-items: baseline; padding: var(--s-3) 0; border-bottom: 1px solid var(--graphite); text-decoration: none; }
+  .dl a strong { font: 300 clamp(30px, 4.4vw, 60px)/1 var(--font-display); letter-spacing: -.015em; transition: transform var(--dur-med) var(--ease-out); display: inline-block; }
+  .dl a small { display: block; margin-top: 10px; font-size: 15px; color: var(--ash); }
+  .dl a:hover strong, .dl a:focus-visible strong { transform: translateX(var(--s-2)); font-style: italic; }
+  .dl .arr { font: 300 13px var(--font-mono); color: var(--ash); }
 
   footer.wrap { margin-top: clamp(112px, 15vw, 200px); padding-bottom: var(--s-5); }
   .end { border-top: 1px solid var(--graphite); padding-top: var(--s-4); align-items: end; }
@@ -115,18 +175,32 @@
   .end .meta { grid-column: 5 / 8; text-align: right; }
   .end .who p:first-child { font: 300 clamp(34px, 4vw, 56px)/1 var(--font-display); }
 
+  @media (max-width: 1100px) {
+    .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .evs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
   @media (max-width: 860px) {
     body { font-size: 16px; }
-    .g7 { grid-template-columns: minmax(0, 1fr); }
-    .g7 > * { grid-column: 1 / -1 !important; grid-row: auto !important; }
+    .g7, .sub-h { grid-template-columns: minmax(0, 1fr); }
+    .g7 > *, .sub-h > * { grid-column: 1 / -1 !important; grid-row: auto !important; }
+    .sub-h { row-gap: 8px; margin-top: var(--s-6); }
     .head { grid-template-columns: minmax(0, 1fr) auto; margin-bottom: var(--s-5); }
     .head h2 { grid-column: 1 / 2 !important; grid-row: 1 !important; }
     .head .num { grid-column: 2 / 3 !important; grid-row: 1 !important; padding: .6em 0 0 var(--s-2); }
     .top nav { display: none; }
     .hero { min-height: 0; }
-    .hero-mark { width: min(40vw, 200px); justify-self: end; }
+    .hero-mark { width: min(36vw, 180px); justify-self: end; }
     .hero h1 { margin-top: var(--s-4); }
+    .hero .side { margin-top: var(--s-3); }
     .hero-foot p:nth-child(2) { display: none; }
+    .isnt > div { margin-top: var(--s-4); }
+    .princ, .pillars { grid-template-columns: minmax(0, 1fr); }
+    .fmts li { grid-template-columns: minmax(0, 1fr); row-gap: 6px; }
+    .evs { grid-template-columns: minmax(0, 1fr); }
+    .kn > div + div { margin-top: var(--s-5); }
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .row5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .apps, .nlcc { grid-template-columns: minmax(0, 1fr); }
     .dl a { grid-template-columns: 3ch 1fr; }
     .dl .arr { display: none; }
     .ways { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -134,7 +208,6 @@
     .pal { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: var(--s-3); }
     .types > div { grid-template-columns: minmax(0, 1fr); }
     .types .mono, .types .s { grid-column: 1; }
-    .apps { grid-template-columns: minmax(0, 1fr); }
     .end .meta { text-align: left; margin-top: var(--s-3); }
   }
   @media (prefers-reduced-motion: reduce) { .dl a strong { transition: none; } }
@@ -143,106 +216,209 @@
 <body>
 
 <header class="wrap top">
-  <a href="../" aria-label="Brand studio home"><svg class="lk" data-l="hl" role="img" aria-label="Jasnota"></svg></a>
-  <nav class="mono" aria-label="Sections"><a href="#download">Download</a><a href="#logo">Logo</a><a href="#colour">Colour and type</a><a href="#applications">Applications</a></nav>
+  <a href="../" aria-label="Brand studio home"><svg class="lk" data-l="hc" role="img" aria-label="Јаснота"></svg></a>
+  <nav class="mono" aria-label="Sections"><a href="#platform">Platform</a><a href="#editorial">Editorial system</a><a href="#templates">Templates</a><a href="#logo">Logo</a><a href="#download">Download</a></nav>
 </header>
 
 <section class="wrap hero" aria-labelledby="t">
   <div class="g7 hero-body">
     <div class="hero-mark" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="butt"><path pathLength="1" d="M28 14 V44 A22 22 0 0 0 72 44 V14"/><path pathLength="1" d="M50 6 V52"/><path pathLength="1" d="M50 64 V94"/></svg></div>
-    <h1 id="t">The brand <em>kit.</em></h1>
+    <h1 id="t" lang="mk">Психологијата зад <em>музиката</em></h1>
     <div class="intro">
-      <p class="lead">Everything Jasnota is made of, in one place: the guidelines, the logo files, and the identity at work on paper, on screens and on things you keep.</p>
-      <p class="mk" lang="mk">Сè од што е направена Јаснота, на едно место.</p>
+      <p class="lead">Jasnota is an educational platform on the psychology of music: science-based texts with sources and evidence labels, written in Macedonian first.</p>
+      <p class="en">The psychology behind music.</p>
     </div>
+    <p class="side small ash">This is its brand kit, version 2: the positioning, the editorial system, the templates, the logo files and the 44-page guidelines. Version 1, the personal artist brand, is retired.</p>
   </div>
-  <div class="hero-foot"><p class="mono">v1 · 2026</p><p class="mono">guidelines · logo pack · applications</p><p class="mono">7/8 · ♩ = 60</p></div>
+  <div class="hero-foot"><p class="mono">v2 · 29.10.2026</p><p class="mono">platform · editorial system · templates · logo</p><p class="mono" lang="mk">мк · en</p></div>
 </section>
 
 <main>
 
-<section class="wrap" id="download" aria-labelledby="h-dl">
-  <div class="g7 head"><p class="mono num">01</p><h2 id="h-dl">Take it <em>with you.</em></h2></div>
-  <div class="dl">
-    <a href="Jasnota-Brand-Guidelines.pdf" download><span class="mono">01</span><span><strong>Brand guidelines</strong><small>PDF · 40 pages · A4 landscape · 5.6 MB</small></span><span class="arr">↓ pdf</span></a>
-    <a href="Jasnota-Logo-Pack.zip" download><span class="mono">02</span><span><strong>Logo pack</strong><small>ZIP · SVG, PDF and PNG · mark, wordmarks, lockups, app icon, social · 4.8 MB</small></span><span class="arr">↓ zip</span></a>
-    <a href="book/"><span class="mono">03</span><span><strong>Read the book here</strong><small>The same guidelines, page by page in the browser</small></span><span class="arr">→</span></a>
-    <a href="logo-pack/README.md"><span class="mono">04</span><span><strong>Which file where</strong><small>The logo pack README: names, colourways, minimum sizes</small></span><span class="arr">→</span></a>
+<!-- ============================================================ 01 PLATFORM -->
+<section class="wrap" id="platform" aria-labelledby="h-pl">
+  <div class="g7 head"><p class="mono num">01</p><h2 id="h-pl">A platform, not a <em>persona.</em></h2></div>
+  <div class="g7"><p class="def d" lang="mk">Јаснота е информативна и едукативна платформа што ја истражува и објаснува поврзаноста меѓу музиката, психолошкото искуство и човековото однесување преку научно засновани содржини и <em>интердисциплинарен</em> пристап.</p></div>
+  <div class="g7 isnt">
+    <div><h4>Jasnota is</h4><ul class="rule-list small"><li>an educational platform on the psychology of music</li><li>science-based: a source and an evidence label behind every claim</li><li>text first: one careful piece a week, Macedonian first</li><li>written and edited by a named author</li></ul></div>
+    <div><h4>Jasnota is not</h4><ul class="rule-list small"><li>therapy, diagnosis or individual advice: no sessions</li><li>a personal artist page</li><li>motivational or wellness content</li><li>opinion presented as science</li></ul></div>
+    <div class="panel">
+      <p class="mono">Mission</p>
+      <p class="d" lang="mk" style="font-size:clamp(20px,1.8vw,26px);line-height:1.18;margin-top:10px">Да се подигне свесноста за психологијата зад музиката и научното знаење да стане достапно, разбирливо и <em>релевантно</em>.</p>
+      <p class="small ash" style="margin-top:10px">For musicians and the wider public. Edited by Jasna Dimitrovska: scientific accuracy + understanding of musical experience + human, understandable communication.</p>
+    </div>
+  </div>
+  <div class="princ">
+    <div><p class="mono">01</p><h4>Scientific grounding</h4><p class="mkn" lang="mk">Научна заснованост</p><p class="small">Every claim cites a source (APA 7) and carries an evidence label.</p></div>
+    <div><p class="mono">02</p><h4>Clarity</h4><p class="mkn" lang="mk">Разбирливост</p><p class="small">Plain Macedonian, the English term in brackets. Simple, never simplified into error.</p></div>
+    <div><p class="mono">03</p><h4>Authenticity</h4><p class="mkn" lang="mk">Автентичност</p><p class="small">Own questions, own voice. Present through judgement, not exposure.</p></div>
+    <div><p class="mono">04</p><h4>Interdisciplinarity</h4><p class="mkn" lang="mk">Интердисциплинарност</p><p class="small">Name the field a finding comes from; never move a result across contexts silently.</p></div>
+    <div><p class="mono">05</p><h4>Ethical responsibility</h4><p class="mkn" lang="mk">Етичка одговорност</p><p class="small">Never diagnosis, therapy or advice. Written consent for real stories; no invented anecdotes.</p></div>
+    <div><p class="mono">06</p><h4>International openness</h4><p class="mkn" lang="mk">Меѓународна отвореност</p><p class="small">Macedonian first; the strongest pieces adapted into English, later Serbian and Croatian.</p></div>
   </div>
 </section>
 
+<!-- ============================================================ 02 EDITORIAL SYSTEM -->
+<section class="wrap" id="editorial" aria-labelledby="h-ed">
+  <div class="g7 head"><p class="mono num">02</p><h2 id="h-ed">Three pillars, four <em>labels.</em></h2></div>
+  <div class="pillars">
+    <div class="pillar"><p class="n">I.</p><h3 lang="mk">Психологијата на <em>музиката</em></h3><p class="en">The psychology of music · for the wider public</p>
+      <p class="p small">How music connects to psychological processes and everyday life: emotion, memory and identity, attention, wellbeing.</p>
+      <ul lang="mk"><li><span class="w">03 · 16.11</span>Зошто музиката нè допира: механизми, морници и парадоксот на тажната песна</li><li><span class="w">06 · 07.12</span>Што слушавте на седумнаесет? Музика, меморија и идентитет</li></ul></div>
+    <div class="pillar"><p class="n">II.</p><h3 lang="mk">Психолошкиот свет на <em>музичарот</em></h3><p class="en">The musician’s mind · for musicians</p>
+      <p class="p small">Preparation, performance and professional life: stage fright, perfectionism, fear of mistakes, identity and pressure.</p>
+      <ul lang="mk"><li><span class="w">01 · 02.11</span>Трема: што навистина знаеме за музичката анксиозност при изведба</li><li><span class="w">05 · 30.11</span>Перфекционизмот кај музичарите: кога високите стандарди помагаат, а кога пречат</li></ul></div>
+    <div class="pillar"><p class="n">III.</p><h3 lang="mk">„Што вели <em>науката?</em>“</h3><p class="en">What does science say? · short, checkable</p>
+      <p class="p small">One study explained, one concept, myth vs evidence, what we know and don’t, reading lists.</p>
+      <ul lang="mk"><li><span class="w">02 · 09.11</span>„Возбуден/а сум“: една позната студија за тремата, под лупа</li><li><span class="w">04 · 23.11</span>Мит наспроти наука: дали Моцарт нè прави попаметни?</li></ul></div>
+  </div>
+
+  <div class="sub-h"><p class="mono">Formats</p><h3>Five formats, one piece a <em>week.</em></h3><p class="r small ash">A long text, then a short Pillar III piece that answers it. Every web piece has an Instagram carousel twin.</p></div>
+  <ul class="rule-list fmts">
+    <li><span class="d" lang="mk">текст</span><span class="mono">900–1.300 words</span><span class="small">question → what we know → how we know it → how sure we are → what we don’t know → when to seek help → sources</span></li>
+    <li><span class="d" lang="mk">приказ на студија</span><span class="mono">500–700 words</span><span class="small">question → design → findings in numbers → limits → replications → what it means, and what it doesn’t</span></li>
+    <li><span class="d" lang="mk">поим</span><span class="mono">250–500 words</span><span class="small">definition with the English term → origin → an example from musical life → common confusions → label → sources</span></li>
+    <li><span class="d" lang="mk">мит vs наука</span><span class="mono">500–700 words</span><span class="small">the claim → verdict (мит · делумно точно · непознато) → where it comes from → what research shows → sources</span></li>
+    <li><span class="d" lang="mk">листа за читање</span><span class="mono">3–7 sources</span><span class="small">reviews first, then key studies; one line on why each; level and access</span></li>
+  </ul>
+
+  <div class="sub-h"><p class="mono">Evidence</p><h3>Say how <em>sure</em> we are.</h3><p class="r small ash">A label belongs to a claim, not a topic. In doubt, the more cautious one. Monochrome, never traffic-light colours.</p></div>
+  <div class="evs">
+    <div class="panel"><span data-ev="3"></span><p class="mono">strong evidence</p><p class="small">Consistent findings from several meta-analyses or many independent replications.</p><p class="ex" lang="mk">Нема специфичен Моцартов ефект врз интелигенцијата.</p></div>
+    <div class="panel"><span data-ev="2"></span><p class="mono">moderate evidence</p><p class="small">One or two good reviews or several consistent studies, with limits.</p><p class="ex" lang="mk">КБТ помага кај музичката анксиозност при изведба.</p></div>
+    <div class="panel"><span data-ev="1"></span><p class="mono">early/limited evidence</p><p class="small">Single or pilot studies, small samples, unreplicated or failed replications.</p><p class="ex" lang="mk">Симулацијата на настап ја намалува тремата.</p></div>
+    <div class="panel"><span data-ev="0"></span><p class="mono">open question</p><p class="small">The evidence is contradictory, missing, or the question is unclear.</p><p class="ex" lang="mk">Дали бинауралните тонови ги „штимаат“ мозочните бранови.</p></div>
+  </div>
+  <div class="g7 kn">
+    <div lang="mk">
+      <p class="mono" lang="en" style="margin-bottom:14px">The callout, inside the text · week 1</p>
+      <p class="small">Систематскиот преглед на 43 студии кај професионални музичари покажа преваленца на музичка анксиозност некаде меѓу 16,5% и 60% <span class="mono">(Fernholz et al., 2019)</span>.</p>
+      <div class="callout" style="margin-top:20px"><span data-ev="2"></span><p>Дека музичката анксиозност е честа и кај професионалците е доследен наод во повеќе прегледи. Точната преваленца е непозната поради различните методи на мерење.</p></div>
+    </div>
+    <div lang="mk">
+      <div class="kblk"><p class="hd"><svg data-l="s03"></svg><b>Што знаеме</b></p><ul><li>Музичката анксиозност при изведба е честа и кај професионалците.</li><li>Когнитивно-бихевиоралните пристапи се најистражувани.</li></ul></div>
+      <div class="kblk" style="margin-top:32px"><p class="hd"><svg data-l="s05"></svg><b>Што сè уште не знаеме</b></p><ul><li>Кој пристап е најдобар за кого.</li><li>Како изгледа тремата кај музичарите во Македонија: речиси нема податоци.</li></ul></div>
+    </div>
+  </div>
+
+  <div class="sub-h"><p class="mono">Workflow</p><h3>Question first, design <em>last.</em></h3><p class="r small ash">No step is skipped. If a source can’t be verified, the claim isn’t published.</p></div>
+  <div class="steps">
+    <div><p class="n">01</p><h4>Question</h4><p class="small">One sentence, answerable by research.</p></div>
+    <div><p class="n">02</p><h4>Sources</h4><p class="small">Reviews first; the failed replications too.</p></div>
+    <div><p class="n">03</p><h4>Verification</h4><p class="small">Every DOI and every number checked in the source.</p></div>
+    <div><p class="n">04</p><h4>Writing</h4><p class="small">Evidence, interpretation and open questions kept apart.</p></div>
+    <div><p class="n">05</p><h4>References</h4><p class="small">APA 7; the last slide always lists sources.</p></div>
+    <div><p class="n">06</p><h4>Edit and design</h4><p class="small">A second read; the headline claims no more than the text.</p></div>
+  </div>
+</section>
+
+<!-- ============================================================ 03 TEMPLATES -->
+<section class="wrap" id="templates" aria-labelledby="h-tp">
+  <div class="g7 head"><p class="mono num">03</p><h2 id="h-tp">The system at <em>work.</em></h2></div>
+  <div class="apps">
+    <figure class="w"><div data-mock="article"></div><figcaption><h3>Article page</h3><span class="mono">jasnota.mk</span><p>Meta, title, dek; the body with in-text citations and evidence callouts; then what we know, what we don’t, sources with linked DOIs, the note and the fermata.</p></figcaption></figure>
+  </div>
+  <div class="sub-h"><p class="mono">1080 × 1350</p><h3>A carousel in five <em>moves.</em></h3><p class="r small ash">Cover, content, evidence, known and unknown, sources. The sources slide is never skipped.</p></div>
+  <div class="row5">
+    <figure><div data-mock="ig-cover"></div><figcaption><h4>Cover</h4><p>The question as the title.</p></figcaption></figure>
+    <figure><div data-mock="ig-content"></div><figcaption><h4>Content</h4><p>One idea, with its citation.</p></figcaption></figure>
+    <figure><div data-mock="ig-evidence"></div><figcaption><h4>Evidence</h4><p>The label, the claim, why.</p></figcaption></figure>
+    <figure><div data-mock="ig-known"></div><figcaption><h4>Known / unknown</h4><p>Signs 03 and 05 head the lists.</p></figcaption></figure>
+    <figure><div data-mock="ig-sources"></div><figcaption><h4>Sources</h4><p>APA, DOIs, the note, the fermata.</p></figcaption></figure>
+  </div>
+  <div class="sub-h"><p class="mono">Covers</p><h3>Each format has a <em>face.</em></h3><p class="r small ash">Ink for what argues; paper for what you keep.</p></div>
+  <div class="row5" lang="mk">
+    <figure><div data-mock="ig-f-text"></div><figcaption><h4>текст</h4></figcaption></figure>
+    <figure><div data-mock="ig-f-study"></div><figcaption><h4>приказ на студија</h4></figcaption></figure>
+    <figure><div data-mock="ig-f-concept"></div><figcaption><h4>поим</h4></figcaption></figure>
+    <figure><div data-mock="ig-f-myth"></div><figcaption><h4>мит vs наука</h4></figcaption></figure>
+    <figure><div data-mock="ig-f-list"></div><figcaption><h4>листа за читање</h4></figcaption></figure>
+  </div>
+  <div class="apps" style="margin-top:var(--s-7)">
+    <figure class="w"><div data-mock="st-phones"></div><figcaption><h3>Stories</h3><span class="mono">1080 × 1920</span><p>A question box (we answer with sources, not advice), a myth-or-science poll, and the source of the week on paper.</p></figcaption></figure>
+    <figure><div data-mock="ig-profile"></div><figcaption><h3>Instagram profile</h3><span class="mono">@jasnota</span><p>The platform’s own account: the mark as the picture, the descriptor in the name, highlights from the signs and pillar numerals.</p></figcaption></figure>
+    <figure><div data-mock="citation-card"></div><figcaption><h3>Citation card</h3><span class="mono">1080 × 1080</span><p>One finding in plain words, its label and the full reference.</p></figcaption></figure>
+  </div>
+  <div style="margin-top:var(--s-7)">
+    <div data-mock="newsletter"></div>
+    <div class="hlbox"><div data-mock="hlrow" style="max-width:640px"></div></div>
+    <p class="small ash" style="margin-top:14px">Newsletter header, 1200 × 400, and highlight covers: the mark, pillar numerals I · II · III, sign 04 for questions, sign 03 for concepts.</p>
+  </div>
+  <div class="apps" style="margin-top:var(--s-7)">
+    <figure><div data-mock="partner"></div><figcaption><h3>Partnership sheet</h3><span class="mono">A4</span><p>One page for faculties, music schools, researchers and associations: what we offer, what we ask, our limits.</p></figcaption></figure>
+    <figure><div data-mock="slides"></div><figcaption><h3>Slides for talks</h3><span class="mono">16:9</span><p>One claim per slide, with its evidence label and citation; sources and questions on paper; the fermata to close.</p></figcaption></figure>
+    <figure><div data-mock="cards"></div><figcaption><h3>Business card</h3><span class="mono">85 × 55 mm</span><p>The Cyrillic wordmark with the cinnabar dot; the role: editor and author.</p></figcaption></figure>
+    <figure><div data-mock="signature"></div><figcaption><h3>Email signature</h3><span class="mono">HTML</span><p>The mark as a small image; name, role and descriptor in live text. No banners, no icons.</p></figcaption></figure>
+    <figure><div data-mock="notebook"></div><figcaption><h3>Notebook</h3><span class="mono">A5</span><p lang="mk"><span lang="en">Ink cloth, the mark blind-debossed,</span> „белешки за истражување“.</p></figcaption></figure>
+    <figure><div data-mock="icons"></div><figcaption><h3>App icon and favicon</h3><span class="mono">1024 → 16 px</span><p>The mark at 56% of an ink square; the small cut below 32 px.</p></figcaption></figure>
+  </div>
+</section>
+
+<!-- ============================================================ 04 LOGO -->
 <section class="wrap" id="logo" aria-labelledby="h-logo">
-  <div class="g7 head"><p class="mono num">02</p><h2 id="h-logo">A tuning fork that reads as <em>Ψ.</em></h2></div>
+  <div class="g7 head"><p class="mono num">04</p><h2 id="h-logo">Cyrillic <em>first.</em></h2></div>
   <div class="g7 logos">
-    <div class="stage ink lk-h"><svg data-l="hl" role="img" aria-label="Jasnota horizontal lockup"></svg><p class="mono">Horizontal · Latin · primary</p></div>
-    <div class="stage bone lk-s"><svg data-l="vl" role="img" aria-label="Jasnota stacked lockup"></svg><p class="mono">Stacked</p></div>
-    <div class="stage bone lk-h"><svg data-l="hc" role="img" aria-label="Јаснота, Cyrillic lockup"></svg><p class="mono">Horizontal · Cyrillic signature</p></div>
-    <div class="stage ink lk-s" style="--dot:var(--cinnabar)"><svg data-l="vc" role="img" aria-label="Јаснота, stacked Cyrillic lockup with cinnabar dot"></svg><p class="mono">Stacked · cinnabar dot</p></div>
+    <div class="stage ink lk-h"><svg data-l="hc" role="img" aria-label="Јаснота, horizontal lockup"></svg><p class="mono">Horizontal · Cyrillic · primary</p></div>
+    <div class="stage bone lk-s"><svg data-l="vc" role="img" aria-label="Јаснота, stacked lockup"></svg><p class="mono">Stacked · Cyrillic</p></div>
+    <div class="stage bone lk-h"><svg data-l="hl" role="img" aria-label="Jasnota, Latin lockup"></svg><p class="mono">Horizontal · Latin · international</p></div>
+    <div class="stage ink lk-s" style="--dot:var(--cinnabar)"><svg data-l="vc" role="img" aria-label="Јаснота, stacked lockup with cinnabar dot"></svg><p class="mono">Stacked · cinnabar dot</p></div>
   </div>
   <div class="ways">
-    <div class="way"><a href="logo-pack/03-lockup-horizontal/svg/jasnota-lockup-horizontal-latin-bone-on-ink.svg" style="background:var(--ink);box-shadow:inset 0 0 0 1px var(--graphite);color:var(--bone)"><svg data-l="hl"></svg></a><p class="mono"><b>bone-on-ink</b> · default</p></div>
-    <div class="way"><a href="logo-pack/03-lockup-horizontal/svg/jasnota-lockup-horizontal-latin-ink-on-bone.svg" style="background:var(--bone);color:var(--ink)"><svg data-l="hl"></svg></a><p class="mono"><b>ink-on-bone</b></p></div>
-    <div class="way"><a class="chk" href="logo-pack/03-lockup-horizontal/svg/jasnota-lockup-horizontal-latin-bone.svg" style="color:var(--bone)"><svg data-l="hl"></svg></a><p class="mono"><b>bone</b> · transparent</p></div>
-    <div class="way"><a class="chk lt" href="logo-pack/03-lockup-horizontal/svg/jasnota-lockup-horizontal-latin-ink.svg" style="color:var(--ink)"><svg data-l="hl"></svg></a><p class="mono"><b>ink</b> · transparent</p></div>
-    <div class="way"><a class="chk" href="logo-pack/03-lockup-horizontal/svg/jasnota-lockup-horizontal-latin-white.svg" style="color:#fff"><svg data-l="hl"></svg></a><p class="mono"><b>white</b> · transparent</p></div>
-    <div class="way"><a class="chk lt" href="logo-pack/03-lockup-horizontal/svg/jasnota-lockup-horizontal-latin-black.svg" style="color:#000"><svg data-l="hl"></svg></a><p class="mono"><b>black</b> · transparent</p></div>
-    <div class="way"><a href="logo-pack/02-wordmark/svg/jasnota-wordmark-latin-bone-on-ink-cinnabar-dot.svg" style="background:var(--ink);box-shadow:inset 0 0 0 1px var(--graphite);color:var(--bone);--dot:var(--cinnabar)"><svg data-l="wl" style="width:52%"></svg></a><p class="mono"><b>cinnabar dot</b> · once per piece</p></div>
-    <div class="way"><a href="logo-pack/05-app-icon-favicon/jasnota-app-icon.svg" style="background:var(--night)"><span style="display:grid;place-items:center;width:34%;aspect-ratio:1;background:var(--ink);border-radius:22%;box-shadow:inset 0 0 0 1px var(--graphite);color:var(--bone)"><svg data-l="m" style="width:56%;height:56%"></svg></span></a><p class="mono"><b>app icon</b> · 1024 · 180 · favicon</p></div>
+    <div class="way"><a href="logo-pack/03-lockup-horizontal/svg/jasnota-lockup-horizontal-cyrillic-bone-on-ink.svg" style="background:var(--ink);box-shadow:inset 0 0 0 1px var(--graphite);color:var(--bone)"><svg data-l="hc"></svg></a><p class="mono"><b>bone-on-ink</b> · default</p></div>
+    <div class="way"><a href="logo-pack/03-lockup-horizontal/svg/jasnota-lockup-horizontal-cyrillic-ink-on-bone.svg" style="background:var(--bone);color:var(--ink)"><svg data-l="hc"></svg></a><p class="mono"><b>ink-on-bone</b></p></div>
+    <div class="way"><a class="chk" href="logo-pack/03-lockup-horizontal/svg/jasnota-lockup-horizontal-cyrillic-bone.svg" style="color:var(--bone)"><svg data-l="hc"></svg></a><p class="mono"><b>bone</b> · transparent</p></div>
+    <div class="way"><a class="chk lt" href="logo-pack/03-lockup-horizontal/svg/jasnota-lockup-horizontal-cyrillic-ink.svg" style="color:var(--ink)"><svg data-l="hc"></svg></a><p class="mono"><b>ink</b> · transparent</p></div>
+    <div class="way"><a class="chk" href="logo-pack/03-lockup-horizontal/svg/jasnota-lockup-horizontal-latin-white.svg" style="color:#fff"><svg data-l="hl"></svg></a><p class="mono"><b>latin · white</b> · transparent</p></div>
+    <div class="way"><a class="chk lt" href="logo-pack/03-lockup-horizontal/svg/jasnota-lockup-horizontal-latin-black.svg" style="color:#000"><svg data-l="hl"></svg></a><p class="mono"><b>latin · black</b> · transparent</p></div>
+    <div class="way"><a href="logo-pack/02-wordmark/svg/jasnota-wordmark-cyrillic-bone-on-ink-cinnabar-dot.svg" style="background:var(--ink);box-shadow:inset 0 0 0 1px var(--graphite);color:var(--bone);--dot:var(--cinnabar)"><svg data-l="wc" style="width:56%"></svg></a><p class="mono"><b>cinnabar dot</b> · once per piece</p></div>
+    <div class="way"><a href="logo-pack/06-social/jasnota-instagram-profile-1080.png" style="background:var(--night)"><span style="display:grid;place-items:center;width:40%;aspect-ratio:1;background:var(--ink);border-radius:50%;box-shadow:inset 0 0 0 1px var(--graphite);color:var(--bone)"><svg data-l="m" style="width:46%;height:46%"></svg></span></a><p class="mono"><b>profile picture</b> · the mark, not a face</p></div>
   </div>
   <div class="signs">
-    <div><span><svg data-l="s02"></svg></span><p class="mono"><b>02 · 7/8</b><br>progress, players, series</p></div>
-    <div><span><svg data-l="s03"></svg></span><p class="mono"><b>03 · A clear note</b><br>end-of-text dot</p></div>
-    <div><span><svg data-l="s04"></svg></span><p class="mono"><b>04 · Resonance</b><br>listening episodes</p></div>
-    <div><span><svg data-l="s05"></svg></span><p class="mono"><b>05 · The pause</b><br>end of a post</p></div>
-    <div><span><svg data-l="s06"></svg></span><p class="mono"><b>06 · Ohrid</b><br>roots, language, place</p></div>
+    <div><span><svg data-l="s02"></svg></span><p class="mono"><b>02 · 7/8</b><br>series and progress</p></div>
+    <div><span><svg data-l="s03"></svg></span><p class="mono"><b>03 · A clear note</b><br><span lang="mk">„Што знаеме“</span>, end-of-text dot</p></div>
+    <div><span><svg data-l="s04"></svg></span><p class="mono"><b>04 · Resonance</b><br>connections, mapping, partners</p></div>
+    <div><span><svg data-l="s05"></svg></span><p class="mono"><b>05 · The pause</b><br><span lang="mk">„Што сè уште не знаеме“</span>, end mark</p></div>
+    <div><span><svg data-l="s06"></svg></span><p class="mono"><b>06 · Ohrid</b><br>roots, local research</p></div>
   </div>
 </section>
 
+<!-- ============================================================ 05 COLOUR + TYPE -->
 <section class="wrap" id="colour" aria-labelledby="h-col">
-  <div class="g7 head"><p class="mono num">03</p><h2 id="h-col">Black, <em>first.</em></h2></div>
+  <div class="g7 head"><p class="mono num">05</p><h2 id="h-col">Black, <em>first.</em></h2></div>
   <div class="pal">
     <div><span style="background:#0A0A0B;box-shadow:inset 0 0 0 1px var(--graphite)"></span><p class="mono"><b>ink</b>#0A0A0B</p></div>
     <div><span style="background:#131315;box-shadow:inset 0 0 0 1px var(--graphite)"></span><p class="mono"><b>night</b>#131315</p></div>
     <div><span style="background:#2A2A2D"></span><p class="mono"><b>graphite</b>#2A2A2D</p></div>
     <div><span style="background:#8C8A85"></span><p class="mono"><b>ash</b>#8C8A85</p></div>
+    <div><span style="background:#66645F"></span><p class="mono"><b>ash-light</b>#66645F · on light</p></div>
     <div><span style="background:#ECE8E1"></span><p class="mono"><b>bone</b>#ECE8E1</p></div>
     <div><span style="background:#F6F4EF"></span><p class="mono"><b>paper</b>#F6F4EF</p></div>
     <div><span style="background:#0A0A0B;box-shadow:inset 0 0 0 1px var(--graphite);position:relative"><i style="position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px;border-radius:50%;background:#B4452C"></i></span><p class="mono"><b>cinnabar</b>#B4452C · under 2%</p></div>
   </div>
   <div class="types">
-    <div><p class="mono"><b>Cormorant</b> · display</p><p class="s d" style="font-size:clamp(40px,6vw,88px);line-height:.95">To hear <em>yourself.</em></p></div>
-    <div><p class="mono"><b>Cormorant Italic</b> · lang="mk"</p><p class="s d" lang="mk" style="font-size:clamp(32px,4.4vw,64px);line-height:1;font-style:italic">Да се слушнеш себеси.</p></div>
-    <div><p class="mono"><b>Onest</b> · text and interface</p><p class="s lead">Sound goes on where words stop. We often listen to songs to understand what we already feel.</p></div>
-    <div><p class="mono"><b>JetBrains Mono</b> · notation</p><p class="s mono" style="font-size:15px;color:var(--bone)">adagio · ♩ = 56 · 7/8 = 2 + 2 + 3 · 07:08</p></div>
+    <div><p class="mono"><b>Cormorant</b> · display</p><p class="s d" lang="mk" style="font-size:clamp(40px,6vw,88px);line-height:.95">Што вели <em>науката?</em></p></div>
+    <div><p class="mono"><b>Onest</b> · reading and interface</p><p class="s lead" lang="mk">Телесната страна е позната: побрз пулс, побрзо дишење, тресење, потење. Тоа е нормална реакција на систем што се подготвува за предизвик.</p></div>
+    <div><p class="mono"><b>JetBrains Mono</b> · the evidence trail</p><p class="s mono" style="font-size:15px;color:var(--bone)">(Fernholz et al., 2019) · https://doi.org/10.1017/S0033291719001910 · <span data-ev="2"></span></p></div>
   </div>
 </section>
 
-<section class="wrap" id="applications" aria-labelledby="h-app">
-  <div class="g7 head"><p class="mono num">04</p><h2 id="h-app">The identity at <em>work.</em></h2></div>
-  <div class="apps">
-    <figure><div data-mock="cards"></div><figcaption><h3>Business card</h3><span class="mono">85 × 55 mm</span><p>Ink front with the mark in bone foil; a natural-white back with her name in both scripts. The dot of the j is the only cinnabar.</p></figcaption></figure>
-    <figure><div data-mock="signature"></div><figcaption><h3>Email signature</h3><span class="mono">HTML</span><p>The mark on ink as a small image, everything else in live text. No banners, no icons.</p></figcaption></figure>
-    <figure class="w"><div data-mock="web"></div><figcaption><h3>Website</h3><span class="mono">jasnota.mk</span><p>The cinematic home and a journal entry on the phone. English first, Macedonian on the toggle.</p></figcaption></figure>
-    <figure><div data-mock="letterhead"></div><figcaption><h3>Letterhead and envelope</h3><span class="mono">A4 · DL</span><p>Horizontal lockup top left, text on the 2 · 2 · 3 grid, the line in both languages in the footer. The letter is a sample.</p></figcaption></figure>
-    <figure><div data-mock="poster"></div><figcaption><h3>Poster</h3><span class="mono">example layout</span><p>Not a scheduled event: the date and the venue are placeholders. One cinnabar point on the staff.</p></figcaption></figure>
-    <figure><div data-mock="ticket"></div><figcaption><h3>Ticket</h3><span class="mono">example layout</span><p>A tear-off stub, the 7/8 ticks as the only pattern.</p></figcaption></figure>
-    <figure><div data-mock="ig-profile"></div><figcaption><h3>Instagram profile</h3><span class="mono">@jasnota</span><p>The bio, six highlight covers from the secondary signs, and the grid in bars of seven.</p></figcaption></figure>
-    <figure class="w"><div data-mock="ig-templates"></div><figcaption><h3>Posts and stories</h3><span class="mono">4:5 · 9:16</span><p>The downbeat post on paper, a Psycho-note carousel cover, and Song of the week as a story.</p></figcaption></figure>
-    <figure><div data-mock="notebook"></div><figcaption><h3>Notebook</h3><span class="mono">A5</span><p>Ink cloth, the mark blind-debossed, “liner notes” in bone foil.</p></figcaption></figure>
-    <figure><div data-mock="tote"></div><figcaption><h3>Tote</h3><span class="mono">38 × 42 cm</span><p>Natural canvas, one colour, the line in both languages.</p></figcaption></figure>
-    <figure><div data-mock="vinyl"></div><figcaption><h3>Single sleeve</h3><span class="mono">concept</span><p>A cover for a future recording of “Zajdi, zajdi, jasno sonce”: the clear sun setting on the horizon line.</p></figcaption></figure>
-    <figure><div data-mock="podcast"></div><figcaption><h3>Episode cover</h3><span class="mono">3000 × 3000</span><p>Sign 04 for conversation and listening episodes.</p></figcaption></figure>
-    <figure><div data-mock="icons"></div><figcaption><h3>App icon and favicon</h3><span class="mono">1024 → 16 px</span><p>The mark at 56% of an ink square; the small cut below 32 px.</p></figcaption></figure>
-    <figure><div data-mock="slides"></div><figcaption><h3>Slides</h3><span class="mono">16:9</span><p>One idea per slide, roman numerals for movements, the fermata to end.</p></figcaption></figure>
+<!-- ============================================================ 06 DOWNLOAD -->
+<section class="wrap" id="download" aria-labelledby="h-dl">
+  <div class="g7 head"><p class="mono num">06</p><h2 id="h-dl">Take it <em>with you.</em></h2></div>
+  <div class="dl">
+    <a href="Jasnota-Brand-Guidelines.pdf" download><span class="mono">01</span><span><strong>Brand guidelines</strong><small>PDF · 44 pages · A4 landscape · foundation, editorial system, voice, logo, templates · 5.0 MB</small></span><span class="arr">↓ pdf</span></a>
+    <a href="Jasnota-Logo-Pack.zip" download><span class="mono">02</span><span><strong>Logo pack</strong><small>ZIP · logos in SVG, PDF and PNG; evidence labels; carousel, story and newsletter templates · 6.4 MB</small></span><span class="arr">↓ zip</span></a>
+    <a href="book/"><span class="mono">03</span><span><strong>Read the book here</strong><small>The same guidelines, page by page in the browser</small></span><span class="arr">→</span></a>
+    <a href="logo-pack/README.md"><span class="mono">04</span><span><strong>Which file where</strong><small>The pack README: folders, sign jobs, evidence labels, minimum sizes</small></span><span class="arr">→</span></a>
   </div>
 </section>
 
 </main>
 
 <footer class="wrap">
-  <div class="g7 end">
-    <div class="who"><p>Jasna Dimitrovska</p><p class="mono" style="margin-top:12px">Psychologist · Gestalt counsellor · Vocal artist · Bitola, Macedonia</p></div>
-    <p class="meta mono">jasnota.mk · zdravo@jasnota.mk · @jasnota<br><a href="../">← Brand studio</a></p>
+  <div class="g7 end" lang="mk">
+    <div class="who"><p>Јаснота</p><p class="mono" style="margin-top:12px">Психологијата зад музиката · Уредува: Јасна Димитровска · Битола, Македонија</p></div>
+    <p class="meta mono">zdravo@jasnota.mk · @jasnota<br><a href="../" lang="en">← Brand studio</a></p>
   </div>
 </footer>
 

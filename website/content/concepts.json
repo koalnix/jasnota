@@ -1,0 +1,611 @@
+[
+  {
+    "slug": "music-performance-anxiety",
+    "term_mk": "музичка анксиозност при изведба",
+    "term_en": "music performance anxiety (MPA)",
+    "definition_mk": "Изразена и трајна загриженост поврзана со музичкиот настап, која се јавува во телото (срцебиење, тресење, сува уста), мислите (страв од грешка и оценување) и однесувањето (избегнување). Се движи од минлива трема до состојба што ја попречува изведбата и кариерата; често се опишува како сродна со социјалната анксиозност.",
+    "definition_en": "Marked, persistent anxious apprehension related to musical performance, expressed physically, cognitively and behaviourally. It ranges from transient stage fright to impairing anxiety and is often considered related to social anxiety.",
+    "pillar": 2,
+    "evidence": "силни докази",
+    "source_ids": [
+      "kenny2011",
+      "fernholz2019",
+      "burin2017",
+      "kenny2014"
+    ]
+  },
+  {
+    "slug": "stage-fright",
+    "term_mk": "трема",
+    "term_en": "stage fright",
+    "definition_mk": "Секојдневен збор за нервозата пред и за време на настап. Во истражувањата често се користи како синоним за музичката анксиозност при изведба, но во говорот опфаќа и сосема вообичаена, минлива возбуда што не значи проблем.",
+    "definition_en": "Everyday term for nervousness before and during performance; often used interchangeably with MPA in research but also covers ordinary, transient arousal.",
+    "pillar": 2,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "steptoe1987",
+      "kenny2011",
+      "papageorgi2007"
+    ]
+  },
+  {
+    "slug": "arousal-and-yerkes-dodson",
+    "term_mk": "возбуда и „законот“ Јеркс–Додсон",
+    "term_en": "arousal and the Yerkes–Dodson law",
+    "definition_mk": "Популарната идеја дека изведбата е најдобра при „средна“ возбуда (обратно U) потекнува од експеримент со глувци од 1908 година, кој не мерел ниту возбуда ниту анксиозност. Подоцнежните автори го преформулирале на многу начини, па „законот“ е корисна метафора, но не прецизно правило.",
+    "definition_en": "The idea that performance peaks at moderate arousal (inverted U) derives from a 1908 mouse study that measured neither arousal nor anxiety; later reformulations make it a loose metaphor rather than a precise law.",
+    "pillar": 2,
+    "evidence": "отворено прашање",
+    "source_ids": [
+      "yerkes1908",
+      "teigen1994",
+      "matei2017"
+    ]
+  },
+  {
+    "slug": "cognitive-reappraisal",
+    "term_mk": "когнитивна преоценка",
+    "term_en": "cognitive reappraisal",
+    "definition_mk": "Стратегија за регулација на емоциите во која ја менуваме проценката, т.е. значењето што ѝ го даваме на ситуацијата или на сопствената телесна возбуда. Кај анксиозноста пред настап, експериментите покажуваат дека толкувањето на возбудата како корисна или како „возбуденост“ може да помогне, но ефектите врз изведбата не секогаш се реплицираат.",
+    "definition_en": "An emotion-regulation strategy that changes the appraisal of a situation or of one's own arousal. Reappraising pre-performance arousal as helpful or as excitement can help, though performance effects do not always replicate.",
+    "pillar": 2,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "gross1998",
+      "brooks2014",
+      "jamieson2012",
+      "jamieson2010",
+      "poynter2025"
+    ]
+  },
+  {
+    "slug": "emotion-regulation",
+    "term_mk": "регулација на емоциите",
+    "term_en": "emotion regulation",
+    "definition_mk": "Начините на кои влијаеме врз тоа кои емоции ги имаме, кога и како ги доживуваме и изразуваме. Музиката е една од најчестите секојдневни алатки за тоа – за смирување, разбудување или за „простор“ за тагата – иако истражувањата во оваа област се уште терминолошки неуедначени.",
+    "definition_en": "How people influence which emotions they have, when, and how they experience and express them. Music is a common everyday tool for this, though the research field remains conceptually inconsistent.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "gross1998",
+      "baltazar2016",
+      "taruffi2014"
+    ]
+  },
+  {
+    "slug": "catastrophizing",
+    "term_mk": "катастрофизирање",
+    "term_en": "catastrophizing",
+    "definition_mk": "Мисловен образец во кој најлошиот можен исход се доживува како веројатен и неподнослив („ако згрешам, сè е готово“). Кај музичарите доследно е поврзан со поизразена трема.",
+    "definition_en": "A thinking pattern that treats the worst outcome as likely and unbearable; consistently linked to higher stage fright in musicians.",
+    "pillar": 2,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "steptoe1987",
+      "burin2017"
+    ]
+  },
+  {
+    "slug": "perfectionism-strivings-concerns",
+    "term_mk": "перфекционизам: стремежи и загрижености",
+    "term_en": "perfectionism: strivings vs concerns",
+    "definition_mk": "Перфекционизмот има две лица: перфекционистички стремежи (високи лични стандарди) и перфекционистички загрижености (страв од грешка, сомнеж, чувство дека другите очекуваат совршенство). Загриженостите доследно се поврзани со вознемиреност и анксиозност, а стремежите се помешани – понекогаш со мотивација и постигнување.",
+    "definition_en": "Perfectionism has two dimensions: strivings (high personal standards) and concerns (fear of mistakes, doubt, perceived pressure). Concerns are consistently linked to distress; strivings are mixed, sometimes linked to motivation and achievement.",
+    "pillar": 2,
+    "evidence": "силни докази",
+    "source_ids": [
+      "stoeber2006",
+      "stoeber2007",
+      "limburg2017",
+      "hill2018",
+      "dobos2019",
+      "curran2019"
+    ]
+  },
+  {
+    "slug": "impostor-phenomenon",
+    "term_mk": "феномен на измамник",
+    "term_en": "impostor phenomenon",
+    "definition_mk": "Упорно чувство дека не сме доволно способни и дека успехот е резултат на среќа или „измама“, и покрај објективните достигнувања. Не е дијагноза; мерењата се неуедначени, па проценките за тоа колку е чест варираат многу.",
+    "definition_en": "A persistent sense of not being capable and of having deceived others despite objective success. It is not a diagnosis; measurement varies, so prevalence estimates vary widely.",
+    "pillar": 2,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "clance1978",
+      "bravata2020",
+      "dimitrovska2024"
+    ]
+  },
+  {
+    "slug": "self-efficacy",
+    "term_mk": "самоефикасност",
+    "term_en": "self-efficacy",
+    "definition_mk": "Верувањето дека можеме успешно да ја извршиме конкретна задача. Се гради најмногу преку сопствени успешни искуства, а кај музичарите е поврзана со подобри резултати на испити и со повеќе флоу на сцена.",
+    "definition_en": "Belief in one's capability to perform a specific task; built mainly through mastery experiences and linked in musicians to exam results and flow.",
+    "pillar": 2,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "bandura1977",
+      "mccormick2003",
+      "spahn2021"
+    ]
+  },
+  {
+    "slug": "self-compassion",
+    "term_mk": "сочувство кон себе",
+    "term_en": "self-compassion",
+    "definition_mk": "Однос кон себе во тешки моменти кој вклучува љубезност наместо осудување, свест дека грешките се дел од заедничкото човечко искуство и внимателно забележување на болните мисли без да се „удавиме“ во нив. Силно е поврзано со помалку симптоми на анксиозност и депресија, но најголемиот дел од доказите е корелациски.",
+    "definition_en": "Treating oneself with kindness, common humanity and mindfulness in difficult moments; strongly associated with less anxiety and depression, though evidence is mostly correlational.",
+    "pillar": 2,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "neff2003",
+      "macbeth2012"
+    ]
+  },
+  {
+    "slug": "spotlight-effect",
+    "term_mk": "ефект на рефлектор",
+    "term_en": "spotlight effect",
+    "definition_mk": "Склоноста да преценуваме колку другите ги забележуваат нашите постапки, грешки и изглед. Корисен поим за стравот од оценување: публиката обично гледа помалку отколку што мислиме.",
+    "definition_en": "Tendency to overestimate how much others notice our actions, mistakes and appearance.",
+    "pillar": 2,
+    "evidence": "силни докази",
+    "source_ids": [
+      "gilovich2000"
+    ]
+  },
+  {
+    "slug": "choking-under-pressure",
+    "term_mk": "„кочење“ под притисок",
+    "term_en": "choking under pressure",
+    "definition_mk": "Пад на изведбата кај добро увежбана вештина токму кога е најважно. Едно од објаснувањата е дека под притисок почнуваме свесно да ги надгледуваме автоматизираните движења и со тоа ги нарушуваме.",
+    "definition_en": "A drop in well-learned performance when stakes are high; one explanation is that pressure leads to explicit monitoring of automated movements.",
+    "pillar": 2,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "beilock2001",
+      "eysenck2007"
+    ]
+  },
+  {
+    "slug": "external-attentional-focus",
+    "term_mk": "надворешен фокус на вниманието",
+    "term_en": "external attentional focus",
+    "definition_mk": "Насочување на вниманието кон ефектот на движењето (звукот, фразата, музичката намера) наместо кон самите движења на телото. Во моторното учење доследно дава подобри резултати; кај музичарите е помалку истражувано.",
+    "definition_en": "Focusing on movement effects (the sound, phrase or intention) rather than body movements; consistently beneficial in motor learning, less studied in musicians.",
+    "pillar": 2,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "wulf2013"
+    ]
+  },
+  {
+    "slug": "mental-practice",
+    "term_mk": "ментално вежбање",
+    "term_en": "mental practice",
+    "definition_mk": "Вежбање на изведбата во мислите, без движење – „слушање“ и „свирење“ во замислата. Има позитивен ефект врз изведбата, помал од физичкото вежбање, па најдобро функционира како дополнение.",
+    "definition_en": "Rehearsing performance in imagination without movement; beneficial but smaller than physical practice, best as a supplement.",
+    "pillar": 2,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "driskell1994",
+      "bernardi2013"
+    ]
+  },
+  {
+    "slug": "performance-simulation",
+    "term_mk": "симулација на настап",
+    "term_en": "performance simulation",
+    "definition_mk": "Подготовка во услови што наликуваат на вистинскиот настап (публика, жири, бекстејџ), со цел постепено навикнување на стресот. Првите студии покажуваат дека симулациите можат да предизвикаат реалистични реакции, но ефикасноста се уште не е цврсто утврдена.",
+    "definition_en": "Preparing under conditions that resemble real performance to build tolerance; early studies show realistic responses, but efficacy is not established.",
+    "pillar": 2,
+    "evidence": "рани/ограничени докази",
+    "source_ids": [
+      "williamon2014",
+      "fernholz2019"
+    ]
+  },
+  {
+    "slug": "psychological-flexibility-act",
+    "term_mk": "психолошка флексибилност (ACT)",
+    "term_en": "psychological flexibility (ACT)",
+    "definition_mk": "Пристап од терапијата на прифаќање и посветеност (Acceptance and Commitment Therapy) кој не цели да ја отстрани анксиозноста, туку да ја намали борбата со неа и да се дејствува според вредностите и покрај непријатните чувства. Кај музичарите доказите се од мали пилот-студии.",
+    "definition_en": "An ACT-based approach aiming not to remove anxiety but to act on values despite it; evidence in musicians comes from small pilot studies.",
+    "pillar": 2,
+    "evidence": "рани/ограничени докази",
+    "source_ids": [
+      "clarke2020"
+    ]
+  },
+  {
+    "slug": "flow",
+    "term_mk": "флоу (занесеност)",
+    "term_en": "flow",
+    "definition_mk": "Состојба на целосна вовлеченост во активноста, кога предизвикот и вештината се во рамнотежа, целите се јасни и повратната информација е непосредна. Кај музичарите флоуто и анксиозноста при изведба се однесуваат речиси како спротивности.",
+    "definition_en": "Full absorption in an activity when challenge and skill are balanced; in musicians, flow and performance anxiety behave almost as opposites.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "nakamura2002",
+      "fullagar2013",
+      "spahn2021"
+    ]
+  },
+  {
+    "slug": "deliberate-practice-debate",
+    "term_mk": "намерно вежбање и дебатата за „10.000 часа“",
+    "term_en": "deliberate practice debate",
+    "definition_mk": "Намерното вежбање е структурирано вежбање насочено кон подобрување на конкретни слабости. Тоа е важно, но мета-анализите покажуваат дека во музиката објаснува околу петина од разликите во изведбата; другите фактори (почетна возраст, способности, мотивација, генетика, околина) исто така придонесуваат.",
+    "definition_en": "Structured practice aimed at improving specific weaknesses; important, but explains roughly a fifth of performance differences in music.",
+    "pillar": 2,
+    "evidence": "силни докази",
+    "source_ids": [
+      "ericsson1993",
+      "macnamara2014",
+      "macnamara2019",
+      "mosing2014"
+    ]
+  },
+  {
+    "slug": "burnout",
+    "term_mk": "професионално согорување",
+    "term_en": "burnout",
+    "definition_mk": "Состојба поврзана со работата, која вклучува исцрпеност, цинично дистанцирање и намалено чувство на ефикасност. Кај музичарите е малку директно истражувано; повеќе знаеме за анксиозноста и депресијата во оваа професија.",
+    "definition_en": "A work-related syndrome of exhaustion, cynicism and reduced efficacy; little studied directly in musicians.",
+    "pillar": 2,
+    "evidence": "отворено прашање",
+    "source_ids": [
+      "maslach2016",
+      "vaag2016",
+      "grossmusgrave2020"
+    ]
+  },
+  {
+    "slug": "musicians-mental-health",
+    "term_mk": "ментално здравје на музичарите",
+    "term_en": "musicians' mental health",
+    "definition_mk": "Неколку поголеми анкети покажуваат почести симптоми на анксиозност и депресија кај музичарите отколку во општата работна популација. Причините се веројатно повеќеслојни: работни услови, постојано оценување, но и заеднички генетски и семејни фактори – не самото музицирање.",
+    "definition_en": "Surveys show more anxiety and depression symptoms in musicians than in the general workforce; causes are likely multi-layered rather than music-making itself.",
+    "pillar": 2,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "vaag2016",
+      "kenny2014",
+      "wesseldijk2019",
+      "grossmusgrave2020"
+    ]
+  },
+  {
+    "slug": "musical-identity",
+    "term_mk": "музички идентитет",
+    "term_en": "musical identity",
+    "definition_mk": "Начинот на кој музиката е дел од тоа кои сме – како изведувачи („јас сум пејачка“) и како слушатели („ова е мојата музика“). Кога идентитетот е многу тесно врзан за изведбата, грешките и критиките може да се доживеат како закана за целата личност.",
+    "definition_en": "How music forms part of who we are, as performers and listeners; when identity is tied tightly to performance, mistakes can feel like threats to the whole self.",
+    "pillar": 2,
+    "evidence": "отворено прашање",
+    "source_ids": [
+      "macdonald2017",
+      "rathbone2017"
+    ]
+  },
+  {
+    "slug": "hearing-health",
+    "term_mk": "здравје на слухот кај музичарите",
+    "term_en": "musicians' hearing health",
+    "definition_mk": "Професионалните музичари имаат зголемен ризик од оштетување на слухот и тинитус, посебно во гласни жанрови. Заштитата (на пр. музичарски тапачиња, паузи, контрола на гласноста) е превентивна мерка, а не знак на слабост.",
+    "definition_en": "Professional musicians have elevated risk of hearing loss and tinnitus, especially in loud genres; protection is preventive.",
+    "pillar": 2,
+    "evidence": "силни докази",
+    "source_ids": [
+      "distadio2018",
+      "schink2014"
+    ]
+  },
+  {
+    "slug": "brecvema",
+    "term_mk": "BRECVEMA: механизми на музичките емоции",
+    "term_en": "BRECVEMA mechanisms",
+    "definition_mk": "Рамка според која музиката буди емоции преку осум различни механизми: рефлекс на мозочното стебло, ритмичко вовлекување, евалуативно условување, емоционално заразување, визуелни слики, епизодна меморија, музичко очекување и естетска проценка. Корисна е затоа што објаснува зошто иста песна различно делува на различни луѓе.",
+    "definition_en": "Framework of eight mechanisms by which music evokes emotion: brain stem reflex, rhythmic entrainment, evaluative conditioning, contagion, visual imagery, episodic memory, musical expectancy, aesthetic judgment.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "juslin2008",
+      "juslin2013"
+    ]
+  },
+  {
+    "slug": "emotional-contagion",
+    "term_mk": "емоционално заразување",
+    "term_en": "emotional contagion",
+    "definition_mk": "Механизам при кој „го копираме“ емоционалниот израз што го слушаме во музиката. Музиката ги користи истите акустички знаци како гласот при емоција – темпо, јачина, висина, боја – па тажната мелодија „звучи“ како тажен човечки глас.",
+    "definition_en": "We internally mirror the emotional expression heard in music; music uses the same acoustic cues as emotional speech.",
+    "pillar": 1,
+    "evidence": "силни докази",
+    "source_ids": [
+      "juslin2003",
+      "juslin2013"
+    ]
+  },
+  {
+    "slug": "musical-expectancy",
+    "term_mk": "музичко очекување",
+    "term_en": "musical expectancy",
+    "definition_mk": "Мозокот постојано предвидува што следува во музиката. Потврдувањето на очекувањето носи задоволство, а неочекуваната хармонија или пауза може да предизвика напнатост, изненадување, па и морници.",
+    "definition_en": "The brain continuously predicts what comes next; confirmations and violations of expectation shape tension, surprise, pleasure and chills.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "huron2006",
+      "sloboda1991",
+      "salimpoor2011"
+    ]
+  },
+  {
+    "slug": "frisson-chills",
+    "term_mk": "морници (фрисон)",
+    "term_en": "frisson / music-evoked chills",
+    "definition_mk": "Кратки пријатни трнци или „најежување“ при силни музички моменти. Често се поврзуваат со неочекувани хармонии и други моменти што го прекршуваат или засилуваат музичкото очекување, како и со активност во системот за награда во мозокот; не ги доживуваат сите луѓе подеднакво.",
+    "definition_en": "Brief pleasurable shivers at intense musical moments, often linked to unexpected harmonies and other expectancy-related moments, and to reward-system activity; individual differences are large.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "sloboda1991",
+      "blood2001",
+      "salimpoor2011",
+      "defleurian2021"
+    ]
+  },
+  {
+    "slug": "music-reward-dopamine",
+    "term_mk": "музиката и системот за награда",
+    "term_en": "music and the reward system",
+    "definition_mk": "Силното задоволство од музика ги активира истите мозочни системи како храната или другите награди; допаминот учествува и во исчекувањето и во врвниот момент. Фармаколошка студија покажа дека менувањето на допаминот го менува и уживањето во музиката.",
+    "definition_en": "Intense musical pleasure engages reward circuitry; dopamine is involved in anticipation and peak pleasure, and manipulating dopamine changes musical pleasure.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "blood2001",
+      "salimpoor2011",
+      "ferreri2019",
+      "koelsch2014"
+    ]
+  },
+  {
+    "slug": "musical-anhedonia",
+    "term_mk": "музичка анхедонија",
+    "term_en": "specific musical anhedonia",
+    "definition_mk": "Состојба во која човек нормално ја перцепира музиката и чувствува задоволство од други награди, но музиката не му носи задоволство. Не е болест, туку покажува колку се големи индивидуалните разлики.",
+    "definition_en": "People who perceive music normally and enjoy other rewards but gain little pleasure from music; not an illness, but evidence of individual differences.",
+    "pillar": 1,
+    "evidence": "рани/ограничени докази",
+    "source_ids": [
+      "masherrero2014"
+    ]
+  },
+  {
+    "slug": "perceived-vs-felt-emotion",
+    "term_mk": "препознаена наспроти доживеана емоција",
+    "term_en": "perceived vs felt emotion",
+    "definition_mk": "Една е емоцијата што ја препознаваме во музиката („оваа песна е тажна“), а друга таа што навистина ја чувствуваме („мене ми е мирно, дури и пријатно“). Оваа разлика е клучна за да се разбере зошто тажната музика може да прија.",
+    "definition_en": "The emotion recognised in music differs from the emotion actually felt, which helps explain why sad music can be pleasant.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "zentner2008",
+      "kawakami2013"
+    ]
+  },
+  {
+    "slug": "sad-music-paradox",
+    "term_mk": "парадоксот на тажната музика",
+    "term_en": "the sad music paradox",
+    "definition_mk": "Прашањето зошто доброволно бираме музика што звучи тажно. Одговорите се повеќеслојни: тагата во музиката нема реални последици, често се меша со носталгија и трогнатост, нуди емпатија и регулација на емоциите – но кај луѓе склони кон руминација може да го продлабочи лошото расположение.",
+    "definition_en": "Why we seek out sad-sounding music: no real-life consequences, mixed emotions, empathy and regulation – though in ruminative people it may deepen low mood.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "sachs2015",
+      "eerola2018",
+      "taruffi2014",
+      "vuoskoski2012",
+      "garrido2015"
+    ]
+  },
+  {
+    "slug": "being-moved",
+    "term_mk": "трогнатост",
+    "term_en": "being moved",
+    "definition_mk": "Мешана емоција во која тагата и радоста се присутни истовремено, најчесто при теми на блискост, загуба, разделба или повторна средба. Се доживува интензивно, иако телесната возбуда е умерена.",
+    "definition_en": "A mixed emotion combining sadness and joy, typically around closeness, loss and reunion; intense despite moderate arousal.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "menninghaus2015",
+      "eerola2018"
+    ]
+  },
+  {
+    "slug": "nostalgia",
+    "term_mk": "носталгија",
+    "term_en": "nostalgia",
+    "definition_mk": "Сентиментално сеќавање на лично значајно минато, во кое се мешаат радост и тага. Музиката е еден од најсилните поттикнувачи на носталгија, која обично го зголемува чувството на поврзаност и позитивното расположение.",
+    "definition_en": "Sentimental longing for a personally meaningful past, mixing joy and sadness; music is a strong trigger and nostalgia usually increases social connectedness and positive mood.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "sedikides2008",
+      "barrett2010",
+      "janata2007"
+    ]
+  },
+  {
+    "slug": "reminiscence-bump",
+    "term_mk": "грпка на спомените",
+    "term_en": "reminiscence bump",
+    "definition_mk": "Појава дека најмногу спомени во текот на животот имаме од периодот меѓу околу 10 и 30 години. И музичкиот вкус и спомените врзани за песни имаат врв во доцната адолесценција и раната зрелост, веројатно бидејќи тогаш се гради идентитетот.",
+    "definition_en": "We recall disproportionately many memories from ages 10–30; musical tastes and song-linked memories peak in late adolescence and early adulthood.",
+    "pillar": 1,
+    "evidence": "силни докази",
+    "source_ids": [
+      "rubin1997",
+      "holbrook1989",
+      "krumhansl2013",
+      "rathbone2017"
+    ]
+  },
+  {
+    "slug": "music-evoked-autobiographical-memories",
+    "term_mk": "автобиографски спомени предизвикани од музика",
+    "term_en": "music-evoked autobiographical memories (MEAMs)",
+    "definition_mk": "Лични спомени што ги буди позната музика, често со живописни детали и силни, претежно позитивни емоции. Музичката меморија е релативно отпорна и кај деменција, иако механизмите се уште се истражуваат.",
+    "definition_en": "Personal memories triggered by familiar music, often vivid and emotional; musical memory is relatively robust in dementia, with mechanisms still under study.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "janata2007",
+      "jacobsen2015",
+      "vandersteen2018"
+    ]
+  },
+  {
+    "slug": "entrainment",
+    "term_mk": "ритмичко вовлекување",
+    "term_en": "rhythmic entrainment",
+    "definition_mk": "Усогласување на телесните ритми и движењата со ритамот на музиката – од тапкање со ногата до заедничко свирење. Се смета за еден од механизмите преку кои музиката влијае на возбудата и на чувството на заедништво.",
+    "definition_en": "Synchronisation of body rhythms and movement with musical rhythm; considered a mechanism for arousal effects and social bonding.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "repp2013",
+      "juslin2013",
+      "tarr2014"
+    ]
+  },
+  {
+    "slug": "background-music-attention",
+    "term_mk": "музика во позадина и внимание",
+    "term_en": "background music and attention",
+    "definition_mk": "Музиката во позадина има мал, но доследен негативен ефект врз читањето и разбирањето, особено музиката со текст. Истовремено може да го подобри расположението, па ефектот зависи од задачата, музиката и човекот.",
+    "definition_en": "Background music has a small but reliable detrimental effect on reading, especially with lyrics, while it can improve mood; effects depend on task, music and person.",
+    "pillar": 1,
+    "evidence": "силни докази",
+    "source_ids": [
+      "kampfe2011",
+      "vasilev2018"
+    ]
+  },
+  {
+    "slug": "social-bonding-through-music",
+    "term_mk": "поврзување преку заедничко музицирање",
+    "term_en": "social bonding through music",
+    "definition_mk": "Заедничкото пеење и свирење може побрзо да зближи луѓе што не се познаваат и да поттикне соработка. Предложени механизми се синхронизацијата и ослободувањето ендорфини, но директните тестови на механизмите се малку.",
+    "definition_en": "Singing and playing together can speed bonding and promote cooperation; proposed mechanisms are synchrony and endorphins, with few direct tests.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "pearce2015",
+      "tarr2014",
+      "kirschner2010"
+    ]
+  },
+  {
+    "slug": "music-therapy-vs-music-medicine",
+    "term_mk": "музикотерапија наспроти „музичка медицина“",
+    "term_en": "music therapy vs music medicine",
+    "definition_mk": "Музикотерапијата е процес што го води обучен музикотерапевт, со терапевтски однос и цели. „Музичката медицина“ е слушање снимена музика што ја нуди медицински персонал, на пр. пред операција. Двете имаат докази за одредени исходи, но ниту едната не е замена за лекување.",
+    "definition_en": "Music therapy is delivered by a trained music therapist within a therapeutic relationship; music medicine is pre-recorded listening offered by medical staff. Both have evidence for specific outcomes; neither replaces treatment.",
+    "pillar": 1,
+    "evidence": "умерени докази",
+    "source_ids": [
+      "bradt2021",
+      "aalbers2017",
+      "vandersteen2018",
+      "dewitte2020"
+    ]
+  },
+  {
+    "slug": "music-and-stress",
+    "term_mk": "музика и стрес",
+    "term_en": "music and stress",
+    "definition_mk": "Мета-анализите на рандомизирани студии покажуваат дека музичките интервенции имаат мал до умерен ефект во намалувањето на физиолошкиот и доживеаниот стрес. Ефектите варираат според видот на музиката, ситуацијата и мерката.",
+    "definition_en": "Meta-analyses of RCTs show small-to-moderate reductions in physiological and psychological stress from music interventions.",
+    "pillar": 1,
+    "evidence": "силни докази",
+    "source_ids": [
+      "dewitte2020",
+      "daykin2018"
+    ]
+  },
+  {
+    "slug": "mozart-effect",
+    "term_mk": "Моцартов ефект",
+    "term_en": "Mozart effect",
+    "definition_mk": "Тврдењето дека слушањето Моцарт нè прави попаметни. Оригиналната студија најде краткотрајно подобрување на просторни задачи кај студенти, но мета-анализите покажуваат дека нема специфичен „Моцартов“ ефект; малите подобрувања се објаснуваат со возбуда и пријатно расположение.",
+    "definition_en": "The claim that listening to Mozart makes us smarter. Meta-analyses show no specific Mozart effect; small short-term gains reflect arousal and mood.",
+    "pillar": 3,
+    "evidence": "силни докази",
+    "source_ids": [
+      "rauscher1993",
+      "chabris1999",
+      "pietschnig2010",
+      "thompson2001",
+      "nantais1999"
+    ]
+  },
+  {
+    "slug": "far-transfer",
+    "term_mk": "далечен пренос",
+    "term_en": "far transfer",
+    "definition_mk": "Идејата дека вештина научена во една област (на пр. свирење) автоматски ги подобрува далечните области (интелигенција, математика, читање). Висококвалитетните експериментални студии не покажуваат таков пренос од музичка обука кај децата.",
+    "definition_en": "The idea that skills transfer to distant domains (e.g., music training improving IQ or maths); high-quality experiments do not support it for children's music training.",
+    "pillar": 3,
+    "evidence": "силни докази",
+    "source_ids": [
+      "sala2020",
+      "mehr2013",
+      "schellenberg2004"
+    ]
+  },
+  {
+    "slug": "publication-bias",
+    "term_mk": "пристрасност во објавувањето",
+    "term_en": "publication bias",
+    "definition_mk": "Склоноста позитивните и „интересни“ резултати почесто да се објавуваат од неуспешните. Тоа може да создаде впечаток дека некој ефект е посилен отколку што е – класичен пример е Моцартовиот ефект.",
+    "definition_en": "The tendency for positive results to be published more often than null ones, inflating apparent effects – the Mozart effect is a classic example.",
+    "pillar": 3,
+    "evidence": "силни докази",
+    "source_ids": [
+      "pietschnig2010",
+      "oberleiter2023"
+    ]
+  },
+  {
+    "slug": "replication",
+    "term_mk": "репликација",
+    "term_en": "replication",
+    "definition_mk": "Повторување на студија за да се провери дали резултатот се добива повторно. Еден наод, дури и од реномирано списание, е почеток, а не крај на приказната.",
+    "definition_en": "Repeating a study to check whether the result holds; a single finding is a beginning, not an end.",
+    "pillar": 3,
+    "evidence": "силни докази",
+    "source_ids": [
+      "steele1999",
+      "macnamara2019",
+      "poynter2025"
+    ]
+  },
+  {
+    "slug": "binaural-beats",
+    "term_mk": "бинаурални тонови",
+    "term_en": "binaural beats",
+    "definition_mk": "Перцептивна појава кога во секое уво се пушта малку различен тон, а мозокот „слуша“ трет тон што пулсира. Некои мета-анализи наоѓаат ефекти врз анксиозноста и вниманието, но тврдењето дека тие ги „штимаат“ мозочните бранови не е доследно потврдено.",
+    "definition_en": "A perceptual beat heard when each ear receives a slightly different tone; some meta-analytic effects exist, but brainwave entrainment claims are inconsistent.",
+    "pillar": 3,
+    "evidence": "отворено прашање",
+    "source_ids": [
+      "garciaargibay2019",
+      "ingendoh2023"
+    ]
+  }
+]

@@ -1,0 +1,253 @@
+{
+  "slug": "music-performance-anxiety-what-we-know",
+  "pillar": 2,
+  "format": "text",
+  "lang": "mk",
+  "date": "2026-11-02",
+  "title": "Трема: што навистина знаеме за музичката анксиозност при изведба",
+  "dek": "Тремата е една од најчестите теми меѓу музичарите, а истовремено и една од најмалку разбраните. Што велат истражувањата за тоа колку е честа, зошто се јавува и што навистина помага – и каде доказите сè уште се тенки.",
+  "reading_min": 6,
+  "body": [
+    {
+      "blocks": [
+        {
+          "p": "Ладни дланки, срце што чука побрзо од метрономот, сува уста токму пред фраза што бара здив. Многу музичари го познаваат ова чувство – од ученици на првиот годишен концерт до членови на професионални оркестри. Некому му дава енергија, на друг му ја одзема радоста од свирењето или пеењето, а некого го тера целосно да престане да настапува."
+        },
+        {
+          "p": "Во овој текст не нудиме брз рецепт, туку преглед: што под ова подразбира науката, колку е честа појавата, што се случува во телото и умот, кои пристапи имаат поддршка во истражувањата и – подеднакво важно – што сè уште не знаеме."
+        }
+      ]
+    },
+    {
+      "h2": "Што е музичка анксиозност при изведба?",
+      "blocks": [
+        {
+          "p": "Во секојдневниот говор велиме <em>трема</em>. Во истражувањата најчесто се користи терминот музичка анксиозност при изведба (music performance anxiety, MPA): изразена и трајна загриженост поврзана со музичкиот настап, која се гледа во телото, мислите и однесувањето (Kenny, 2011). Не е „сè или ништо“. Таа е спектар – од минлива нервоза што исчезнува по првите тактови, до анксиозност што ја нарушува изведбата и води кон избегнување настапи."
+        },
+        {
+          "p": "Многу автори ја сметаат за сродна со социјалната анксиозност, бидејќи во нејзиното јадро е стравот од тоа како другите ќе нè проценат (Burin & Osório, 2017). Корисно е да се гледа и како процес во време: анксиозноста има свој тек пред, за време и по настапот, и секоја фаза може да заврши поинаку (Papageorgi et al., 2007)."
+        }
+      ]
+    },
+    {
+      "h2": "Колку е честа?",
+      "blocks": [
+        {
+          "p": "Тука треба да бидеме внимателни со бројките. Систематскиот преглед на 43 студии кај професионални музичари покажа преваленца на музичка анксиозност некаде меѓу 16,5% и 60% (Fernholz et al., 2019). Опсегот е широк затоа што студиите користат различни дефиниции, прашалници и прагови, а многу од нив се со слаб методолошки квалитет. Затоа е поточно да се каже „честа е“ отколку да се наведе една „вистинска“ бројка."
+        },
+        {
+          "p": "Некои шеми сепак се повторуваат. Жените и помладите музичари во просек известуваат повеќе анксиозност, а постарите помалку (Fernholz et al., 2019; Kenny et al., 2014). Во една постара студија со оркестарски музичари, анксиозноста била најниска кај професионалците, а највисока кај студентите (Steptoe & Fidler, 1987). Тоа не значи дека искуството автоматски ја брише тремата – туку дека таа често се менува со текот на кариерата."
+        },
+        {
+          "evidence": {
+            "level": "умерени докази",
+            "text": "Дека музичката анксиозност е честа и кај професионалците е доследен наод во повеќе прегледи. Точната преваленца е непозната поради различните методи на мерење."
+          }
+        }
+      ]
+    },
+    {
+      "h2": "Што се случува во телото и во умот?",
+      "blocks": [
+        {
+          "p": "Телесната страна е позната: побрз пулс, побрзо дишење, тресење, потење. Тоа е нормална реакција на систем што се подготвува за предизвик (Kenny, 2011). Проблемот не е во самата возбуда, туку во тоа колку е силна, како ја толкуваме и што правиме со неа."
+        },
+        {
+          "p": "Истражувањата укажуваат на неколку психолошки механизми. Првиот е <strong>вниманието</strong>: анксиозноста го повлекува вниманието кон можните закани и го отежнува насочувањето кон задачата (Eysenck et al., 2007). Вториот е <strong>катастрофизирањето</strong> – мислата дека една грешка значи пропаст – кое кај музичарите доследно оди заедно со поизразена трема (Steptoe & Fidler, 1987). Третиот е <strong>прекумерното самонадгледување</strong>: кога под притисок почнуваме свесно да ги контролираме движењата што инаку се автоматски, изведбата може да „закочи“ (Beilock & Carr, 2001)."
+        },
+        {
+          "p": "Тука се и цртите што човекот ги носи со себе. Стравот од грешки и сомнежот во сопствените постапки – т.е. перфекционистичките загрижености – се поврзани со повисока анксиозност при изведба, како и социјалната анксиозност (Dobos et al., 2019). И уште една корисна информација: луѓето систематски преценуваат колку другите ги забележуваат нивните грешки и изглед. Во психологијата тоа се вика ефект на рефлектор (Gilovich et al., 2000)."
+        }
+      ]
+    },
+    {
+      "h2": "Што помага – и колку сме сигурни?",
+      "blocks": [
+        {
+          "p": "Ова е местото каде што најчесто се претерува. Затоа за секој пристап наведуваме колку се цврсти доказите."
+        },
+        {
+          "evidence": {
+            "level": "умерени докази",
+            "text": "Психолошките третмани, особено когнитивно-бихевиоралната терапија (КБТ), се најистражувани и покажуваат корисни резултати. Сепак, прегледите предупредуваат дека студиите се мали и дека недостигаат истражувања со соодветни контролни групи (Kenny, 2005; Fernholz et al., 2019)."
+          }
+        },
+        {
+          "evidence": {
+            "level": "рани/ограничени докази",
+            "text": "Преоценување на возбудата: во експерименти, луѓето што пред задача си рекле „Возбуден/а сум“ се чувствувале повозбудено и некогаш изведувале подобро од оние што се обидувале да се смират (Brooks, 2014). Директна репликација на една од тие студии го потврди ефектот врз чувството, но не и врз изведбата (Poynter & Smith Pasqualini, 2025)."
+          }
+        },
+        {
+          "evidence": {
+            "level": "рани/ограничени докази",
+            "text": "Подготовка во услови слични на настапот: симулираните аудиции можат да предизвикаат реакции слични на вистинските (Williamon et al., 2014), а менталното вежбање ја подобрува изведбата, иако помалку од физичкото (Driskell et al., 1994; Bernardi et al., 2013). Колку ова ја намалува анксиозноста кај музичарите, сè уште не е добро проверено."
+          }
+        },
+        {
+          "evidence": {
+            "level": "рани/ограничени докази",
+            "text": "Пристапи засновани на прифаќање (на пр. терапија на прифаќање и посветеност, ACT), кои не се обидуваат да ја отстранат анксиозноста, туку да се дејствува и покрај неа, засега имаат поддршка само од мали пилот-студии (Clarke et al., 2020)."
+          }
+        },
+        {
+          "p": "Корисно е да се погледне и од другата страна – кога настапот оди добро. Музичарите често опишуваат состојба на целосна вовлеченост, позната како флоу. Во една лонгитудинална студија со студенти по музика, флоуто се јавувало кога предизвикот на делото бил во рамнотежа со вештината, а флоуто и анксиозноста се однесувале речиси како спротивности (Fullagar et al., 2013). Кај оркестарски музичари анкетирани веднаш по концерт, поголемата самоефикасност – верувањето дека можеш да ја извршиш задачата – одела заедно со посилно флоу (Spahn et al., 2021). Тоа е корелација, не доказ за причина, но укажува дека изборот на репертоар и чувството на подготвеност се важни."
+        },
+        {
+          "evidence": {
+            "level": "умерени докази",
+            "text": "Врската меѓу рамнотежата предизвик–вештина, самоефикасноста, флоуто и помалата анксиозност е доследна, но главно корелациска."
+          }
+        },
+        {
+          "p": "Се истражуваат и лекови, како бета-блокаторите (Fernholz et al., 2019). Тоа е медицинска одлука што припаѓа исклучиво на лекар и не е тема за самостојно експериментирање."
+        },
+        {
+          "quote": "Целта не е тремата да исчезне, туку да престане таа да одлучува наместо нас."
+        }
+      ]
+    },
+    {
+      "h2": "Што сè уште не знаеме",
+      "blocks": [
+        {
+          "p": "Голем дел од истражувањата се со класични музичари од западни земји, со мали примероци и со самоизвестени мерки. Знаеме малку за пејачите во популарни и традиционални жанрови, за музичарите во нашиот регион и за тоа кои пристапи делуваат кај кого. Нема ниту една техника што гарантирано делува кај сите."
+        }
+      ]
+    },
+    {
+      "h2": "Кога е добро да се побара стручна помош",
+      "blocks": [
+        {
+          "p": "Разговор со психолог или психотерапевт е добар чекор ако анксиозноста ве тера да одбивате настапи или да се откажувате од нешто што ви е важно, ако трае и надвор од настапите, ако ви го нарушува сонот и секојдневието или ако посегнувате по алкохол или други супстанции за да се справите. Ако имате телесни симптоми што ве загрижуваат, или размислувате за лекови, разговарајте со лекар. Музичката анксиозност е добро позната појава и за неа има стручна поддршка."
+        }
+      ]
+    }
+  ],
+  "known": [
+    "Музичката анксиозност при изведба е честа и кај професионалните музичари; проценките се движат од 16,5% до 60%.",
+    "Жените и помладите музичари во просек известуваат повеќе анксиозност.",
+    "Катастрофизирањето и перфекционистичките загрижености се поврзани со поизразена трема.",
+    "Когнитивно-бихевиоралните пристапи се најистражувани и покажуваат корисни резултати."
+  ],
+  "unknown": [
+    "Колку точно е распространета – бројките зависат од начинот на мерење.",
+    "Кој пристап е најдобар за кого (пејачи, инструменталисти, различни жанрови).",
+    "Дали преоценувањето на возбудата сигурно ја подобрува изведбата кај музичари.",
+    "Како изгледа музичката анксиозност кај музичарите во Македонија и регионот – речиси нема податоци."
+  ],
+  "note": "Ова не е дијагноза ниту терапија, ниту индивидуален совет. Текстот е информативен. Ако анксиозноста ви го отежнува секојдневието или музичкиот живот, обратете се кај психолог, психотерапевт или лекар.",
+  "references": [
+    "kenny2011",
+    "burin2017",
+    "papageorgi2007",
+    "fernholz2019",
+    "kenny2014",
+    "steptoe1987",
+    "eysenck2007",
+    "beilock2001",
+    "dobos2019",
+    "gilovich2000",
+    "kenny2005",
+    "brooks2014",
+    "poynter2025",
+    "williamon2014",
+    "driskell1994",
+    "bernardi2013",
+    "clarke2020",
+    "fullagar2013",
+    "spahn2021"
+  ],
+  "tags": [
+    "трема",
+    "музичка анксиозност при изведба",
+    "MPA",
+    "изведба",
+    "столб 2"
+  ],
+  "en": {
+    "title": "Stage fright: what we actually know about music performance anxiety",
+    "dek": "Stage fright is one of the most discussed topics among musicians and one of the least understood. What research says about how common it is, why it happens, what helps – and where the evidence is still thin.",
+    "body": [
+      {
+        "blocks": [
+          {
+            "p": "Cold hands, a heart that runs ahead of the metronome, a dry mouth just before a phrase that needs breath. Many musicians know this feeling, from pupils at their first school concert to members of professional orchestras. This text is not a quick fix but an overview of what science knows – and what it doesn’t."
+          }
+        ]
+      },
+      {
+        "h2": "What is music performance anxiety?",
+        "blocks": [
+          {
+            "p": "Researchers use the term music performance anxiety (MPA): marked, persistent anxious apprehension related to musical performance, expressed in the body, thoughts and behaviour (Kenny, 2011). It is a spectrum, from passing nerves to anxiety that impairs performance and leads to avoidance. Many authors consider it related to social anxiety (Burin & Osório, 2017), and it unfolds over time – before, during and after a performance (Papageorgi et al., 2007)."
+          }
+        ]
+      },
+      {
+        "h2": "How common is it?",
+        "blocks": [
+          {
+            "p": "A systematic review of 43 studies of professional musicians found prevalence estimates between 16.5% and 60% (Fernholz et al., 2019). The range is wide because definitions and measures differ, so “common” is more accurate than any single figure. Women and younger musicians report more anxiety on average (Fernholz et al., 2019; Kenny et al., 2014)."
+          }
+        ]
+      },
+      {
+        "h2": "What happens in body and mind?",
+        "blocks": [
+          {
+            "p": "Arousal itself is a normal preparation for challenge (Kenny, 2011). Research points to attention being pulled towards threat (Eysenck et al., 2007), catastrophising (Steptoe & Fidler, 1987), conscious monitoring of automated skills under pressure (Beilock & Carr, 2001) and perfectionistic concerns (Dobos et al., 2019). People also overestimate how much others notice their mistakes – the spotlight effect (Gilovich et al., 2000)."
+          }
+        ]
+      },
+      {
+        "h2": "What helps – and how sure are we?",
+        "blocks": [
+          {
+            "evidence": {
+              "level": "moderate evidence",
+              "text": "Psychological treatments, especially CBT, are the most studied and show beneficial results, but controlled studies are lacking (Kenny, 2005; Fernholz et al., 2019)."
+            }
+          },
+          {
+            "evidence": {
+              "level": "early/limited evidence",
+              "text": "Reappraising arousal as excitement improved feelings and, in some experiments, performance (Brooks, 2014); a direct replication confirmed the feeling but not the performance effect (Poynter & Smith Pasqualini, 2025)."
+            }
+          },
+          {
+            "evidence": {
+              "level": "early/limited evidence",
+              "text": "Performance simulation, mental practice and acceptance-based approaches have promising but small-scale support (Williamon et al., 2014; Driskell et al., 1994; Clarke et al., 2020)."
+            }
+          },
+          {
+            "p": "Medication such as beta-blockers is a medical decision for a doctor only."
+          }
+        ]
+      },
+      {
+        "h2": "When to seek professional help",
+        "blocks": [
+          {
+            "p": "Consider talking to a psychologist or psychotherapist if anxiety makes you avoid performing, persists beyond performances, disrupts sleep and daily life, or leads you to use alcohol or other substances to cope. Talk to a doctor about physical symptoms or medication."
+          }
+        ]
+      }
+    ],
+    "known": [
+      "Music performance anxiety is common among professional musicians too; estimates range from 16.5% to 60%.",
+      "On average, women and younger musicians report more anxiety.",
+      "Catastrophising and perfectionistic concerns go together with stronger stage fright.",
+      "Cognitive-behavioural approaches are the most researched and show useful results."
+    ],
+    "unknown": [
+      "How widespread it really is: the figures depend on how it is measured.",
+      "Which approach works best for whom (singers, instrumentalists, different genres).",
+      "Whether reappraising arousal reliably improves musicians’ performance.",
+      "What music performance anxiety looks like among musicians in Macedonia and the region: there is almost no data."
+    ],
+    "note": "This is not a diagnosis, therapy or individual advice. The text is for information. If anxiety makes everyday life or your musical life difficult, talk to a psychologist, a psychotherapist or a doctor."
+  },
+  "word_count": 1113
+}

@@ -1,7 +1,9 @@
 /* Јаснота / Jasnota — brand kit runtime (book + showcase).
    1. injects the shared SVG defs (assets/logos.js, generated from /brand/logo),
    2. fills every [data-mock] with its mockup (assets/mockups.js),
-   3. turns every <svg data-l="…"> into a crisp vector logo via <use>.
+   3. turns every <svg data-l="…"> into a crisp vector logo via <use>,
+   4. fills every [data-ev="0–3"] with the evidence meter and its label (Macedonian unless data-evl="en";
+      data-evt overrides the text, data-evt="" leaves the meter alone).
    Logo keys: m mark · mf small-cut mark · s02–s06 secondary signs · wl/wc wordmark Latin/Cyrillic ·
    hl/hc horizontal lockup · vl/vc stacked lockup. The j/ј dot follows --dot (default currentColor). */
 (function () {
@@ -16,6 +18,21 @@
       el.innerHTML = '<use href="#k-' + k + '"/>';
     });
   }
+  var EV = {
+    mk: ['отворено прашање', 'рани/ограничени докази', 'умерени докази', 'силни докази'],
+    en: ['open question', 'early/limited evidence', 'moderate evidence', 'strong evidence']
+  };
+  function evidence(root) {
+    root.querySelectorAll('[data-ev]').forEach(function (el) {
+      var n = Math.max(0, Math.min(3, +el.getAttribute('data-ev') || 0));
+      var en = el.getAttribute('data-evl') === 'en';
+      var t = el.hasAttribute('data-evt') ? el.getAttribute('data-evt') : EV[en ? 'en' : 'mk'][n];
+      el.classList.add('ev');
+      if (!en) el.setAttribute('lang', 'mk');
+      el.innerHTML = '<span class="m" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">' + t + '</span>';
+      if (!t) el.setAttribute('aria-label', EV[en ? 'en' : 'mk'][n]);
+    });
+  }
   function run() {
     document.body.insertAdjacentHTML('afterbegin', L.defs);
     document.querySelectorAll('[data-mock]').forEach(function (el) {
@@ -23,6 +40,7 @@
       if (f) el.innerHTML = typeof f === 'function' ? f(el.dataset) : f;
     });
     logos(document);
+    evidence(document);
     mkB(document.body);
     if (window.JASNOTA_AFTER) window.JASNOTA_AFTER();
     document.documentElement.setAttribute('data-kit', 'ready');
@@ -49,6 +67,6 @@
       n.parentNode.replaceChild(f, n);
     });
   }
-  window.JASNOTA_KIT = { logos: logos, mkB: mkB };
+  window.JASNOTA_KIT = { logos: logos, evidence: evidence, mkB: mkB, EV: EV };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
 })();

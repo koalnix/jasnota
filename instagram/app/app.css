@@ -186,3 +186,7 @@
 .scr.eye .view .highlights[data-eye]::after { top: 4px; left: 6px; }
 .scr.eye .view .ig-bio [data-eye]::after { left: -15px; top: 1px; }
 .scr.eye .view .avbtn[data-eye]::after { top: 0; left: 0; }
+.media .arr { box-shadow: 0 0 0 1px rgba(10,10,11,.22), 0 2px 8px rgba(0,0,0,.25); }
+.scr .ig-bio .cat { color: #8c8a85; }
+.tagged-empty p { margin: 0 0 10px; }
+.tagged-empty b { color: #e6e3dd; font-weight: 500; }
