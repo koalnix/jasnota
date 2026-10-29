@@ -454,3 +454,18 @@ img.frame__img::after { display: none; }
   .ladder li::before { width: calc(var(--w) * 0.9); }
   .search input { font-size: 1.35rem; }
 }
+
+/* author: papers, talks, workshops */
+.work { list-style: none; display: grid; gap: 18px; }
+.work__i { display: grid; grid-template-columns: 7ch 1fr; column-gap: 16px; }
+.work__y { color: var(--ash); padding-top: 4px; }
+.work__t { font-size: 0.98rem; line-height: 1.6; color: var(--bone-82, var(--bone)); }
+.work__t em { color: var(--bone); }
+.work__a { margin-left: 6px; color: var(--ash); white-space: nowrap; }
+@media (hover: hover) { .work__a:hover { color: var(--bone); } }
+.work__fig { margin-top: 12px; max-width: 220px; }
+.work__i > .work__fig { grid-column: 2; }
+.work__fig--wide { max-width: 420px; }
+.work__fig img { display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.05) brightness(0.86); }
+.work__fig figcaption { margin-top: 6px; color: var(--ash); font-size: 0.7rem; }
+@media (max-width: 640px) { .work__i { grid-template-columns: 1fr; row-gap: 2px; } .work__i > .work__fig { grid-column: 1; } }

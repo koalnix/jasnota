@@ -85,9 +85,19 @@ and any promise of cure or quick fix.
   Bitola (free psychological support, 2024–).
 - **Gestalt therapist under supervision** (гешталт терапевт под супервизија), in Gestalt training since 2021 (Anima) —
   interest in awareness, emotion, bodily experience and contact, with clear professional boundaries.
-- **Music performer** by training (State Secondary Music School, Bitola, 2005); **vocal artist** with nearly 20 years on
-  stage, currently with **Orchestra DIVA** (Bitola). Music mentor: YMCA GLOW (2026); peer educator & music mentor,
-  „Врсничка школа за ментално здравје на деца и млади“ (2024–).
+- **Instrumentalist** by training (State Secondary Music School, Bitola, 2005); **vocal artist** with more than 15 years of
+  active stage experience in rock, pop and jazz — soloist with the Bitola Chamber Orchestra „Дива“ / Orchestra DIVA and the
+  Bitola Wind Orchestra, Rockestra (2023–), her own project Jasna & Friends (2018–), club bands.
+  (STRATEGY.md says "almost 20 years"; the CV says "more than 15" — public copy uses the CV wording.)
+- Music mentor: YMCA GLOW (2026); peer educator & music mentor, „Врсничка школа за ментално здравје на деца и млади“ (2024–).
+- Papers & talks: poster *From Confidence to Anxiety: The Role of Self-Esteem in Stage Performance Anxiety Among North
+  Macedonian Musicians of Different Genders* (with Simona Jovcevska; PAM-IE Ljubljana, 16 Oct 2026; N = 124 professional
+  musicians; lower self-esteem ↔ higher MPA; no gender difference) — a natural future Pillar-2 piece, with disclosure;
+  seminar paper in Anima's second collection „Гешталт терапија во секојдневното живеење“ (2025; her paper's title to confirm).
+- Workshops & mentoring: GLOW 2026 drum circles (music facilitator); YMCA Bitola peer school — song on mental health made from
+  young participants' texts (YouTube: YMCAmk); „Ритамот на резилиентноста: како музиката ги обликува нашите емоции“
+  (Empowering the People of Pelagonija 2, Ohrid); „Кога креативноста и дружбата лекуваат“ (Pro Local, Civica Mobilitas);
+  „Основи на успешна кариера“ (music as a profession). **Never publish photos showing identifiable minors** from these.
 - Private contact details (phone, personal email) are never published; public contact is zdravo@jasnota.mk.
 - Co-author: *Self-esteem as a mediator between perfectionism and impostor syndrome among gifted students* (2024,
   International Slavic University) — cite, don't state findings until she supplies them.

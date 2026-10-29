@@ -879,11 +879,16 @@ function aboutBlocks(D, photo) {
     '@context': 'https://schema.org', '@type': 'Person', '@id': SITE_URL + 'about/#jasna',
     name: 'Јасна Димитровска', alternateName: 'Jasna Dimitrovska', url: SITE_URL + 'about/',
     jobTitle: ['Лиценциран психолог', 'Гешталт терапевт под супервизија', 'Вокална уметница'],
-    description: 'Лиценциран психолог, магистер по психологија и гешталт терапевт под супервизија; вокална уметница со речиси 20 години сценско искуство (Оркестар DIVA, Битола). Авторка и уредничка на Јаснота.',
+    description: 'Лиценциран психолог, магистер по психологија и гешталт терапевт под супервизија; вокална уметница со повеќе од 15 години сценско искуство во рок, поп и џез (Битолски камерен оркестар „Дива“, Битолски дувачки оркестар, Rockestra, Jasna & Friends). Авторка и уредничка на Јаснота.',
     alumniOf: { '@type': 'CollegeOrUniversity', name: 'Меѓународен славјански универзитет', address: 'Битола' },
     knowsAbout: ['психологија на музиката', 'музичка анксиозност при изведба', 'перфекционизам', 'гешталт'],
     worksFor: { '@id': SITE_URL + '#org' },
-    memberOf: { '@type': 'PerformingGroup', name: 'Orchestra DIVA', location: 'Bitola' },
+    memberOf: [
+      { '@type': 'PerformingGroup', name: 'Битолски камерен оркестар „Дива“ / Orchestra DIVA', location: 'Bitola' },
+      { '@type': 'PerformingGroup', name: 'Битолски дувачки оркестар', location: 'Bitola' },
+      { '@type': 'PerformingGroup', name: 'Rockestra', location: 'Bitola' },
+      { '@type': 'PerformingGroup', name: 'Jasna & Friends', location: 'Bitola' },
+    ],
     homeLocation: { '@type': 'Place', name: 'Битола, Македонија' },
   };
   const study = {

@@ -91,7 +91,7 @@
        data-i18n="key"            → JASNOTA_I18N.en[key] (interface strings)
        data-i18n-attr="attr:key"  → the same, for attributes
        data-en="…"                → inline English for page copy (generated pages, static prose)
-       data-en-content / data-en-label / data-en-placeholder → inline English for those attributes
+       data-en-content / data-en-label / data-en-placeholder / data-en-alt → inline English for those attributes
        data-lang-block="mk|en"    → whole blocks per language; data-lang-fallback keeps the Macedonian
                                     block visible in English when a piece has no English version yet */
   const DICT = window.JASNOTA_I18N || { mk: {}, en: {} };
@@ -100,7 +100,7 @@
   const i18nNodes = $$('[data-i18n]');
   const attrNodes = $$('[data-i18n-attr]');
   const enNodes = $$('[data-en]');
-  const enAttrNodes = $$('[data-en-content], [data-en-label], [data-en-placeholder]');
+  const enAttrNodes = $$('[data-en-content], [data-en-label], [data-en-placeholder], [data-en-alt]');
   const splitNodes = $$('[data-split]');
   const blocks = $$('[data-lang-block]');
   const src = (n) => (n.tagName === 'TITLE' ? n.textContent : n.innerHTML.trim());
@@ -110,7 +110,7 @@
     if (!(k in MK)) MK[k] = n.getAttribute(a) || '';
   }));
   enNodes.forEach((n) => { n._mk = src(n); });
-  const EN_ATTRS = [['enContent', 'content'], ['enLabel', 'aria-label'], ['enPlaceholder', 'placeholder']];
+  const EN_ATTRS = [['enContent', 'content'], ['enLabel', 'aria-label'], ['enPlaceholder', 'placeholder'], ['enAlt', 'alt']];
   enAttrNodes.forEach((n) => { n._mkAttr = {}; EN_ATTRS.forEach(([d, a]) => { if (d in n.dataset) n._mkAttr[a] = n.getAttribute(a); }); });
   splitNodes.forEach((n) => { if (!n.hasAttribute('data-i18n') && !n.hasAttribute('data-en')) n._src = n.innerHTML; });
 
