@@ -27,6 +27,11 @@
   const STATIC = /[?&]static\b/.test(location.search);
   const MOTION = root.classList.contains('motion');
   const FINE = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  /* touch / coarse pointers scroll natively: no smoothing, no cursor, no magnets, lighter canvases */
+  const TOUCH = window.matchMedia('(pointer: coarse), (hover: none)').matches;
+  const SMALL = window.matchMedia('(max-width: 768px)').matches;
+  const DPR = () => Math.min(window.devicePixelRatio || 1, TOUCH || SMALL ? 1.5 : 2);
+  if (TOUCH) root.classList.add('touch');
   const E_FILM = 'cubic-bezier(0.65, 0, 0.35, 1)';
   const E_OUT = 'cubic-bezier(0.16, 1, 0.3, 1)';
   root.setAttribute('data-booted', '');
@@ -168,8 +173,8 @@
   const onFrame = (fn) => frameFns.push(fn);
   let lenis = null;
   let lastY = window.scrollY, vel = 0;
-  if (MOTION && window.Lenis) {
-    lenis = new Lenis({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 0.95 });
+  if (MOTION && window.Lenis && !TOUCH) {
+    lenis = new Lenis({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 0.95, syncTouch: false });
     if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
   }
   function frame(time) {
@@ -189,8 +194,8 @@
 
   const scrollToEl = (target, immediate) => {
     if (lenis) lenis.scrollTo(target, { duration: immediate ? 0 : 2.2, immediate: !!immediate, offset: target === 0 ? 0 : -24, easing: (x) => (x < 0.5 ? 8 * x ** 4 : 1 - Math.pow(-2 * x + 2, 4) / 2) });
-    else if (target === 0) window.scrollTo(0, 0);
-    else target.scrollIntoView({ block: 'start' });
+    else if (target === 0) window.scrollTo({ top: 0, behavior: immediate || !MOTION ? 'auto' : 'smooth' });
+    else target.scrollIntoView({ block: 'start', behavior: immediate || !MOTION ? 'auto' : 'smooth' });
   };
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a[href*="#"]');
@@ -517,8 +522,11 @@
     scrubbers.push(s);
     return s;
   }
+  // two passes: read every rect first, then write, so one frame never forces layout twice
+  const due = [];
   function runScrubbers(force) {
     const vh = innerHeight;
+    due.length = 0;
     for (const s of scrubbers) {
       const r = s.el.getBoundingClientRect();
       if (!force && (r.bottom < -vh * 0.5 || r.top > vh * 1.5) && s.p >= 0) continue;
@@ -526,9 +534,10 @@
       const a = vh * s.from[1] - e1, b = (e2 - vh * s.to[1]) - (e1 - vh * s.from[1]);
       const p = clamp(b === 0 ? 0 : a / b);
       if (Math.abs(p - s.p) < 0.0005 && !force) continue;
-      s.p = p;
-      s.fn(p, r);
+      s.p = p; s.r = r;
+      due.push(s);
     }
+    for (let i = 0; i < due.length; i++) due[i].fn(due[i].p, due[i].r);
   }
   let lastScrubY = -1;
   if (MOTION) {
@@ -560,13 +569,14 @@
     });
   });
 
-  /* dips: a section rises out of black and sinks back into it */
+  /* dips: a section rises out of black and sinks back into it — quickly, so its text is
+     fully readable from the moment it is on screen (only the very edges breathe) */
   if (MOTION) $$('[data-dip]').forEach((el) => {
     scrub(el, ['top', 1], ['bottom', 0], (p, r) => {
       const vh = innerHeight;
-      const inO = range(vh - r.top, vh * 0.05, vh * 0.55);
-      const outO = range(r.bottom, vh * 0.04, vh * 0.42);
-      el.style.opacity = Math.min(inO, outO).toFixed(3);
+      const inO = range(vh - r.top, 0, vh * 0.16);
+      const outO = range(r.bottom, 0, vh * 0.12);
+      el.style.opacity = (0.35 + 0.65 * Math.min(inO, outO)).toFixed(3);
     });
   });
 
@@ -734,9 +744,10 @@
     build() {
       const c = this.canvas, w = this.wave.clientWidth, h = this.wave.clientHeight;
       if (!w || !h) return;
-      const dpr = Math.min(2, window.devicePixelRatio || 1);
-      c.width = Math.round(w * dpr); c.height = Math.round(h * dpr);
+      const dpr = DPR();
+      if (c.width !== Math.round(w * dpr) || c.height !== Math.round(h * dpr)) { c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); }
       this.W = w; this.H = h; this.dpr = dpr;
+      this.ctx = c.getContext('2d');
       // bars in groups of 2 + 2 + 3, with a breath between the groups
       const r = rng(this.seed);
       const bars = [];
@@ -754,8 +765,8 @@
       this.draw();
     }
     draw() {
-      const c = this.canvas, ctx = c.getContext('2d');
-      if (!this.bars) return;
+      const ctx = this.ctx;
+      if (!this.bars || !ctx) return;
       const { W, H, dpr } = this;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, W, H);
@@ -820,7 +831,7 @@
       const ctx = Audio.ctx;
       this.pos = ctx.currentTime - this.t0;
       if (this.pos >= this.dur) { this.pause(); this.pos = 0; this.draw(); Mini.update(); return; }
-      this.draw();
+      if (this.visible && !document.hidden) this.draw();   // offscreen: the mini-player carries the time
       if (Math.round(this.pos) !== this._ap) { this._ap = Math.round(this.pos); this.aria(); }
       Mini.tick(this);
       requestAnimationFrame(() => this.loop());
@@ -1089,15 +1100,17 @@
       tc.textContent = fmt(p * total);
       prog.classList.toggle('is-done', p > 0.995);
     };
-    window.addEventListener('scroll', upd, { passive: true });
-    window.addEventListener('resize', upd);
+    let queued = false;
+    const q = () => { if (queued) return; queued = true; requestAnimationFrame(() => { queued = false; upd(); }); };
+    window.addEventListener('scroll', q, { passive: true });
+    window.addEventListener('resize', q);
     langListeners.push(() => requestAnimationFrame(upd));
     upd();
   }
 
   /* ================================================================== public API for page scripts */
   window.Jasnota = {
-    t, splitWords, scrub, onFrame, magnetize, Audio, ready, MOTION, FINE, ROOT,
+    t, splitWords, scrub, onFrame, magnetize, Audio, ready, MOTION, FINE, TOUCH, SMALL, DPR, ROOT,
     get lang() { return lang; },
     get lenis() { return lenis; },
     get velocity() { return vel; },

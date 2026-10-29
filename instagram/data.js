@@ -84,8 +84,8 @@ Monday, Wednesday and Friday at 20:30. English first, Macedonian always.`,
       { alt: 'Black slide. Large serif text: I’m Jasna. Below, three small lines: psychologist, Gestalt counsellor, vocal artist with Orchestra DIVA.',
         html: '<div class="pc">' + h.row(h.mark(7), h.meta('1/7')) + '<div class="push">' + h.q('I’m <em>Jasna.</em>', 'l') +
           '<ul class="roles"><li>psychologist</li><li>Gestalt counsellor</li><li>vocal artist, Orchestra DIVA</li></ul></div></div>' },
-      { alt: 'Photo: Jasna in profile, lit only from behind so the edge of her face glows against a black room. Text: Jasna Dimitrovska. Bitola, North Macedonia.',
-        html: h.ph('rim', 'portrait') + '<div class="pc on-photo"><p class="meta" style="text-align:right">02/07</p><div class="push">' + h.q('Jasna <em>Dimitrovska</em>', 's') + h.meta('Bitola, North Macedonia', 'margin-top:3cqi') + '</div></div>' },
+      { alt: 'Photo: Jasna in profile, lit only from behind so the edge of her face glows against a black room. Text: Jasna Dimitrovska. Bitola, Macedonia.',
+        html: h.ph('rim', 'portrait') + '<div class="pc on-photo"><p class="meta" style="text-align:right">02/07</p><div class="push">' + h.q('Jasna <em>Dimitrovska</em>', 's') + h.meta('Bitola, Macedonia', 'margin-top:3cqi') + '</div></div>' },
       { alt: 'Black slide. Text: I’m a psychologist, and a Gestalt counsellor. Gestalt work pays attention to what is happening now: in the body, in the voice, between two people.',
         html: '<div class="pc"><p class="meta" style="text-align:right">03/07</p>' + h.q('I’m a <em>psychologist</em>', 's', 'margin-top:12cqi') +
           h.body('and a Gestalt counsellor. Gestalt work pays attention to what is happening now: in the body, in the voice, between two people.', 'margin-top:5cqi') + h.meta('psychology', 'margin-top:auto') + '</div>' },
@@ -270,7 +270,7 @@ The essay, Stage fright: when your body sings before you do, is on jasnota.mk. F
     title: { en: 'Bitola, 21:40', mk: 'Битола, 21:40' },
     goal: ['comments', 'follows'],
     why: 'Image only, location as a footnote. Roots, quietly: where she lives and sings.',
-    location: 'Bitola, North Macedonia',
+    location: 'Bitola, Macedonia',
     photos: ['bitola'],
     slides: [{
       alt: 'Photo: Širok Sokak in Bitola at night after the shops have closed, street lamps receding as points of light, almost nobody on the street. Small text: Bitola, Širok Sokak, 21:40.',

@@ -90,7 +90,7 @@ Direct "you" in English; second person singular (ти) in Macedonian.
 
 ## Founder facts (confirmed by Jasna, 2026-10-28)
 
-- **Jasna Dimitrovska** — psychologist, **Gestalt counsellor**, **vocal artist**. Based in Bitola, North Macedonia.
+- **Jasna Dimitrovska** — psychologist, **Gestalt counsellor**, **vocal artist**. Based in Bitola, Macedonia.
 - Sings as a vocalist with **Orchestra DIVA** (Оркестар DIVA, Bitola; Instagram @chamber_orchestra_diva) —
   e.g. the orchestra's MTV 80s & 90s hits concerts, Stars Symphony, "Vienna in Bitola".
 - Co-author of published research: *Self-esteem as a mediator between perfectionism and impostor syndrome

@@ -12,7 +12,7 @@
 /* I — opening ------------------------------------------------------------ */
 .opening .stage { display: grid; place-items: center; }
 .opening__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: none; }
-.motion .opening { height: 320vh; }
+.motion .opening { height: 220vh; }   /* scene lengths: each screen of scroll changes something (phones: see the end of this file) */
 .motion .opening__canvas { display: block; }
 .opening__lockup { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 4vh; }
 .opening__mark { width: clamp(64px, 8.5vw, 116px); color: var(--bone); margin-bottom: clamp(20px, 3vh, 36px); }
@@ -28,7 +28,7 @@ html[lang="mk"] .wm--en, html:not([lang="mk"]) .wm--mk { display: none; }
   font-family: var(--font-display); font-style: italic; font-weight: 300;
   font-size: clamp(1rem, 1.4vw, 1.3rem); color: var(--ash); margin-top: 10px; letter-spacing: 0.04em;
 }
-.opening__line { margin-top: clamp(28px, 6vh, 64px); font-size: 0.9rem; color: var(--ash); letter-spacing: 0.01em; }
+.opening__line { margin-top: clamp(28px, 6vh, 64px); font-size: 0.98rem; color: var(--mist); letter-spacing: 0.01em; }
 .opening__hint { position: absolute; left: 50%; bottom: 13vh; transform: translateX(-50%); color: var(--ash); white-space: nowrap; display: none; }
 .motion .opening__hint { display: block; opacity: 0; }
 .motion .opening__mark, .motion .opening__alt, .motion .opening__line { opacity: 0; }
@@ -49,7 +49,7 @@ html[lang="mk"] .wm--en, html:not([lang="mk"]) .wm--mk { display: none; }
 .in-1 { padding-left: calc(var(--col) * 1); }
 .in-2 { padding-left: calc(var(--col) * 2); }
 .in-3 { padding-left: calc(var(--col) * 4); }
-.motion .manifest { height: 460vh; }
+.motion .manifest { height: 260vh; }
 .motion .manifest .stage { padding: 0; }
 .motion .stanza { position: absolute; inset: 0 var(--g); display: flex; flex-direction: column; justify-content: center; margin: 0; }
 .motion .stanza--2 { opacity: 0; }
@@ -59,7 +59,7 @@ html[lang="mk"] .wm--en, html:not([lang="mk"]) .wm--mk { display: none; }
 .voices__track { position: relative; }
 .panel { position: relative; padding: 16vh var(--g); }
 .voices__h { font-family: var(--font-display); font-weight: 300; font-size: clamp(3rem, 8.6vw, 10rem); line-height: 0.92; letter-spacing: -0.02em; }
-.voices__sub { margin-top: var(--s-4); margin-left: calc(var(--col) * 2); max-width: 24ch; color: var(--ash); font-size: 1.05rem; }
+.voices__sub { margin-top: var(--s-4); margin-left: calc(var(--col) * 2); max-width: 26ch; color: var(--mist); font-size: var(--fs-body); line-height: 1.5; }
 .movement__num {
   display: block; font-family: var(--font-display); font-style: italic; font-weight: 300;
   font-size: clamp(7rem, 22vw, 18rem); line-height: 0.8; color: #19191b; user-select: none;
@@ -67,7 +67,7 @@ html[lang="mk"] .wm--en, html:not([lang="mk"]) .wm--mk { display: none; }
 .movement__body { position: relative; margin-left: calc(var(--col) * 2); max-width: 46rem; margin-top: -0.6em; }
 .movement__title { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.8rem, 7.6vw, 8.6rem); line-height: 0.92; letter-spacing: -0.02em; }
 .movement__tempo { margin-top: var(--s-3); color: var(--ash); }
-.movement__text { margin-top: var(--s-3); max-width: 34ch; color: var(--bone-82); font-size: 1.05rem; line-height: 1.65; }
+.movement__text { margin-top: var(--s-3); max-width: 36ch; color: var(--bone-82); font-size: var(--fs-body); line-height: var(--lh-read); }
 .voices__score { display: none; }
 .motion .voices .stage { overflow: hidden; }
 .motion .voices__track { display: flex; height: 100%; width: max-content; }
@@ -100,7 +100,7 @@ html[lang="mk"] .wm--en, html:not([lang="mk"]) .wm--mk { display: none; }
 .meter__num { margin-bottom: 0.03em; }
 .meter__copy { grid-column: 2 / 4; grid-row: 1; align-self: center; padding-left: var(--col); }
 .meter__h { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.4rem, 5.2vw, 6rem); line-height: 0.98; letter-spacing: -0.018em; max-width: 13ch; }
-.meter__p { margin-top: var(--s-4); max-width: 40ch; color: var(--bone-82); font-size: 1.05rem; line-height: 1.65; }
+.meter__p { margin-top: var(--s-4); max-width: 40ch; color: var(--bone-82); font-size: var(--fs-body); line-height: var(--lh-read); }
 .meter__bar { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: 2fr 2fr 3fr; column-gap: clamp(16px, 3vw, 48px); margin-top: var(--s-5); }
 .grp { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; border-top: 1px solid var(--graphite); padding-top: 14px; }
 .beat { display: flex; flex-direction: column; gap: 10px; }
@@ -115,7 +115,7 @@ html[lang="mk"] .wm--en, html:not([lang="mk"]) .wm--mk { display: none; }
 .beat.hit i { transform: scaleY(1); opacity: 1; transition-duration: 0.06s; }
 .beat:not(.acc).hit i { transform: scaleY(0.62); }
 .beat.hit b { color: var(--bone); transition-duration: 0.06s; }
-.motion .meter { height: 400vh; }
+.motion .meter { height: 210vh; }
 .motion .meter .stage { padding-top: 16vh; padding-bottom: 9vh; }
 .motion .meter__num, .motion .meter__den, .motion .meter__h .w, .motion .meter__p {
   opacity: 0; transform: translate3d(0, 0.18em, 0);
@@ -125,12 +125,12 @@ html[lang="mk"] .wm--en, html:not([lang="mk"]) .wm--mk { display: none; }
 .motion .meter .on { opacity: 1; transform: none; }
 
 /* marquee sits between the film and the pages */
-.page-home .marquee { margin-top: var(--s-6); }
+.page-home .marquee { margin-top: var(--s-5); }
 
 /* V — about -------------------------------------------------------------- */
 .about {
   display: grid; grid-template-columns: 2fr 2fr 3fr; column-gap: var(--s-4);
-  padding: var(--s-8) var(--g) var(--s-7); align-items: end;
+  padding: var(--s-7) var(--g) var(--s-6); align-items: end;
 }
 .portrait { grid-column: 3; grid-row: 1; align-self: start; }
 .portrait__frame { position: relative; overflow: hidden; aspect-ratio: 4 / 5; background: var(--night); }
@@ -152,13 +152,13 @@ html[lang="mk"] .wm--en, html:not([lang="mk"]) .wm--mk { display: none; }
 .crop--br { right: 14px; bottom: 14px; border-right-width: 1px; border-bottom-width: 1px; }
 .portrait__frame-no { position: absolute; right: 36px; top: 12px; color: var(--ash); }
 .portrait__cap { margin-top: 12px; color: var(--ash); }
-.about__text { grid-column: 1 / 3; grid-row: 1; padding-bottom: var(--s-6); padding-right: var(--s-4); }
+.about__text { grid-column: 1 / 3; grid-row: 1; padding-bottom: var(--s-4); padding-right: var(--s-4); }
 .about__h { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.8rem, 6.4vw, 7.2rem); line-height: 0.94; letter-spacing: -0.02em; margin-bottom: var(--s-5); }
 .about__h .ln + .ln { padding-left: var(--col); }
-.about__text p:not(.about__h) { max-width: 38ch; color: var(--bone-82); font-size: 1.05rem; line-height: 1.7; }
-.about__text p + p { margin-top: var(--s-3); }
+.about__text p:not(.about__h) { max-width: 40ch; color: var(--bone-82); font-size: var(--fs-body); line-height: var(--lh-read); }
+.about__text p + p { margin-top: 1em; }
 .about__text p.about__lead { font-size: clamp(1.15rem, 1.5vw, 1.35rem); line-height: 1.55; color: var(--bone); max-width: 32ch; }
-.about__text p.about__note { color: var(--ash); font-size: 0.92rem; }
+.about__text p.about__note { color: var(--mist); font-size: var(--fs-small); }
 .about__sign { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-3); margin-top: var(--s-5) !important; }
 .about__sig { font-family: var(--font-display); font-style: italic; font-size: 2.2rem; color: var(--bone); line-height: 1; }
 .about__sign .mono { color: var(--ash); }
@@ -167,14 +167,14 @@ html[lang="mk"] .wm--en, html:not([lang="mk"]) .wm--mk { display: none; }
 /* VI — song of the week -------------------------------------------------- */
 .tease-listen {
   display: grid; grid-template-columns: 2fr 2fr 3fr; column-gap: var(--s-4); row-gap: var(--s-5);
-  padding: var(--s-7) var(--g) var(--s-7);
+  padding: var(--s-6) var(--g) var(--s-6);
   align-items: start;
 }
 .tease-listen__head { grid-column: 1 / 3; }
 .tease-listen__h { font-family: var(--font-display); font-weight: 300; font-size: clamp(3.2rem, 8vw, 9rem); line-height: 0.88; letter-spacing: -0.03em; }
 .tease-listen__h .ln + .ln { padding-left: var(--col); }
-.tease-listen__p { margin: var(--s-4) 0 var(--s-3); max-width: 36ch; color: var(--bone-82); font-size: 1.05rem; line-height: 1.65; }
-.tease-listen__diva { margin: calc(var(--s-3) * -0.5) 0 var(--s-3); max-width: 36ch; color: var(--ash); font-size: 0.95rem; line-height: 1.6; }
+.tease-listen__p { margin: var(--s-4) 0 var(--s-3); max-width: 38ch; color: var(--bone-82); font-size: var(--fs-body); line-height: var(--lh-read); }
+.tease-listen__diva { margin: calc(var(--s-3) * -0.5) 0 var(--s-3); max-width: 38ch; color: var(--mist); font-size: var(--fs-small); line-height: 1.6; }
 .tease-listen .song { grid-column: 3; padding-top: clamp(0px, 6vw, 120px); }
 
 /* the song block (shared with listen) */
@@ -182,20 +182,20 @@ html[lang="mk"] .wm--en, html:not([lang="mk"]) .wm--mk { display: none; }
 .song__t { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.2rem, 4.2vw, 4.4rem); line-height: 0.96; letter-spacing: -0.02em; }
 .song__t a { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size 0.9s var(--ease-out); }
 .song__t a:hover { background-size: 100% 1px; }
-.song__x { margin: var(--s-3) 0 var(--s-4); max-width: 42ch; color: var(--bone-82); }
+.song__x { margin: var(--s-3) 0 var(--s-4); max-width: 42ch; color: var(--bone-82); font-size: var(--fs-body); line-height: var(--lh-read); }
 
 /* VII — journal ---------------------------------------------------------- */
-.journal { padding: var(--s-7) var(--g) var(--s-7); }
+.journal { padding: var(--s-6) var(--g) var(--s-6); }
 .journal__head { display: grid; grid-template-columns: 2fr 2fr 3fr; column-gap: var(--s-4); align-items: end; margin-bottom: var(--s-6); }
 .journal__h { grid-column: 1 / 3; font-family: var(--font-display); font-weight: 300; font-size: clamp(4rem, 13vw, 15rem); line-height: 0.8; letter-spacing: -0.03em; }
 .journal__side { grid-column: 3; padding-bottom: 0.6em; }
-.journal__intro { color: var(--ash); max-width: 30ch; margin-bottom: var(--s-2); }
+.journal__intro { color: var(--mist); max-width: 32ch; margin-bottom: var(--s-2); }
 
 /* VIII — coda ------------------------------------------------------------ */
 .coda {
-  min-height: 92vh; min-height: 92svh;
+  min-height: 78vh; min-height: 78svh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: var(--s-7) var(--g);
+  padding: var(--s-6) var(--g);
   text-align: center;
 }
 .coda__note {
@@ -211,7 +211,7 @@ html[lang="mk"] .wm--en, html:not([lang="mk"]) .wm--mk { display: none; }
   57.14% { transform: scale(1); } 59.6% { transform: scale(1.4); } 85% { transform: scale(1); } 100% { transform: scale(1); }
 }
 .coda__h { font-family: var(--font-display); font-weight: 300; font-size: clamp(3.1rem, 9.2vw, 11rem); line-height: 0.92; letter-spacing: -0.025em; max-width: 14ch; text-wrap: balance; }
-.coda__p { margin-top: var(--s-5); max-width: 36ch; color: var(--ash); }
+.coda__p { margin-top: var(--s-5); max-width: 36ch; color: var(--mist); font-size: var(--fs-body); }
 .coda__links { margin-top: var(--s-3); display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); justify-content: center; }
 
 /* ---------------------------------------------------------------- HUD + sound */
@@ -272,28 +272,71 @@ html:not(.motion) .sound { display: none; }
   .motion .movement__body { left: var(--g); right: var(--g); top: 27vh; width: auto; }
   .movement__body { margin-left: 0; }
   .movement__title { font-size: clamp(2.7rem, 13.4vw, 4.4rem); }
-  .movement__text { font-size: 1rem; }
   .motion .voices__score { bottom: 9vh; height: 90px; }
 
-  .meter .stage { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; padding-top: 12vh; }
-  .motion .meter .stage { padding-top: 13vh; padding-bottom: 8vh; }
-  .meter__sig { grid-column: 1; grid-row: 1; font-size: clamp(4.4rem, 21vw, 6.4rem); }
-  .meter__copy { grid-column: 1; grid-row: 2; align-self: center; padding-top: var(--s-3); }
-  .meter__h { font-size: clamp(2.3rem, 10.6vw, 3.4rem); }
-  .meter__p { font-size: 1rem; margin-top: var(--s-3); }
-  .meter__bar { grid-row: 3; margin-top: var(--s-4); column-gap: 12px; }
-  .grp { padding-top: 10px; }
-  .beat i { height: 11vh; }
-
-  .about { padding-bottom: var(--s-6); }
+  .about { padding-bottom: var(--s-5); }
+  .portrait { width: min(72%, 340px); }
+  /* home teaser: two lines of excerpt per entry; the journal page shows them whole */
+  .journal .row__a { padding: 16px 0; row-gap: 4px; }
+  .journal .row__x { display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .coda { min-height: 64vh; min-height: 64svh; }
   .about__h .ln + .ln { padding-left: calc(var(--col) * 1.5); }
   .journal { padding-top: var(--s-6); }
   .coda__h { max-width: 9ch; font-size: clamp(3.2rem, 15vw, 4.8rem); }
 
   .hud { right: calc(var(--g) + 118px); grid-template-columns: auto 1fr; gap: var(--s-2); }
+  /* the film furniture sits on a soft fade, so text scrolling under it never collides with it */
+  .hud::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    left: calc(-1 * var(--g)); width: calc(var(--vw, 1vw) * 100); bottom: -18px; height: 60px;
+    background: linear-gradient(180deg, rgba(10, 10, 11, 0), rgba(10, 10, 11, 0.85) 60%, var(--ink));
+  }
   .past-film .hud, .past-film .sound { opacity: 0; pointer-events: none; }
   .page-home .mini { bottom: 12px; }
   .hud__tempo { display: none; }
   .hud__tc .tc-sep, .hud__tc .tc-total { display: none; }
 }
 .menu-open .hud, .menu-open .sound { opacity: 0; pointer-events: none; }
+
+/* ---------------------------------------------------------------- phones (≤ 768px): shorter scenes, stacked voices, a compact 7/8
+   Matches `stackMQ` in js/home.js. */
+@media (max-width: 768px) {
+  .motion .opening { height: 185vh; }
+  .motion .manifest { height: 190vh; }
+  .motion .meter { height: 165vh; }
+
+  /* III — the three movements read like a page; the score is a divider that draws itself */
+  .motion .voices .stage, .voices .stage { position: relative; height: auto; min-height: 0; overflow: visible; }
+  .voices__track, .motion .voices__track { display: flex; flex-direction: column; width: auto; height: auto; }
+  .panel, .motion .panel { width: auto; height: auto; flex: none; }
+  .panel--intro, .motion .panel--intro { order: 0; padding: var(--s-6) var(--g) var(--s-4); }
+  .motion .panel--intro .voices__h, .panel--intro .voices__h { position: static; font-size: clamp(2.9rem, 14vw, 4.4rem); }
+  .motion .panel--intro .voices__sub, .panel--intro .voices__sub { position: static; margin: var(--s-3) 0 0; }
+  .motion .voices__score { order: 1; position: relative; left: auto; bottom: auto; width: auto; height: 72px; margin: 0 var(--g) var(--s-2); }
+  .movement, .motion .movement { order: 2; position: relative; margin: 0 var(--g); padding: var(--s-5) 0; border-top: 1px solid var(--graphite); }
+  .panel--intro + .movement { border-top: 0; }
+  /* the numeral sits behind the title at the right edge: decoration that takes no room from the text */
+  .movement__num, .motion .movement__num {
+    position: absolute; right: -0.04em; top: var(--s-3); left: auto;
+    font-size: clamp(5.6rem, 30vw, 8rem); line-height: 0.8; color: #1c1c1f; transform: none !important;
+  }
+  .movement__body, .motion .movement__body { position: relative; left: auto; right: auto; top: auto; width: auto; margin: 0; max-width: 34rem; }
+  .movement__title { font-size: clamp(2.5rem, 12vw, 3.6rem); }
+  .movement__tempo { margin-top: var(--s-2); }
+  .movement__text { margin-top: var(--s-2); }
+  .voices .movement:last-of-type { padding-bottom: var(--s-6); }
+
+  /* IV — 7/8: signature beside the heading, the sentence and the beats right under it */
+  .meter .stage, .motion .meter .stage {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto auto;
+    align-content: center; column-gap: var(--s-3); row-gap: 0;
+    padding: calc(var(--hdr-h) + 8px) var(--g) 56px;
+  }
+  .meter__sig { grid-column: 1; grid-row: 1; align-self: center; font-size: clamp(4.6rem, 23vw, 6.2rem); }
+  .meter__copy { display: contents; }
+  .meter__h { grid-column: 2; grid-row: 1; align-self: center; font-size: clamp(2.05rem, 9.6vw, 2.9rem); max-width: none; }
+  .meter__p { grid-column: 1 / -1; grid-row: 2; margin-top: var(--s-4); max-width: 38ch; }
+  .meter__bar { grid-column: 1 / -1; grid-row: 3; margin-top: var(--s-5); column-gap: 12px; }
+  .grp { padding-top: 10px; }
+  .beat i { height: clamp(72px, 15vh, 140px); }
+}

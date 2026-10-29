@@ -6,7 +6,7 @@
 
 .art { padding: calc(var(--hdr-h) + var(--s-5)) var(--g) var(--s-7); }
 .essay { max-width: 1240px; margin: 0 auto; }
-.essay__back { display: inline-block; color: var(--ash); padding: 6px 0; margin-bottom: var(--s-6); transition: color 0.5s var(--ease-out); }
+.essay__back { display: inline-block; color: var(--mist); padding: 6px 0; margin-bottom: var(--s-5); transition: color 0.5s var(--ease-out); }
 .essay__back:hover { color: var(--bone); }
 
 .essay__head { padding-bottom: var(--s-6); }
@@ -19,18 +19,18 @@
 .essay__t .ln + .ln { padding-left: var(--col); }
 .essay__t em { color: var(--ash); }
 .essay__lede {
-  font-family: var(--font-display); font-style: italic; font-weight: 300;
+  font-family: var(--font-display); font-style: italic; font-weight: 400; color: var(--bone);
   font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.2;
   max-width: 24ch; margin: var(--s-6) 8% 0 auto;
 }
 
 .essay__player { margin: var(--s-4) 0 var(--s-7); padding: var(--s-4) 0; border-top: 1px solid var(--graphite); border-bottom: 1px solid var(--graphite); }
 
-.essay__body { font-size: 1.12rem; line-height: 1.78; padding-top: var(--s-5); }
+.essay__body { font-size: var(--fs-read); line-height: 1.7; padding-top: var(--s-5); }
 .mv { display: grid; grid-template-columns: repeat(7, 1fr); column-gap: var(--s-3); margin-bottom: var(--s-6); }
-.mv > * { grid-column: 3 / span 4; max-width: 62ch; }
-.mv > p { color: var(--bone-82); }
-.mv > p + p { margin-top: 1.1em; }
+.mv > * { grid-column: 3 / span 4; max-width: 64ch; }
+.mv > p { color: var(--bone-82); max-width: 31em; }   /* ≈ 62–66 characters a line */
+.mv > p + p { margin-top: 1em; }
 .mv__n {
   grid-column: 1 / span 2; grid-row: 1 / span 30;
   font-family: var(--font-display); font-style: italic; font-weight: 300;
@@ -49,7 +49,7 @@
   -webkit-mask: url("../assets/brand/05-pauza.svg") center / contain no-repeat;
           mask: url("../assets/brand/05-pauza.svg") center / contain no-repeat;
 }
-.essay__foot { max-width: 52ch; margin: 0 auto; text-align: center; font-size: 0.9rem; line-height: 1.6; color: var(--ash); }
+.essay__foot { max-width: 52ch; margin: 0 auto; text-align: center; font-size: var(--fs-small); line-height: 1.6; color: var(--mist); }
 
 /* previous / next */
 .pn { display: grid; grid-template-columns: 1fr 1fr; margin-top: var(--s-7); border-top: 1px solid var(--graphite); border-bottom: 1px solid var(--graphite); }
@@ -62,11 +62,18 @@
 .pn__a--next:hover .pn__t { transform: translateX(0.25em); font-style: italic; }
 
 /* reading progress: a staff line + timecode */
+.page-article main { padding-bottom: calc(var(--s-7) + 40px); }   /* the last lines never sit under the progress line */
 .progress {
   position: fixed; left: var(--g); right: var(--g); bottom: 18px; z-index: 46;
   display: flex; align-items: center; gap: var(--s-2); pointer-events: none;
   color: var(--ash);
   transition: opacity 0.6s var(--ease-out);
+}
+.progress::before {
+  /* a soft fade under the staff line, so running text slides beneath it instead of colliding */
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  left: calc(-1 * var(--g)); right: calc(-1 * var(--g)); bottom: -18px; height: 64px;
+  background: linear-gradient(180deg, rgba(10, 10, 11, 0), rgba(10, 10, 11, 0.85) 60%, var(--ink));
 }
 .progress__t { color: var(--bone); min-width: 5ch; }
 .progress__line { flex: 1; height: 1px; background: var(--graphite); overflow: hidden; }
@@ -75,10 +82,10 @@
 .mini.is-on ~ .progress, body:has(.mini.is-on) .progress { right: calc(var(--g) + 400px); }
 
 @media (max-width: 760px) {
-  .essay__body { font-size: 1.04rem; }
   .mv { display: block; }
-  .mv__n { position: static; display: block; margin-bottom: var(--s-2); font-size: 2.6rem; }
-  .pull { margin: var(--s-4) 0; }
+  .mv__n { position: static; display: block; margin-bottom: var(--s-1); font-size: 2rem; }
+  .pull { margin: var(--s-4) 0; padding-left: var(--s-2); }
+  .pull p { font-size: clamp(1.45rem, 6.2vw, 1.8rem); line-height: 1.2; }
   .essay__lede { margin: var(--s-5) 0 0; }
   .sign { padding-left: 0; }
   .pn { grid-template-columns: 1fr; }
