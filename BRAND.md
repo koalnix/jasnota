@@ -97,7 +97,7 @@ and any promise of cure or quick fix.
 - Workshops & mentoring: GLOW 2026 drum circles (music facilitator); YMCA Bitola peer school — song on mental health made from
   young participants' texts (YouTube: YMCAmk); „Ритамот на резилиентноста: како музиката ги обликува нашите емоции“
   (Empowering the People of Pelagonija 2, Ohrid); „Кога креативноста и дружбата лекуваат“ (Pro Local, Civica Mobilitas);
-  „Основи на успешна кариера“ (music as a profession). **Never publish photos showing identifiable minors** from these.
+  „Основи на успешна кариера“ (music as a profession). **Publish photos of identifiable minors only with written consent on file** (participants/parents and organiser); otherwise use face-free details.
 - Private contact details (phone, personal email) are never published; public contact is zdravo@jasnota.mk.
 - Co-author: *Self-esteem as a mediator between perfectionism and impostor syndrome among gifted students* (2024,
   International Slavic University) — cite, don't state findings until she supplies them.
