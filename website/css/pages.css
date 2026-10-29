@@ -469,3 +469,7 @@ img.frame__img::after { display: none; }
 .work__fig img { display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.05) brightness(0.86); }
 .work__fig figcaption { margin-top: 6px; color: var(--ash); font-size: 0.7rem; }
 @media (max-width: 640px) { .work__i { grid-template-columns: 1fr; row-gap: 2px; } .work__i > .work__fig { grid-column: 1; } }
+.work__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 420px; margin-top: 12px; }
+.work__pair .work__fig { margin-top: 0; max-width: none; }
+.work__pair img { aspect-ratio: 1 / 1; object-fit: cover; }
+.work__cap { margin-top: 6px; color: var(--ash); font-size: 0.7rem; }
